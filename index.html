@@ -1,11 +1,433 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Belardi Golf House</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Belardi Golf House — Séjour golf tout compris au Pays Basque</title>
+<meta name="description" content="Une semaine de golf tout compris au Pays Basque : coaching, 5 parcours d'exception, hébergement et gastronomie basque. Petits groupes de 6 golfeurs maximum.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rouge:#B3202A;
+    --rouge-fonce:#8E1820;
+    --vert:#1F4D3A;
+    --vert-clair:#2E6B52;
+    --creme:#F6F1E7;
+    --sable:#E9DFCC;
+    --encre:#1C1C1A;
+    --gris:#5E5A52;
+    --blanc:#FFFFFF;
+    --rayon:14px;
+    --max:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--encre);background:var(--creme);line-height:1.6;font-size:17px}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.15}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  .eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--rouge)}
+  section{padding:96px 0}
+  .btn{display:inline-block;padding:15px 28px;border-radius:999px;font-weight:600;text-decoration:none;transition:.2s;border:2px solid transparent;cursor:pointer;font-size:1rem}
+  .btn-rouge{background:var(--rouge);color:var(--blanc)}
+  .btn-rouge:hover{background:var(--rouge-fonce)}
+  .btn-ligne{border-color:var(--blanc);color:var(--blanc)}
+  .btn-ligne:hover{background:var(--blanc);color:var(--vert)}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(31,77,58,.92);backdrop-filter:blur(8px)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:700;color:var(--blanc);text-decoration:none;letter-spacing:.02em}
+  .logo span{color:#F2B8B8;font-weight:400}
+  .liens{display:flex;gap:28px;align-items:center}
+  .liens a{color:rgba(255,255,255,.88);text-decoration:none;font-size:.93rem;font-weight:500}
+  .liens a:hover{color:var(--blanc)}
+  .liens .btn{padding:10px 20px;font-size:.9rem;color:var(--blanc)}
+  @media(max-width:860px){.liens a:not(.btn){display:none}}
+
+  .hero{min-height:100vh;display:flex;align-items:center;color:var(--blanc);position:relative;overflow:hidden;
+    background:
+      linear-gradient(180deg,rgba(20,45,35,.55) 0%,rgba(20,45,35,.35) 45%,rgba(20,45,35,.85) 100%),
+      radial-gradient(ellipse at 70% 20%,#4F8A6B 0%,transparent 55%),
+      linear-gradient(160deg,#2E6B52 0%,#1F4D3A 50%,#16382A 100%);}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;
+    background:radial-gradient(ellipse 120% 100% at 30% 100%,#3E7A5C 0%,transparent 70%),radial-gradient(ellipse 90% 80% at 85% 100%,#2C5E47 0%,transparent 70%);opacity:.8}
+  .hero .wrap{position:relative;z-index:2;padding-top:90px;padding-bottom:60px}
+  .hero .eyebrow{color:#F2B8B8}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.8rem);margin:18px 0 22px;max-width:14ch}
+  .hero p.lead{font-size:1.2rem;max-width:560px;opacity:.92;margin-bottom:34px}
+  .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .chiffres{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.2);border-radius:var(--rayon);overflow:hidden;margin-top:64px;max-width:820px}
+  .chiffres div{background:rgba(20,45,35,.55);padding:20px 18px}
+  .chiffres strong{display:block;font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600}
+  .chiffres span{font-size:.85rem;opacity:.85}
+  @media(max-width:700px){.chiffres{grid-template-columns:repeat(2,1fr)}}
+
+  .concept .grille{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+  .concept h2{font-size:clamp(2rem,4vw,2.9rem);margin:14px 0 22px}
+  .concept p{color:var(--gris);margin-bottom:16px}
+  .visuel{aspect-ratio:4/5;border-radius:var(--rayon);background:linear-gradient(160deg,var(--sable),#D8C9AC);display:flex;align-items:flex-end;padding:22px;position:relative;overflow:hidden}
+  .visuel::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 22px,rgba(255,255,255,.18) 22px 23px)}
+  .visuel small{position:relative;background:rgba(255,255,255,.85);padding:6px 12px;border-radius:999px;font-size:.78rem;color:var(--gris)}
+  @media(max-width:860px){.concept .grille{grid-template-columns:1fr;gap:40px}.visuel{aspect-ratio:16/10}}
+
+  .piliers{background:var(--vert);color:var(--blanc)}
+  .piliers .eyebrow{color:#F2B8B8}
+  .titre-section{text-align:center;max-width:680px;margin:0 auto 56px}
+  .titre-section h2{font-size:clamp(2rem,4vw,2.8rem);margin-top:14px}
+  .titre-section p{margin-top:14px;opacity:.85}
+  .cartes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .carte{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--rayon);padding:30px 26px}
+  .carte .num{font-family:'Fraunces',serif;font-size:1rem;color:#F2B8B8;margin-bottom:14px}
+  .carte h3{font-size:1.35rem;margin-bottom:10px}
+  .carte p{opacity:.85;font-size:.97rem}
+  @media(max-width:860px){.cartes{grid-template-columns:1fr}}
+
+  .jours{display:grid;gap:14px;max-width:880px;margin:0 auto}
+  .jour{display:grid;grid-template-columns:110px 1fr;gap:24px;background:var(--blanc);border-radius:var(--rayon);padding:26px 28px;border-left:4px solid var(--rouge)}
+  .jour .j{font-family:'Fraunces',serif;color:var(--rouge);font-weight:600}
+  .jour .j b{display:block;font-size:2rem;line-height:1}
+  .jour h3{font-size:1.25rem;margin-bottom:6px}
+  .jour .lieu{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;color:var(--vert-clair);font-weight:600;margin-bottom:8px}
+  .jour p{color:var(--gris);font-size:.96rem}
+  @media(max-width:600px){.jour{grid-template-columns:1fr;gap:8px}}
+
+  .golfs{background:var(--sable)}
+  .liste-golfs{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .golf{background:var(--blanc);border-radius:var(--rayon);overflow:hidden}
+  .golf .img{aspect-ratio:1;background:linear-gradient(150deg,#3E7A5C,#1F4D3A)}
+  .golf:nth-child(2) .img{background:linear-gradient(150deg,#5B8FA8,#2B5468)}
+  .golf:nth-child(3) .img{background:linear-gradient(150deg,#6E9B5A,#35602A)}
+  .golf:nth-child(4) .img{background:linear-gradient(150deg,#8AA36A,#4B6B33)}
+  .golf:nth-child(5) .img{background:linear-gradient(150deg,#4A7F86,#22484E)}
+  .golf div.txt{padding:16px}
+  .golf h3{font-size:1.05rem}
+  .golf span{font-size:.85rem;color:var(--gris)}
+  @media(max-width:960px){.liste-golfs{grid-template-columns:repeat(2,1fr)}}
+
+  .tarifs .grille{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:960px;margin:0 auto}
+  .offre{background:var(--blanc);border-radius:var(--rayon);padding:38px 34px;border:1px solid var(--sable)}
+  .offre.vedette{border:2px solid var(--rouge);position:relative}
+  .offre.vedette::before{content:"Le plus choisi";position:absolute;top:-13px;left:34px;background:var(--rouge);color:var(--blanc);font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+  .offre h3{font-size:1.5rem}
+  .offre .prix{font-family:'Fraunces',serif;font-size:2.6rem;font-weight:600;margin:16px 0 4px}
+  .offre .prix small{font-family:'Inter';font-size:.95rem;font-weight:400;color:var(--gris)}
+  .offre .saison{font-size:.88rem;color:var(--gris);margin-bottom:22px}
+  .offre ul{list-style:none;display:grid;gap:10px;margin-bottom:28px}
+  .offre li{padding-left:26px;position:relative;font-size:.96rem}
+  .offre li::before{content:"";position:absolute;left:0;top:8px;width:14px;height:8px;border-left:2px solid var(--vert-clair);border-bottom:2px solid var(--vert-clair);transform:rotate(-45deg)}
+  .note-tarif{text-align:center;color:var(--gris);font-size:.9rem;margin-top:26px}
+  @media(max-width:760px){.tarifs .grille{grid-template-columns:1fr}}
+
+  .faq{background:var(--blanc)}
+  .faq details{max-width:820px;margin:0 auto;border-bottom:1px solid var(--sable);padding:22px 0}
+  .faq summary{cursor:pointer;font-weight:600;font-size:1.08rem;list-style:none;display:flex;justify-content:space-between;gap:20px}
+  .faq summary::after{content:"+";font-size:1.5rem;color:var(--rouge);line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{margin-top:12px;color:var(--gris)}
+
+  .contact{background:var(--rouge);color:var(--blanc)}
+  .contact .grille{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .contact h2{font-size:clamp(2rem,4vw,2.8rem);margin:14px 0 18px}
+  .contact .eyebrow{color:#FBD9D9}
+  .contact p{opacity:.92}
+  form{background:var(--blanc);color:var(--encre);border-radius:var(--rayon);padding:32px;display:grid;gap:16px}
+  label{font-size:.85rem;font-weight:600;display:grid;gap:6px}
+  input,select,textarea{font:inherit;font-size:.97rem;padding:12px 14px;border:1px solid #D6CCBA;border-radius:10px;background:var(--creme);width:100%}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--vert-clair);border-color:transparent}
+  .deux{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .rgpd{font-size:.78rem;color:var(--gris);font-weight:400}
+  form .btn{width:100%;margin-top:4px}
+  @media(max-width:860px){.contact .grille{grid-template-columns:1fr}.deux{grid-template-columns:1fr}}
+
+  footer{background:var(--encre);color:rgba(255,255,255,.7);padding:48px 0;font-size:.9rem}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer .logo{font-size:1.2rem}
+  footer a{color:rgba(255,255,255,.7)}
+</style>
 </head>
 <body>
-  <h1>Belardi Golf House</h1>
-  <p>Site en construction.</p>
+
+<!-- MAQUETTE — contenus, prix, dates et programme FICTIFS. Remplacer avant toute communication publique. -->
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">Belardi <span>Golf House</span></a>
+    <div class="liens">
+      <a href="#concept">Le concept</a>
+      <a href="#programme">Programme</a>
+      <a href="#golfs">Les golfs</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="btn btn-rouge">Réserver</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Golf retreat · Pays Basque</p>
+    <h1>Une semaine pour jouer mieux, entre océan et montagnes.</h1>
+    <p class="lead">Coaching personnalisé, cinq parcours d'exception de la Côte Basque, une maison de caractère et la table basque. Vous n'apportez que vos clubs.</p>
+    <div class="ctas">
+      <a href="#contact" class="btn btn-rouge">Demander les prochaines dates</a>
+      <a href="#programme" class="btn btn-ligne">Voir le programme</a>
+    </div>
+    <div class="chiffres">
+      <div><strong>7 j / 6 n</strong><span>Séjour tout compris</span></div>
+      <div><strong>5</strong><span>Parcours joués</span></div>
+      <div><strong>20 h</strong><span>De coaching</span></div>
+      <div><strong>6 max</strong><span>Golfeurs par groupe</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="concept" class="concept">
+  <div class="wrap grille">
+    <div>
+      <p class="eyebrow">Le concept</p>
+      <h2>Le golf comme on le vit en surf camp.</h2>
+      <p>Belardi signifie « prairie » en basque. C'est le nom de notre maison : un lieu où l'on vit au rythme du jeu, entre entraînement le matin, parcours l'après-midi et longues tablées le soir.</p>
+      <p>Nous accueillons de petits groupes de golfeurs amateurs passionnés qui veulent franchir un cap, sans la pression de la compétition. Chacun repart avec un swing travaillé, un plan de progression et quelques souvenirs de parcours inoubliables.</p>
+      <p>Tout est organisé : transferts, green fees, coaching, hébergement, repas. Vous jouez, on s'occupe du reste.</p>
+    </div>
+    <div class="visuel"><small>Photo à remplacer : la maison / un green face à l'océan</small></div>
+  </div>
+</section>
+
+<section class="piliers">
+  <div class="wrap">
+    <div class="titre-section">
+      <p class="eyebrow">Ce qui nous distingue</p>
+      <h2>Trois piliers, une semaine.</h2>
+    </div>
+    <div class="cartes">
+      <div class="carte">
+        <p class="num">01</p>
+        <h3>Progresser vraiment</h3>
+        <p>Bilan vidéo le premier jour, objectifs personnels, séances techniques chaque matin et parcours coachés. Un compte rendu écrit vous est remis en fin de séjour.</p>
+      </div>
+      <div class="carte">
+        <p class="num">02</p>
+        <h3>Découvrir la Côte Basque</h3>
+        <p>Des links face à l'océan aux parcours vallonnés de l'arrière-pays : cinq golfs aux caractères très différents, à moins de 30 minutes de la maison.</p>
+      </div>
+      <div class="carte">
+        <p class="num">03</p>
+        <h3>Partager</h3>
+        <p>Six golfeurs maximum, des dîners en commun, des cidreries et des tables locales. On arrive seul ou entre amis, on repart avec des partenaires de jeu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="programme">
+  <div class="wrap">
+    <div class="titre-section">
+      <p class="eyebrow">Programme type</p>
+      <h2>Votre semaine, jour par jour.</h2>
+      <p style="color:var(--gris)">Programme indicatif, adapté à la météo et au niveau du groupe.</p>
+    </div>
+    <div class="jours">
+      <div class="jour">
+        <div class="j">Jour<b>1</b></div>
+        <div>
+          <p class="lieu">Arrivée · Belardi</p>
+          <h3>Bienvenue au Pays Basque</h3>
+          <p>Accueil à l'aéroport de Biarritz ou à la gare. Installation, apéritif de bienvenue, présentation de la semaine et dîner basque à la maison.</p>
+        </div>
+      </div>
+      <div class="jour">
+        <div class="j">Jour<b>2</b></div>
+        <div>
+          <p class="lieu">Golf de Chiberta · Anglet</p>
+          <h3>Bilan et premier parcours</h3>
+          <p>Analyse vidéo du swing et définition de vos objectifs. Déjeuner au club-house, puis parcours coaché entre pinède et dunes.</p>
+        </div>
+      </div>
+      <div class="jour">
+        <div class="j">Jour<b>3</b></div>
+        <div>
+          <p class="lieu">Golf d'Ilbarritz · Bidart</p>
+          <h3>Petit jeu face à l'océan</h3>
+          <p>Matinée consacrée au chipping et au putting sur l'un des plus beaux centres d'entraînement d'Europe. Après-midi sur le parcours, dîner en cidrerie.</p>
+        </div>
+      </div>
+      <div class="jour">
+        <div class="j">Jour<b>4</b></div>
+        <div>
+          <p class="lieu">Libre · Côte Basque</p>
+          <h3>Journée découverte</h3>
+          <p>Au choix : initiation au surf, randonnée à la Rhune, visite de Saint-Jean-de-Luz ou de San Sebastián. Séance putting facultative en fin de journée.</p>
+        </div>
+      </div>
+      <div class="jour">
+        <div class="j">Jour<b>5</b></div>
+        <div>
+          <p class="lieu">Golf de Chantaco · Saint-Jean-de-Luz</p>
+          <h3>Stratégie de parcours</h3>
+          <p>Gestion de parcours et choix de clubs sur un tracé exigeant au pied des montagnes. Dîner dans une table du port.</p>
+        </div>
+      </div>
+      <div class="jour">
+        <div class="j">Jour<b>6</b></div>
+        <div>
+          <p class="lieu">Golf d'Arcangues</p>
+          <h3>Le parcours final</h3>
+          <p>Parcours 18 trous en conditions réelles, puis bilan individuel et plan de progression personnalisé. Dîner de clôture.</p>
+        </div>
+      </div>
+      <div class="jour">
+        <div class="j">Jour<b>7</b></div>
+        <div>
+          <p class="lieu">Départ</p>
+          <h3>À bientôt</h3>
+          <p>Petit-déjeuner, dernière balade sur la plage ou neuf trous pour les plus motivés, puis transfert retour.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="golfs" class="golfs">
+  <div class="wrap">
+    <div class="titre-section">
+      <p class="eyebrow">Les parcours</p>
+      <h2>Cinq golfs, cinq caractères.</h2>
+    </div>
+    <div class="liste-golfs">
+      <div class="golf"><div class="img"></div><div class="txt"><h3>Chiberta</h3><span>Anglet · links et pinède</span></div></div>
+      <div class="golf"><div class="img"></div><div class="txt"><h3>Ilbarritz</h3><span>Bidart · vue océan</span></div></div>
+      <div class="golf"><div class="img"></div><div class="txt"><h3>Chantaco</h3><span>Saint-Jean-de-Luz · historique</span></div></div>
+      <div class="golf"><div class="img"></div><div class="txt"><h3>Arcangues</h3><span>Vallonné · vue Pyrénées</span></div></div>
+      <div class="golf"><div class="img"></div><div class="txt"><h3>Biarritz Le Phare</h3><span>Biarritz · centenaire</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="tarifs" class="tarifs">
+  <div class="wrap">
+    <div class="titre-section">
+      <p class="eyebrow">Tarifs 2027</p>
+      <h2>Tout compris, sans surprise.</h2>
+    </div>
+    <div class="grille">
+      <div class="offre">
+        <h3>Essentiel</h3>
+        <p class="prix">2 490 € <small>/ personne</small></p>
+        <p class="saison">Basse saison (oct. – mars) · 2 890 € en haute saison</p>
+        <ul>
+          <li>6 nuits en chambre partagée</li>
+          <li>Petits-déjeuners et 4 dîners</li>
+          <li>4 green fees</li>
+          <li>16 h de coaching en groupe</li>
+          <li>Transferts aéroport et golfs</li>
+        </ul>
+        <a href="#contact" class="btn btn-rouge" style="width:100%;text-align:center">Je suis intéressé</a>
+      </div>
+      <div class="offre vedette">
+        <h3>Signature</h3>
+        <p class="prix">3 290 € <small>/ personne</small></p>
+        <p class="saison">Basse saison (oct. – mars) · 3 790 € en haute saison</p>
+        <ul>
+          <li>6 nuits en chambre individuelle</li>
+          <li>Pension complète, vins inclus</li>
+          <li>5 green fees</li>
+          <li>20 h de coaching dont 2 h en individuel</li>
+          <li>Analyse vidéo et plan de progression écrit</li>
+          <li>Journée découverte encadrée</li>
+          <li>Transferts aéroport et golfs</li>
+        </ul>
+        <a href="#contact" class="btn btn-rouge" style="width:100%;text-align:center">Je suis intéressé</a>
+      </div>
+    </div>
+    <p class="note-tarif">Accompagnant non golfeur possible sur demande. Groupes constitués et séminaires : devis sur mesure.</p>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="wrap">
+    <div class="titre-section">
+      <p class="eyebrow">Questions fréquentes</p>
+      <h2>Avant de venir.</h2>
+    </div>
+    <details>
+      <summary>Quel niveau faut-il avoir ?</summary>
+      <p>Le séjour s'adresse aux golfeurs déjà autonomes sur un parcours, idéalement avec un index entre 10 et 36. Les groupes sont constitués par niveau pour que chacun progresse à son rythme.</p>
+    </details>
+    <details>
+      <summary>Puis-je venir seul ?</summary>
+      <p>Oui, la majorité de nos participants viennent seuls ou à deux. Les groupes de six maximum et les repas partagés rendent l'intégration naturelle.</p>
+    </details>
+    <details>
+      <summary>Faut-il apporter son matériel ?</summary>
+      <p>Nous recommandons vos propres clubs. Une location est possible sur demande si vous voyagez léger.</p>
+    </details>
+    <details>
+      <summary>Qu'est-ce qui n'est pas inclus ?</summary>
+      <p>Le transport jusqu'au Pays Basque, les boissons hors repas, les activités optionnelles payantes de la journée découverte et l'assurance annulation.</p>
+    </details>
+    <details>
+      <summary>Quelles sont les conditions d'annulation ?</summary>
+      <p>Remboursement intégral jusqu'à 60 jours avant le départ. Entre 60 et 30 jours, avoir valable 12 mois. Moins de 30 jours, la place peut être cédée à une autre personne.</p>
+    </details>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap grille">
+    <div>
+      <p class="eyebrow">Prochaines sessions</p>
+      <h2>Rejoignez la liste des premiers golfeurs.</h2>
+      <p>Les premières sessions ouvriront au printemps 2027 avec un nombre de places très limité. Laissez-nous vos coordonnées : vous serez prévenu en priorité et bénéficierez d'un tarif de lancement.</p>
+    </div>
+    <!-- Formulaire non branché : remplacer action="#" par l'URL Formspree ou Tally -->
+    <form action="#" method="POST">
+      <div class="deux">
+        <label>Prénom<input type="text" name="prenom" required></label>
+        <label>Nom<input type="text" name="nom" required></label>
+      </div>
+      <label>E-mail<input type="email" name="email" required></label>
+      <div class="deux">
+        <label>Index approximatif
+          <select name="index">
+            <option>Moins de 10</option>
+            <option selected>10 à 20</option>
+            <option>20 à 36</option>
+            <option>Plus de 36</option>
+          </select>
+        </label>
+        <label>Formule envisagée
+          <select name="formule">
+            <option>Essentiel</option>
+            <option selected>Signature</option>
+            <option>Je ne sais pas encore</option>
+          </select>
+        </label>
+      </div>
+      <label>Période souhaitée<input type="text" name="periode" placeholder="Ex. : mai 2027, automne…"></label>
+      <label>Message<textarea name="message" rows="3" placeholder="Vos attentes, vos questions…"></textarea></label>
+      <label class="rgpd"><span><input type="checkbox" required style="width:auto;margin-right:8px">J'accepte que mes données soient utilisées uniquement pour être recontacté au sujet des séjours Belardi Golf House.</span></label>
+      <button type="submit" class="btn btn-rouge">Je m'inscris sur la liste</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="#" class="logo">Belardi <span>Golf House</span></a>
+      <p style="margin-top:8px">Séjours golf tout compris au Pays Basque</p>
+    </div>
+    <div>
+      <p>contact@belardi-golfhouse.fr</p>
+      <p><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a></p>
+      <p style="margin-top:8px;font-size:.8rem;opacity:.6">© 2026 Belardi Golf House</p>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
