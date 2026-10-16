@@ -6,7 +6,7 @@
 <title>Les parcours — BELARDI Golf House</title>
 <meta name="description" content="Les dix golfs joués depuis la BELARDI Golf House : Chiberta, Le Phare, Chantaco, la Nivelle, Arcangues, Ilbarritz, Makila, Epherra, Hossegor et Seignosse. Carte, caractère et fiche technique de chaque parcours.">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://belardi-golfhouse.fr/parcours.html">
+<link rel="canonical" href="https://belardi-golfhouse.fr/parcours/">
 
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -21,7 +21,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="BELARDI Golf House">
-<meta property="og:url" content="https://belardi-golfhouse.fr/parcours.html">
+<meta property="og:url" content="https://belardi-golfhouse.fr/parcours/">
 <meta property="og:title" content="Les parcours — BELARDI Golf House">
 <meta property="og:description" content="Dix golfs entre Seignosse et Ciboure : links de bord de mer, parcours centenaires, tracés vallonnés face aux Pyrénées.">
 <meta property="og:image" content="https://belardi-golfhouse.fr/og-image.png">
@@ -200,7 +200,7 @@
     <nav class="nav">
       <a href="/#concept">Le séjour</a>
       <a href="/#programme">Programme</a>
-      <a href="/parcours.html" aria-current="page">Les parcours</a>
+      <a href="/parcours/" aria-current="page">Les parcours</a>
       <a href="/#tarifs">Tarifs</a>
       <a href="/#faq">FAQ</a>
       <a href="/#contact" class="cta">Réserver</a>
@@ -213,7 +213,7 @@
 <nav class="menu-mobile" aria-label="Menu principal">
   <a href="/#concept">Le séjour</a>
   <a href="/#programme">Programme</a>
-  <a href="/parcours.html">Les parcours</a>
+  <a href="/parcours/">Les parcours</a>
   <a href="/#tarifs">Tarifs</a>
   <a href="/#faq">FAQ</a>
   <a href="/#contact">Réserver</a>
@@ -547,11 +547,17 @@
 
     carte.fitBounds(points, { padding:[36,36] });
 
-    /* Ouverture directe via /parcours.html#chiberta */
-    if(location.hash){
-      var cible = document.querySelector('.pc' + location.hash);
-      if(cible){ cible.open = true; cible.scrollIntoView({ block:'center' }); }
+    /* Ouverture directe via /parcours/#chiberta, au chargement et au changement d'ancre */
+    function ouvrirDepuisAncre(doux){
+      if(!location.hash) return;
+      var cible = document.getElementById(location.hash.slice(1));
+      if(!cible || !cible.classList.contains('pc')) return;
+      cible.hidden = false;
+      cible.open = true;
+      cible.scrollIntoView({ behavior: doux ? 'smooth' : 'auto', block:'center' });
     }
+    ouvrirDepuisAncre(false);
+    window.addEventListener('hashchange', function(){ ouvrirDepuisAncre(true); });
   }
 })();
 </script>
