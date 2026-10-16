@@ -1,0 +1,16 @@
+{
+  "name": "BELARDI Golf House",
+  "short_name": "Belardi",
+  "description": "Séjours golf tout compris d'une semaine au Pays Basque.",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "fr",
+  "icons": [
+    { "src": "/android-chrome-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "theme_color": "#8A9A7B",
+  "background_color": "#E6DCC8",
+  "display": "standalone"
+}
