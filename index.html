@@ -106,7 +106,7 @@
     --e1:8px; --e2:16px; --e3:24px; --e4:40px; --e5:64px; --e6:96px;
     --rayon:0;              /* aplats droits : aucun arrondi */
     --max:1140px;
-    --h-entete:84px;
+    --h-entete:100px;
   }
 
   @media (prefers-color-scheme: dark){
@@ -161,7 +161,7 @@
   }
   .btn:hover{background:var(--sauge-ombre)}
   .btn--ligne{background:transparent;color:currentColor;border:1px solid currentColor;padding:11px 19px}
-  .btn--ligne:hover{background:currentColor;color:var(--bloc-sauge)}
+  .btn--ligne:hover{background:var(--terre);color:#fff;border-color:var(--terre)}
   .btn--bloc{display:block;width:100%;text-align:center}
 
   /* ========================= En-tête 20a ========================= */
@@ -172,20 +172,20 @@
   }
   .entete>.wrap{
     display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--e3);
-    padding:22px var(--e4);max-width:none;
+    padding:26px 44px;max-width:none;
   }
-  @media(max-width:900px){.entete>.wrap{padding:16px var(--e3)}}
+  @media(max-width:900px){.entete>.wrap{padding:18px var(--e3)}}
 
-  /* Logo horizontal 20a */
-  .logo{display:flex;align-items:center;gap:13px;flex:none}
-  .logo .symbole{height:40px;width:auto;flex:none}
-  .logo .nom{display:flex;flex-direction:column;gap:3px}
+  /* Logo horizontal 20a — symbole 48 px, texte à 0,46 et 0,17 de sa hauteur */
+  .logo{display:flex;align-items:center;gap:15px;flex:none}
+  .logo .symbole{height:48px;width:auto;flex:none}
+  .logo .nom{display:flex;flex-direction:column;gap:4px}
   .logo .nom b{
-    font-family:var(--f-sans);font-weight:500;font-size:18px;letter-spacing:var(--ls-wordmark);
+    font-family:var(--f-sans);font-weight:500;font-size:22px;letter-spacing:var(--ls-wordmark);
     line-height:1;white-space:nowrap;color:var(--fg);
   }
   .logo .nom span{
-    font-family:var(--f-sans);font-weight:400;font-size:7px;letter-spacing:.62em;
+    font-family:var(--f-sans);font-weight:400;font-size:8px;letter-spacing:.62em;
     line-height:1;white-space:nowrap;color:var(--accent);
   }
 
@@ -197,10 +197,10 @@
   .symbole .b-alveoles{fill:#D5D0C2}
 
   /* Navigation ordinateur */
-  .nav{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
-  .nav a{font-weight:400;font-size:13px;letter-spacing:.08em;transition:color .18s ease}
+  .nav{display:flex;align-items:center;gap:34px;flex-wrap:wrap}
+  .nav a{font-weight:400;font-size:14.5px;letter-spacing:.08em;transition:color .18s ease}
   .nav a:hover{color:var(--terre)}
-  .nav .cta{border:1px solid currentColor;padding:9px 16px}
+  .nav .cta{border:1px solid currentColor;padding:11px 19px}
 
   /* Menu mobile — plein écran sur fond sauge */
   .burger-ctrl{position:absolute;top:0;left:0;width:1px;height:1px;opacity:0}
@@ -214,9 +214,9 @@
   .menu-mobile{display:none}
 
   @media(max-width:768px){
-    .logo .symbole{height:28px}
-    .logo .nom b{font-size:13px}
-    .logo .nom span{font-size:5px;letter-spacing:.5em}
+    .logo .symbole{height:32px}
+    .logo .nom b{font-size:15px}
+    .logo .nom span{font-size:5.5px;letter-spacing:.5em}
     .symbole .b-alveoles{display:none} /* sous 40 px : symbole sans alvéoles */
     .nav{display:none}
     .burger{display:block}
@@ -249,33 +249,27 @@
     position:relative;overflow:hidden;
     min-height:calc(100vh - var(--h-entete));display:flex;align-items:center;
     /* Photo plein écran à placer ici : background-image:url('/assets/photos/hero.jpg');
-       background-size:cover;background-position:center; — aplat sauge en attendant. */
-    background:var(--bloc-sauge);
-    color:var(--sur-sauge);padding:var(--e6) 0 var(--e5);
+       background-size:cover;background-position:center; — fond neutre en attendant. */
+    background:var(--bg);
+    color:var(--fg);padding:var(--e6) 0 var(--e5);
   }
-  .hero::before{
-    content:"";position:absolute;inset:0;
-    background:url('/assets/brand/motif-b.svg') 0 0 repeat;
-    background-size:120px 168px;opacity:.055;pointer-events:none;
-  }
-  @media (prefers-color-scheme: dark){.hero::before{opacity:.035}}
   .hero .wrap{position:relative;z-index:1}
-  .hero .eyebrow{color:var(--sur-sauge);opacity:.9}
   .hero h1{margin:var(--e2) 0 var(--e3);max-width:18ch}
-  .hero .lead{max-width:52ch;opacity:.92;margin-bottom:var(--e4)}
+  .hero .lead{max-width:52ch;color:var(--texte-doux);margin-bottom:var(--e4)}
   .hero .ctas{display:flex;gap:var(--e2);flex-wrap:wrap}
   .chiffres{
     display:grid;grid-template-columns:repeat(4,1fr);margin-top:var(--e5);max-width:860px;
-    border:1px solid rgba(250,248,242,.32);
+    border:1px solid var(--bord);
   }
-  .chiffres div{padding:18px 20px;border-right:1px solid rgba(250,248,242,.32)}
+  .chiffres div{padding:18px 20px;border-right:1px solid var(--bord)}
   .chiffres div:last-child{border-right:0}
+  @media(prefers-color-scheme: dark){.hero .lead{color:#B9B49F}}
   .chiffres strong{display:block;font-weight:500;font-size:1.65rem;line-height:1.15}
   .chiffres span{font-size:.8rem;letter-spacing:.04em;opacity:.85}
   @media(max-width:760px){
     .hero{min-height:auto;padding:var(--e5) 0 var(--e4)}
     .chiffres{grid-template-columns:repeat(2,1fr);margin-top:var(--e4)}
-    .chiffres div{border-bottom:1px solid rgba(250,248,242,.32)}
+    .chiffres div{border-bottom:1px solid var(--bord)}
     .chiffres div:nth-child(2n){border-right:0}
     .chiffres div:nth-last-child(-n+2){border-bottom:0}
   }
@@ -286,12 +280,8 @@
   .concept p{color:var(--texte-doux);margin-bottom:var(--e2)}
   .concept .accent{color:var(--accent);margin-top:var(--e3)}
   .visuel{
-    aspect-ratio:4/5;background:var(--sauge-ombre);position:relative;overflow:hidden;
+    aspect-ratio:4/5;background:var(--lin-ombre);position:relative;overflow:hidden;
     display:flex;align-items:flex-end;padding:var(--e3);
-  }
-  .visuel::before{
-    content:"";position:absolute;inset:0;
-    background:url('/assets/brand/motif-b.svg') 0 0 repeat;background-size:120px 168px;opacity:.1;
   }
   .visuel small{
     position:relative;background:var(--blanc);color:var(--gris);
@@ -332,15 +322,12 @@
   /* ============================== Golfs ============================== */
   .golfs{background:var(--surface)}
   .liste-golfs{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--e2)}
-  .golf .img{aspect-ratio:1;position:relative;overflow:hidden;background:var(--sauge)}
-  .golf .img::before{
-    content:"";position:absolute;inset:0;
-    background:url('/assets/brand/motif-b.svg') center/132px 185px repeat;opacity:.17;
-  }
-  .golf:nth-child(2) .img{background-color:var(--olive)}
-  .golf:nth-child(3) .img{background-color:var(--sauge-ombre)}
-  .golf:nth-child(4) .img{background-color:var(--terre)}
-  .golf:nth-child(5) .img{background-color:var(--lin-ombre)}
+  /* Vignettes de parcours : aplats neutres en attendant les photos */
+  .golf .img{aspect-ratio:1;position:relative;overflow:hidden;background:var(--lin-ombre)}
+  .golf:nth-child(2) .img{background-color:#C7B99D}
+  .golf:nth-child(3) .img{background-color:#DED4C0}
+  .golf:nth-child(4) .img{background-color:#BFB094}
+  .golf:nth-child(5) .img{background-color:#D8CCB4}
   .golf .txt{padding:var(--e2) 0 0}
   .golf h3{font-size:1rem}
   .golf span{font-size:.82rem;color:var(--gris)}
@@ -388,21 +375,16 @@
   @media(prefers-color-scheme: dark){.faq details p{color:#B9B49F}}
 
   /* ============================== Contact ============================== */
-  .contact{
-    background:var(--bloc-sauge);color:var(--sur-sauge);
-    position:relative;overflow:hidden;border-top:1px solid var(--bord);
-  }
-  .contact::before{
-    content:"";position:absolute;inset:0;
-    background:url('/assets/brand/motif-b.svg') 0 0 repeat;background-size:120px 168px;opacity:.05;
-  }
-  .contact .wrap{position:relative;z-index:1}
+  .contact{background:var(--bg);color:var(--fg);border-top:1px solid var(--bord)}
   .contact .grille{display:grid;grid-template-columns:1fr 1fr;gap:var(--e5);align-items:start}
-  .contact .eyebrow{color:var(--sur-sauge);opacity:.9}
   .contact h2{margin:var(--e2) 0 var(--e3)}
-  .contact p{opacity:.92;max-width:48ch}
-  .contact .accent{margin-top:var(--e3);opacity:.95}
-  form{background:var(--surface);color:var(--fg);padding:var(--e4);display:grid;gap:var(--e2)}
+  .contact p{color:var(--texte-doux);max-width:48ch}
+  .contact .accent{margin-top:var(--e3);color:var(--accent)}
+  @media(prefers-color-scheme: dark){.contact p{color:#B9B49F}}
+  form{
+    background:var(--surface);color:var(--fg);border:1px solid var(--bord);
+    padding:var(--e4);display:grid;gap:var(--e2);
+  }
   label{font-size:.78rem;font-weight:400;letter-spacing:.06em;text-transform:uppercase;display:grid;gap:6px}
   input,select,textarea{
     font:inherit;font-size:.95rem;font-weight:300;text-transform:none;letter-spacing:0;

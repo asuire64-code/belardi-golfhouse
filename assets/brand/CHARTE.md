@@ -46,7 +46,7 @@ Espacements : 8 · 16 · 24 · 40 · 64 · 96 px.
 | `assets/logo/` | Logos SVG : empilé (20h), horizontal (20a), symbole — versions lin, sauge, sombre, monochromes |
 | `assets/app-icon/` | Icônes iOS (standard / sombre / teintée), Android adaptatif, Google Play |
 | `assets/brand/tokens.css` | Variables CSS de la charte, réutilisables pour tout autre document |
-| `assets/brand/motif-b.svg` | Motif « B en quinconce » utilisé en texture de fond |
+| `assets/brand/motif-b.svg` | Motif « B en quinconce » de la charte (section 12) — disponible, non utilisé sur le site |
 | `favicon.*`, `apple-touch-icon.png`, `android-chrome-*.png`, `maskable-512.png`, `safari-pinned-tab.svg`, `site.webmanifest` | Jeu de favicons complet, à la racine |
 | `og-image.png` | Image de partage 1200 × 630 |
 
@@ -54,6 +54,6 @@ Les métadonnées C2PA ont été retirées des SVG (≈ 8 Ko par fichier).
 
 ## À faire ensuite
 
-- Remplacer les aplats par de vraies photos : le hero (`.hero`, voir le commentaire dans le CSS), le visuel du concept et les cinq vignettes de parcours.
+- Remplacer les aplats par de vraies photos : le hero (`.hero`, voir le commentaire dans le CSS), le visuel du concept et les cinq vignettes de parcours. En attendant, ces zones sont des aplats neutres (lin / lin ombre) : le sauge ne subsiste que sur le menu mobile, l'olive sur la section « piliers » et le pied de page.
 - Brancher le formulaire (`<form action="#">` → Formspree, Tally ou équivalent).
 - Rédiger les pages Mentions légales et Confidentialité (liens `#` dans le pied de page).
