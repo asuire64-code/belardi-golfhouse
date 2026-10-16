@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les parcours — BELARDI Golf House</title>
+<meta name="description" content="Les dix golfs joués depuis la BELARDI Golf House : Chiberta, Le Phare, Chantaco, la Nivelle, Arcangues, Ilbarritz, Makila, Epherra, Hossegor et Seignosse. Carte, caractère et fiche technique de chaque parcours.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://belardi-golfhouse.fr/parcours.html">
+
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3E4A33">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#E6DCC8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1F251B" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="BELARDI Golf House">
+<meta property="og:url" content="https://belardi-golfhouse.fr/parcours.html">
+<meta property="og:title" content="Les parcours — BELARDI Golf House">
+<meta property="og:description" content="Dix golfs entre Seignosse et Ciboure : links de bord de mer, parcours centenaires, tracés vallonnés face aux Pyrénées.">
+<meta property="og:image" content="https://belardi-golfhouse.fr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Josefin+Sans:wght@300&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="/assets/css/belardi.css">
+<style>
+  /* Styles propres à la page des parcours. Socle commun : /assets/css/belardi.css */
+
+  .intro{padding:var(--e6) 0 var(--e4)}
+  .intro h1{margin:var(--e2) 0 var(--e3);max-width:20ch}
+  .intro .lead{max-width:60ch;color:var(--texte-doux-auto)}
+  .reperes{
+    display:grid;grid-template-columns:repeat(4,1fr);margin-top:var(--e4);max-width:760px;
+    border:1px solid var(--bord);
+  }
+  .reperes div{padding:16px 20px;border-right:1px solid var(--bord)}
+  .reperes div:last-child{border-right:0}
+  .reperes strong{display:block;font-weight:500;font-size:1.5rem;line-height:1.15}
+  .reperes span{font-size:.78rem;color:var(--texte-doux-auto)}
+  @media(max-width:760px){
+    .intro{padding:var(--e5) 0 var(--e3)}
+    .reperes{grid-template-columns:repeat(2,1fr)}
+    .reperes div{border-bottom:1px solid var(--bord)}
+    .reperes div:nth-child(2n){border-right:0}
+    .reperes div:nth-last-child(-n+2){border-bottom:0}
+  }
+
+  /* ---------------------------- Explorateur ---------------------------- */
+  .explorateur{padding:var(--e4) 0 var(--e6)}
+  .filtres{
+    display:flex;flex-wrap:wrap;gap:var(--e1);align-items:center;
+    padding-bottom:var(--e3);margin-bottom:var(--e3);border-bottom:1px solid var(--bord);
+  }
+  .filtres .lbl{
+    font-size:var(--fs-eyebrow);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;
+    color:var(--gris);margin-right:var(--e1);
+  }
+  .filtre{
+    font:inherit;font-size:13px;font-weight:400;letter-spacing:.06em;
+    padding:8px 15px;border:1px solid var(--bord);background:transparent;color:var(--fg);
+    cursor:pointer;transition:border-color .18s ease,background .18s ease,color .18s ease;
+  }
+  .filtre:hover{border-color:var(--terre);color:var(--terre)}
+  .filtre[aria-pressed="true"]{background:var(--olive);border-color:var(--olive);color:var(--lin)}
+  @media(prefers-color-scheme: dark){.filtre[aria-pressed="true"]{background:var(--lin);border-color:var(--lin);color:var(--olive)}}
+
+  .colonnes{display:grid;grid-template-columns:1fr 1fr;gap:var(--e4);align-items:start}
+  @media(max-width:1000px){.colonnes{grid-template-columns:1fr;gap:var(--e3)}}
+
+  /* Carte */
+  .panneau-carte{position:sticky;top:calc(var(--h-entete) + var(--e3))}
+  #carte{
+    height:min(72vh,680px);border:1px solid var(--bord);background:var(--lin-ombre);
+  }
+  .carte-absente #carte,.carte-absente .carte-note{display:none}
+  .carte-absente .colonnes{grid-template-columns:1fr}
+  .carte-note{margin-top:var(--e1);font-size:.74rem;color:var(--gris)}
+  @media(max-width:1000px){
+    .panneau-carte{position:static;order:-1}
+    #carte{height:360px}
+  }
+  /* Repères numérotés, dessinés en CSS pour rester dans la charte */
+  .pin{
+    width:28px;height:28px;background:var(--terre);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--f-sans);font-weight:500;font-size:13px;line-height:1;
+    box-shadow:0 1px 4px rgba(31,37,27,.35);transition:background .18s ease,transform .18s ease;
+  }
+  .pin.actif{background:var(--olive);transform:scale(1.18)}
+  .leaflet-container{font-family:var(--f-sans);background:var(--lin-ombre)}
+  /* Fond de carte désaturé pour rester dans la palette */
+  .leaflet-tile-pane{filter:grayscale(1) sepia(.28) contrast(.92) brightness(1.04)}
+  @media(prefers-color-scheme: dark){
+    .leaflet-tile-pane{filter:grayscale(1) invert(1) sepia(.2) contrast(.85) brightness(.9)}
+    .leaflet-container{background:var(--sombre-surface)}
+  }
+  .leaflet-control-attribution{font-size:10px;background:rgba(250,248,242,.85)}
+
+  /* Liste des parcours */
+  .pc{
+    border:1px solid var(--bord);background:var(--surface);margin-bottom:-1px;
+    transition:border-color .18s ease;
+  }
+  .pc[hidden]{display:none}
+  .pc.survol{border-color:var(--terre);position:relative;z-index:2}
+  .pc[open]{border-color:var(--terre);position:relative;z-index:2}
+  .pc-tete{
+    display:grid;grid-template-columns:38px 1fr auto;gap:var(--e2);align-items:center;
+    padding:var(--e3);cursor:pointer;list-style:none;
+  }
+  .pc-tete::-webkit-details-marker{display:none}
+  .pc-num{
+    font-weight:400;font-size:.78rem;letter-spacing:.1em;color:var(--gris);
+    border:1px solid var(--bord);width:30px;height:30px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .pc[open] .pc-num,.pc.survol .pc-num{border-color:var(--terre);color:var(--terre)}
+  .pc-titre{display:block;font-size:1.05rem;font-weight:500;line-height:1.3}
+  .pc-lieu{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gris);margin-top:4px}
+  .pc-resume{font-size:.82rem;color:var(--texte-doux-auto);white-space:nowrap}
+  .pc-tete .chev{font-size:1.3rem;line-height:1;color:var(--accent);font-weight:300}
+  .pc[open] .pc-tete .chev{transform:rotate(45deg)}
+  @media(max-width:560px){
+    .pc-tete{grid-template-columns:30px 1fr auto;padding:var(--e2)}
+    .pc-resume{display:none}
+  }
+
+  .pc-corps{padding:0 var(--e3) var(--e3) calc(var(--e3) + 38px + var(--e2))}
+  .pc-corps p{color:var(--texte-doux-auto);font-size:.95rem;max-width:62ch}
+  .specs{
+    display:grid;grid-template-columns:repeat(4,auto);gap:var(--e3) var(--e4);
+    justify-content:start;margin:var(--e3) 0;
+  }
+  .specs dt{
+    font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gris);margin-bottom:5px;
+  }
+  .specs dd{font-size:.95rem;font-weight:400}
+  .etiquettes{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--e2)}
+  .etiquette{
+    font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+    border:1px solid var(--bord);padding:4px 10px;color:var(--gris);
+  }
+  .pc-liens{margin-top:var(--e3);display:flex;gap:var(--e2);flex-wrap:wrap;align-items:center}
+  .pc-liens a{font-size:.82rem;letter-spacing:.06em;border-bottom:1px solid var(--accent);color:var(--accent)}
+  @media(max-width:620px){
+    .pc-corps{padding:0 var(--e2) var(--e2)}
+    .specs{grid-template-columns:repeat(2,1fr);gap:var(--e2)}
+  }
+
+  .vide{padding:var(--e4);text-align:center;color:var(--gris);border:1px solid var(--bord)}
+
+  /* ---------------------------- Bas de page ---------------------------- */
+  .rappel{background:var(--surface);border-top:1px solid var(--bord)}
+  .rappel .wrap{text-align:center;max-width:640px}
+  .rappel h2{margin:var(--e2) 0 var(--e3)}
+  .rappel p{color:var(--texte-doux-auto);margin-bottom:var(--e4)}
+  .note-sources{
+    max-width:var(--max);margin:0 auto;padding:0 var(--e3) var(--e5);
+    font-size:.74rem;color:var(--gris);line-height:1.6;
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="menu" class="burger-ctrl" aria-label="Afficher le menu">
+
+<header class="entete">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="BELARDI Golf House — accueil">
+      <svg class="symbole" viewBox="28 18 35 64" role="img" aria-hidden="true">
+        <rect class="b-fut" x="30" y="20" width="12" height="60" stroke-width="3"/>
+        <path class="b-boucle" d="M42 20 A15 15 0 0 1 42 50 Z" stroke-width="3"/>
+        <circle class="b-anneau" cx="46" cy="65" r="15.8"/>
+        <circle class="b-balle" cx="46" cy="65" r="14.6"/>
+        <g class="b-alveoles">
+          <circle cx="35.8" cy="65.0" r="1.28"/><circle cx="40.9" cy="57.3" r="1.28"/>
+          <circle cx="40.9" cy="62.4" r="1.28"/><circle cx="40.9" cy="67.5" r="1.28"/>
+          <circle cx="40.9" cy="72.6" r="1.28"/><circle cx="46.0" cy="54.8" r="1.28"/>
+          <circle cx="46.0" cy="59.9" r="1.28"/><circle cx="46.0" cy="65.0" r="1.28"/>
+          <circle cx="46.0" cy="70.1" r="1.28"/><circle cx="46.0" cy="75.2" r="1.28"/>
+          <circle cx="51.1" cy="57.3" r="1.28"/><circle cx="51.1" cy="62.4" r="1.28"/>
+          <circle cx="51.1" cy="67.5" r="1.28"/><circle cx="51.1" cy="72.6" r="1.28"/>
+          <circle cx="56.2" cy="65.0" r="1.28"/>
+        </g>
+      </svg>
+      <span class="nom"><b>BELARDI</b><span>GOLF HOUSE</span></span>
+    </a>
+
+    <nav class="nav">
+      <a href="/#concept">Le séjour</a>
+      <a href="/#programme">Programme</a>
+      <a href="/parcours.html" aria-current="page">Les parcours</a>
+      <a href="/#tarifs">Tarifs</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/#contact" class="cta">Réserver</a>
+    </nav>
+
+    <label class="burger" for="menu" aria-label="Ouvrir le menu"><i></i><i></i></label>
+  </div>
+</header>
+
+<nav class="menu-mobile" aria-label="Menu principal">
+  <a href="/#concept">Le séjour</a>
+  <a href="/#programme">Programme</a>
+  <a href="/parcours.html">Les parcours</a>
+  <a href="/#tarifs">Tarifs</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/#contact">Réserver</a>
+</nav>
+
+<section class="intro">
+  <div class="wrap">
+    <p class="eyebrow">Les parcours</p>
+    <h1>Dix golfs entre les Landes et la frontière.</h1>
+    <p class="lead">De l'un des plus anciens parcours d'Europe continentale aux links dessinés dans les dunes, en passant par les tracés vallonnés face aux Pyrénées : la Côte Basque concentre en une heure de route une variété de jeu qu'on trouve rarement ailleurs. Cinq de ces parcours sont joués pendant votre semaine, choisis selon le niveau du groupe et la météo.</p>
+    <div class="reperes">
+      <div><strong>10</strong><span>Parcours accessibles</span></div>
+      <div><strong>5</strong><span>Joués dans la semaine</span></div>
+      <div><strong>1888</strong><span>Le plus ancien</span></div>
+      <div><strong>&lt; 1 h</strong><span>De route au plus loin</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="explorateur">
+  <div class="wrap">
+
+    <div class="filtres">
+      <span class="lbl">Filtrer</span>
+      <button class="filtre" type="button" data-f="tous" aria-pressed="true">Tous</button>
+      <button class="filtre" type="button" data-f="ocean" aria-pressed="false">Face à l'océan</button>
+      <button class="filtre" type="button" data-f="foret" aria-pressed="false">Dans les pins</button>
+      <button class="filtre" type="button" data-f="collines" aria-pressed="false">Collines basques</button>
+      <button class="filtre" type="button" data-f="histoire" aria-pressed="false">Parcours historiques</button>
+    </div>
+
+    <div class="colonnes">
+
+      <div class="liste" id="liste">
+
+        <details class="pc" id="seignosse" data-lat="43.6940" data-lng="-1.4020" data-n="1" data-f="foret">
+          <summary class="pc-tete">
+            <span class="pc-num">01</span>
+            <span><span class="pc-titre">Golf de Seignosse</span><span class="pc-lieu">Seignosse · Landes</span></span>
+            <span class="pc-resume">18 trous · par 72 &nbsp;<span class="chev">+</span></span>
+          </summary>
+          <div class="pc-corps">
+            <p>Le tracé le plus spectaculaire de la côte. Robert von Hagge a sculpté le relief d'une forêt de pins et de chênes-lièges : dénivelés francs, greens perchés, obstacles d'eau et fairways qui serpentent entre les arbres. Un parcours qui demande de la stratégie et récompense les coups bien pensés plutôt que les coups longs.</p>
+            <dl class="specs">
+              <div><dt>Trous</dt><dd>18</dd></div>
+              <div><dt>Par</dt><dd>72</dd></div>
+              <div><dt>Longueur</dt><dd>6 200 m</dd></div>
+              <div><dt>Architecte</dt><dd>Robert von Hagge</dd></div>
+            </dl>
+            <div class="etiquettes"><span class="etiquette">Forêt</span><span class="etiquette">Vallonné</span><span class="etiquette">Obstacles d'eau</span><span class="etiquette">1989</span></div>
+          </div>
+        </details>
+
+        <details class="pc" id="hossegor" data-lat="43.6627" data-lng="-1.4230" data-n="2" data-f="foret histoire">
+          <summary class="pc-tete">
+            <span class="pc-num">02</span>
+            <span><span class="pc-titre">Golf d'Hossegor</span><span class="pc-lieu">Hossegor · Landes</span></span>
+            <span class="pc-resume">18 trous · par 71 &nbsp;<span class="chev">+</span></span>
+          </summary>
+          <div class="pc-corps">
+            <p>Un classique des années trente, dessiné sur un sol sablonneux au milieu des pins par Arnaud Massy et John Morrison, puis retravaillé par Cabell Robinson. Les fairways sont étroits et bordés d'arbres, les greens bien défendus par les bunkers : ici, c'est la précision au départ qui fait le score, pas la distance.</p>
+            <dl class="specs">
+              <div><dt>Trous</dt><dd>18</dd></div>
+              <div><dt>Par</dt><dd>71</dd></div>
+              <div><dt>Longueur</dt><dd>5 957 m</dd></div>
+              <div><dt>Architectes</dt><dd>A. Massy &amp; J. Morrison</dd></div>
+            </dl>
+            <div class="etiquettes"><span class="etiquette">Pinède</span><span class="etiquette">Technique</span><span class="etiquette">1930</span></div>
+          </div>
+        </details>
+
+        <details class="pc" id="chiberta" data-lat="43.5128" data-lng="-1.5272" data-n="3" data-f="ocean foret histoire">
+          <summary class="pc-tete">
+            <span class="pc-num">03</span>
+            <span><span class="pc-titre">Golf de Chiberta</span><span class="pc-lieu">Anglet · Pyrénées-Atlantiques</span></span>
+            <span class="pc-resume">18 trous · par 70 &nbsp;<span class="chev">+</span></span>
+          </summary>
+          <div class="pc-corps">
+            <p>L'un des très rares vrais links de la côte atlantique française, signé Tom Simpson en 1927. Les premiers trous se jouent dans les dunes, face au vent et à la mer, avec des greens dont la lecture trompe presque toujours ; la fin du parcours bascule dans la pinède, plus abritée. Deux golfs en un seul tour.</p>
+            <dl class="specs">
+              <div><dt>Trous</dt><dd>18 (+ 9)</dd></div>
+              <div><dt>Par</dt><dd>70</dd></div>
+              <div><dt>Longueur</dt><dd>5 647 m</dd></div>
+              <div><dt>Architecte</dt><dd>Tom Simpson</dd></div>
+            </dl>
+            <div class="etiquettes"><span class="etiquette">Links</span><span class="etiquette">Pinède</span><span class="etiquette">Vent</span><span class="etiquette">1927</span></div>
+          </div>
+        </details>
+
+        <details class="pc" id="phare" data-lat="43.4828" data-lng="-1.5588" data-n="4" data-f="ocean histoire">
+          <summary class="pc-tete">
+            <span class="pc-num">04</span>
+            <span><span class="pc-titre">Golf de Biarritz « Le Phare »</span><span class="pc-lieu">Biarritz · Pyrénées-Atlantiques</span></span>
+            <span class="pc-resume">18 trous · par 69 &nbsp;<span class="chev">+</span></span>
+          </summary>
+          <div class="pc-corps">
+            <p>Ouvert en 1888, c'est l'un des plus anciens parcours d'Europe continentale, et il se joue en plein cœur de Biarritz, à deux pas du phare. L'apparence est débonnaire, le jeu beaucoup moins : fairways étroits bordés d'arbres centenaires, greens rapides et ondulés, et un vent d'ouest qui change tout d'un trou à l'autre.</p>
+            <dl class="specs">
+              <div><dt>Trous</dt><dd>18</dd></div>
+              <div><dt>Par</dt><dd>69</dd></div>
+              <div><dt>Longueur</dt><dd>5 402 m</dd></div>
+              <div><dt>Ouverture</dt><dd>1888</dd></div>
+            </dl>
+            <div class="etiquettes"><span class="etiquette">Historique</span><span class="etiquette">Cœur de ville</span><span class="etiquette">Greens rapides</span></div>
+          </div>
+        </details>
+
+        <details class="pc" id="makila" data-lat="43.4527" data-lng="-1.4583" data-n="5" data-f="collines foret">
+          <summary class="pc-tete">
+            <span class="pc-num">05</span>
+            <span><span class="pc-titre">Makila Golf Club</span><span class="pc-lieu">Bassussarry · Pyrénées-Atlantiques</span></span>
+            <span class="pc-resume">18 trous · par 72 &nbsp;<span class="chev">+</span></span>
+          </summary>
+          <div class="pc-corps">
+            <p>Le plus long et le plus ouvert des parcours de la région, dessiné par Rocky Roquemore dans une chênaie ondulée au-dessus de Bayonne. Aucun trou aveugle : on voit où l'on va, on peut dérouler. Les jours clairs, les Pyrénées ferment l'horizon derrière les greens.</p>
+            <dl class="specs">
+              <div><dt>Trous</dt><dd>18</dd></div>
+              <div><dt>Par</dt><dd>72</dd></div>
+              <div><dt>Longueur</dt><dd>6 134 m</dd></div>
+              <div><dt>Architecte</dt><dd>Rocky Roquemore</dd></div>
+            </dl>
+            <div class="etiquettes"><span class="etiquette">Vallonné</span><span class="etiquette">Chênaie</span><span class="etiquette">Vue Pyrénées</span><span class="etiquette">1993</span></div>
+          </div>
+        </details>
+
+        <details class="pc" id="ilbarritz" data-lat="43.4530" data-lng="-1.5887" data-n="6" data-f="ocean">
+          <summary class="pc-tete">
+            <span class="pc-num">06</span>
+            <span><span class="pc-titre">Golf d'Ilbarritz</span><span class="pc-lieu">Bidart · Pyrénées-Atlantiques</span></span>
+            <span class="pc-resume">9 trous · par 32 &nbsp;<span class="chev">+</span></span>
+          </summary>
+          <div class="pc-corps">
+            <p>Moins un parcours qu'un atelier à ciel ouvert : le centre international d'entraînement d'Ilbarritz est l'un des mieux équipés d'Europe, posé juste au-dessus de la plage. Neuf trous courts et techniques pour travailler le petit jeu et le wedging, avec l'océan en toile de fond. C'est ici que se passent les matinées d'approches.</p>
+            <dl class="specs">
+              <div><dt>Trous</dt><dd>9</dd></div>
+              <div><dt>Par</dt><dd>32</dd></div>
+              <div><dt>Longueur</dt><dd>2 057 m</dd></div>
+              <div><dt>Ouverture</dt><dd>1988</dd></div>
+            </dl>
+            <div class="etiquettes"><span class="etiquette">Bord de mer</span><span class="etiquette">Petit jeu</span><span class="etiquette">Centre d'entraînement</span></div>
+          </div>
+        </details>
+
+        <details class="pc" id="arcangues" data-lat="43.4334" data-lng="-1.5156" data-n="7" data-f="collines">
+          <summary class="pc-tete">
+            <span class="pc-num">07</span>
+            <span><span class="pc-titre">Golf d'Arcangues</span><span class="pc-lieu">Arcangues · Pyrénées-Atlantiques</span></span>
+            <span class="pc-resume">18 trous · par 72 &nbsp;<span class="chev">+</span></span>
+          </summary>
+          <div class="pc-corps">
+            <p>Ronald Fream a posé ce parcours dans les collines d'un village basque classé, à dix minutes de Biarritz. Le relief impose des coups en dévers et des approches en aveugle sur quelques trous : il faut réfléchir avant de sortir un club. La vue sur la Rhune et les Pyrénées fait le reste.</p>
+            <dl class="specs">
+              <div><dt>Trous</dt><dd>18</dd></div>
+              <div><dt>Par</dt><dd>72</dd></div>
+              <div><dt>Longueur</dt><dd>5 758 m</dd></div>
+              <div><dt>Architecte</dt><dd>Ronald Fream</dd></div>
+            </dl>
+            <div class="etiquettes"><span class="etiquette">Vallonné</span><span class="etiquette">Technique</span><span class="etiquette">Vue Pyrénées</span><span class="etiquette">1991</span></div>
+          </div>
+        </details>
+
+        <details class="pc" id="epherra" data-lat="43.3466" data-lng="-1.4360" data-n="8" data-f="collines">
+          <summary class="pc-tete">
+            <span class="pc-num">08</span>
+            <span><span class="pc-titre">Golf d'Epherra</span><span class="pc-lieu">Souraïde · Pyrénées-Atlantiques</span></span>
+            <span class="pc-resume">18 trous · par 67 &nbsp;<span class="chev">+</span></span>
+          </summary>
+          <div class="pc-corps">
+            <p>Le parcours de l'arrière-pays, champêtre et sans façon, au milieu des prairies et des fermes basques. Court sur le papier, il se défend par son relief et ses greens étroits : c'est un parcours où l'on place la balle plutôt qu'on ne l'envoie. Idéal pour une journée détendue ou pour un début de semaine.</p>
+            <dl class="specs">
+              <div><dt>Trous</dt><dd>18</dd></div>
+              <div><dt>Par</dt><dd>67</dd></div>
+              <div><dt>Longueur</dt><dd>4 695 m</dd></div>
+              <div><dt>Ouverture</dt><dd>1992</dd></div>
+            </dl>
+            <div class="etiquettes"><span class="etiquette">Champêtre</span><span class="etiquette">Vallonné</span><span class="etiquette">Accessible</span></div>
+          </div>
+        </details>
+
+        <details class="pc" id="chantaco" data-lat="43.3876" data-lng="-1.6480" data-n="9" data-f="collines histoire">
+          <summary class="pc-tete">
+            <span class="pc-num">09</span>
+            <span><span class="pc-titre">Golf de Chantaco</span><span class="pc-lieu">Saint-Jean-de-Luz · Pyrénées-Atlantiques</span></span>
+            <span class="pc-resume">18 trous · par 70 &nbsp;<span class="chev">+</span></span>
+          </summary>
+          <div class="pc-corps">
+            <p>Un Harry Colt de 1928, voulu par la famille Lacoste, et l'un des parcours les plus élégants du Sud-Ouest. L'aller monte et descend sous les chênes et les magnolias ; le retour s'aplanit et introduit l'eau. Le club-house et l'atmosphère y sont restés ceux d'un autre temps, dans le bon sens du terme.</p>
+            <dl class="specs">
+              <div><dt>Trous</dt><dd>18</dd></div>
+              <div><dt>Par</dt><dd>70</dd></div>
+              <div><dt>Longueur</dt><dd>5 833 m</dd></div>
+              <div><dt>Architecte</dt><dd>Harry Colt</dd></div>
+            </dl>
+            <div class="etiquettes"><span class="etiquette">Historique</span><span class="etiquette">Boisé</span><span class="etiquette">Obstacles d'eau</span><span class="etiquette">1928</span></div>
+          </div>
+        </details>
+
+        <details class="pc" id="nivelle" data-lat="43.3836" data-lng="-1.6706" data-n="10" data-f="ocean collines histoire">
+          <summary class="pc-tete">
+            <span class="pc-num">10</span>
+            <span><span class="pc-titre">Golf de la Nivelle</span><span class="pc-lieu">Ciboure · Pyrénées-Atlantiques</span></span>
+            <span class="pc-resume">18 trous · par 70 &nbsp;<span class="chev">+</span></span>
+          </summary>
+          <div class="pc-corps">
+            <p>Le plus beau panorama de la côte, et ce n'est pas une formule : depuis les trous hauts, on embrasse la baie de Saint-Jean-de-Luz, l'embouchure de la Nivelle et les Pyrénées d'un seul regard. Le tracé, de style britannique et dessiné en 1907, est court mais vallonné et bordé d'arbres — on y joue beaucoup de coups en pente.</p>
+            <dl class="specs">
+              <div><dt>Trous</dt><dd>18</dd></div>
+              <div><dt>Par</dt><dd>70</dd></div>
+              <div><dt>Longueur</dt><dd>5 685 m</dd></div>
+              <div><dt>Ouverture</dt><dd>1907</dd></div>
+            </dl>
+            <div class="etiquettes"><span class="etiquette">Historique</span><span class="etiquette">Vue océan</span><span class="etiquette">Vallonné</span></div>
+          </div>
+        </details>
+
+        <p class="vide" id="vide" hidden>Aucun parcours ne correspond à ce filtre.</p>
+      </div>
+
+      <div class="panneau-carte">
+        <div id="carte" role="application" aria-label="Carte des dix parcours"></div>
+        <p class="carte-note">Cliquez un repère pour ouvrir la fiche du parcours. Emplacements indicatifs.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="rappel">
+  <div class="wrap">
+    <p class="eyebrow">Votre semaine</p>
+    <h2>Cinq parcours, choisis pour vous.</h2>
+    <p>Nous composons le programme de la semaine en fonction du niveau du groupe, de la météo et des disponibilités des clubs. Les green fees de ces cinq parcours sont compris dans le séjour.</p>
+    <a class="btn" href="/#contact">Demander les prochaines dates</a>
+  </div>
+</section>
+
+<p class="note-sources">Données des parcours (trous, par, longueur, architecte, année) relevées auprès des fiches publiques des clubs et des annuaires Golfstars, 1golf.eu et Where2Golf. Les longueurs varient selon les départs : elles sont données ici depuis les repères arrière. Fond de carte © contributeurs OpenStreetMap.</p>
+
+<footer>
+  <div class="inner">
+    <div>
+      <a href="/" class="nom-empile" aria-label="BELARDI Golf House">
+        <b>Belardi</b>
+        <span class="gh">Golf House</span>
+      </a>
+      <p class="baseline">Séjours golf tout compris au Pays Basque</p>
+    </div>
+    <div class="liens">
+      <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>
+      <a href="/#faq">Questions fréquentes</a>
+      <a href="/">Retour à l'accueil</a>
+      <p class="legal">© 2026 BELARDI Golf House</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var fiches = Array.prototype.slice.call(document.querySelectorAll('.pc'));
+  var vide   = document.getElementById('vide');
+
+  /* ------------------------------ Filtres ------------------------------ */
+  var boutons = Array.prototype.slice.call(document.querySelectorAll('.filtre'));
+  function filtrer(cle){
+    boutons.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.f === cle)); });
+    var visibles = 0;
+    fiches.forEach(function(f){
+      var ok = cle === 'tous' || f.dataset.f.split(' ').indexOf(cle) !== -1;
+      f.hidden = !ok;
+      if(!ok) f.open = false;
+      if(ok) visibles++;
+      if(f._marqueur){
+        if(ok){ f._marqueur.addTo(carte); } else { carte.removeLayer(f._marqueur); }
+      }
+    });
+    vide.hidden = visibles > 0;
+  }
+  boutons.forEach(function(b){
+    b.addEventListener('click', function(){ filtrer(b.dataset.f); });
+  });
+
+  /* ------------------------------- Carte ------------------------------- */
+  var carte = null;
+  if(typeof L === 'undefined'){
+    document.body.classList.add('carte-absente');
+  } else {
+    carte = L.map('carte', { scrollWheelZoom:false, zoomControl:true });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom:18
+    }).addTo(carte);
+
+    var points = [];
+    fiches.forEach(function(f){
+      var lat = parseFloat(f.dataset.lat), lng = parseFloat(f.dataset.lng);
+      if(isNaN(lat) || isNaN(lng)) return;
+      var n = f.dataset.n;
+      var icone = L.divIcon({
+        className:'', iconSize:[28,28], iconAnchor:[14,14],
+        html:'<div class="pin">' + n + '</div>'
+      });
+      var m = L.marker([lat,lng], { icon:icone, title:f.querySelector('.pc-titre').textContent, riseOnHover:true });
+      m.addTo(carte);
+      f._marqueur = m;
+      points.push([lat,lng]);
+
+      function allumer(on){
+        var el = m.getElement && m.getElement();
+        if(el){ var p = el.querySelector('.pin'); if(p) p.classList.toggle('actif', on); }
+        f.classList.toggle('survol', on);
+      }
+      m.on('mouseover', function(){ allumer(true); });
+      m.on('mouseout',  function(){ if(!f.open) allumer(false); });
+      m.on('click', function(){
+        fiches.forEach(function(o){ if(o !== f) o.open = false; });
+        f.open = true;
+        f.scrollIntoView({ behavior:'smooth', block:'center' });
+      });
+
+      f.addEventListener('mouseenter', function(){ allumer(true); });
+      f.addEventListener('mouseleave', function(){ if(!f.open) allumer(false); });
+      f.addEventListener('toggle', function(){
+        allumer(f.open);
+        if(f.open){
+          fiches.forEach(function(o){ if(o !== f){ o.open = false; } });
+          carte.panTo([lat,lng], { animate:true });
+        }
+      });
+    });
+
+    carte.fitBounds(points, { padding:[36,36] });
+
+    /* Ouverture directe via /parcours.html#chiberta */
+    if(location.hash){
+      var cible = document.querySelector('.pc' + location.hash);
+      if(cible){ cible.open = true; cible.scrollIntoView({ block:'center' }); }
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
