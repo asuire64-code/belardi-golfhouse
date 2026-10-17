@@ -103,19 +103,19 @@
   .concept .accent{color:var(--accent);margin-top:var(--e3)}
   .visuel{
     aspect-ratio:4/5;background:var(--lin-ombre);position:relative;overflow:hidden;
-    display:flex;align-items:flex-end;padding:var(--e3);
   }
-  .visuel small{
-    position:relative;background:var(--blanc);color:var(--gris);
-    font-size:.78rem;letter-spacing:.04em;padding:7px 12px;
-  }
+  .visuel img{width:100%;height:100%;object-fit:cover;display:block}
   @media(max-width:860px){.concept .grille{grid-template-columns:1fr;gap:var(--e4)}.visuel{aspect-ratio:16/10}}
 
+  /* ============================= Origines ============================= */
+  .origines .grille{grid-template-columns:.95fr 1.05fr}
+  .origines .visuel{background:var(--bloc-sauge)}
+
   /* ============================= Piliers ============================= */
-  .piliers{background:var(--bloc-olive);color:var(--sur-olive)}
+  .piliers{background:var(--bloc-sauge);color:var(--sur-sauge)}
   .piliers .eyebrow{color:var(--accent-sombre-bloc)}
-  .cartes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(230,220,200,.22)}
-  .carte{background:var(--bloc-olive);padding:var(--e4) var(--e3)}
+  .cartes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(31,37,27,.14)}
+  .carte{background:var(--bloc-sauge);padding:var(--e4) var(--e3)}
   .carte .num{
     font-weight:400;font-size:var(--fs-eyebrow);letter-spacing:var(--ls-eyebrow);
     color:var(--accent-sombre-bloc);margin-bottom:var(--e2);
@@ -143,10 +143,8 @@
   .golf{display:block;transition:transform .18s ease}
   .golf:hover{transform:translateY(-3px)}
   .golf .img{aspect-ratio:1;position:relative;overflow:hidden;background:var(--lin-ombre)}
-  .golf:nth-child(2) .img{background-color:#C7B99D}
-  .golf:nth-child(3) .img{background-color:#DED4C0}
-  .golf:nth-child(4) .img{background-color:#BFB094}
-  .golf:nth-child(5) .img{background-color:#D8CCB4}
+  .golf .img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
+  .golf:hover .img img{transform:scale(1.04)}
   .golf .txt{padding:var(--e2) 0 0}
   .golf h3{font-size:1rem}
   .golf span{font-size:.82rem;color:var(--gris)}
@@ -244,6 +242,7 @@
     </a>
 
     <nav class="nav">
+      <a href="#origines">Les origines</a>
       <a href="#concept">Le séjour</a>
       <a href="#programme">Programme</a>
       <a href="/parcours/">Les parcours</a>
@@ -257,6 +256,7 @@
 </header>
 
 <nav class="menu-mobile" aria-label="Menu principal">
+  <a href="#origines" onclick="document.getElementById('menu').checked=false">Les origines</a>
   <a href="#concept" onclick="document.getElementById('menu').checked=false">Le séjour</a>
   <a href="#programme" onclick="document.getElementById('menu').checked=false">Programme</a>
   <a href="/parcours/">Les parcours</a>
@@ -283,6 +283,19 @@
   </div>
 </section>
 
+<section id="origines" class="concept origines">
+  <div class="wrap grille">
+    <div class="visuel"><img src="/assets/illustrations/origines-fondateur.svg" alt="Illustration d'un golfeur en plein élan sur un parcours du Pays Basque, collines et Pyrénées en arrière-plan" loading="lazy"></div>
+    <div>
+      <p class="eyebrow">Aux origines de Belardi</p>
+      <h2>Une idée née sur les greens du Pays Basque.</h2>
+      <p>Tout a commencé par des parties jouées l'une après l'autre, sur les plus beaux parcours de la région : les links balayés par le vent de Chiberta, les greens posés sur la falaise d'Ilbarritz, les fairways centenaires du Phare de Biarritz, les collines basques d'Arcangues face aux Pyrénées. En un même week-end, on passe d'un links en bord d'océan à un parcours vallonné dans l'arrière-pays — un éventail de jeu qu'on ne retrouve nulle part ailleurs en France, sur un territoire grand comme un mouchoir de poche.</p>
+      <p>De ces parcours est née une évidence : pourquoi ne pas transformer cette richesse en une semaine à part entière ? Une semaine où l'on ne choisit pas un seul golf, mais où l'on en découvre un nouveau chaque jour, encadré par un professionnel, en partageant repas et soirées avec quelques golfeurs passionnés — dans une même maison, comme entre amis.</p>
+      <p class="accent">« Belardi » signifie prairie en basque : le terrain de jeu qui a tout déclenché.</p>
+    </div>
+  </div>
+</section>
+
 <section id="concept" class="concept">
   <div class="wrap grille">
     <div>
@@ -293,7 +306,7 @@
       <p>Tout est organisé : transferts, green fees, coaching, hébergement, repas.</p>
       <p class="accent">« Vous jouez, on s'occupe du reste. »</p>
     </div>
-    <div class="visuel"><small>Photo à remplacer : la maison / un green face à l'océan</small></div>
+    <div class="visuel"><img src="/assets/illustrations/concept-maison.svg" alt="Illustration de la maison Belardi et de son green face à l'océan" loading="lazy"></div>
   </div>
 </section>
 
@@ -399,11 +412,11 @@
       <p>Cinq d'entre eux sont joués pendant la semaine, choisis selon le niveau du groupe et la météo.</p>
     </div>
     <div class="liste-golfs">
-      <a class="golf" href="/parcours/#chiberta"><div class="img"></div><div class="txt"><h3>Chiberta</h3><span>Anglet · links et pinède</span></div></a>
-      <a class="golf" href="/parcours/#ilbarritz"><div class="img"></div><div class="txt"><h3>Ilbarritz</h3><span>Bidart · vue océan</span></div></a>
-      <a class="golf" href="/parcours/#chantaco"><div class="img"></div><div class="txt"><h3>Chantaco</h3><span>Saint-Jean-de-Luz · historique</span></div></a>
-      <a class="golf" href="/parcours/#arcangues"><div class="img"></div><div class="txt"><h3>Arcangues</h3><span>Vallonné · vue Pyrénées</span></div></a>
-      <a class="golf" href="/parcours/#phare"><div class="img"></div><div class="txt"><h3>Biarritz Le Phare</h3><span>Biarritz · centenaire</span></div></a>
+      <a class="golf" href="/parcours/#chiberta"><div class="img"><img src="/assets/illustrations/golf-chiberta.svg" alt="" loading="lazy"></div><div class="txt"><h3>Chiberta</h3><span>Anglet · links et pinède</span></div></a>
+      <a class="golf" href="/parcours/#ilbarritz"><div class="img"><img src="/assets/illustrations/golf-ilbarritz.svg" alt="" loading="lazy"></div><div class="txt"><h3>Ilbarritz</h3><span>Bidart · vue océan</span></div></a>
+      <a class="golf" href="/parcours/#chantaco"><div class="img"><img src="/assets/illustrations/golf-chantaco.svg" alt="" loading="lazy"></div><div class="txt"><h3>Chantaco</h3><span>Saint-Jean-de-Luz · historique</span></div></a>
+      <a class="golf" href="/parcours/#arcangues"><div class="img"><img src="/assets/illustrations/golf-arcangues.svg" alt="" loading="lazy"></div><div class="txt"><h3>Arcangues</h3><span>Vallonné · vue Pyrénées</span></div></a>
+      <a class="golf" href="/parcours/#phare"><div class="img"><img src="/assets/illustrations/golf-phare.svg" alt="" loading="lazy"></div><div class="txt"><h3>Biarritz Le Phare</h3><span>Biarritz · centenaire</span></div></a>
     </div>
     <p class="tout-voir"><a class="btn" href="/parcours/">Découvrir les dix parcours</a></p>
   </div>

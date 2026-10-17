@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="La maison Belardi et son green face à l'océan">
+  <rect width="400" height="500" fill="#E6DCC8"/>
+  <rect x="0" y="210" width="400" height="30" fill="#788A6A"/>
+  <path d="M0 260 Q140 230 400 248 V500 H0 Z" fill="#D2C5AA"/>
+  <path d="M0 330 Q160 294 400 312 V500 H0 Z" fill="#8A9A7B"/>
+  <g transform="translate(40,150)">
+    <polygon points="0,70 100,70 100,220 0,220" fill="#3E4A33"/>
+    <polygon points="-16,70 116,70 50,10" fill="#2A3122"/>
+    <rect x="40" y="150" width="30" height="70" fill="#A0573A"/>
+    <rect x="14" y="100" width="24" height="26" fill="#E6DCC8"/>
+    <rect x="62" y="100" width="24" height="26" fill="#E6DCC8"/>
+  </g>
+  <line x1="300" y1="356" x2="300" y2="396" stroke="#3E4A33" stroke-width="2"/>
+  <path d="M300 356 L326 365 L300 374 Z" fill="#A0573A"/>
+</svg>
