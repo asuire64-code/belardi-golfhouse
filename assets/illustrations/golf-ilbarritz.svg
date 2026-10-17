@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Golf d'Ilbarritz : practice au bord de la falaise, face à l'océan">
+  <rect width="400" height="300" fill="#E6DCC8"/>
+  <path d="M0 150 Q120 130 240 150 T400 142 V0 H0 Z" fill="#E6DCC8"/>
+  <path d="M0 150 Q120 132 240 150 T400 142 V196 Q240 178 120 196 T0 206 Z" fill="#788A6A"/>
+  <path d="M0 196 Q130 170 260 198 T400 182 V300 H0 Z" fill="#D2C5AA"/>
+  <path d="M0 236 Q150 206 400 226 V300 H0 Z" fill="#8A9A7B"/>
+  <g>
+    <line x1="120" y1="232" x2="120" y2="264" stroke="#3E4A33" stroke-width="2"/>
+    <path d="M120 232 L140 240 L120 248 Z" fill="#A0573A"/>
+    <line x1="190" y1="244" x2="190" y2="274" stroke="#3E4A33" stroke-width="2"/>
+    <path d="M190 244 L210 252 L190 260 Z" fill="#A0573A"/>
+    <line x1="260" y1="238" x2="260" y2="268" stroke="#3E4A33" stroke-width="2"/>
+    <path d="M260 238 L280 246 L260 254 Z" fill="#A0573A"/>
+  </g>
+</svg>

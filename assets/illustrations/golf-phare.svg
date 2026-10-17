@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Golf de Biarritz Le Phare : parcours centenaire au pied du phare">
+  <rect width="400" height="300" fill="#E6DCC8"/>
+  <path d="M0 190 Q140 170 400 184 V0 H0 Z" fill="#E6DCC8"/>
+  <path d="M0 190 Q140 170 400 184 V214 Q220 232 0 222 Z" fill="#788A6A"/>
+  <path d="M0 214 Q180 196 400 212 V300 H0 Z" fill="#D2C5AA"/>
+  <path d="M0 250 Q170 224 400 244 V300 H0 Z" fill="#8A9A7B"/>
+  <g transform="translate(272,96)">
+    <polygon points="0,16 26,16 20,160 6,160" fill="#3E4A33"/>
+    <rect x="-2" y="40" width="30" height="10" fill="#FAF8F2"/>
+    <rect x="-3.5" y="70" width="33" height="10" fill="#FAF8F2"/>
+    <rect x="-5" y="100" width="36" height="10" fill="#FAF8F2"/>
+    <polygon points="-6,16 32,16 13,-14" fill="#A0573A"/>
+    <rect x="9" y="-24" width="8" height="10" fill="#A0573A"/>
+  </g>
+</svg>

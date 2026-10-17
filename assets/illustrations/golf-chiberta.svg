@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Golf de Chiberta : links entre dunes et pinède">
+  <rect width="400" height="300" fill="#E6DCC8"/>
+  <rect x="0" y="0" width="400" height="34" fill="#788A6A"/>
+  <path d="M0 60 Q90 24 190 52 T400 40 V0 H0 Z" fill="#E6DCC8"/>
+  <path d="M0 150 Q110 92 230 128 T400 104 V300 H0 Z" fill="#D2C5AA"/>
+  <g fill="#3E4A33">
+    <path d="M276 210 L296 140 L316 210 Z"/>
+    <path d="M304 216 L326 132 L348 216 Z"/>
+    <path d="M332 212 L352 150 L372 212 Z"/>
+  </g>
+  <path d="M0 210 Q140 170 260 206 T400 188 V300 H0 Z" fill="#8A9A7B"/>
+  <path d="M0 256 Q150 226 400 248 V300 H0 Z" fill="#788A6A"/>
+  <line x1="150" y1="150" x2="150" y2="214" stroke="#3E4A33" stroke-width="2"/>
+  <path d="M150 150 L178 160 L150 170 Z" fill="#A0573A"/>
+  <circle cx="150" cy="222" r="4" fill="#FAF8F2"/>
+</svg>
