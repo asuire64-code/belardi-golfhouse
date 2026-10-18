@@ -31,7 +31,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Josefin+Sans:wght@300&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Josefin+Sans:wght@300&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="/assets/css/belardi.css">
 <style>
@@ -177,7 +177,7 @@
 
 <header class="entete">
   <div class="wrap">
-    <a class="logo" href="/" aria-label="BELARDI Golf House — accueil">
+    <a class="logo" href="/" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
       <svg class="symbole" viewBox="28 18 35 64" role="img" aria-hidden="true">
         <rect class="b-fut" x="30" y="20" width="12" height="60" stroke-width="3"/>
         <path class="b-boucle" d="M42 20 A15 15 0 0 1 42 50 Z" stroke-width="3"/>
@@ -198,39 +198,49 @@
     </a>
 
     <nav class="nav">
-      <a href="/#origines">Les origines</a>
-      <a href="/#concept">Le séjour</a>
-      <a href="/#programme">Programme</a>
-      <a href="/parcours/" aria-current="page">Les parcours</a>
-      <a href="/#tarifs">Tarifs</a>
-      <a href="/#faq">FAQ</a>
-      <a href="/#contact" class="cta">Réserver</a>
+      <a href="/#origines" data-i18n="nav.origines">Les origines</a>
+      <a href="/#concept" data-i18n="nav.sejour">Le séjour</a>
+      <a href="/#programme" data-i18n="nav.programme">Programme</a>
+      <a href="/parcours/" aria-current="page" data-i18n="nav.parcours">Les parcours</a>
+      <a href="/#tarifs" data-i18n="nav.tarifs">Tarifs</a>
+      <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="/#contact" class="cta" data-i18n="nav.reserver">Réserver</a>
+      <div class="langues" role="group" aria-label="Choix de la langue">
+        <button type="button" data-lang="fr">FR</button><span class="sep">·</span>
+        <button type="button" data-lang="en">EN</button><span class="sep">·</span>
+        <button type="button" data-lang="es">ES</button>
+      </div>
     </nav>
 
-    <label class="burger" for="menu" aria-label="Ouvrir le menu"><i></i><i></i></label>
+    <label class="burger" for="menu" data-i18n-aria="burger.aria" aria-label="Ouvrir le menu"><i></i><i></i></label>
   </div>
 </header>
 
 <nav class="menu-mobile" aria-label="Menu principal">
-  <a href="/#origines">Les origines</a>
-  <a href="/#concept">Le séjour</a>
-  <a href="/#programme">Programme</a>
-  <a href="/parcours/">Les parcours</a>
-  <a href="/#tarifs">Tarifs</a>
-  <a href="/#faq">FAQ</a>
-  <a href="/#contact">Réserver</a>
+  <a href="/#origines" data-i18n="nav.origines">Les origines</a>
+  <a href="/#concept" data-i18n="nav.sejour">Le séjour</a>
+  <a href="/#programme" data-i18n="nav.programme">Programme</a>
+  <a href="/parcours/" data-i18n="nav.parcours">Les parcours</a>
+  <a href="/#tarifs" data-i18n="nav.tarifs">Tarifs</a>
+  <a href="/#faq" data-i18n="nav.faq">FAQ</a>
+  <a href="/#contact" data-i18n="nav.reserver">Réserver</a>
+  <div class="langues" role="group" aria-label="Choix de la langue">
+    <button type="button" data-lang="fr">FR</button><span class="sep">·</span>
+    <button type="button" data-lang="en">EN</button><span class="sep">·</span>
+    <button type="button" data-lang="es">ES</button>
+  </div>
 </nav>
 
 <section class="intro">
   <div class="wrap">
-    <p class="eyebrow">Les parcours</p>
-    <h1>Dix golfs entre les Landes et la frontière.</h1>
-    <p class="lead">De l'un des plus anciens parcours d'Europe continentale aux links dessinés dans les dunes, en passant par les tracés vallonnés face aux Pyrénées : la Côte Basque concentre en une heure de route une variété de jeu qu'on trouve rarement ailleurs. Cinq de ces parcours sont joués pendant votre semaine, choisis selon le niveau du groupe et la météo.</p>
+    <p class="eyebrow" data-i18n="pc.intro.eyebrow">Les parcours</p>
+    <h1 data-i18n="pc.intro.h1">Dix golfs entre les Landes et la frontière.</h1>
+    <p class="lead" data-i18n="pc.intro.lead">De l'un des plus anciens parcours d'Europe continentale aux links dessinés dans les dunes, en passant par les tracés vallonnés face aux Pyrénées : la Côte Basque concentre en une heure de route une variété de jeu qu'on trouve rarement ailleurs. Cinq de ces parcours sont joués pendant votre semaine, choisis selon le niveau du groupe et la météo.</p>
     <div class="reperes">
-      <div><strong>10</strong><span>Parcours accessibles</span></div>
-      <div><strong>5</strong><span>Joués dans la semaine</span></div>
-      <div><strong>1888</strong><span>Le plus ancien</span></div>
-      <div><strong>&lt; 1 h</strong><span>De route au plus loin</span></div>
+      <div><strong>10</strong><span data-i18n="pc.reperes1.l">Parcours accessibles</span></div>
+      <div><strong>5</strong><span data-i18n="pc.reperes2.l">Joués dans la semaine</span></div>
+      <div><strong>1888</strong><span data-i18n="pc.reperes3.l">Le plus ancien</span></div>
+      <div><strong>&lt; 1 h</strong><span data-i18n="pc.reperes4.l">De route au plus loin</span></div>
     </div>
   </div>
 </section>
@@ -239,12 +249,12 @@
   <div class="wrap">
 
     <div class="filtres">
-      <span class="lbl">Filtrer</span>
-      <button class="filtre" type="button" data-f="tous" aria-pressed="true">Tous</button>
-      <button class="filtre" type="button" data-f="ocean" aria-pressed="false">Face à l'océan</button>
-      <button class="filtre" type="button" data-f="foret" aria-pressed="false">Dans les pins</button>
-      <button class="filtre" type="button" data-f="collines" aria-pressed="false">Collines basques</button>
-      <button class="filtre" type="button" data-f="histoire" aria-pressed="false">Parcours historiques</button>
+      <span class="lbl" data-i18n="pc.filtres.lbl">Filtrer</span>
+      <button class="filtre" type="button" data-f="tous" aria-pressed="true" data-i18n="pc.filtre.tous">Tous</button>
+      <button class="filtre" type="button" data-f="ocean" aria-pressed="false" data-i18n="pc.filtre.ocean">Face à l'océan</button>
+      <button class="filtre" type="button" data-f="foret" aria-pressed="false" data-i18n="pc.filtre.foret">Dans les pins</button>
+      <button class="filtre" type="button" data-f="collines" aria-pressed="false" data-i18n="pc.filtre.collines">Collines basques</button>
+      <button class="filtre" type="button" data-f="histoire" aria-pressed="false" data-i18n="pc.filtre.histoire">Parcours historiques</button>
     </div>
 
     <div class="colonnes">
@@ -431,12 +441,12 @@
           </div>
         </details>
 
-        <p class="vide" id="vide" hidden>Aucun parcours ne correspond à ce filtre.</p>
+        <p class="vide" id="vide" hidden data-i18n="pc.vide">Aucun parcours ne correspond à ce filtre.</p>
       </div>
 
       <div class="panneau-carte">
         <div id="carte" role="application" aria-label="Carte des dix parcours"></div>
-        <p class="carte-note">Cliquez un repère pour ouvrir la fiche du parcours. Emplacements indicatifs.</p>
+        <p class="carte-note" data-i18n="pc.carte.note">Cliquez un repère pour ouvrir la fiche du parcours. Emplacements indicatifs.</p>
       </div>
 
     </div>
@@ -445,14 +455,14 @@
 
 <section class="rappel">
   <div class="wrap">
-    <p class="eyebrow">Votre semaine</p>
-    <h2>Cinq parcours, choisis pour vous.</h2>
-    <p>Nous composons le programme de la semaine en fonction du niveau du groupe, de la météo et des disponibilités des clubs. Les green fees de ces cinq parcours sont compris dans le séjour.</p>
-    <a class="btn" href="/#contact">Demander les prochaines dates</a>
+    <p class="eyebrow" data-i18n="pc.rappel.eyebrow">Votre semaine</p>
+    <h2 data-i18n="pc.rappel.h2">Cinq parcours, choisis pour vous.</h2>
+    <p data-i18n="pc.rappel.p">Nous composons le programme de la semaine en fonction du niveau du groupe, de la météo et des disponibilités des clubs. Les green fees de ces cinq parcours sont compris dans le séjour.</p>
+    <a class="btn" href="/#contact" data-i18n="pc.rappel.cta">Demander les prochaines dates</a>
   </div>
 </section>
 
-<p class="note-sources">Données des parcours (trous, par, longueur, architecte, année) relevées auprès des fiches publiques des clubs et des annuaires Golfstars, 1golf.eu et Where2Golf. Les longueurs varient selon les départs : elles sont données ici depuis les repères arrière. Fond de carte © contributeurs OpenStreetMap.</p>
+<p class="note-sources" data-i18n="pc.sources">Données des parcours (trous, par, longueur, architecte, année) relevées auprès des fiches publiques des clubs et des annuaires Golfstars, 1golf.eu et Where2Golf. Les longueurs varient selon les départs : elles sont données ici depuis les repères arrière. Fond de carte © contributeurs OpenStreetMap.</p>
 
 <footer>
   <div class="inner">
@@ -461,12 +471,12 @@
         <b>Belardi</b>
         <span class="gh">Golf House</span>
       </a>
-      <p class="baseline">Séjours golf tout compris au Pays Basque</p>
+      <p class="baseline" data-i18n="footer.baseline">Séjours golf tout compris au Pays Basque</p>
     </div>
     <div class="liens">
       <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>
-      <a href="/#faq">Questions fréquentes</a>
-      <a href="/">Retour à l'accueil</a>
+      <a href="/#faq" data-i18n="pc.footer.faq">Questions fréquentes</a>
+      <a href="/" data-i18n="pc.menu.origines">Retour à l'accueil</a>
       <p class="legal">© 2026 BELARDI Golf House</p>
     </div>
   </div>
@@ -564,5 +574,7 @@
 })();
 </script>
 
+<script>window.BELARDI_PAGE = "parcours";</script>
+<script src="/assets/js/i18n.js" defer></script>
 </body>
 </html>
