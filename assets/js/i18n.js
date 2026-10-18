@@ -502,18 +502,51 @@
     var metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc && dict[descKey]) metaDesc.setAttribute("content", dict[descKey]);
 
-    document.querySelectorAll(".langues button").forEach(function(btn){
+    document.querySelectorAll(".langues button[data-lang]").forEach(function(btn){
       btn.setAttribute("aria-current", String(btn.dataset.lang === lang));
+    });
+    document.querySelectorAll(".lang-menu button[data-lang]").forEach(function(btn){
+      btn.setAttribute("aria-selected", String(btn.dataset.lang === lang));
+    });
+    document.querySelectorAll(".lang-current").forEach(function(el){
+      el.textContent = lang.toUpperCase();
     });
 
     try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
   }
 
+  function closeAllSwitches(except){
+    document.querySelectorAll(".lang-switch[data-open='true']").forEach(function(sw){
+      if (sw !== except){
+        sw.setAttribute("data-open", "false");
+        sw.querySelector(".lang-trigger").setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function(){
     var lang = detectLang();
     applyLang(lang);
-    document.querySelectorAll(".langues button").forEach(function(btn){
-      btn.addEventListener("click", function(){ applyLang(btn.dataset.lang); });
+
+    document.querySelectorAll(".langues button[data-lang], .lang-menu button[data-lang]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        applyLang(btn.dataset.lang);
+        closeAllSwitches();
+      });
     });
+
+    document.querySelectorAll(".lang-switch").forEach(function(sw){
+      var trigger = sw.querySelector(".lang-trigger");
+      trigger.addEventListener("click", function(e){
+        e.stopPropagation();
+        var isOpen = sw.getAttribute("data-open") === "true";
+        closeAllSwitches();
+        sw.setAttribute("data-open", String(!isOpen));
+        trigger.setAttribute("aria-expanded", String(!isOpen));
+      });
+    });
+
+    document.addEventListener("click", function(){ closeAllSwitches(); });
+    document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeAllSwitches(); });
   });
 })();
