@@ -61,7 +61,7 @@
 <!-- Polices de la charte : Jost (texte & titres), Josefin Sans Light (nom BELARDI), Cormorant Garamond italique (accents) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Josefin+Sans:wght@300&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Josefin+Sans:wght@300&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/assets/css/belardi.css">
 <style>
@@ -159,8 +159,8 @@
   }
   .offre .btn{margin-top:auto}
   .offre.vedette{border:1px solid var(--terre);position:relative}
-  .offre.vedette::before{
-    content:"Le plus choisi";position:absolute;top:0;left:0;background:var(--terre);color:#fff;
+  .offre.vedette .badge{
+    position:absolute;top:0;left:0;background:var(--terre);color:#fff;
     font-size:.7rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;
   }
   .offre h3{font-size:1.3rem}
@@ -220,7 +220,7 @@
 
 <header class="entete">
   <div class="wrap">
-    <a class="logo" href="#" aria-label="BELARDI Golf House — accueil">
+    <a class="logo" href="#" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
       <!-- Symbole : le B en trois pièces. Joint de 3 unités à la couleur du fond. -->
       <svg class="symbole" viewBox="28 18 35 64" role="img" aria-hidden="true">
         <rect class="b-fut" x="30" y="20" width="12" height="60" stroke-width="3"/>
@@ -242,56 +242,66 @@
     </a>
 
     <nav class="nav">
-      <a href="#origines">Les origines</a>
-      <a href="#concept">Le séjour</a>
-      <a href="#programme">Programme</a>
-      <a href="/parcours/">Les parcours</a>
-      <a href="#tarifs">Tarifs</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact" class="cta">Réserver</a>
+      <a href="#origines" data-i18n="nav.origines">Les origines</a>
+      <a href="#concept" data-i18n="nav.sejour">Le séjour</a>
+      <a href="#programme" data-i18n="nav.programme">Programme</a>
+      <a href="/parcours/" data-i18n="nav.parcours">Les parcours</a>
+      <a href="#tarifs" data-i18n="nav.tarifs">Tarifs</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#contact" class="cta" data-i18n="nav.reserver">Réserver</a>
+      <div class="langues" role="group" aria-label="Choix de la langue">
+        <button type="button" data-lang="fr">FR</button><span class="sep">·</span>
+        <button type="button" data-lang="en">EN</button><span class="sep">·</span>
+        <button type="button" data-lang="es">ES</button>
+      </div>
     </nav>
 
-    <label class="burger" for="menu" aria-label="Ouvrir le menu"><i></i><i></i></label>
+    <label class="burger" for="menu" data-i18n-aria="burger.aria" aria-label="Ouvrir le menu"><i></i><i></i></label>
   </div>
 </header>
 
 <nav class="menu-mobile" aria-label="Menu principal">
-  <a href="#origines" onclick="document.getElementById('menu').checked=false">Les origines</a>
-  <a href="#concept" onclick="document.getElementById('menu').checked=false">Le séjour</a>
-  <a href="#programme" onclick="document.getElementById('menu').checked=false">Programme</a>
-  <a href="/parcours/">Les parcours</a>
-  <a href="#tarifs" onclick="document.getElementById('menu').checked=false">Tarifs</a>
-  <a href="#faq" onclick="document.getElementById('menu').checked=false">FAQ</a>
-  <a href="#contact" onclick="document.getElementById('menu').checked=false">Réserver</a>
+  <a href="#origines" data-i18n="nav.origines" onclick="document.getElementById('menu').checked=false">Les origines</a>
+  <a href="#concept" data-i18n="nav.sejour" onclick="document.getElementById('menu').checked=false">Le séjour</a>
+  <a href="#programme" data-i18n="nav.programme" onclick="document.getElementById('menu').checked=false">Programme</a>
+  <a href="/parcours/" data-i18n="nav.parcours">Les parcours</a>
+  <a href="#tarifs" data-i18n="nav.tarifs" onclick="document.getElementById('menu').checked=false">Tarifs</a>
+  <a href="#faq" data-i18n="nav.faq" onclick="document.getElementById('menu').checked=false">FAQ</a>
+  <a href="#contact" data-i18n="nav.reserver" onclick="document.getElementById('menu').checked=false">Réserver</a>
+  <div class="langues" role="group" aria-label="Choix de la langue">
+    <button type="button" data-lang="fr">FR</button><span class="sep">·</span>
+    <button type="button" data-lang="en">EN</button><span class="sep">·</span>
+    <button type="button" data-lang="es">ES</button>
+  </div>
 </nav>
 
 <section class="hero">
   <div class="wrap">
-    <p class="eyebrow">Séjours golf · 7 jours · Pays Basque</p>
-    <h1>Une semaine pour jouer mieux, entre océan et montagnes.</h1>
-    <p class="lead">Coaching personnalisé, cinq parcours d'exception de la Côte Basque, une maison de caractère et la table basque. Vous n'apportez que vos clubs.</p>
+    <p class="eyebrow" data-i18n="hero.eyebrow">Séjours golf · 7 jours · Pays Basque</p>
+    <h1 data-i18n="hero.h1">Une semaine pour jouer mieux, entre océan et montagnes.</h1>
+    <p class="lead" data-i18n="hero.lead">Coaching personnalisé, cinq parcours d'exception de la Côte Basque, une maison de caractère et la table basque. Vous n'apportez que vos clubs.</p>
     <div class="ctas">
-      <a href="#contact" class="btn">Demander les prochaines dates</a>
-      <a href="#programme" class="btn btn--ligne">Voir le programme</a>
+      <a href="#contact" class="btn" data-i18n="hero.cta1">Demander les prochaines dates</a>
+      <a href="#programme" class="btn btn--ligne" data-i18n="hero.cta2">Voir le programme</a>
     </div>
     <div class="chiffres">
-      <div><strong>7 j / 6 n</strong><span>Séjour tout compris</span></div>
-      <div><strong>5</strong><span>Parcours joués</span></div>
-      <div><strong>20 h</strong><span>De coaching</span></div>
-      <div><strong>6 max</strong><span>Golfeurs par groupe</span></div>
+      <div><strong data-i18n="hero.stat1.n">7 j / 6 n</strong><span data-i18n="hero.stat1.l">Séjour tout compris</span></div>
+      <div><strong data-i18n="hero.stat2.n">5</strong><span data-i18n="hero.stat2.l">Parcours joués</span></div>
+      <div><strong data-i18n="hero.stat3.n">20 h</strong><span data-i18n="hero.stat3.l">De coaching</span></div>
+      <div><strong data-i18n="hero.stat4.n">6 max</strong><span data-i18n="hero.stat4.l">Golfeurs par groupe</span></div>
     </div>
   </div>
 </section>
 
 <section id="origines" class="concept origines">
   <div class="wrap grille">
-    <div class="visuel"><img src="/assets/illustrations/origines-fondateur.svg" alt="Illustration d'un golfeur en plein élan sur un parcours du Pays Basque, collines et Pyrénées en arrière-plan" loading="lazy"></div>
+    <div class="visuel"><img src="/assets/illustrations/origines-fondateur.svg" data-i18n-alt="origines.img.alt" alt="Illustration d'un golfeur en plein élan sur un parcours du Pays Basque, collines et Pyrénées en arrière-plan" loading="lazy"></div>
     <div>
-      <p class="eyebrow">Aux origines de Belardi</p>
-      <h2>Une idée née sur les greens du Pays Basque.</h2>
-      <p>Tout a commencé par des parties jouées l'une après l'autre, sur les plus beaux parcours de la région : les links balayés par le vent de Chiberta, les greens posés sur la falaise d'Ilbarritz, les fairways centenaires du Phare de Biarritz, les collines basques d'Arcangues face aux Pyrénées. En un même week-end, on passe d'un links en bord d'océan à un parcours vallonné dans l'arrière-pays — un éventail de jeu qu'on ne retrouve nulle part ailleurs en France, sur un territoire grand comme un mouchoir de poche.</p>
-      <p>De ces parcours est née une évidence : pourquoi ne pas transformer cette richesse en une semaine à part entière ? Une semaine où l'on ne choisit pas un seul golf, mais où l'on en découvre un nouveau chaque jour, encadré par un professionnel, en partageant repas et soirées avec quelques golfeurs passionnés — dans une même maison, comme entre amis.</p>
-      <p class="accent">« Belardi » signifie prairie en basque : le terrain de jeu qui a tout déclenché.</p>
+      <p class="eyebrow" data-i18n="origines.eyebrow">Aux origines de Belardi</p>
+      <h2 data-i18n="origines.h2">Une idée née sur les greens du Pays Basque.</h2>
+      <p data-i18n="origines.p1">Tout a commencé par des parties jouées l'une après l'autre, sur les plus beaux parcours de la région : les links balayés par le vent de Chiberta, les greens posés sur la falaise d'Ilbarritz, les fairways centenaires du Phare de Biarritz, les collines basques d'Arcangues face aux Pyrénées. En un même week-end, on passe d'un links en bord d'océan à un parcours vallonné dans l'arrière-pays — un éventail de jeu qu'on ne retrouve nulle part ailleurs en France, sur un territoire grand comme un mouchoir de poche.</p>
+      <p data-i18n="origines.p2">De ces parcours est née une évidence : pourquoi ne pas transformer cette richesse en une semaine à part entière ? Une semaine où l'on ne choisit pas un seul golf, mais où l'on en découvre un nouveau chaque jour, encadré par un professionnel, en partageant repas et soirées avec quelques golfeurs passionnés — dans une même maison, comme entre amis.</p>
+      <p class="accent" data-i18n="origines.accent">« Belardi » signifie prairie en basque : le terrain de jeu qui a tout déclenché.</p>
     </div>
   </div>
 </section>
@@ -299,38 +309,38 @@
 <section id="concept" class="concept">
   <div class="wrap grille">
     <div>
-      <p class="eyebrow">Le séjour</p>
-      <h2>Le golf comme on le vit en surf camp.</h2>
-      <p>Belardi signifie « prairie » en basque. C'est le nom de notre maison : un lieu où l'on vit au rythme du jeu, entre entraînement le matin, parcours l'après-midi et longues tablées le soir.</p>
-      <p>Nous accueillons de petits groupes de golfeurs amateurs passionnés qui veulent franchir un cap, sans la pression de la compétition. Chacun repart avec un swing travaillé, un plan de progression et quelques souvenirs de parcours inoubliables.</p>
-      <p>Tout est organisé : transferts, green fees, coaching, hébergement, repas.</p>
-      <p class="accent">« Vous jouez, on s'occupe du reste. »</p>
+      <p class="eyebrow" data-i18n="concept.eyebrow">Le séjour</p>
+      <h2 data-i18n="concept.h2">Le golf comme on le vit en surf camp.</h2>
+      <p data-i18n="concept.p1">Belardi signifie « prairie » en basque. C'est le nom de notre maison : un lieu où l'on vit au rythme du jeu, entre entraînement le matin, parcours l'après-midi et longues tablées le soir.</p>
+      <p data-i18n="concept.p2">Nous accueillons de petits groupes de golfeurs amateurs passionnés qui veulent franchir un cap, sans la pression de la compétition. Chacun repart avec un swing travaillé, un plan de progression et quelques souvenirs de parcours inoubliables.</p>
+      <p data-i18n="concept.p3">Tout est organisé : transferts, green fees, coaching, hébergement, repas.</p>
+      <p class="accent" data-i18n="concept.accent">« Vous jouez, on s'occupe du reste. »</p>
     </div>
-    <div class="visuel"><img src="/assets/illustrations/concept-maison.svg" alt="Illustration de la maison Belardi et de son green face à l'océan" loading="lazy"></div>
+    <div class="visuel"><img src="/assets/illustrations/concept-maison.svg" data-i18n-alt="concept.img.alt" alt="Illustration de la maison Belardi et de son green face à l'océan" loading="lazy"></div>
   </div>
 </section>
 
 <section class="piliers">
   <div class="wrap">
     <div class="titre-section">
-      <p class="eyebrow">Ce qui nous distingue</p>
-      <h2>Trois piliers, une semaine.</h2>
+      <p class="eyebrow" data-i18n="piliers.eyebrow">Ce qui nous distingue</p>
+      <h2 data-i18n="piliers.h2">Trois piliers, une semaine.</h2>
     </div>
     <div class="cartes">
       <div class="carte">
         <p class="num">01</p>
-        <h3>Progresser vraiment</h3>
-        <p>Bilan vidéo le premier jour, objectifs personnels, séances techniques chaque matin et parcours coachés. Un compte rendu écrit vous est remis en fin de séjour.</p>
+        <h3 data-i18n="piliers.1.h3">Progresser vraiment</h3>
+        <p data-i18n="piliers.1.p">Bilan vidéo le premier jour, objectifs personnels, séances techniques chaque matin et parcours coachés. Un compte rendu écrit vous est remis en fin de séjour.</p>
       </div>
       <div class="carte">
         <p class="num">02</p>
-        <h3>Découvrir la Côte Basque</h3>
-        <p>Des links face à l'océan aux parcours vallonnés de l'arrière-pays : cinq golfs aux caractères très différents, à moins de 30 minutes de la maison.</p>
+        <h3 data-i18n="piliers.2.h3">Découvrir la Côte Basque</h3>
+        <p data-i18n="piliers.2.p">Des links face à l'océan aux parcours vallonnés de l'arrière-pays : cinq golfs aux caractères très différents, à moins de 30 minutes de la maison.</p>
       </div>
       <div class="carte">
         <p class="num">03</p>
-        <h3>Partager</h3>
-        <p>Six golfeurs maximum, des dîners en commun, des cidreries et des tables locales. On arrive seul ou entre amis, on repart avec des partenaires de jeu.</p>
+        <h3 data-i18n="piliers.3.h3">Partager</h3>
+        <p data-i18n="piliers.3.p">Six golfeurs maximum, des dîners en commun, des cidreries et des tables locales. On arrive seul ou entre amis, on repart avec des partenaires de jeu.</p>
       </div>
     </div>
   </div>
@@ -339,65 +349,65 @@
 <section id="programme">
   <div class="wrap">
     <div class="titre-section">
-      <p class="eyebrow">Programme type</p>
-      <h2>Votre semaine, jour par jour.</h2>
-      <p>Programme indicatif, adapté à la météo et au niveau du groupe.</p>
+      <p class="eyebrow" data-i18n="programme.eyebrow">Programme type</p>
+      <h2 data-i18n="programme.h2">Votre semaine, jour par jour.</h2>
+      <p data-i18n="programme.lead">Programme indicatif, adapté à la météo et au niveau du groupe.</p>
     </div>
     <div class="jours">
       <div class="jour">
-        <div class="j">Jour<b>1</b></div>
+        <div class="j"><span data-i18n="jour.label">Jour</span><b>1</b></div>
         <div>
-          <p class="lieu">Arrivée · Belardi</p>
-          <h3>Bienvenue au Pays Basque</h3>
-          <p>Accueil à l'aéroport de Biarritz ou à la gare. Installation, apéritif de bienvenue, présentation de la semaine et dîner basque à la maison.</p>
+          <p class="lieu" data-i18n="j1.lieu">Arrivée · Belardi</p>
+          <h3 data-i18n="j1.h3">Bienvenue au Pays Basque</h3>
+          <p data-i18n="j1.p">Accueil à l'aéroport de Biarritz ou à la gare. Installation, apéritif de bienvenue, présentation de la semaine et dîner basque à la maison.</p>
         </div>
       </div>
       <div class="jour">
-        <div class="j">Jour<b>2</b></div>
+        <div class="j"><span data-i18n="jour.label">Jour</span><b>2</b></div>
         <div>
-          <p class="lieu">Golf de Chiberta · Anglet</p>
-          <h3>Bilan et premier parcours</h3>
-          <p>Analyse vidéo du swing et définition de vos objectifs. Déjeuner au club-house, puis parcours coaché entre pinède et dunes.</p>
+          <p class="lieu" data-i18n="j2.lieu">Golf de Chiberta · Anglet</p>
+          <h3 data-i18n="j2.h3">Bilan et premier parcours</h3>
+          <p data-i18n="j2.p">Analyse vidéo du swing et définition de vos objectifs. Déjeuner au club-house, puis parcours coaché entre pinède et dunes.</p>
         </div>
       </div>
       <div class="jour">
-        <div class="j">Jour<b>3</b></div>
+        <div class="j"><span data-i18n="jour.label">Jour</span><b>3</b></div>
         <div>
-          <p class="lieu">Golf d'Ilbarritz · Bidart</p>
-          <h3>Petit jeu face à l'océan</h3>
-          <p>Matinée consacrée au chipping et au putting sur l'un des plus beaux centres d'entraînement d'Europe. Après-midi sur le parcours, dîner en cidrerie.</p>
+          <p class="lieu" data-i18n="j3.lieu">Golf d'Ilbarritz · Bidart</p>
+          <h3 data-i18n="j3.h3">Petit jeu face à l'océan</h3>
+          <p data-i18n="j3.p">Matinée consacrée au chipping et au putting sur l'un des plus beaux centres d'entraînement d'Europe. Après-midi sur le parcours, dîner en cidrerie.</p>
         </div>
       </div>
       <div class="jour">
-        <div class="j">Jour<b>4</b></div>
+        <div class="j"><span data-i18n="jour.label">Jour</span><b>4</b></div>
         <div>
-          <p class="lieu">Libre · Côte Basque</p>
-          <h3>Journée découverte</h3>
-          <p>Au choix : initiation au surf, randonnée à la Rhune, visite de Saint-Jean-de-Luz ou de San Sebastián. Séance putting facultative en fin de journée.</p>
+          <p class="lieu" data-i18n="j4.lieu">Libre · Côte Basque</p>
+          <h3 data-i18n="j4.h3">Journée découverte</h3>
+          <p data-i18n="j4.p">Au choix : initiation au surf, randonnée à la Rhune, visite de Saint-Jean-de-Luz ou de San Sebastián. Séance putting facultative en fin de journée.</p>
         </div>
       </div>
       <div class="jour">
-        <div class="j">Jour<b>5</b></div>
+        <div class="j"><span data-i18n="jour.label">Jour</span><b>5</b></div>
         <div>
-          <p class="lieu">Golf de Chantaco · Saint-Jean-de-Luz</p>
-          <h3>Stratégie de parcours</h3>
-          <p>Gestion de parcours et choix de clubs sur un tracé exigeant au pied des montagnes. Dîner dans une table du port.</p>
+          <p class="lieu" data-i18n="j5.lieu">Golf de Chantaco · Saint-Jean-de-Luz</p>
+          <h3 data-i18n="j5.h3">Stratégie de parcours</h3>
+          <p data-i18n="j5.p">Gestion de parcours et choix de clubs sur un tracé exigeant au pied des montagnes. Dîner dans une table du port.</p>
         </div>
       </div>
       <div class="jour">
-        <div class="j">Jour<b>6</b></div>
+        <div class="j"><span data-i18n="jour.label">Jour</span><b>6</b></div>
         <div>
-          <p class="lieu">Golf d'Arcangues</p>
-          <h3>Le parcours final</h3>
-          <p>Parcours 18 trous en conditions réelles, puis bilan individuel et plan de progression personnalisé. Dîner de clôture.</p>
+          <p class="lieu" data-i18n="j6.lieu">Golf d'Arcangues</p>
+          <h3 data-i18n="j6.h3">Le parcours final</h3>
+          <p data-i18n="j6.p">Parcours 18 trous en conditions réelles, puis bilan individuel et plan de progression personnalisé. Dîner de clôture.</p>
         </div>
       </div>
       <div class="jour">
-        <div class="j">Jour<b>7</b></div>
+        <div class="j"><span data-i18n="jour.label">Jour</span><b>7</b></div>
         <div>
-          <p class="lieu">Départ</p>
-          <h3>À bientôt</h3>
-          <p>Petit-déjeuner, dernière balade sur la plage ou neuf trous pour les plus motivés, puis transfert retour.</p>
+          <p class="lieu" data-i18n="j7.lieu">Départ</p>
+          <h3 data-i18n="j7.h3">À bientôt</h3>
+          <p data-i18n="j7.p">Petit-déjeuner, dernière balade sur la plage ou neuf trous pour les plus motivés, puis transfert retour.</p>
         </div>
       </div>
     </div>
@@ -407,87 +417,88 @@
 <section id="golfs" class="golfs">
   <div class="wrap">
     <div class="titre-section">
-      <p class="eyebrow">Les parcours</p>
-      <h2>Dix golfs à moins d'une heure.</h2>
-      <p>Cinq d'entre eux sont joués pendant la semaine, choisis selon le niveau du groupe et la météo.</p>
+      <p class="eyebrow" data-i18n="golfs.eyebrow">Les parcours</p>
+      <h2 data-i18n="golfs.h2">Dix golfs à moins d'une heure.</h2>
+      <p data-i18n="golfs.lead">Cinq d'entre eux sont joués pendant la semaine, choisis selon le niveau du groupe et la météo.</p>
     </div>
     <div class="liste-golfs">
-      <a class="golf" href="/parcours/#chiberta"><div class="img"><img src="/assets/illustrations/golf-chiberta.svg" alt="" loading="lazy"></div><div class="txt"><h3>Chiberta</h3><span>Anglet · links et pinède</span></div></a>
-      <a class="golf" href="/parcours/#ilbarritz"><div class="img"><img src="/assets/illustrations/golf-ilbarritz.svg" alt="" loading="lazy"></div><div class="txt"><h3>Ilbarritz</h3><span>Bidart · vue océan</span></div></a>
-      <a class="golf" href="/parcours/#chantaco"><div class="img"><img src="/assets/illustrations/golf-chantaco.svg" alt="" loading="lazy"></div><div class="txt"><h3>Chantaco</h3><span>Saint-Jean-de-Luz · historique</span></div></a>
-      <a class="golf" href="/parcours/#arcangues"><div class="img"><img src="/assets/illustrations/golf-arcangues.svg" alt="" loading="lazy"></div><div class="txt"><h3>Arcangues</h3><span>Vallonné · vue Pyrénées</span></div></a>
-      <a class="golf" href="/parcours/#phare"><div class="img"><img src="/assets/illustrations/golf-phare.svg" alt="" loading="lazy"></div><div class="txt"><h3>Biarritz Le Phare</h3><span>Biarritz · centenaire</span></div></a>
+      <a class="golf" href="/parcours/#chiberta"><div class="img"><img src="/assets/illustrations/golf-chiberta.svg" alt="" loading="lazy"></div><div class="txt"><h3>Chiberta</h3><span data-i18n="golf.chiberta.d">Anglet · links et pinède</span></div></a>
+      <a class="golf" href="/parcours/#ilbarritz"><div class="img"><img src="/assets/illustrations/golf-ilbarritz.svg" alt="" loading="lazy"></div><div class="txt"><h3>Ilbarritz</h3><span data-i18n="golf.ilbarritz.d">Bidart · vue océan</span></div></a>
+      <a class="golf" href="/parcours/#chantaco"><div class="img"><img src="/assets/illustrations/golf-chantaco.svg" alt="" loading="lazy"></div><div class="txt"><h3>Chantaco</h3><span data-i18n="golf.chantaco.d">Saint-Jean-de-Luz · historique</span></div></a>
+      <a class="golf" href="/parcours/#arcangues"><div class="img"><img src="/assets/illustrations/golf-arcangues.svg" alt="" loading="lazy"></div><div class="txt"><h3>Arcangues</h3><span data-i18n="golf.arcangues.d">Vallonné · vue Pyrénées</span></div></a>
+      <a class="golf" href="/parcours/#phare"><div class="img"><img src="/assets/illustrations/golf-phare.svg" alt="" loading="lazy"></div><div class="txt"><h3>Biarritz Le Phare</h3><span data-i18n="golf.phare.d">Biarritz · centenaire</span></div></a>
     </div>
-    <p class="tout-voir"><a class="btn" href="/parcours/">Découvrir les dix parcours</a></p>
+    <p class="tout-voir"><a class="btn" href="/parcours/" data-i18n="golfs.cta">Découvrir les dix parcours</a></p>
   </div>
 </section>
 
 <section id="tarifs" class="tarifs">
   <div class="wrap">
     <div class="titre-section">
-      <p class="eyebrow">Tarifs 2027</p>
-      <h2>Tout compris, sans surprise.</h2>
+      <p class="eyebrow" data-i18n="tarifs.eyebrow">Tarifs 2027</p>
+      <h2 data-i18n="tarifs.h2">Tout compris, sans surprise.</h2>
     </div>
     <div class="grille">
       <div class="offre">
-        <h3>Essentiel</h3>
+        <h3 data-i18n="offre1.h3">Essentiel</h3>
         <p class="prix">2 490 € <small>/ personne</small></p>
-        <p class="saison">Basse saison (oct. – mars) · 2 890 € en haute saison</p>
+        <p class="saison" data-i18n="offre1.saison">Basse saison (oct. – mars) · 2 890 € en haute saison</p>
         <ul>
-          <li>6 nuits en chambre partagée</li>
-          <li>Petits-déjeuners et 4 dîners</li>
-          <li>4 green fees</li>
-          <li>16 h de coaching en groupe</li>
-          <li>Transferts aéroport et golfs</li>
+          <li data-i18n="offre1.li1">6 nuits en chambre partagée</li>
+          <li data-i18n="offre1.li2">Petits-déjeuners et 4 dîners</li>
+          <li data-i18n="offre1.li3">4 green fees</li>
+          <li data-i18n="offre1.li4">16 h de coaching en groupe</li>
+          <li data-i18n="offre1.li5">Transferts aéroport et golfs</li>
         </ul>
-        <a href="#contact" class="btn btn--bloc">Je suis intéressé</a>
+        <a href="#contact" class="btn btn--bloc" data-i18n="offre.cta">Je suis intéressé</a>
       </div>
       <div class="offre vedette">
-        <h3>Signature</h3>
+        <span class="badge" data-i18n="offre2.badge">Le plus choisi</span>
+        <h3 data-i18n="offre2.h3">Signature</h3>
         <p class="prix">3 290 € <small>/ personne</small></p>
-        <p class="saison">Basse saison (oct. – mars) · 3 790 € en haute saison</p>
+        <p class="saison" data-i18n="offre2.saison">Basse saison (oct. – mars) · 3 790 € en haute saison</p>
         <ul>
-          <li>6 nuits en chambre individuelle</li>
-          <li>Pension complète, vins inclus</li>
-          <li>5 green fees</li>
-          <li>20 h de coaching dont 2 h en individuel</li>
-          <li>Analyse vidéo et plan de progression écrit</li>
-          <li>Journée découverte encadrée</li>
-          <li>Transferts aéroport et golfs</li>
+          <li data-i18n="offre2.li1">6 nuits en chambre individuelle</li>
+          <li data-i18n="offre2.li2">Pension complète, vins inclus</li>
+          <li data-i18n="offre2.li3">5 green fees</li>
+          <li data-i18n="offre2.li4">20 h de coaching dont 2 h en individuel</li>
+          <li data-i18n="offre2.li5">Analyse vidéo et plan de progression écrit</li>
+          <li data-i18n="offre2.li6">Journée découverte encadrée</li>
+          <li data-i18n="offre2.li7">Transferts aéroport et golfs</li>
         </ul>
-        <a href="#contact" class="btn btn--bloc">Je suis intéressé</a>
+        <a href="#contact" class="btn btn--bloc" data-i18n="offre.cta">Je suis intéressé</a>
       </div>
     </div>
-    <p class="note-tarif">Accompagnant non golfeur possible sur demande. Groupes constitués et séminaires : devis sur mesure.</p>
+    <p class="note-tarif" data-i18n="tarifs.note">Accompagnant non golfeur possible sur demande. Groupes constitués et séminaires : devis sur mesure.</p>
   </div>
 </section>
 
 <section id="faq" class="faq">
   <div class="wrap">
     <div class="titre-section">
-      <p class="eyebrow">Questions fréquentes</p>
-      <h2>Avant de venir.</h2>
+      <p class="eyebrow" data-i18n="faq.eyebrow">Questions fréquentes</p>
+      <h2 data-i18n="faq.h2">Avant de venir.</h2>
     </div>
     <div class="liste">
       <details>
-        <summary>Quel niveau faut-il avoir ?</summary>
-        <p>Le séjour s'adresse aux golfeurs déjà autonomes sur un parcours, idéalement avec un index entre 10 et 36. Les groupes sont constitués par niveau pour que chacun progresse à son rythme.</p>
+        <summary data-i18n="faq1.q">Quel niveau faut-il avoir ?</summary>
+        <p data-i18n="faq1.r">Le séjour s'adresse aux golfeurs déjà autonomes sur un parcours, idéalement avec un index entre 10 et 36. Les groupes sont constitués par niveau pour que chacun progresse à son rythme.</p>
       </details>
       <details>
-        <summary>Puis-je venir seul ?</summary>
-        <p>Oui, la majorité de nos participants viennent seuls ou à deux. Les groupes de six maximum et les repas partagés rendent l'intégration naturelle.</p>
+        <summary data-i18n="faq2.q">Puis-je venir seul ?</summary>
+        <p data-i18n="faq2.r">Oui, la majorité de nos participants viennent seuls ou à deux. Les groupes de six maximum et les repas partagés rendent l'intégration naturelle.</p>
       </details>
       <details>
-        <summary>Faut-il apporter son matériel ?</summary>
-        <p>Nous recommandons vos propres clubs. Une location est possible sur demande si vous voyagez léger.</p>
+        <summary data-i18n="faq3.q">Faut-il apporter son matériel ?</summary>
+        <p data-i18n="faq3.r">Nous recommandons vos propres clubs. Une location est possible sur demande si vous voyagez léger.</p>
       </details>
       <details>
-        <summary>Qu'est-ce qui n'est pas inclus ?</summary>
-        <p>Le transport jusqu'au Pays Basque, les boissons hors repas, les activités optionnelles payantes de la journée découverte et l'assurance annulation.</p>
+        <summary data-i18n="faq4.q">Qu'est-ce qui n'est pas inclus ?</summary>
+        <p data-i18n="faq4.r">Le transport jusqu'au Pays Basque, les boissons hors repas, les activités optionnelles payantes de la journée découverte et l'assurance annulation.</p>
       </details>
       <details>
-        <summary>Quelles sont les conditions d'annulation ?</summary>
-        <p>Remboursement intégral jusqu'à 60 jours avant le départ. Entre 60 et 30 jours, avoir valable 12 mois. Moins de 30 jours, la place peut être cédée à une autre personne.</p>
+        <summary data-i18n="faq5.q">Quelles sont les conditions d'annulation ?</summary>
+        <p data-i18n="faq5.r">Remboursement intégral jusqu'à 60 jours avant le départ. Entre 60 et 30 jours, avoir valable 12 mois. Moins de 30 jours, la place peut être cédée à une autre personne.</p>
       </details>
     </div>
   </div>
@@ -496,39 +507,39 @@
 <section id="contact" class="contact">
   <div class="wrap grille">
     <div>
-      <p class="eyebrow">Prochaines sessions</p>
-      <h2>Rejoignez la liste des premiers golfeurs.</h2>
-      <p>Les premières sessions ouvriront au printemps 2027 avec un nombre de places très limité. Laissez-nous vos coordonnées : vous serez prévenu en priorité et bénéficierez d'un tarif de lancement.</p>
-      <p class="accent">« Le green au réveil, la maison le soir. »</p>
+      <p class="eyebrow" data-i18n="contact.eyebrow">Prochaines sessions</p>
+      <h2 data-i18n="contact.h2">Rejoignez la liste des premiers golfeurs.</h2>
+      <p data-i18n="contact.p">Les premières sessions ouvriront au printemps 2027 avec un nombre de places très limité. Laissez-nous vos coordonnées : vous serez prévenu en priorité et bénéficierez d'un tarif de lancement.</p>
+      <p class="accent" data-i18n="contact.accent">« Le green au réveil, la maison le soir. »</p>
     </div>
     <!-- Formulaire non branché : remplacer action="#" par l'URL Formspree ou Tally -->
     <form action="#" method="POST">
       <div class="deux">
-        <label>Prénom<input type="text" name="prenom" required></label>
-        <label>Nom<input type="text" name="nom" required></label>
+        <label><span data-i18n="form.prenom">Prénom</span><input type="text" name="prenom" required></label>
+        <label><span data-i18n="form.nom">Nom</span><input type="text" name="nom" required></label>
       </div>
-      <label>E-mail<input type="email" name="email" required></label>
+      <label><span data-i18n="form.email">E-mail</span><input type="email" name="email" required></label>
       <div class="deux">
-        <label>Index approximatif
+        <label><span data-i18n="form.index">Index approximatif</span>
           <select name="index">
-            <option>Moins de 10</option>
-            <option selected>10 à 20</option>
-            <option>20 à 36</option>
-            <option>Plus de 36</option>
+            <option data-i18n="form.index.o1">Moins de 10</option>
+            <option selected data-i18n="form.index.o2">10 à 20</option>
+            <option data-i18n="form.index.o3">20 à 36</option>
+            <option data-i18n="form.index.o4">Plus de 36</option>
           </select>
         </label>
-        <label>Formule envisagée
+        <label><span data-i18n="form.formule">Formule envisagée</span>
           <select name="formule">
-            <option>Essentiel</option>
-            <option selected>Signature</option>
-            <option>Je ne sais pas encore</option>
+            <option data-i18n="form.formule.o1">Essentiel</option>
+            <option selected data-i18n="form.formule.o2">Signature</option>
+            <option data-i18n="form.formule.o3">Je ne sais pas encore</option>
           </select>
         </label>
       </div>
-      <label>Période souhaitée<input type="text" name="periode" placeholder="Ex. : mai 2027, automne…"></label>
-      <label>Message<textarea name="message" rows="3" placeholder="Vos attentes, vos questions…"></textarea></label>
-      <label class="rgpd"><span><input type="checkbox" required style="width:auto;margin-right:8px">J'accepte que mes données soient utilisées uniquement pour être recontacté au sujet des séjours BELARDI Golf House.</span></label>
-      <button type="submit" class="btn btn--bloc">Je m'inscris sur la liste</button>
+      <label><span data-i18n="form.periode">Période souhaitée</span><input type="text" name="periode" data-i18n-placeholder="form.periode.ph" placeholder="Ex. : mai 2027, automne…"></label>
+      <label><span data-i18n="form.message">Message</span><textarea name="message" rows="3" data-i18n-placeholder="form.message.ph" placeholder="Vos attentes, vos questions…"></textarea></label>
+      <label class="rgpd"><span><input type="checkbox" required style="width:auto;margin-right:8px"><span data-i18n="form.rgpd">J'accepte que mes données soient utilisées uniquement pour être recontacté au sujet des séjours BELARDI Golf House.</span></span></label>
+      <button type="submit" class="btn btn--bloc" data-i18n="form.submit">Je m'inscris sur la liste</button>
     </form>
   </div>
 </section>
@@ -540,16 +551,17 @@
         <b>Belardi</b>
         <span class="gh">Golf House</span>
       </a>
-      <p class="baseline">Séjours golf tout compris au Pays Basque</p>
+      <p class="baseline" data-i18n="footer.baseline">Séjours golf tout compris au Pays Basque</p>
     </div>
     <div class="liens">
       <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>
-      <a href="#">Mentions légales</a>
-      <a href="#">Confidentialité</a>
+      <a href="#" data-i18n="footer.mentions">Mentions légales</a>
+      <a href="#" data-i18n="footer.confidentialite">Confidentialité</a>
       <p class="legal">© 2026 BELARDI Golf House</p>
     </div>
   </div>
 </footer>
 
+<script src="/assets/js/i18n.js" defer></script>
 </body>
 </html>
