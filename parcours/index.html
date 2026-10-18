@@ -31,7 +31,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Josefin+Sans:wght@300&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Josefin+Sans:wght@300&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="/assets/css/belardi.css">
 <style>
@@ -205,10 +205,16 @@
       <a href="/#tarifs" data-i18n="nav.tarifs">Tarifs</a>
       <a href="/#faq" data-i18n="nav.faq">FAQ</a>
       <a href="/#contact" class="cta" data-i18n="nav.reserver">Réserver</a>
-      <div class="langues" role="group" aria-label="Choix de la langue">
-        <button type="button" data-lang="fr">FR</button><span class="sep">·</span>
-        <button type="button" data-lang="en">EN</button><span class="sep">·</span>
-        <button type="button" data-lang="es">ES</button>
+      <div class="lang-switch">
+        <button type="button" class="lang-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <span class="lang-current">FR</span>
+          <svg class="lang-chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+        <ul class="lang-menu" role="listbox" aria-label="Choix de la langue">
+          <li><button type="button" data-lang="fr" role="option"><span class="code">FR</span>Français</button></li>
+          <li><button type="button" data-lang="en" role="option"><span class="code">EN</span>English</button></li>
+          <li><button type="button" data-lang="es" role="option"><span class="code">ES</span>Español</button></li>
+        </ul>
       </div>
     </nav>
 
