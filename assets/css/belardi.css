@@ -136,7 +136,7 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
 
 /* Navigation ordinateur */
 .nav{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
-.nav a{font-weight:700;font-size:18px;letter-spacing:.03em;transition:color .18s ease}
+.nav a{font-weight:700;font-size:16px;letter-spacing:.03em;transition:color .18s ease}
 .nav a:hover{color:var(--terre)}
 .nav a[aria-current="page"]{color:var(--terre);box-shadow:0 1px 0 currentColor}
 .nav .cta{border:1px solid currentColor;padding:12px 20px}
