@@ -1,5 +1,10 @@
 /* BELARDI Golf House — sélecteur de langue FR / EN / ES (traduction côté client) */
 (function(){
+  var FLAGS = {
+    fr: '<rect width="24" height="16" fill="#fff"/><rect width="8" height="16" fill="#002654"/><rect x="16" width="8" height="16" fill="#CE1126"/>',
+    en: '<rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.4"/><path d="M12 0V16M0 8H24" stroke="#fff" stroke-width="5"/><path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="2.6"/>',
+    es: '<rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/>'
+  };
   var DICT = {
     fr: {
       "meta.title": "BELARDI Golf House — Séjour golf tout compris au Pays Basque",
@@ -520,6 +525,9 @@
     document.querySelectorAll(".lang-current").forEach(function(el){
       el.textContent = lang.toUpperCase();
     });
+    document.querySelectorAll(".lang-flag").forEach(function(el){
+      el.innerHTML = FLAGS[lang] || FLAGS.fr;
+    });
 
     try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
   }
@@ -557,5 +565,30 @@
 
     document.addEventListener("click", function(){ closeAllSwitches(); });
     document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeAllSwitches(); });
+
+    // Pilule glissante du menu principal : suit le lien survolé
+    document.querySelectorAll(".nav-liens").forEach(function(wrapper){
+      var pilule = wrapper.querySelector(".nav-pilule");
+      if (!pilule) return;
+      var links = Array.prototype.slice.call(wrapper.querySelectorAll("a"));
+
+      function moveTo(link){
+        pilule.style.width = link.offsetWidth + "px";
+        pilule.style.transform = "translateX(" + link.offsetLeft + "px)";
+      }
+
+      links.forEach(function(link){
+        link.addEventListener("mouseenter", function(){
+          wrapper.classList.add("is-active");
+          moveTo(link);
+        });
+      });
+
+      wrapper.addEventListener("mouseleave", function(){
+        wrapper.classList.remove("is-active");
+        var current = wrapper.querySelector('a[aria-current="page"]');
+        if (current) moveTo(current);
+      });
+    });
   });
 })();
