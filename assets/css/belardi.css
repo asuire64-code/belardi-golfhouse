@@ -165,7 +165,7 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
   padding:10px 18px;border-radius:999px;color:inherit;
   transition:color .35s ease;
 }
-.nav-liens a:hover,.nav-liens a.is-hovered{color:var(--bg)}
+.nav-liens a:hover,.nav-liens a.is-hovered{color:var(--blanc)}
 .nav-liens a[aria-current="page"]{color:var(--terre)}
 
 /* Bouton Réserver — pilule avec fill animé au survol, bordure qui apparaît au hover */
@@ -191,18 +191,19 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
 /* ===================== Sélecteur de langue (menu) ===================== */
 .lang-switch{position:relative}
 .lang-trigger{
-  display:flex;align-items:center;gap:6px;font:inherit;font-family:var(--f-sans);
+  display:flex;align-items:center;gap:7px;font:inherit;font-family:var(--f-sans);
   font-weight:600;font-size:12px;letter-spacing:.05em;color:var(--texte-doux-auto);
   background:none;border:0;border-radius:999px;padding:6px 8px;cursor:pointer;opacity:.85;
-  transition:color .25s ease,opacity .25s ease;
+  line-height:1;transition:color .25s ease,opacity .25s ease;
 }
 .lang-trigger:hover{color:var(--terre);opacity:1}
+.lang-trigger .lang-current{display:block;line-height:1;transform:translateY(.5px)}
 .lang-flag,.lang-menu .flag,.langues .flag{
   width:15px;height:10.5px;flex:none;border-radius:2px;overflow:hidden;
   box-shadow:0 0 0 1px rgba(0,0,0,.08);display:block;
 }
-.lang-trigger .lang-flag{width:13px;height:9px}
-.lang-trigger .lang-chevron{width:8px;height:5px}
+.lang-trigger .lang-flag{width:14px;height:10px;display:block;flex:none}
+.lang-trigger .lang-chevron{width:8px;height:5px;display:block;flex:none}
 .lang-chevron{flex:none;transition:transform .25s ease}
 .lang-switch[data-open="true"] .lang-trigger{color:var(--terre);opacity:1}
 .lang-switch[data-open="true"] .lang-chevron{transform:rotate(180deg)}
