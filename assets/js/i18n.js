@@ -16,7 +16,7 @@
       "nav.origines": "Les origines",
       "nav.sejour": "Le séjour",
       "nav.programme": "Programme",
-      "nav.parcours": "Les parcours",
+      "nav.parcours": "Parcours",
       "nav.tarifs": "Tarifs",
       "nav.faq": "FAQ",
       "nav.apropos": "À propos",
