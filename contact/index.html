@@ -42,39 +42,49 @@
 
   .contact-hero{padding:var(--e6) 0 var(--e5)}
   .contact-hero .wrap{
-    max-width:720px;margin:0 auto;padding-left:24px;padding-right:24px;
-    display:flex;flex-direction:column;align-items:center;text-align:center;
+    display:grid;grid-template-columns:.78fr 1fr;gap:clamp(32px, 6vw, 80px);
+    align-items:center;
   }
 
-  /* Photo : petite, intégrée, bords lissés */
-  .contact-photo{
-    position:relative;overflow:hidden;border-radius:20px;
-    width:84px;height:84px;margin-bottom:var(--e3);
+  /* Colonne gauche : capsule photo décalée, deux cartes superposées */
+  .contact-capsule{
+    position:relative;aspect-ratio:4/5;max-width:420px;margin:0 auto;width:100%;
+  }
+  .contact-capsule .carte{
+    position:absolute;overflow:hidden;border-radius:22px;
     background:linear-gradient(155deg,var(--bloc-olive) 0%,#2b331f 100%);
-    box-shadow:0 10px 28px rgba(31,37,27,.16);
+    box-shadow:0 20px 48px rgba(31,37,27,.18);
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;
     transition:transform .5s cubic-bezier(.25,1,.3,1);
   }
-  .contact-photo:hover{transform:translateY(-3px)}
-  .contact-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .contact-photo .espace-reserve{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    color:rgba(250,248,242,.55);
+  .contact-capsule .carte:hover{transform:translateY(-4px)}
+  .contact-capsule .carte img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .contact-capsule .carte-arriere{
+    width:84%;height:78%;top:0;right:0;transform:rotate(3deg);z-index:1;
   }
-  .contact-photo .espace-reserve svg{width:26px;height:26px}
+  .contact-capsule .carte-avant{
+    width:62%;height:56%;bottom:0;left:0;transform:rotate(-3deg);z-index:2;
+  }
+  .contact-capsule .carte svg{width:28px;height:28px;color:rgba(250,248,242,.5)}
+  .contact-capsule .carte span{
+    font-family:var(--f-sans);font-weight:500;font-size:11px;letter-spacing:.08em;
+    text-transform:uppercase;color:rgba(250,248,242,.5);text-align:center;padding:0 16px;
+  }
 
+  /* Colonne droite : contenu + formulaire */
   .contact-corps .eyebrow{margin-bottom:14px}
   .contact-corps h1{
     font-family:var(--f-accent);font-style:italic;font-weight:500;
-    font-size:clamp(36px, 4.2vw, 54px);line-height:1.1;
-    color:var(--fg);margin:0 0 18px;
+    font-size:clamp(34px, 3.4vw, 46px);line-height:1.1;
+    color:var(--fg);margin:0 0 16px;
   }
   .contact-corps .lead{
-    max-width:46ch;color:var(--texte-doux-auto);font-size:1.05rem;line-height:1.65;
-    margin:0 auto var(--e5);
+    max-width:46ch;color:var(--texte-doux-auto);font-size:1.02rem;line-height:1.6;
+    margin:0 0 var(--e5);
   }
 
   /* Formulaire */
-  .contact-form{width:100%;max-width:640px;text-align:left}
+  .contact-form{width:100%}
   .champ-titre{
     font-family:var(--f-sans);font-weight:600;font-size:13px;
     letter-spacing:.12em;text-transform:uppercase;color:var(--fg);
@@ -119,7 +129,7 @@
   .contact-cta:hover::before{transform:scale(1,1)}
   .contact-cta svg{width:16px;height:16px;transition:transform .35s ease}
   .contact-cta:hover svg{transform:translateX(3px)}
-  .form-pied{display:flex;justify-content:center}
+  .form-pied{display:flex;justify-content:flex-start}
 
   /* Bandeau bas de page : email à gauche, Instagram à droite */
   .contact-bandeau{border-top:1px solid var(--bord);background:var(--surface)}
@@ -135,6 +145,13 @@
   .contact-bandeau a:hover{color:var(--terre)}
   .contact-bandeau svg{width:17px;height:17px;flex:none;color:var(--terre)}
 
+  @media(max-width:900px){
+    .contact-hero .wrap{grid-template-columns:1fr;text-align:center}
+    .contact-capsule{max-width:320px;margin:0 auto var(--e4)}
+    .contact-corps .lead{margin-left:auto;margin-right:auto}
+    .contact-form{text-align:left}
+    .form-pied{justify-content:center}
+  }
   @media(max-width:640px){
     .grille-champs{grid-template-columns:1fr}
     .contact-bandeau .inner{justify-content:center;text-align:center}
@@ -221,10 +238,15 @@
 
 <section class="contact-hero">
   <div class="wrap">
-    <div class="contact-photo">
-      <!-- Remplacer par : <img src="/assets/photos/contact-golf.jpg" alt="Green de golf au Pays Basque en fin de journée"> -->
-      <div class="espace-reserve" aria-hidden="true">
+    <div class="contact-capsule">
+      <div class="carte carte-arriere" aria-hidden="true">
+        <!-- Remplacer par : <img src="/assets/photos/contact-golf-1.jpg" alt=""> -->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="17" r="4"/><path d="M12 13V3"/><path d="M12 3c3 0 6 1.3 6 3s-3 3-6 3"/></svg>
+        <span>Illustration à venir</span>
+      </div>
+      <div class="carte carte-avant" aria-hidden="true">
+        <!-- Remplacer par : <img src="/assets/photos/contact-golf-2.jpg" alt=""> -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
       </div>
     </div>
 
@@ -232,42 +254,42 @@
       <p class="eyebrow">Contact</p>
       <h1>Contactez-nous</h1>
       <p class="lead">Vous avez des questions ou besoin de plus d'informations ? N'hésitez pas à nous contacter ! Qu'il s'agisse de réservations, de parcours ou de demandes particulières, nous serons ravis de vous aider.</p>
+
+      <form class="contact-form" action="mailto:contact@belardi-golfhouse.fr" method="post" enctype="text/plain">
+        <p class="champ-titre">Vos coordonnées</p>
+        <div class="grille-champs">
+          <div class="champ">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Prénom" autocomplete="given-name">
+          </div>
+          <div class="champ">
+            <label for="nom">Nom de famille</label>
+            <input type="text" id="nom" name="nom" placeholder="Nom de famille" autocomplete="family-name">
+          </div>
+          <div class="champ">
+            <label for="email">Adresse email</label>
+            <input type="email" id="email" name="email" placeholder="Adresse email" autocomplete="email" required>
+          </div>
+          <div class="champ">
+            <label for="telephone">Numéro de téléphone</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="Numéro de téléphone" autocomplete="tel">
+          </div>
+        </div>
+
+        <p class="champ-titre espace-haut">Demande de renseignements et requête</p>
+        <div class="champ pleine-largeur">
+          <label for="message" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Votre message</label>
+          <textarea id="message" name="message" placeholder="Votre message" required></textarea>
+        </div>
+
+        <div class="form-pied">
+          <button type="submit" class="contact-cta">
+            Envoyer une requête
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+          </button>
+        </div>
+      </form>
     </div>
-
-    <form class="contact-form" action="mailto:contact@belardi-golfhouse.fr" method="post" enctype="text/plain">
-      <p class="champ-titre">Vos coordonnées</p>
-      <div class="grille-champs">
-        <div class="champ">
-          <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" name="prenom" placeholder="Prénom" autocomplete="given-name">
-        </div>
-        <div class="champ">
-          <label for="nom">Nom de famille</label>
-          <input type="text" id="nom" name="nom" placeholder="Nom de famille" autocomplete="family-name">
-        </div>
-        <div class="champ">
-          <label for="email">Adresse email</label>
-          <input type="email" id="email" name="email" placeholder="Adresse email" autocomplete="email" required>
-        </div>
-        <div class="champ">
-          <label for="telephone">Numéro de téléphone</label>
-          <input type="tel" id="telephone" name="telephone" placeholder="Numéro de téléphone" autocomplete="tel">
-        </div>
-      </div>
-
-      <p class="champ-titre espace-haut">Demande de renseignements et requête</p>
-      <div class="champ pleine-largeur">
-        <label for="message" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Votre message</label>
-        <textarea id="message" name="message" placeholder="Votre message" required></textarea>
-      </div>
-
-      <div class="form-pied">
-        <button type="submit" class="contact-cta">
-          Envoyer une requête
-          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
-        </button>
-      </div>
-    </form>
   </div>
 </section>
 
