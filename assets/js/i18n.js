@@ -572,15 +572,32 @@
       if (!pilule) return;
       var links = Array.prototype.slice.call(wrapper.querySelectorAll("a"));
 
-      function moveTo(link){
+      function moveTo(link, instantane){
+        if (instantane){
+          pilule.style.transition = "none";
+          // force le navigateur à appliquer le style sans transition avant de la réactiver
+          // eslint-disable-next-line no-unused-expressions
+          pilule.offsetWidth;
+        }
         pilule.style.width = link.offsetWidth + "px";
         pilule.style.transform = "translateX(" + link.offsetLeft + "px)";
+        if (instantane){
+          pilule.offsetWidth;
+          pilule.style.transition = "";
+        }
       }
+
+      // Position de départ silencieuse sur la page active, sans transition ni survol visible
+      var actif = wrapper.querySelector('a[aria-current="page"]');
+      if (actif) moveTo(actif, true);
 
       links.forEach(function(link){
         link.addEventListener("mouseenter", function(){
+          var premierSurvol = !wrapper.classList.contains("is-active");
           wrapper.classList.add("is-active");
-          moveTo(link);
+          // Si la pilule n'était pas déjà visible, on la fait apparaître directement
+          // sous le curseur plutôt que de la laisser glisser depuis une ancienne position.
+          moveTo(link, premierSurvol);
         });
       });
 

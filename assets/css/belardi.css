@@ -156,7 +156,7 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
   position:absolute;top:0;left:0;height:100%;border-radius:999px;
   background:var(--fg);z-index:0;pointer-events:none;
   opacity:0;transform:translateX(0);width:0;
-  transition:transform .4s cubic-bezier(.65,0,.35,1),width .4s cubic-bezier(.65,0,.35,1),opacity .25s ease;
+  transition:transform .22s cubic-bezier(.4,0,.2,1),width .22s cubic-bezier(.4,0,.2,1),opacity .18s ease;
 }
 .nav-liens.is-active .nav-pilule{opacity:1}
 
