@@ -42,13 +42,13 @@
 
   .contact-hero{padding:var(--e6) 0 var(--e5)}
   .contact-hero .wrap{
-    display:grid;grid-template-columns:1fr 1fr;gap:0;
-    align-items:center;
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px, 4vw, 64px);
+    align-items:center;max-width:1480px;padding-left:clamp(24px, 4vw, 56px);padding-right:clamp(24px, 4vw, 56px);
   }
 
-  /* Colonne gauche : capsule photo, centrée sur l'axe colonne 1/2 (sur 4) */
+  /* Colonne gauche : capsule photo, ancrée vers le bord gauche de l'écran */
   .contact-capsule{
-    position:relative;aspect-ratio:4/5;max-width:560px;margin:0 auto;width:96%;
+    position:relative;aspect-ratio:4/5;max-width:520px;width:100%;margin:0 auto 0 0;
   }
   .contact-capsule .carte{
     position:absolute;overflow:hidden;border-radius:22px;
@@ -72,20 +72,20 @@
     text-transform:uppercase;color:rgba(250,248,242,.5);text-align:center;padding:0 14px;
   }
 
-  /* Colonne droite : contenu + formulaire */
-  .contact-corps{text-align:center}
+  /* Colonne droite : contenu + formulaire, ancrés vers le bord droit de l'écran */
+  .contact-corps{text-align:left}
   .contact-corps h1{
     font-family:var(--f-sans);font-weight:700;
-    font-size:clamp(46px, 5vw, 66px);line-height:1.05;letter-spacing:-.01em;
-    color:var(--fg);margin:0 0 18px;
+    font-size:clamp(42px, 4.4vw, 58px);line-height:1.05;letter-spacing:-.01em;
+    color:var(--fg);margin:0 0 16px;
   }
   .contact-corps .lead{
-    max-width:42ch;color:var(--fg);font-weight:600;font-size:1.12rem;line-height:1.55;
-    margin:0 auto var(--e5);
+    max-width:46ch;color:var(--fg);font-weight:600;font-size:1.1rem;line-height:1.55;
+    margin:0 0 var(--e5);
   }
 
   /* Formulaire */
-  .contact-form{width:100%;max-width:580px;margin:0 auto;text-align:left}
+  .contact-form{width:100%;max-width:560px;margin:0 0 0 auto;text-align:left}
   .champ-titre{
     font-family:var(--f-sans);font-weight:600;font-size:13px;
     letter-spacing:.12em;text-transform:uppercase;color:var(--fg);
@@ -116,32 +116,47 @@
   }
   .champ.pleine-largeur{margin-bottom:var(--e4)}
 
-  /* Téléphone : préfixe +33 fixe + saisie du numéro */
+  /* Téléphone : badge +33 détaché + saisie du numéro */
   .champ-tel{
-    display:flex;align-items:center;
-    background:var(--surface);border:1.5px solid var(--bord);border-radius:14px;
-    transition:border-color .25s ease,box-shadow .25s ease;
-  }
-  .champ-tel:focus-within{
-    border-color:var(--terre);box-shadow:0 0 0 3px rgba(160,87,58,.12);
+    display:flex;align-items:stretch;gap:8px;
   }
   .champ-tel .prefixe{
-    font-family:var(--f-sans);font-weight:400;font-size:16px;color:var(--fg);
-    padding:17px 0 17px 20px;flex:none;user-select:none;
+    font-family:var(--f-sans);font-weight:600;font-size:15px;color:var(--texte-doux-auto);
+    background:var(--bord-clair, rgba(31,37,27,.05));border:1.5px solid transparent;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;padding:0 16px;flex:none;user-select:none;
+    transition:color .25s ease,background .25s ease;
   }
+  .champ-tel:focus-within .prefixe{color:var(--terre);background:rgba(160,87,58,.08)}
   .champ-tel input{
-    font-family:var(--f-sans);font-weight:400;font-size:16px;color:var(--fg);
-    background:none;border:0;padding:17px 20px 17px 6px;width:100%;
+    font-family:var(--f-sans);font-weight:400;font-size:16px;color:var(--fg);letter-spacing:.01em;
+    background:var(--surface);border:1.5px solid var(--bord);border-radius:14px;
+    padding:17px 20px;width:100%;transition:border-color .25s ease,box-shadow .25s ease;
   }
-  .champ-tel input:focus{outline:none}
-  .champ-tel input::placeholder{color:var(--texte-doux-auto);opacity:.75}
+  .champ-tel input:focus{
+    outline:none;border-color:var(--terre);box-shadow:0 0 0 3px rgba(160,87,58,.12);
+  }
+  .champ-tel input::placeholder{color:var(--texte-doux-auto);opacity:.55}
+
+  /* Mise en évidence d'un champ requis non rempli */
+  .champ.en-erreur input,
+  .champ.en-erreur textarea,
+  .champ.en-erreur .champ-tel input{
+    border-color:#B5452E;box-shadow:0 0 0 3px rgba(181,69,46,.1);
+  }
+  .champ-erreur{
+    display:none;align-items:center;gap:6px;
+    font-family:var(--f-sans);font-weight:500;font-size:12.5px;color:#B5452E;
+    margin-top:7px;
+  }
+  .champ.en-erreur .champ-erreur{display:flex}
+  .champ-erreur svg{width:13px;height:13px;flex:none}
 
   .message-validation{
     font-family:var(--f-sans);font-weight:500;font-size:13.5px;color:var(--terre);
-    margin:0 0 0 16px;opacity:0;max-height:0;overflow:hidden;
+    opacity:0;max-height:0;overflow:hidden;width:100%;
     transition:opacity .25s ease,max-height .25s ease,margin .25s ease;
   }
-  .message-validation.visible{opacity:1;max-height:40px;margin-top:0}
+  .message-validation.visible{opacity:1;max-height:40px;margin-top:4px}
 
   .contact-cta{
     position:relative;overflow:hidden;isolation:isolate;
@@ -178,8 +193,9 @@
   .contact-bandeau svg{width:17px;height:17px;flex:none;color:var(--terre)}
 
   @media(max-width:900px){
-    .contact-hero .wrap{grid-template-columns:1fr;text-align:center}
+    .contact-hero .wrap{grid-template-columns:1fr;max-width:640px;margin:0 auto}
     .contact-capsule{max-width:320px;margin:0 auto var(--e4)}
+    .contact-corps{text-align:center}
     .contact-corps .lead{margin-left:auto;margin-right:auto}
     .contact-form{max-width:580px;margin:0 auto;text-align:left}
     .form-pied{justify-content:center}
@@ -289,31 +305,36 @@
       <form class="contact-form" id="formulaireContact" action="mailto:contact@belardi-golfhouse.fr" method="post" enctype="text/plain" novalidate>
         <p class="champ-titre">Vos coordonnées</p>
         <div class="grille-champs">
-          <div class="champ">
+          <div class="champ" data-champ="prenom">
             <label for="prenom">Prénom</label>
             <input type="text" id="prenom" name="prenom" autocomplete="given-name">
+            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre prénom</p>
           </div>
-          <div class="champ">
+          <div class="champ" data-champ="nom">
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="nom" autocomplete="family-name">
+            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre nom</p>
           </div>
-          <div class="champ">
+          <div class="champ" data-champ="email">
             <label for="email">Adresse email</label>
             <input type="email" id="email" name="email" autocomplete="email" required>
+            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre adresse email</p>
           </div>
-          <div class="champ">
+          <div class="champ" data-champ="telephone">
             <label for="telephone">Numéro de téléphone</label>
             <div class="champ-tel">
               <span class="prefixe" aria-hidden="true">+33</span>
               <input type="tel" id="telephone" name="telephone" placeholder="6 00 00 00 00" autocomplete="tel">
             </div>
+            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre numéro</p>
           </div>
         </div>
 
         <p class="champ-titre espace-haut">Demande de renseignements</p>
-        <div class="champ pleine-largeur">
+        <div class="champ pleine-largeur" data-champ="message">
           <label for="message" class="sr-only">Votre message</label>
           <textarea id="message" name="message" placeholder="Votre message"></textarea>
+          <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre message</p>
         </div>
 
         <div class="form-pied">
@@ -367,16 +388,27 @@
     var email = document.getElementById("email");
     var message = document.getElementById("messageValidation");
     var masquerTimeout;
+    var champs = Array.prototype.slice.call(form.querySelectorAll("[data-champ]"));
 
-    function champsManquants(){
-      var liste = [];
-      if (!email.value.trim()) liste.push("votre adresse email");
-      if (!document.getElementById("prenom").value.trim()) liste.push("votre prénom");
-      if (!document.getElementById("nom").value.trim()) liste.push("votre nom");
-      if (!document.getElementById("telephone").value.trim()) liste.push("votre numéro de téléphone");
-      if (!document.getElementById("message").value.trim()) liste.push("votre message");
-      return liste;
+    function champVide(champ){
+      var champName = champ.getAttribute("data-champ");
+      var control = champName === "telephone"
+        ? champ.querySelector("input")
+        : champ.querySelector("input, textarea");
+      return !control.value.trim();
     }
+
+    function marquerErreur(champ, enErreur){
+      champ.classList.toggle("en-erreur", enErreur);
+    }
+
+    function retirerErreurAuSaisie(champ){
+      var control = champ.querySelector("input, textarea");
+      control.addEventListener("input", function(){
+        if (!champVide(champ)) marquerErreur(champ, false);
+      });
+    }
+    champs.forEach(retirerErreurAuSaisie);
 
     function afficherMessage(texte){
       message.textContent = texte;
@@ -386,15 +418,28 @@
     }
 
     form.addEventListener("submit", function(e){
-      if (!email.value.trim()){
+      var premierEnErreur = null;
+      var emailVide = champVide(document.getElementById("email").closest("[data-champ]"));
+
+      champs.forEach(function(champ){
+        var vide = champVide(champ);
+        marquerErreur(champ, vide);
+        if (vide && !premierEnErreur) premierEnErreur = champ;
+      });
+
+      if (emailVide){
         e.preventDefault();
         afficherMessage("Merci de renseigner au moins votre adresse email pour envoyer votre requête.");
-        email.focus();
+        if (premierEnErreur){
+          var ctrl = premierEnErreur.querySelector("input, textarea");
+          ctrl.focus();
+          premierEnErreur.scrollIntoView({behavior:"smooth", block:"center"});
+        }
         return;
       }
-      var manquants = champsManquants();
-      if (manquants.length){
-        afficherMessage("Pensez à compléter : " + manquants.join(", ") + ".");
+
+      if (premierEnErreur){
+        afficherMessage("Pensez à compléter les champs mis en évidence avant l'envoi.");
       }
     });
   })();

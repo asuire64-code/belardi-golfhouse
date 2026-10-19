@@ -602,9 +602,13 @@
       });
 
       wrapper.addEventListener("mouseleave", function(){
+        // La bulle disparaît sur place (fondu), sans glisser vers un autre lien.
         wrapper.classList.remove("is-active");
+        // Une fois invisible, on la repositionne sans transition sur la page active,
+        // afin que le prochain survol la fasse réapparaître directement sous le curseur
+        // (même principe d'arrivée que de sortie, jamais de glissement visible).
         var current = wrapper.querySelector('a[aria-current="page"]');
-        if (current) moveTo(current);
+        if (current) moveTo(current, true);
       });
     });
   });
