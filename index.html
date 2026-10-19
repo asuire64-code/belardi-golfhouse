@@ -242,23 +242,27 @@
     </a>
 
     <nav class="nav">
-      <a href="#origines" data-i18n="nav.origines">Les origines</a>
-      <a href="#concept" data-i18n="nav.sejour">Le séjour</a>
-      <a href="#programme" data-i18n="nav.programme">Programme</a>
-      <a href="/parcours/" data-i18n="nav.parcours">Les parcours</a>
-      <a href="#tarifs" data-i18n="nav.tarifs">Tarifs</a>
-      <a href="#faq" data-i18n="nav.faq">FAQ</a>
-      <a href="#contact" class="cta" data-i18n="nav.reserver">Réserver</a>
-      <div class="lang-switch">
-        <button type="button" class="lang-trigger" aria-haspopup="listbox" aria-expanded="false">
-          <span class="lang-current">FR</span>
-          <svg class="lang-chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-        </button>
-        <ul class="lang-menu" role="listbox" aria-label="Choix de la langue">
-          <li><button type="button" data-lang="fr" role="option"><span class="code">FR</span>Français</button></li>
-          <li><button type="button" data-lang="en" role="option"><span class="code">EN</span>English</button></li>
-          <li><button type="button" data-lang="es" role="option"><span class="code">ES</span>Español</button></li>
-        </ul>
+      <div class="nav-liens">
+        <a href="/" data-i18n="nav.accueil">Accueil</a>
+        <a href="#programme" data-i18n="nav.programme">Programme</a>
+        <a href="#tarifs" data-i18n="nav.tarifs">Tarifs</a>
+        <a href="#origines" data-i18n="nav.apropos">À propos</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <div class="lang-switch">
+          <button type="button" class="lang-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="lang-flag" aria-hidden="true">🇫🇷</span>
+            <span class="lang-current">FR</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          </button>
+          <ul class="lang-menu" role="listbox" aria-label="Choix de la langue">
+            <li><button type="button" data-lang="fr" data-flag="🇫🇷" role="option"><span class="flag" aria-hidden="true">🇫🇷</span><span class="code">FR</span>Français</button></li>
+            <li><button type="button" data-lang="en" data-flag="🇬🇧" role="option"><span class="flag" aria-hidden="true">🇬🇧</span><span class="code">EN</span>English</button></li>
+            <li><button type="button" data-lang="es" data-flag="🇪🇸" role="option"><span class="flag" aria-hidden="true">🇪🇸</span><span class="code">ES</span>Español</button></li>
+          </ul>
+        </div>
+        <a href="#contact" class="cta" data-i18n="nav.reserver">Réserver</a>
       </div>
     </nav>
 
@@ -267,17 +271,16 @@
 </header>
 
 <nav class="menu-mobile" aria-label="Menu principal">
-  <a href="#origines" data-i18n="nav.origines" onclick="document.getElementById('menu').checked=false">Les origines</a>
-  <a href="#concept" data-i18n="nav.sejour" onclick="document.getElementById('menu').checked=false">Le séjour</a>
+  <a href="/" data-i18n="nav.accueil" onclick="document.getElementById('menu').checked=false">Accueil</a>
   <a href="#programme" data-i18n="nav.programme" onclick="document.getElementById('menu').checked=false">Programme</a>
-  <a href="/parcours/" data-i18n="nav.parcours">Les parcours</a>
   <a href="#tarifs" data-i18n="nav.tarifs" onclick="document.getElementById('menu').checked=false">Tarifs</a>
-  <a href="#faq" data-i18n="nav.faq" onclick="document.getElementById('menu').checked=false">FAQ</a>
-  <a href="#contact" data-i18n="nav.reserver" onclick="document.getElementById('menu').checked=false">Réserver</a>
+  <a href="#origines" data-i18n="nav.apropos" onclick="document.getElementById('menu').checked=false">À propos</a>
+  <a href="#contact" data-i18n="nav.contact" onclick="document.getElementById('menu').checked=false">Contact</a>
+  <a href="#contact" class="menu-mobile-cta" data-i18n="nav.reserver" onclick="document.getElementById('menu').checked=false">Réserver</a>
   <div class="langues" role="group" aria-label="Choix de la langue">
-    <button type="button" data-lang="fr">FR</button><span class="sep">·</span>
-    <button type="button" data-lang="en">EN</button><span class="sep">·</span>
-    <button type="button" data-lang="es">ES</button>
+    <button type="button" data-lang="fr"><span class="flag" aria-hidden="true">🇫🇷</span>FR</button><span class="sep">·</span>
+    <button type="button" data-lang="en"><span class="flag" aria-hidden="true">🇬🇧</span>EN</button><span class="sep">·</span>
+    <button type="button" data-lang="es"><span class="flag" aria-hidden="true">🇪🇸</span>ES</button>
   </div>
 </nav>
 
