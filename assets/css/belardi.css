@@ -110,7 +110,7 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
 }
 .entete>.wrap{
   display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--e3);
-  padding:40px 44px;max-width:none;
+  padding:24px 44px;max-width:none;
 }
 @media(max-width:900px){.entete>.wrap{padding:22px var(--e3)}}
 
