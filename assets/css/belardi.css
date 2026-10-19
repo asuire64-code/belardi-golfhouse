@@ -117,7 +117,7 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
 .entete>.wrap>.nav-actions{grid-column:3;justify-self:end;display:flex;align-items:center;gap:20px}
 .entete>.wrap>.burger{grid-column:3;justify-self:end}
 @media(max-width:900px){.entete>.wrap{padding:22px var(--e3)}}
-@media(max-width:1180px){
+@media(max-width:1250px){
   .entete>.wrap{display:flex;justify-content:space-between}
   .entete>.wrap>.logo{justify-self:auto}
 }
@@ -145,7 +145,7 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
 /* Navigation ordinateur */
 .nav{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
 .nav-liens{
-  display:flex;align-items:center;gap:6px;flex-wrap:wrap;position:relative;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;position:relative;
 }
 .nav-actions{display:flex;align-items:center;gap:22px;flex:none;margin-left:auto}
 
@@ -245,7 +245,7 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
 .burger i:last-child{top:9.5px}
 .menu-mobile{display:none}
 
-@media(max-width:1180px){
+@media(max-width:1250px){
   .entete>.wrap>.nav{display:none}
   .entete>.wrap>.nav-actions{display:none}
   .burger{display:block}
