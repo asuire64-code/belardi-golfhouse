@@ -122,16 +122,16 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
   .entete>.wrap>.logo{justify-self:auto}
 }
 
-/* Logo horizontal 20a — symbole 76 px, texte à 0,46 et 0,17 de sa hauteur */
-.logo{display:flex;align-items:center;gap:20px;flex:none}
-.logo .symbole{height:76px;width:auto;flex:none}
-.logo .nom{display:flex;flex-direction:column;gap:6px}
+/* Logo horizontal 20a — symbole 60 px, texte à 0,46 et 0,17 de sa hauteur */
+.logo{display:flex;align-items:center;gap:16px;flex:none}
+.logo .symbole{height:60px;width:auto;flex:none}
+.logo .nom{display:flex;flex-direction:column;gap:5px}
 .logo .nom b{
-  font-family:var(--f-sans);font-weight:600;font-size:34px;letter-spacing:var(--ls-wordmark);
+  font-family:var(--f-sans);font-weight:600;font-size:27px;letter-spacing:var(--ls-wordmark);
   line-height:1;white-space:nowrap;color:var(--fg);
 }
 .logo .nom span{
-  font-family:var(--f-sans);font-weight:700;font-size:12px;letter-spacing:.46em;
+  font-family:var(--f-sans);font-weight:700;font-size:10px;letter-spacing:.44em;
   line-height:1;white-space:nowrap;color:var(--accent);
 }
 
@@ -251,8 +251,8 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
   .burger{display:block}
 }
 @media(max-width:768px){
-  .logo .symbole{height:48px}
-  .logo .nom b{font-size:21px}
+  .logo .symbole{height:42px}
+  .logo .nom b{font-size:19px}
   .logo .nom span{font-size:8px;letter-spacing:.38em}
   .symbole .b-alveoles{display:none} /* sous 40 px : symbole sans alvéoles */
   .menu-mobile{
