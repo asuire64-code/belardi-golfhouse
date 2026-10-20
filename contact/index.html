@@ -66,9 +66,13 @@
   .contact-capsule .carte-arriere{
     width:92%;height:76%;top:0;right:0;transform:rotate(2.5deg);z-index:1;
   }
-  /* Carte avant : horizontale, élargie davantage pour affirmer sa présence */
+  /* Carte avant : horizontale, élargie davantage pour affirmer sa présence.
+     Décalée franchement vers la gauche (jusqu'à déborder du cadre de la
+     capsule) pour bien la dissocier visuellement de la carte arrière :
+     sans ce décalage net, les deux cartes semblent n'en former qu'une
+     seule vue de loin. */
   .contact-capsule .carte-avant{
-    width:86%;height:27%;bottom:6%;left:-1.5%;transform:rotate(-2.5deg);z-index:2;
+    width:72%;height:25%;bottom:-2%;left:-2%;transform:rotate(-2.5deg);z-index:2;
   }
   .contact-capsule .carte svg{width:26px;height:26px;color:rgba(250,248,242,.5)}
   .contact-capsule .carte span{
@@ -80,20 +84,20 @@
   .contact-corps{text-align:left}
   .contact-corps h1{
     font-family:var(--f-sans);font-weight:700;text-align:center;
-    font-size:clamp(32px, 3.4vw, 42px);line-height:1.08;letter-spacing:-.01em;
-    color:var(--fg);margin:0 0 14px;max-width:560px;margin-left:auto;margin-right:0;
+    font-size:clamp(36px, 3.8vw, 48px);line-height:1.08;letter-spacing:-.01em;
+    color:var(--fg);margin:0 0 18px;max-width:560px;margin-left:auto;margin-right:0;
   }
   .contact-corps .lead{
     max-width:560px;color:var(--fg);line-height:1.4;text-align:center;
-    margin:0 0 20px;margin-left:auto;margin-right:0;
+    margin:0 0 28px;margin-left:auto;margin-right:0;
   }
   .contact-corps .lead .lead-l1{
-    display:block;font-weight:600;font-size:.98rem;line-height:1.4;
+    display:block;font-weight:600;font-size:1rem;line-height:1.4;
   }
   .contact-corps .lead .lead-l2{
-    display:block;font-style:italic;font-weight:500;font-size:1.15rem;
+    display:block;font-style:italic;font-weight:500;font-size:1.2rem;
     font-family:"Cormorant Garamond", var(--f-sans);color:var(--texte-doux-auto);
-    margin-top:6px;
+    margin-top:8px;
   }
 
   /* Formulaire */
@@ -101,11 +105,11 @@
   .champ-titre{
     font-family:var(--f-sans);font-weight:600;font-size:11.5px;
     letter-spacing:.12em;text-transform:uppercase;color:var(--texte-doux-auto);
-    margin:0 0 12px;
+    margin:0 0 14px;
   }
-  .champ-titre.espace-haut{margin-top:var(--e3)}
+  .champ-titre.espace-haut{margin-top:28px}
   .grille-champs{
-    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;
   }
   .champ{display:flex;flex-direction:column}
   .champ label{
@@ -507,7 +511,7 @@
 
         <div class="form-pied">
           <button type="submit" class="contact-cta">
-            <span data-i18n="cp.submit">Envoyez ma demande</span>
+            <span data-i18n="cp.submit">Envoyer ma demande</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
           </button>
           <p class="message-validation" id="messageValidation" role="status" data-i18n="cp.validation.defaut">Merci de renseigner au moins votre adresse email.</p>

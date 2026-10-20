@@ -187,7 +187,7 @@
       "cp.validation.captcha": "Merci de confirmer que vous n'êtes pas un robot avant l'envoi.",
       "cp.validation.champs": "Pensez à compléter les champs mis en évidence avant l'envoi.",
       "cp.validation.defaut": "Merci de renseigner au moins votre adresse email.",
-      "cp.submit": "Envoyez ma demande",
+      "cp.submit": "Envoyer ma demande",
       "cp.indicatif.recherche.ph": "Rechercher un pays…",
       "cp.indicatif.aria": "Indicatif téléphonique",
       "cp.indicatif.vide": "Aucun pays trouvé"
