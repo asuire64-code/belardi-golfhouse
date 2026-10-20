@@ -84,8 +84,17 @@
     color:var(--fg);margin:0 0 40px;max-width:560px;margin-left:auto;margin-right:0;
   }
   .contact-corps .lead{
-    max-width:600px;color:var(--fg);font-weight:600;font-size:1.05rem;line-height:1.55;text-align:center;
+    max-width:560px;color:var(--fg);line-height:1.5;text-align:center;
     margin:0 0 var(--e5);margin-left:auto;margin-right:0;
+  }
+  .contact-corps .lead .lead-l1{
+    display:block;font-weight:600;font-size:12.5px;letter-spacing:-.003em;
+    white-space:nowrap;
+  }
+  .contact-corps .lead .lead-l2{
+    display:block;font-style:italic;font-weight:500;font-size:.95rem;
+    font-family:"Cormorant Garamond", var(--f-sans);color:var(--texte-doux-auto);
+    margin-top:6px;
   }
 
   /* Formulaire */
@@ -436,7 +445,10 @@
 
     <div class="contact-corps">
       <h1 data-i18n="cp.h1">Contactez-nous</h1>
-      <p class="lead" data-i18n="cp.lead">Des questions, besoin d'aide pour votre réservation, ou envie d'en savoir plus sur nos services ? Notre équipe dédiée est là pour vous aider !</p>
+      <p class="lead">
+        <span class="lead-l1" data-i18n="cp.lead.l1">Des questions, besoin d'aide pour votre réservation, ou envie d'en savoir plus sur nos services ?</span>
+        <em class="lead-l2" data-i18n="cp.lead.l2">Notre équipe dédiée est là pour vous aider !</em>
+      </p>
 
       <form class="contact-form" id="formulaireContact" action="mailto:contact@belardi-golfhouse.fr" method="post" enctype="text/plain" novalidate>
         <p class="champ-titre" data-i18n="cp.titre.coordonnees">Vos coordonnées</p>
