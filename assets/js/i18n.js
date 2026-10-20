@@ -159,7 +159,37 @@
       "pc.rappel.cta": "Demander les prochaines dates",
       "pc.sources": "Données des parcours (trous, par, longueur, architecte, année) relevées auprès des fiches publiques des clubs et des annuaires Golfstars, 1golf.eu et Where2Golf. Les longueurs varient selon les départs : elles sont données ici depuis les repères arrière. Fond de carte © contributeurs OpenStreetMap.",
       "pc.menu.origines": "Retour à l'accueil",
-      "pc.footer.faq": "Questions fréquentes"
+      "pc.footer.faq": "Questions fréquentes",
+
+      "cp.meta.title": "Contact — BELARDI Golf House",
+      "cp.meta.description": "Une question sur votre séjour golf au Pays Basque ? Écrivez-nous ou suivez BELARDI Golf House sur Instagram.",
+      "cp.h1": "Contactez-nous",
+      "cp.lead": "Des questions, besoin d'aide pour votre réservation, ou envie d'en savoir plus sur nos services ? Notre équipe dédiée est là pour vous aider !",
+      "cp.illustration": "Illustration à venir",
+      "cp.titre.coordonnees": "Vos coordonnées",
+      "cp.titre.message": "Demande de renseignements",
+      "cp.prenom": "Prénom",
+      "cp.nom": "Nom",
+      "cp.email": "Adresse email",
+      "cp.telephone": "Numéro de téléphone",
+      "cp.optionnel": "(optionnel)",
+      "cp.message.sr": "Votre message",
+      "cp.message.ph": "Votre message",
+      "cp.mention.requis": "Champs obligatoires",
+      "cp.erreur.prenom": "Merci de renseigner votre prénom",
+      "cp.erreur.nom": "Merci de renseigner votre nom",
+      "cp.erreur.email": "Merci de renseigner votre adresse email",
+      "cp.erreur.telephone": "Merci de renseigner votre numéro",
+      "cp.erreur.message": "Merci de renseigner votre message",
+      "cp.erreur.captcha": "Merci de confirmer que vous n'êtes pas un robot",
+      "cp.validation.email": "Merci de renseigner au moins votre adresse email pour envoyer votre requête.",
+      "cp.validation.captcha": "Merci de confirmer que vous n'êtes pas un robot avant l'envoi.",
+      "cp.validation.champs": "Pensez à compléter les champs mis en évidence avant l'envoi.",
+      "cp.validation.defaut": "Merci de renseigner au moins votre adresse email.",
+      "cp.submit": "Envoyez ma demande",
+      "cp.indicatif.recherche.ph": "Rechercher un pays…",
+      "cp.indicatif.aria": "Indicatif téléphonique",
+      "cp.indicatif.vide": "Aucun pays trouvé"
     },
 
     en: {
@@ -315,7 +345,37 @@
       "pc.rappel.cta": "Ask about upcoming dates",
       "pc.sources": "Course data (holes, par, length, architect, year) sourced from clubs' public fact sheets and the Golfstars, 1golf.eu and Where2Golf directories. Lengths vary by tee: figures here are given from the back tees. Map data © OpenStreetMap contributors.",
       "pc.menu.origines": "Back to home",
-      "pc.footer.faq": "Frequently asked questions"
+      "pc.footer.faq": "Frequently asked questions",
+
+      "cp.meta.title": "Contact — BELARDI Golf House",
+      "cp.meta.description": "A question about your golf stay in the Basque Country? Write to us or follow BELARDI Golf House on Instagram.",
+      "cp.h1": "Contact us",
+      "cp.lead": "Questions, need help with your booking, or want to know more about our services? Our dedicated team is here to help you!",
+      "cp.illustration": "Illustration coming soon",
+      "cp.titre.coordonnees": "Your details",
+      "cp.titre.message": "Your enquiry",
+      "cp.prenom": "First name",
+      "cp.nom": "Last name",
+      "cp.email": "Email address",
+      "cp.telephone": "Phone number",
+      "cp.optionnel": "(optional)",
+      "cp.message.sr": "Your message",
+      "cp.message.ph": "Your message",
+      "cp.mention.requis": "Required fields",
+      "cp.erreur.prenom": "Please enter your first name",
+      "cp.erreur.nom": "Please enter your last name",
+      "cp.erreur.email": "Please enter your email address",
+      "cp.erreur.telephone": "Please enter your phone number",
+      "cp.erreur.message": "Please enter your message",
+      "cp.erreur.captcha": "Please confirm you're not a robot",
+      "cp.validation.email": "Please enter at least your email address to send your request.",
+      "cp.validation.captcha": "Please confirm you're not a robot before sending.",
+      "cp.validation.champs": "Please complete the highlighted fields before sending.",
+      "cp.validation.defaut": "Please enter at least your email address.",
+      "cp.submit": "Send my request",
+      "cp.indicatif.recherche.ph": "Search for a country…",
+      "cp.indicatif.aria": "Phone dialling code",
+      "cp.indicatif.vide": "No country found"
     },
 
     es: {
@@ -471,7 +531,37 @@
       "pc.rappel.cta": "Consultar las próximas fechas",
       "pc.sources": "Datos de los recorridos (hoyos, par, longitud, arquitecto, año) obtenidos de las fichas públicas de los clubes y de los directorios Golfstars, 1golf.eu y Where2Golf. Las longitudes varían según las salidas: aquí se indican desde las salidas traseras. Mapa © colaboradores de OpenStreetMap.",
       "pc.menu.origines": "Volver al inicio",
-      "pc.footer.faq": "Preguntas frecuentes"
+      "pc.footer.faq": "Preguntas frecuentes",
+
+      "cp.meta.title": "Contacto — BELARDI Golf House",
+      "cp.meta.description": "¿Alguna pregunta sobre su estancia de golf en el País Vasco? Escríbanos o síganos en Instagram: BELARDI Golf House.",
+      "cp.h1": "Contáctenos",
+      "cp.lead": "¿Preguntas, necesita ayuda con su reserva o quiere saber más sobre nuestros servicios? Nuestro equipo está aquí para ayudarle.",
+      "cp.illustration": "Ilustración próximamente",
+      "cp.titre.coordonnees": "Sus datos",
+      "cp.titre.message": "Su consulta",
+      "cp.prenom": "Nombre",
+      "cp.nom": "Apellido",
+      "cp.email": "Correo electrónico",
+      "cp.telephone": "Número de teléfono",
+      "cp.optionnel": "(opcional)",
+      "cp.message.sr": "Su mensaje",
+      "cp.message.ph": "Su mensaje",
+      "cp.mention.requis": "Campos obligatorios",
+      "cp.erreur.prenom": "Por favor, indique su nombre",
+      "cp.erreur.nom": "Por favor, indique su apellido",
+      "cp.erreur.email": "Por favor, indique su correo electrónico",
+      "cp.erreur.telephone": "Por favor, indique su número de teléfono",
+      "cp.erreur.message": "Por favor, escriba su mensaje",
+      "cp.erreur.captcha": "Por favor, confirme que no es un robot",
+      "cp.validation.email": "Indique al menos su correo electrónico para enviar su solicitud.",
+      "cp.validation.captcha": "Confirme que no es un robot antes de enviar.",
+      "cp.validation.champs": "Complete los campos resaltados antes de enviar.",
+      "cp.validation.defaut": "Indique al menos su correo electrónico.",
+      "cp.submit": "Enviar mi solicitud",
+      "cp.indicatif.recherche.ph": "Buscar un país…",
+      "cp.indicatif.aria": "Prefijo telefónico",
+      "cp.indicatif.vide": "Ningún país encontrado"
     }
   };
 
@@ -509,9 +599,9 @@
       if (dict[key] !== undefined) el.setAttribute("alt", dict[key]);
     });
 
-    var isParcours = window.BELARDI_PAGE === "parcours";
-    var titleKey = isParcours ? "pc.meta.title" : "meta.title";
-    var descKey = isParcours ? "pc.meta.description" : "meta.description";
+    var prefixeMeta = {parcours: "pc", contact: "cp"}[window.BELARDI_PAGE] || "";
+    var titleKey = prefixeMeta ? prefixeMeta + ".meta.title" : "meta.title";
+    var descKey = prefixeMeta ? prefixeMeta + ".meta.description" : "meta.description";
     if (dict[titleKey]) document.title = dict[titleKey];
     var metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc && dict[descKey]) metaDesc.setAttribute("content", dict[descKey]);
@@ -530,6 +620,13 @@
     });
 
     try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+
+    // Expose la langue et le dictionnaire courants pour les scripts de page qui ont
+    // besoin de traduire du contenu généré dynamiquement (ex : messages de validation
+    // d'un formulaire, écrits en JS plutôt que présents tels quels dans le HTML).
+    window.BELARDI_LANG = lang;
+    window.BELARDI_DICT = dict;
+    document.dispatchEvent(new CustomEvent("belardi:langchange", {detail: {lang: lang, dict: dict}}));
   }
 
   function closeAllSwitches(except){

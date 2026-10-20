@@ -426,7 +426,7 @@
       <div class="carte carte-arriere" aria-hidden="true">
         <!-- Remplacer par : <img src="/assets/photos/contact-golf-1.jpg" alt=""> -->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="17" r="4"/><path d="M12 13V3"/><path d="M12 3c3 0 6 1.3 6 3s-3 3-6 3"/></svg>
-        <span>Illustration à venir</span>
+        <span data-i18n="cp.illustration">Illustration à venir</span>
       </div>
       <div class="carte carte-avant" aria-hidden="true">
         <!-- Remplacer par : <img src="/assets/photos/contact-golf-2.jpg" alt=""> -->
@@ -435,29 +435,29 @@
     </div>
 
     <div class="contact-corps">
-      <h1>Contactez-nous</h1>
-      <p class="lead">Des questions, besoin d'aide pour votre réservation, ou envie d'en savoir plus sur nos services ? Notre équipe dédiée est là pour vous aider !</p>
+      <h1 data-i18n="cp.h1">Contactez-nous</h1>
+      <p class="lead" data-i18n="cp.lead">Des questions, besoin d'aide pour votre réservation, ou envie d'en savoir plus sur nos services ? Notre équipe dédiée est là pour vous aider !</p>
 
       <form class="contact-form" id="formulaireContact" action="mailto:contact@belardi-golfhouse.fr" method="post" enctype="text/plain" novalidate>
-        <p class="champ-titre">Vos coordonnées</p>
+        <p class="champ-titre" data-i18n="cp.titre.coordonnees">Vos coordonnées</p>
         <div class="grille-champs">
           <div class="champ" data-champ="prenom">
-            <label for="prenom">Prénom <span class="requis" aria-hidden="true">*</span></label>
+            <label for="prenom"><span data-i18n="cp.prenom">Prénom</span> <span class="requis" aria-hidden="true">*</span></label>
             <input type="text" id="prenom" name="prenom" autocomplete="given-name">
-            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre prénom</p>
+            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg><span data-i18n="cp.erreur.prenom">Merci de renseigner votre prénom</span></p>
           </div>
           <div class="champ" data-champ="nom">
-            <label for="nom">Nom <span class="requis" aria-hidden="true">*</span></label>
+            <label for="nom"><span data-i18n="cp.nom">Nom</span> <span class="requis" aria-hidden="true">*</span></label>
             <input type="text" id="nom" name="nom" autocomplete="family-name">
-            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre nom</p>
+            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg><span data-i18n="cp.erreur.nom">Merci de renseigner votre nom</span></p>
           </div>
           <div class="champ" data-champ="email">
-            <label for="email">Adresse email <span class="requis" aria-hidden="true">*</span></label>
+            <label for="email"><span data-i18n="cp.email">Adresse email</span> <span class="requis" aria-hidden="true">*</span></label>
             <input type="email" id="email" name="email" autocomplete="email" required>
-            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre adresse email</p>
+            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg><span data-i18n="cp.erreur.email">Merci de renseigner votre adresse email</span></p>
           </div>
           <div class="champ" data-champ="telephone">
-            <label for="telephone">Numéro de téléphone <span class="optionnel">(optionnel)</span></label>
+            <label for="telephone"><span data-i18n="cp.telephone">Numéro de téléphone</span> <span class="optionnel" data-i18n="cp.optionnel">(optionnel)</span></label>
             <div class="champ-tel">
               <div class="indicatif-select" id="indicatifSelect">
                 <button type="button" class="indicatif-trigger" id="indicatifTrigger" aria-haspopup="listbox" aria-expanded="false">
@@ -465,7 +465,7 @@
                   <svg class="indicatif-chevron" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m1.5 1.5 4.5 5 4.5-5"/></svg>
                 </button>
                 <div class="indicatif-panneau" id="indicatifPanneau" hidden>
-                  <input type="text" class="indicatif-recherche" id="indicatifRecherche" placeholder="Rechercher un pays…" autocomplete="off">
+                  <input type="text" class="indicatif-recherche" id="indicatifRecherche" placeholder="Rechercher un pays…" data-i18n-placeholder="cp.indicatif.recherche.ph" autocomplete="off">
                   <ul class="indicatif-liste" id="indicatifListe" role="listbox" aria-label="Indicatif téléphonique"></ul>
                 </div>
               </div>
@@ -476,30 +476,30 @@
                 <span class="telephone-rendu" id="telephoneRendu" aria-hidden="true"></span>
               </div>
             </div>
-            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre numéro</p>
+            <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg><span data-i18n="cp.erreur.telephone">Merci de renseigner votre numéro</span></p>
           </div>
         </div>
 
-        <p class="champ-titre espace-haut">Demande de renseignements</p>
+        <p class="champ-titre espace-haut" data-i18n="cp.titre.message">Demande de renseignements</p>
         <div class="champ pleine-largeur" data-champ="message">
-          <label for="message" class="sr-only">Votre message <span class="requis" aria-hidden="true">*</span></label>
-          <textarea id="message" name="message" placeholder="Votre message"></textarea>
-          <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre message</p>
+          <label for="message" class="sr-only"><span data-i18n="cp.message.sr">Votre message</span> <span class="requis" aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" placeholder="Votre message" data-i18n-placeholder="cp.message.ph"></textarea>
+          <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg><span data-i18n="cp.erreur.message">Merci de renseigner votre message</span></p>
         </div>
 
-        <p class="champ-mention-requis"><span class="requis" aria-hidden="true">*</span> Champs obligatoires</p>
+        <p class="champ-mention-requis"><span class="requis" aria-hidden="true">*</span> <span data-i18n="cp.mention.requis">Champs obligatoires</span></p>
 
         <div class="champ-captcha">
           <div class="g-recaptcha" id="recaptchaWidget" data-sitekey="6LcaKvgtAAAAAJvDA5hU1MYhv1VEoY8WTFh1WY3x" data-callback="surRecaptchaValide" data-expired-callback="surRecaptchaExpire"></div>
-          <p class="champ-erreur champ-erreur-captcha"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de confirmer que vous n'êtes pas un robot</p>
+          <p class="champ-erreur champ-erreur-captcha"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg><span data-i18n="cp.erreur.captcha">Merci de confirmer que vous n'êtes pas un robot</span></p>
         </div>
 
         <div class="form-pied">
           <button type="submit" class="contact-cta">
-            Envoyez ma demande
+            <span data-i18n="cp.submit">Envoyez ma demande</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
           </button>
-          <p class="message-validation" id="messageValidation" role="status">Merci de renseigner au moins votre adresse email.</p>
+          <p class="message-validation" id="messageValidation" role="status" data-i18n="cp.validation.defaut">Merci de renseigner au moins votre adresse email.</p>
         </div>
       </form>
     </div>
@@ -537,6 +537,7 @@
   </div>
 </footer>
 
+<script>window.BELARDI_PAGE = "contact";</script>
 <script src="/assets/js/i18n.js" defer></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
@@ -545,6 +546,14 @@
     if (!form) return;
     var message = document.getElementById("messageValidation");
     var masquerTimeout;
+
+    // Traduction du texte généré en JS (messages de validation, libellés du
+    // sélecteur de pays…) : i18n.js expose le dictionnaire de la langue active sur
+    // window.BELARDI_DICT et le met à jour à chaque changement de langue.
+    function t(cle, repli){
+      var dict = window.BELARDI_DICT;
+      return (dict && dict[cle] !== undefined) ? dict[cle] : repli;
+    }
     // Le téléphone est optionnel : il n'entre pas dans la validation des champs requis.
     var champs = Array.prototype.slice.call(form.querySelectorAll("[data-champ]"))
       .filter(function(c){ return c.getAttribute("data-champ") !== "telephone"; });
@@ -609,9 +618,9 @@
       if (emailVide || captchaManquant){
         e.preventDefault();
         if (emailVide){
-          afficherMessage("Merci de renseigner au moins votre adresse email pour envoyer votre requête.");
+          afficherMessage(t("cp.validation.email", "Merci de renseigner au moins votre adresse email pour envoyer votre requête."));
         } else {
-          afficherMessage("Merci de confirmer que vous n'êtes pas un robot avant l'envoi.");
+          afficherMessage(t("cp.validation.captcha", "Merci de confirmer que vous n'êtes pas un robot avant l'envoi."));
         }
         if (premierEnErreur){
           var ctrl = premierEnErreur.querySelector("input, textarea");
@@ -624,7 +633,7 @@
       }
 
       if (premierEnErreur){
-        afficherMessage("Pensez à compléter les champs mis en évidence avant l'envoi.");
+        afficherMessage(t("cp.validation.champs", "Pensez à compléter les champs mis en évidence avant l'envoi."));
       }
     });
 
@@ -759,7 +768,7 @@
           '<span class="indicatif-pays">' + p.nom + '</span>' +
           '<span class="indicatif-code">(' + p.indicatif + ')</span>' +
         '</li>';
-      }).join("") + '<li class="indicatif-vide" hidden>Aucun pays trouvé</li>';
+      }).join("") + '<li class="indicatif-vide" hidden>' + t("cp.indicatif.vide", "Aucun pays trouvé") + '</li>';
 
       function paysParCode(code){
         for (var i = 0; i < PAYS.length; i++) if (PAYS[i].code === code) return PAYS[i];
@@ -773,7 +782,7 @@
         codeActuel.textContent = p.indicatif;
         valeurCachee.value = p.indicatif;
         indicatifActuel = p.indicatif;
-        trigger.setAttribute("aria-label", "Indicatif téléphonique : " + p.nom + " " + p.indicatif);
+        trigger.setAttribute("aria-label", t("cp.indicatif.aria", "Indicatif téléphonique") + " : " + p.nom + " " + p.indicatif);
         liste.querySelectorAll(".indicatif-option").forEach(function(opt){
           opt.setAttribute("aria-selected", String(opt.getAttribute("data-code") === code));
         });
@@ -861,6 +870,19 @@
       synchroniserAvecLangue();
       var observateurLangue = new MutationObserver(synchroniserAvecLangue);
       observateurLangue.observe(document.documentElement, {attributes:true, attributeFilter:["lang"]});
+
+      // i18n.js déclenche cet évènement à chaque changement de langue : on y retraduit
+      // tout ce qui a été généré en JS plutôt qu'écrit tel quel dans le HTML (texte
+      // "Aucun pays trouvé", libellé de l'indicatif actuellement affiché).
+      document.addEventListener("belardi:langchange", function(){
+        var videEl = liste.querySelector(".indicatif-vide");
+        if (videEl) videEl.textContent = t("cp.indicatif.vide", "Aucun pays trouvé");
+        var codeActuelIndicatif = valeurCachee.value;
+        var payActuel = PAYS.filter(function(p){ return p.indicatif === codeActuelIndicatif; })[0];
+        if (payActuel){
+          trigger.setAttribute("aria-label", t("cp.indicatif.aria", "Indicatif téléphonique") + " : " + payActuel.nom + " " + payActuel.indicatif);
+        }
+      });
     }
   })();
 </script>
