@@ -43,7 +43,7 @@
   .contact-hero{padding:var(--e6) 0 var(--e5)}
   .contact-hero .wrap{
     display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px, 4vw, 64px);
-    align-items:start;max-width:1480px;padding-left:clamp(24px, 4vw, 56px);padding-right:clamp(24px, 4vw, 56px);
+    align-items:start;max-width:1480px;padding-left:clamp(12px, 2vw, 32px);padding-right:clamp(24px, 4vw, 56px);
     padding-top:var(--e5);
   }
 
@@ -108,6 +108,11 @@
        sans cela, la zone invisible à droite du mot (jusqu'au bord de la cellule)
        affichait un curseur texte et activait le champ sans aucun indice visuel. */
     display:inline-block;width:fit-content;max-width:100%;
+    /* Le libellé reste associé au champ pour les lecteurs d'écran (attribut "for"),
+       mais ne doit plus se comporter comme un déclencheur de focus pour la souris :
+       aucune invite visuelle ne signale qu'il est cliquable. Le clic est neutralisé
+       en JS (voir plus bas) ; ce curseur "default" l'indique aussi visuellement. */
+    cursor:default;
   }
   .champ label.sr-only{
     position:absolute;width:1px;height:1px;overflow:hidden;
@@ -271,7 +276,7 @@
   .message-validation.visible{opacity:1;max-height:40px;margin-top:4px}
 
   /* reCAPTCHA Google : widget officiel "Je ne suis pas un robot" */
-  .champ-captcha{margin:var(--e4) 0 0}
+  .champ-captcha{margin:var(--e4) 0 var(--e4)}
   .g-recaptcha{width:fit-content;max-width:100%}
   .champ-erreur-captcha{display:none}
   .champ-captcha.en-erreur .g-recaptcha{
@@ -550,6 +555,14 @@
       });
     }
     champs.forEach(retirerErreurAuSaisie);
+
+    // Les <label for="..."> restent associés à leur champ pour les lecteurs d'écran,
+    // mais ne doivent plus pouvoir être cliqués par la souris pour donner le focus :
+    // rien dans leur apparence ne signale qu'ils sont cliquables, donc ce comportement
+    // (hérité du HTML natif) est explicitement désactivé.
+    form.querySelectorAll(".champ label[for]").forEach(function(label){
+      label.addEventListener("click", function(e){ e.preventDefault(); });
+    });
 
     // Rappels appelés par le widget Google reCAPTCHA (voir data-callback / data-expired-callback)
     window.surRecaptchaValide = function(){
