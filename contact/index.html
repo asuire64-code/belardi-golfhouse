@@ -141,9 +141,37 @@
     position:relative;z-index:1;
     font-family:var(--f-sans);font-weight:400;font-size:16px;color:transparent;
     caret-color:var(--fg);letter-spacing:.06em;
-    background:none;border:0;padding:17px 20px 17px 8px;width:100%;min-width:0;
+    background:none;background-color:transparent;border:0;box-shadow:none;
+    padding:17px 20px 17px 8px;width:100%;min-width:0;
+    -webkit-appearance:none;-moz-appearance:none;appearance:none;
+    border-radius:14px;outline:none;
   }
-  .champ-tel input:focus{outline:none}
+  .champ-tel input:focus,
+  .champ-tel input:focus-visible,
+  .champ-tel input:active{
+    outline:none;border:0;box-shadow:none;background-color:transparent;
+  }
+  .champ-tel input::-moz-focus-inner{border:0;outline:none;box-shadow:none}
+  .champ-tel input:-moz-focusring{outline:none;box-shadow:none}
+  /* Neutralise tout style natif résiduel (Safari/Firefox appliquent parfois un
+     anneau interne sur un <input> même avec border:0 et outline:none). */
+  .champ-tel input::-webkit-search-decoration,
+  .champ-tel input::-webkit-search-cancel-button,
+  .champ-tel input::-webkit-outer-spin-button,
+  .champ-tel input::-webkit-inner-spin-button{display:none}
+  /* Neutralise l'habillage natif que Chrome applique aux champs auto-remplis
+     (fond jaune/bleuté + bordure), qui peut apparaître comme un liseré
+     superposé une fois le champ détecté comme "téléphone" par le navigateur. */
+  .champ-tel input:-webkit-autofill,
+  .champ-tel input:-webkit-autofill:hover,
+  .champ-tel input:-webkit-autofill:focus,
+  .champ-tel input:-webkit-autofill:active{
+    -webkit-text-fill-color:transparent;
+    -webkit-box-shadow:0 0 0 1000px transparent inset;
+    box-shadow:0 0 0 1000px transparent inset;
+    transition:background-color 9999s ease-in-out 0s;
+    border:0;
+  }
   .telephone-rendu{
     position:absolute;left:8px;right:20px;top:0;bottom:0;z-index:0;
     display:flex;align-items:center;pointer-events:none;
