@@ -42,8 +42,8 @@
 
   .contact-hero{padding:var(--e6) 0 var(--e5)}
   .contact-hero .wrap{
-    display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px, 4vw, 64px);
-    align-items:start;max-width:1480px;padding-left:clamp(12px, 2vw, 32px);padding-right:clamp(24px, 4vw, 56px);
+    display:grid;grid-template-columns:0.92fr 1fr;gap:clamp(24px, 4vw, 64px);
+    align-items:start;max-width:1480px;padding-left:clamp(4px, 1vw, 20px);padding-right:clamp(24px, 4vw, 56px);
     padding-top:var(--e5);
   }
 
@@ -59,17 +59,16 @@
     background:linear-gradient(155deg,var(--bloc-olive) 0%,#2b331f 100%);
     box-shadow:0 20px 48px rgba(31,37,27,.18);
     display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;
-    transition:transform .5s cubic-bezier(.25,1,.3,1);
   }
-  .contact-capsule .carte:hover{transform:translateY(-4px)}
   .contact-capsule .carte img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  /* Carte arrière : verticale, légèrement réduite en longueur pour équilibrer
+     la carte avant devenue plus large (moins de chevauchement, inclinaison figée) */
   .contact-capsule .carte-arriere{
-    width:94%;height:84%;top:0;right:0;transform:rotate(2.5deg);z-index:1;
+    width:92%;height:76%;top:0;right:0;transform:rotate(2.5deg);z-index:1;
   }
-  /* Carte avant : horizontale, agrandie en longueur et réduite en hauteur
-     pour limiter le chevauchement avec la carte arrière */
+  /* Carte avant : horizontale, élargie davantage pour affirmer sa présence */
   .contact-capsule .carte-avant{
-    width:78%;height:26%;bottom:4%;left:-3%;transform:rotate(-2.5deg);z-index:2;
+    width:86%;height:27%;bottom:6%;left:-1%;transform:rotate(-2.5deg);z-index:2;
   }
   .contact-capsule .carte svg{width:26px;height:26px;color:rgba(250,248,242,.5)}
   .contact-capsule .carte span{
@@ -92,18 +91,18 @@
   /* Formulaire */
   .contact-form{width:100%;max-width:560px;margin:0 0 0 auto;text-align:left}
   .champ-titre{
-    font-family:var(--f-sans);font-weight:600;font-size:13px;
-    letter-spacing:.12em;text-transform:uppercase;color:var(--fg);
-    margin:0 0 var(--e3);
+    font-family:var(--f-sans);font-weight:600;font-size:12.5px;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--texte-doux-auto);
+    margin:0 0 18px;
   }
-  .champ-titre.espace-haut{margin-top:var(--e4)}
+  .champ-titre.espace-haut{margin-top:var(--e5)}
   .grille-champs{
-    display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;
+    display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;
   }
   .champ{display:flex;flex-direction:column}
   .champ label{
-    font-family:var(--f-sans);font-weight:600;font-size:13px;
-    letter-spacing:.04em;color:var(--fg);margin-bottom:9px;
+    font-family:var(--f-sans);font-weight:600;font-size:13.5px;
+    letter-spacing:.02em;color:var(--fg);margin-bottom:8px;
     /* Un <label for> rend cliquable toute sa boîte, pas seulement le texte visible :
        sans cela, la zone invisible à droite du mot (jusqu'au bord de la cellule)
        affichait un curseur texte et activait le champ sans aucun indice visuel. */
@@ -120,28 +119,36 @@
   }
   .champ label .requis{color:var(--terre);font-weight:600}
   .champ label .optionnel{
-    color:var(--texte-doux-auto);font-weight:400;font-size:12px;letter-spacing:.02em;
+    color:var(--texte-doux-auto);font-weight:400;font-size:12px;letter-spacing:.01em;
     text-transform:none;
   }
   .champ input,.champ textarea{
-    font-family:var(--f-sans);font-weight:400;font-size:16px;color:var(--fg);
-    background:var(--surface);border:1.5px solid var(--bord);border-radius:14px;
-    padding:17px 20px;width:100%;transition:border-color .25s ease,box-shadow .25s ease;
+    font-family:var(--f-sans);font-weight:400;font-size:15.5px;color:var(--fg);
+    background:var(--surface);border:1.5px solid var(--bord);border-radius:13px;
+    padding:15px 18px;width:100%;line-height:1.4;
+    transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
   }
-  .champ textarea{resize:vertical;min-height:160px;max-height:480px;line-height:1.5}
-  .champ input::placeholder,.champ textarea::placeholder{color:var(--texte-doux-auto);opacity:.75}
+  .champ textarea{resize:vertical;min-height:150px;max-height:450px;line-height:1.55}
+  .champ input::placeholder,.champ textarea::placeholder{color:var(--texte-doux-auto);opacity:.65}
+  .champ input:hover,.champ textarea:hover{border-color:#C9BFA8}
   .champ input:focus,.champ textarea:focus{
     outline:none;border-color:var(--terre);box-shadow:0 0 0 3px rgba(160,87,58,.12);
   }
   .champ.pleine-largeur{margin-bottom:var(--e4)}
+  .champ-mention-requis{
+    font-family:var(--f-sans);font-weight:400;font-size:12.5px;color:var(--texte-doux-auto);
+    margin:0 0 var(--e3);display:flex;align-items:center;gap:4px;
+  }
+  .champ-mention-requis .requis{color:var(--terre);font-weight:600}
 
   /* Téléphone : style "WhatsApp" — une seule boîte, drapeau + indicatif + numéro */
   .champ-tel{
     display:flex;align-items:stretch;gap:0;
-    background:var(--surface);border:1.5px solid var(--bord);border-radius:14px;
-    transition:border-color .25s ease,box-shadow .25s ease;
+    background:var(--surface);border:1.5px solid var(--bord);border-radius:13px;
+    transition:border-color .2s ease,box-shadow .2s ease;
     outline:none;
   }
+  .champ-tel:hover{border-color:#C9BFA8}
   .champ-tel:focus-within{
     border-color:var(--terre);box-shadow:0 0 0 3px rgba(160,87,58,.12);
   }
@@ -153,12 +160,12 @@
   .telephone-zone{position:relative;flex:1;min-width:0;display:flex;align-items:center}
   .champ-tel input{
     position:relative;z-index:1;
-    font-family:var(--f-sans);font-weight:400;font-size:16px;color:transparent;
+    font-family:var(--f-sans);font-weight:400;font-size:15.5px;color:transparent;
     caret-color:var(--fg);letter-spacing:.06em;
     background:none;background-color:transparent;border:0;box-shadow:none;
-    padding:17px 20px 17px 8px;width:100%;min-width:0;
+    padding:15px 18px 15px 6px;width:100%;min-width:0;
     -webkit-appearance:none;-moz-appearance:none;appearance:none;
-    border-radius:14px;outline:none;
+    border-radius:13px;outline:none;
   }
   .champ-tel input:focus,
   .champ-tel input:focus-visible,
@@ -187,9 +194,9 @@
     border:0;
   }
   .telephone-rendu{
-    position:absolute;left:8px;right:20px;top:0;bottom:0;z-index:0;
+    position:absolute;left:6px;right:18px;top:0;bottom:0;z-index:0;
     display:flex;align-items:center;pointer-events:none;
-    font-family:var(--f-sans);font-weight:400;font-size:16px;letter-spacing:.06em;
+    font-family:var(--f-sans);font-weight:400;font-size:15.5px;letter-spacing:.06em;
     white-space:pre;overflow:hidden;
   }
   .telephone-rendu .saisi{color:var(--fg)}
@@ -197,9 +204,9 @@
 
   .indicatif-select{position:relative;flex:none}
   .indicatif-trigger{
-    font-family:var(--f-sans);font-weight:600;font-size:15px;color:var(--fg);
-    background:none;border:0;border-radius:14px 0 0 14px;
-    display:flex;align-items:center;gap:6px;height:100%;padding:0 10px 0 16px;cursor:pointer;
+    font-family:var(--f-sans);font-weight:600;font-size:14.5px;color:var(--fg);
+    background:none;border:0;border-radius:13px 0 0 13px;
+    display:flex;align-items:center;gap:6px;height:100%;padding:0 10px 0 15px;cursor:pointer;
     transition:background .2s ease;
   }
   .indicatif-trigger{outline:none;-webkit-tap-highlight-color:transparent}
@@ -216,7 +223,7 @@
   .indicatif-select[data-open="true"] .indicatif-chevron{transform:rotate(180deg)}
 
   .indicatif-code-externe{
-    font-family:var(--f-sans);font-weight:500;font-size:16px;color:var(--fg);
+    font-family:var(--f-sans);font-weight:500;font-size:15.5px;color:var(--fg);
     display:flex;align-items:center;padding:0 2px 0 10px;flex:none;user-select:none;
   }
 
@@ -276,7 +283,7 @@
   .message-validation.visible{opacity:1;max-height:40px;margin-top:4px}
 
   /* reCAPTCHA Google : widget officiel "Je ne suis pas un robot" */
-  .champ-captcha{margin:var(--e4) 0 var(--e4)}
+  .champ-captcha{margin:0 0 var(--e4)}
   .g-recaptcha{width:fit-content;max-width:100%}
   .champ-erreur-captcha{display:none}
   .champ-captcha.en-erreur .g-recaptcha{
@@ -286,11 +293,11 @@
 
   .contact-cta{
     position:relative;overflow:hidden;isolation:isolate;
-    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
     font-family:var(--f-sans);font-weight:700;font-size:15px;letter-spacing:.03em;
-    padding:13px 26px;border-radius:999px;border:1px solid var(--terre);
+    padding:15px 30px;border-radius:999px;border:1px solid var(--terre);
     color:var(--terre);background:transparent;cursor:pointer;
-    transition:color .4s ease .05s,border-color .35s ease,opacity .25s ease;
+    transition:color .4s ease .05s,border-color .35s ease,opacity .25s ease,transform .2s ease;
   }
   .contact-cta::before{
     content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;
@@ -300,9 +307,11 @@
   }
   .contact-cta:hover{color:#fff;border-color:var(--terre)}
   .contact-cta:hover::before{transform:scale(1,1)}
+  .contact-cta:active{transform:scale(.98)}
+  .contact-cta:focus-visible{outline:2px solid var(--terre);outline-offset:3px}
   .contact-cta svg{width:15px;height:15px;transition:transform .35s ease}
   .contact-cta:hover svg{transform:translateX(3px)}
-  .form-pied{display:flex;align-items:center;flex-wrap:wrap;gap:4px 16px}
+  .form-pied{display:flex;align-items:center;flex-wrap:wrap;gap:6px 16px}
 
   /* Bandeau bas de page : email à gauche, Instagram à droite */
   .contact-bandeau{border-top:1px solid var(--bord);background:var(--surface)}
@@ -477,6 +486,8 @@
           <textarea id="message" name="message" placeholder="Votre message"></textarea>
           <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre message</p>
         </div>
+
+        <p class="champ-mention-requis"><span class="requis" aria-hidden="true">*</span> Champs obligatoires</p>
 
         <div class="champ-captcha">
           <div class="g-recaptcha" id="recaptchaWidget" data-sitekey="6LcaKvgtAAAAAJvDA5hU1MYhv1VEoY8WTFh1WY3x" data-callback="surRecaptchaValide" data-expired-callback="surRecaptchaExpire"></div>
