@@ -126,10 +126,12 @@
     display:flex;align-items:stretch;gap:0;
     background:var(--surface);border:1.5px solid var(--bord);border-radius:14px;
     transition:border-color .25s ease,box-shadow .25s ease;
+    outline:none;
   }
   .champ-tel:focus-within{
     border-color:var(--terre);box-shadow:0 0 0 3px rgba(160,87,58,.12);
   }
+  .champ-tel > *{outline:none}
   .champ-tel input{
     font-family:var(--f-sans);font-weight:400;font-size:16px;color:var(--fg);letter-spacing:.01em;
     background:none;border:0;padding:17px 20px 17px 8px;width:100%;min-width:0;
@@ -163,34 +165,34 @@
   }
 
   .indicatif-panneau{
-    position:absolute;top:calc(100% + 8px);left:0;z-index:20;min-width:240px;
-    background:var(--surface);border:1.5px solid var(--bord);border-radius:14px;
-    box-shadow:0 16px 40px rgba(31,37,27,.14);padding:8px;outline:none;
+    position:absolute;top:calc(100% + 8px);left:0;z-index:20;min-width:210px;
+    background:var(--surface);border:1.5px solid var(--bord);border-radius:12px;
+    box-shadow:0 16px 40px rgba(31,37,27,.14);padding:6px;outline:none;
   }
   .indicatif-panneau[hidden]{display:none}
   .indicatif-recherche{
-    width:100%;font-family:var(--f-sans);font-weight:400;font-size:13px;color:var(--fg);
-    background:var(--bg);border:1.5px solid var(--bord);border-radius:8px;
-    padding:6px 9px;margin-bottom:6px;outline:none;
+    width:100%;font-family:var(--f-sans);font-weight:400;font-size:12px;color:var(--fg);
+    background:var(--bg);border:1px solid var(--bord);border-radius:7px;
+    padding:4px 8px;margin-bottom:5px;outline:none;line-height:1.4;height:28px;
     transition:border-color .2s ease,box-shadow .2s ease;
   }
-  .indicatif-recherche:focus{border-color:var(--terre);box-shadow:0 0 0 3px rgba(160,87,58,.12)}
+  .indicatif-recherche:focus{border-color:var(--terre);box-shadow:0 0 0 2px rgba(160,87,58,.12)}
   .indicatif-recherche::placeholder{color:var(--texte-doux-auto);opacity:.7}
 
   .indicatif-liste{
-    max-height:260px;overflow-y:auto;margin:0;padding:0;list-style:none;outline:none;
+    max-height:230px;overflow-y:auto;margin:0;padding:0;list-style:none;outline:none;
   }
   .indicatif-option{
-    display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;cursor:pointer;
-    font-family:var(--f-sans);font-size:14px;color:var(--fg);transition:background .15s ease;
+    display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:7px;cursor:pointer;
+    font-family:var(--f-sans);font-size:13px;color:var(--fg);transition:background .15s ease;
     outline:none;-webkit-tap-highlight-color:transparent;
   }
   .indicatif-option:hover,.indicatif-option.est-focus{background:rgba(160,87,58,.08)}
   .indicatif-option[aria-selected="true"]{background:rgba(160,87,58,.1);font-weight:600}
   .indicatif-option[hidden]{display:none}
-  .indicatif-option .indicatif-drapeau{width:22px;height:16px;border-radius:4px}
+  .indicatif-option .indicatif-drapeau{width:19px;height:14px;border-radius:3px}
   .indicatif-option .indicatif-pays{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .indicatif-option .indicatif-code{color:var(--texte-doux-auto);font-size:13px;white-space:nowrap}
+  .indicatif-option .indicatif-code{color:var(--texte-doux-auto);font-size:12px;white-space:nowrap}
   .indicatif-vide{
     padding:14px 10px;text-align:center;font-family:var(--f-sans);font-size:13px;
     color:var(--texte-doux-auto);
@@ -417,7 +419,7 @@
               </div>
               <span class="indicatif-code-externe" id="indicatifCode">+33</span>
               <input type="hidden" id="indicatifValeur" name="indicatif" value="+33">
-              <input type="tel" id="telephone" name="telephone" placeholder="" autocomplete="tel" inputmode="numeric">
+              <input type="tel" id="telephone" name="telephone" placeholder="" autocomplete="off" inputmode="numeric">
             </div>
             <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre numéro</p>
           </div>
