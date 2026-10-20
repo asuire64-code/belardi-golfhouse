@@ -132,12 +132,26 @@
     border-color:var(--terre);box-shadow:0 0 0 3px rgba(160,87,58,.12);
   }
   .champ-tel > *{outline:none}
+
+  /* Zone de saisie du numéro : l'input réel capte la frappe (texte transparent,
+     curseur visible), un rendu superposé affiche les chiffres tapés en clair et
+     les positions restantes du masque en "_" grisés, à la façon d'un champ guidé. */
+  .telephone-zone{position:relative;flex:1;min-width:0;display:flex;align-items:center}
   .champ-tel input{
-    font-family:var(--f-sans);font-weight:400;font-size:16px;color:var(--fg);letter-spacing:.01em;
+    position:relative;z-index:1;
+    font-family:var(--f-sans);font-weight:400;font-size:16px;color:transparent;
+    caret-color:var(--fg);letter-spacing:.01em;
     background:none;border:0;padding:17px 20px 17px 8px;width:100%;min-width:0;
   }
   .champ-tel input:focus{outline:none}
-  .champ-tel input::placeholder{color:var(--texte-doux-auto);opacity:.55}
+  .telephone-rendu{
+    position:absolute;left:8px;right:20px;top:0;bottom:0;z-index:0;
+    display:flex;align-items:center;pointer-events:none;
+    font-family:var(--f-sans);font-weight:400;font-size:16px;letter-spacing:.01em;
+    white-space:pre;overflow:hidden;
+  }
+  .telephone-rendu .saisi{color:var(--fg)}
+  .telephone-rendu .reste{color:var(--texte-doux-auto);opacity:.5}
 
   .indicatif-select{position:relative;flex:none}
   .indicatif-trigger{
@@ -419,7 +433,10 @@
               </div>
               <span class="indicatif-code-externe" id="indicatifCode">+33</span>
               <input type="hidden" id="indicatifValeur" name="indicatif" value="+33">
-              <input type="tel" id="telephone" name="telephone" placeholder="" autocomplete="off" inputmode="numeric">
+              <div class="telephone-zone">
+                <input type="tel" id="telephone" name="telephone" placeholder="" autocomplete="off" inputmode="numeric">
+                <span class="telephone-rendu" id="telephoneRendu" aria-hidden="true"></span>
+              </div>
             </div>
             <p class="champ-erreur"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de renseigner votre numéro</p>
           </div>
@@ -566,9 +583,10 @@
     });
 
     // Le champ téléphone n'accepte que des chiffres, formatés en direct selon le pays choisi
-    // (masque du type "_ __ __ __ __") : rien ne s'affiche tant que rien n'est saisi, puis
-    // les espaces/séparateurs du masque apparaissent au fur et à mesure de la frappe.
+    // (masque du type "_ __ __ __ __"). Dès la première frappe, les positions du masque pas
+    // encore remplies s'affichent en "_" grisés (rendu superposé), comme un champ guidé.
     var telInput = document.getElementById("telephone");
+    var telRendu = document.getElementById("telephoneRendu");
     var formatActuel = "_ __ __ __ __";
 
     function chiffresBruts(valeur){
@@ -591,12 +609,32 @@
       return resultat;
     }
 
+    function echapperHtml(texte){
+      var d = document.createElement("div");
+      d.textContent = texte;
+      return d.innerHTML;
+    }
+
+    function rafraichirRendu(){
+      if (!telRendu) return;
+      var texteSaisi = telInput.value;
+      if (!texteSaisi){
+        telRendu.innerHTML = "";
+        return;
+      }
+      var texteComplet = formatActuel; // ex. "_ __ __ __ __", mêmes séparateurs que le saisi
+      var reste = texteComplet.slice(texteSaisi.length);
+      telRendu.innerHTML = '<span class="saisi">' + echapperHtml(texteSaisi) + '</span>' +
+        '<span class="reste">' + echapperHtml(reste) + '</span>';
+    }
+
     if (telInput){
       telInput.addEventListener("input", function(){
         var chiffres = chiffresBruts(telInput.value).slice(0, (formatActuel.match(/_/g) || []).length);
         var curseurFin = telInput.selectionStart === telInput.value.length;
         telInput.value = formaterNumero(chiffres, formatActuel);
         if (curseurFin) telInput.setSelectionRange(telInput.value.length, telInput.value.length);
+        rafraichirRendu();
       });
       telInput.addEventListener("keypress", function(e){
         if (e.key.length === 1 && !/[0-9]/.test(e.key)) e.preventDefault();
@@ -607,6 +645,7 @@
         var chiffres = chiffresBruts(telInput.value + texte).slice(0, (formatActuel.match(/_/g) || []).length);
         telInput.value = formaterNumero(chiffres, formatActuel);
         telInput.setSelectionRange(telInput.value.length, telInput.value.length);
+        rafraichirRendu();
       });
     }
 
@@ -668,6 +707,7 @@
         if (telInput){
           var chiffresExistants = chiffresBruts(telInput.value).slice(0, (formatActuel.match(/_/g) || []).length);
           telInput.value = formaterNumero(chiffresExistants, formatActuel);
+          rafraichirRendu();
         }
       }
 
