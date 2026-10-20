@@ -43,12 +43,16 @@
   .contact-hero{padding:var(--e6) 0 var(--e5)}
   .contact-hero .wrap{
     display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px, 4vw, 64px);
-    align-items:center;max-width:1480px;padding-left:clamp(24px, 4vw, 56px);padding-right:clamp(24px, 4vw, 56px);
+    align-items:start;max-width:1480px;padding-left:clamp(24px, 4vw, 56px);padding-right:clamp(24px, 4vw, 56px);
+    padding-top:var(--e5);
   }
 
-  /* Colonne gauche : capsule photo, ancrée vers le bord gauche de l'écran */
+  /* Colonne gauche : capsule photo, ancrée vers le bord gauche de l'écran.
+     align-self:start fige sa position en haut de la grille, indépendamment
+     de la hauteur du formulaire (étirement du champ message notamment). */
   .contact-capsule{
-    position:relative;aspect-ratio:4/5;max-width:520px;width:100%;margin:0 auto 0 0;
+    position:relative;aspect-ratio:4/5;max-width:620px;width:100%;margin:0 auto 0 0;
+    align-self:start;
   }
   .contact-capsule .carte{
     position:absolute;overflow:hidden;border-radius:22px;
@@ -60,11 +64,12 @@
   .contact-capsule .carte:hover{transform:translateY(-4px)}
   .contact-capsule .carte img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
   .contact-capsule .carte-arriere{
-    width:88%;height:82%;top:0;right:0;transform:rotate(2.5deg);z-index:1;
+    width:94%;height:84%;top:0;right:0;transform:rotate(2.5deg);z-index:1;
   }
-  /* Carte avant : horizontale, empiète légèrement en bas à gauche */
+  /* Carte avant : horizontale, agrandie en longueur et réduite en hauteur
+     pour limiter le chevauchement avec la carte arrière */
   .contact-capsule .carte-avant{
-    width:64%;height:34%;bottom:6%;left:-6%;transform:rotate(-2.5deg);z-index:2;
+    width:78%;height:26%;bottom:4%;left:-3%;transform:rotate(-2.5deg);z-index:2;
   }
   .contact-capsule .carte svg{width:26px;height:26px;color:rgba(250,248,242,.5)}
   .contact-capsule .carte span{
@@ -99,6 +104,10 @@
   .champ label{
     font-family:var(--f-sans);font-weight:600;font-size:13px;
     letter-spacing:.04em;color:var(--fg);margin-bottom:9px;
+    /* Un <label for> rend cliquable toute sa boîte, pas seulement le texte visible :
+       sans cela, la zone invisible à droite du mot (jusqu'au bord de la cellule)
+       affichait un curseur texte et activait le champ sans aucun indice visuel. */
+    display:inline-block;width:fit-content;max-width:100%;
   }
   .champ label.sr-only{
     position:absolute;width:1px;height:1px;overflow:hidden;
@@ -114,7 +123,7 @@
     background:var(--surface);border:1.5px solid var(--bord);border-radius:14px;
     padding:17px 20px;width:100%;transition:border-color .25s ease,box-shadow .25s ease;
   }
-  .champ textarea{resize:vertical;min-height:160px;line-height:1.5}
+  .champ textarea{resize:vertical;min-height:160px;max-height:480px;line-height:1.5}
   .champ input::placeholder,.champ textarea::placeholder{color:var(--texte-doux-auto);opacity:.75}
   .champ input:focus,.champ textarea:focus{
     outline:none;border-color:var(--terre);box-shadow:0 0 0 3px rgba(160,87,58,.12);
@@ -261,26 +270,13 @@
   }
   .message-validation.visible{opacity:1;max-height:40px;margin-top:4px}
 
-  /* reCAPTCHA discret : case "Je ne suis pas un robot" dans le style du site */
+  /* reCAPTCHA Google : widget officiel "Je ne suis pas un robot" */
   .champ-captcha{margin:var(--e4) 0 0}
-  .captcha-case{
-    display:inline-flex;align-items:center;gap:11px;cursor:pointer;user-select:none;
-    padding:12px 18px;border:1.5px solid var(--bord);border-radius:12px;background:var(--surface);
-    transition:border-color .2s ease,box-shadow .2s ease;width:fit-content;max-width:100%;
-  }
-  .captcha-case:has(input:focus-visible){border-color:var(--terre);box-shadow:0 0 0 3px rgba(160,87,58,.12)}
-  .captcha-case input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-  .captcha-coche{
-    width:19px;height:19px;flex:none;border-radius:5px;border:1.5px solid var(--bord);
-    background:var(--bg);display:flex;align-items:center;justify-content:center;
-    transition:background .18s ease,border-color .18s ease;
-  }
-  .captcha-coche svg{width:11px;height:9px;color:#fff;opacity:0;transform:scale(.6);transition:opacity .15s ease,transform .15s ease}
-  .captcha-case input:checked ~ .captcha-coche{background:var(--terre);border-color:var(--terre)}
-  .captcha-case input:checked ~ .captcha-coche svg{opacity:1;transform:scale(1)}
-  .captcha-texte{font-family:var(--f-sans);font-weight:500;font-size:13.5px;color:var(--fg)}
+  .g-recaptcha{width:fit-content;max-width:100%}
   .champ-erreur-captcha{display:none}
-  .champ-captcha.en-erreur .captcha-case{border-color:#B5452E;box-shadow:0 0 0 3px rgba(181,69,46,.1)}
+  .champ-captcha.en-erreur .g-recaptcha{
+    outline:2px solid #B5452E;outline-offset:4px;border-radius:4px;
+  }
   .champ-captcha.en-erreur .champ-erreur-captcha{display:flex;margin-top:9px}
 
   .contact-cta{
@@ -478,13 +474,7 @@
         </div>
 
         <div class="champ-captcha">
-          <label class="captcha-case">
-            <input type="checkbox" id="captchaHumain">
-            <span class="captcha-coche" aria-hidden="true">
-              <svg viewBox="0 0 14 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5.5 5 9.5 13 1.5"/></svg>
-            </span>
-            <span class="captcha-texte">Je ne suis pas un robot</span>
-          </label>
+          <div class="g-recaptcha" id="recaptchaWidget" data-sitekey="6LcaKvgtAAAAAJvDA5hU1MYhv1VEoY8WTFh1WY3x" data-callback="surRecaptchaValide" data-expired-callback="surRecaptchaExpire"></div>
           <p class="champ-erreur champ-erreur-captcha"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg>Merci de confirmer que vous n'êtes pas un robot</p>
         </div>
 
@@ -532,6 +522,7 @@
 </footer>
 
 <script src="/assets/js/i18n.js" defer></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
   (function(){
     var form = document.getElementById("formulaireContact");
@@ -542,7 +533,6 @@
     var champs = Array.prototype.slice.call(form.querySelectorAll("[data-champ]"))
       .filter(function(c){ return c.getAttribute("data-champ") !== "telephone"; });
     var captchaBloc = document.querySelector(".champ-captcha");
-    var captchaInput = document.getElementById("captchaHumain");
 
     function champVide(champ){
       var control = champ.querySelector("input, textarea");
@@ -561,10 +551,14 @@
     }
     champs.forEach(retirerErreurAuSaisie);
 
-    if (captchaInput){
-      captchaInput.addEventListener("change", function(){
-        if (captchaInput.checked) captchaBloc.classList.remove("en-erreur");
-      });
+    // Rappels appelés par le widget Google reCAPTCHA (voir data-callback / data-expired-callback)
+    window.surRecaptchaValide = function(){
+      if (captchaBloc) captchaBloc.classList.remove("en-erreur");
+    };
+    window.surRecaptchaExpire = function(){};
+
+    function recaptchaValide(){
+      return typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length > 0;
     }
 
     function afficherMessage(texte){
@@ -578,7 +572,7 @@
       var premierEnErreur = null;
       var emailChamp = document.getElementById("email").closest("[data-champ]");
       var emailVide = champVide(emailChamp);
-      var captchaManquant = captchaInput && !captchaInput.checked;
+      var captchaManquant = !recaptchaValide();
 
       champs.forEach(function(champ){
         var vide = champVide(champ);
@@ -616,9 +610,26 @@
     var telInput = document.getElementById("telephone");
     var telRendu = document.getElementById("telephoneRendu");
     var formatActuel = "_ __ __ __ __";
+    var indicatifActuel = "+33";
 
     function chiffresBruts(valeur){
-      return valeur.replace(/[^0-9]/g, "");
+      var texte = valeur.trim();
+      // L'autocomplétion du navigateur colle parfois l'indicatif international en toutes
+      // lettres dans le champ (ex: "+33 0 61 58 45 51") alors qu'il est déjà affiché à part :
+      // on retire ce préfixe s'il correspond à l'indicatif du pays actuellement sélectionné,
+      // pour éviter le doublon "+33 ... +33 ...".
+      var indicatifSansPlus = (indicatifActuel || "").replace(/[^0-9]/g, "");
+      var texteSansIndicatif = texte.replace(/[^0-9]/g, "");
+      if (indicatifSansPlus && texteSansIndicatif.indexOf(indicatifSansPlus) === 0){
+        texteSansIndicatif = texteSansIndicatif.slice(indicatifSansPlus.length);
+      }
+      var chiffres = texteSansIndicatif;
+      // Un numéro local saisi (ou proposé par l'autocomplétion du navigateur) commence
+      // souvent par un "0" de présélection nationale (ex: "06 15 84 55 11"). Comme l'indicatif
+      // pays (+33) est déjà affiché séparément, ce zéro doit disparaître pour ne pas décaler
+      // le numéro ni créer de doublon avec l'indicatif.
+      if (chiffres.charAt(0) === "0") chiffres = chiffres.slice(1);
+      return chiffres;
     }
 
     function formaterNumero(chiffres, masque){
@@ -737,6 +748,7 @@
         drapeauActuel.innerHTML = '<svg viewBox="0 0 24 16">' + p.drapeau + '</svg>';
         codeActuel.textContent = p.indicatif;
         valeurCachee.value = p.indicatif;
+        indicatifActuel = p.indicatif;
         trigger.setAttribute("aria-label", "Indicatif téléphonique : " + p.nom + " " + p.indicatif);
         liste.querySelectorAll(".indicatif-option").forEach(function(opt){
           opt.setAttribute("aria-selected", String(opt.getAttribute("data-code") === code));
