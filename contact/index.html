@@ -294,8 +294,11 @@
   }
   .message-validation.visible{opacity:1;max-height:40px;margin-top:4px}
 
-  /* reCAPTCHA Google : widget officiel "Je ne suis pas un robot" */
-  .champ-captcha{margin:0 0 var(--e3)}
+  /* reCAPTCHA Google : widget officiel "Je ne suis pas un robot".
+     Hauteur réservée (78px, taille officielle du widget) pour éviter
+     que le bouton "Envoyer ma demande" ne saute vers le bas le temps
+     que le script Google (chargé en async) rende l'iframe. */
+  .champ-captcha{margin:0 0 var(--e3);min-height:78px}
   .g-recaptcha{width:fit-content;max-width:100%}
   .champ-erreur-captcha{display:none}
   .champ-captcha.en-erreur .g-recaptcha{
@@ -355,6 +358,8 @@
 </style>
 </head>
 <body>
+
+<input type="checkbox" id="menu" class="burger-ctrl" aria-label="Afficher le menu">
 
 <header class="entete">
   <div class="wrap">

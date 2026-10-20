@@ -259,7 +259,11 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
   .logo .nom span{font-size:7.5px;letter-spacing:.34em}
   .symbole .b-alveoles{display:none} /* sous 40 px : symbole sans alvéoles */
   .menu-mobile{
-    display:flex;position:fixed;inset:0;z-index:70;
+    /* z-index élevé : sur la page Parcours, les panneaux et contrôles de la
+       carte Leaflet montent jusqu'à z-index 1000 (ses propres couches
+       internes). Sans cette marge, la carte restait visible par-dessus
+       le menu plein écran une fois celui-ci ouvert. */
+    display:flex;position:fixed;inset:0;z-index:1200;
     flex-direction:column;align-items:center;justify-content:center;gap:22px;
     background:var(--bloc-sauge);
     opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease;
