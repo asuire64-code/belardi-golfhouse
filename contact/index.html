@@ -647,6 +647,19 @@
         telInput.setSelectionRange(telInput.value.length, telInput.value.length);
         rafraichirRendu();
       });
+      // Le rendu superposé affiche des "_" après le texte réellement saisi : si on laissait
+      // le curseur se placer visuellement dans cette zone, il apparaîtrait décalé par rapport
+      // au texte réel (plus court) de l'input invisible. On le ramène donc systématiquement
+      // à la fin du texte saisi, seul endroit où la saisie a un sens pour un numéro.
+      function curseurEnFin(){
+        var fin = telInput.value.length;
+        if (telInput.selectionStart !== fin || telInput.selectionEnd !== fin){
+          telInput.setSelectionRange(fin, fin);
+        }
+      }
+      telInput.addEventListener("focus", curseurEnFin);
+      telInput.addEventListener("click", curseurEnFin);
+      telInput.addEventListener("mouseup", function(e){ e.preventDefault(); curseurEnFin(); });
     }
 
     // Sélecteur d'indicatif téléphonique : pays proches de la France, drapeau cliquable.
