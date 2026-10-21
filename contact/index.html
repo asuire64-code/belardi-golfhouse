@@ -51,8 +51,12 @@
      align-self:start fige sa position en haut de la grille, indépendamment
      de la hauteur du formulaire (étirement du champ message notamment). */
   .contact-capsule{
-    position:relative;aspect-ratio:4/5;max-width:620px;width:100%;margin:28px auto 0 0;
-    align-self:start;
+    /* min-width:0 est nécessaire : un item de grille a min-width:auto par
+       défaut, ce qui peut l'empêcher de se contraindre correctement à sa
+       piste de grille (0.92fr) selon le navigateur ou le niveau de zoom,
+       et faire déborder la capsule sur la colonne de droite. */
+    position:relative;aspect-ratio:4/5;max-width:620px;width:100%;min-width:0;
+    margin:28px auto 0 0;align-self:start;
   }
   .contact-capsule .carte{
     position:absolute;overflow:hidden;border-radius:22px;
@@ -81,7 +85,7 @@
   }
 
   /* Colonne droite : contenu + formulaire, ancrés vers le bord droit de l'écran */
-  .contact-corps{text-align:left}
+  .contact-corps{text-align:left;min-width:0}
   .contact-corps h1{
     font-family:var(--f-sans);font-weight:700;text-align:center;
     font-size:clamp(42px, 4.4vw, 56px);line-height:1.08;letter-spacing:-.01em;
