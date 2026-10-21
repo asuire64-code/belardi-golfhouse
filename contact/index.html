@@ -303,9 +303,15 @@
   /* reCAPTCHA Google : widget officiel "Je ne suis pas un robot".
      Hauteur réservée (78px, taille officielle du widget) pour éviter
      que le bouton "Envoyer ma demande" ne saute vers le bas le temps
-     que le script Google (chargé en async) rende l'iframe. */
+     que le script Google (chargé en async) rende l'iframe.
+     Les coordonnées (email, Instagram) occupent l'espace restant à
+     droite du widget, sur la même ligne, verticalement centrées. */
   .champ-captcha{margin:0 0 var(--e3);min-height:78px}
-  .g-recaptcha{width:fit-content;max-width:100%}
+  .champ-captcha-ligne{
+    display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:20px 28px;
+  }
+  .g-recaptcha{width:fit-content;max-width:100%;flex:none}
   .champ-erreur-captcha{display:none}
   .champ-captcha.en-erreur .g-recaptcha{
     outline:2px solid #B5452E;outline-offset:4px;border-radius:4px;
@@ -334,20 +340,31 @@
   .contact-cta:hover svg{transform:translateX(3px)}
   .form-pied{display:flex;align-items:center;flex-wrap:wrap;gap:6px 16px}
 
-  /* Coordonnées directes sous le bouton d'envoi : reprend le style des
-     liens du bandeau bas de page (même icônes), en version compacte et
-     empilée, pour occuper l'espace resté libre sous le formulaire. */
+  /* Coordonnées directes, à droite du reCAPTCHA dans l'espace disponible :
+     reprend les icônes du bandeau bas de page, en version plus affirmée
+     (taille, poids) pour bien remplir cet espace et rester lisible à
+     côté du widget Google. */
   .contact-coords{
-    margin-top:28px;padding-top:20px;border-top:1px solid var(--bord);
-    display:flex;flex-direction:column;gap:10px;
+    display:flex;flex-direction:column;gap:13px;flex:none;
   }
   .contact-coords a{
-    display:inline-flex;align-items:center;gap:10px;width:fit-content;
-    font-family:var(--f-sans);font-weight:500;font-size:14px;letter-spacing:.02em;
-    color:var(--fg);transition:color .25s ease;
+    display:inline-flex;align-items:center;gap:12px;width:fit-content;
+    font-family:var(--f-sans);font-weight:600;font-size:16px;letter-spacing:.01em;
+    color:var(--fg);transition:color .25s ease,transform .2s ease;
   }
-  .contact-coords a:hover{color:var(--terre)}
-  .contact-coords svg{width:16px;height:16px;flex:none;color:var(--terre)}
+  .contact-coords a:hover{color:var(--terre);transform:translateX(2px)}
+  .contact-coords .icone-coord{
+    width:34px;height:34px;flex:none;border-radius:999px;
+    background:rgba(160,87,58,.1);color:var(--terre);
+    display:flex;align-items:center;justify-content:center;
+    transition:background .25s ease;
+  }
+  .contact-coords a:hover .icone-coord{background:rgba(160,87,58,.18)}
+  .contact-coords svg{width:17px;height:17px;flex:none}
+
+  @media(max-width:620px){
+    .champ-captcha-ligne{justify-content:center;text-align:left}
+  }
 
   /* Bandeau bas de page : email à gauche, Instagram à droite */
   .contact-bandeau{border-top:1px solid var(--bord);background:var(--surface)}
@@ -531,7 +548,19 @@
         <p class="champ-mention-requis"><span class="requis" aria-hidden="true">*</span> <span data-i18n="cp.mention.requis">Champs obligatoires</span></p>
 
         <div class="champ-captcha">
-          <div class="g-recaptcha" id="recaptchaWidget" data-sitekey="6LcaKvgtAAAAAJvDA5hU1MYhv1VEoY8WTFh1WY3x" data-callback="surRecaptchaValide" data-expired-callback="surRecaptchaExpire"></div>
+          <div class="champ-captcha-ligne">
+            <div class="g-recaptcha" id="recaptchaWidget" data-sitekey="6LcaKvgtAAAAAJvDA5hU1MYhv1VEoY8WTFh1WY3x" data-callback="surRecaptchaValide" data-expired-callback="surRecaptchaExpire"></div>
+            <div class="contact-coords">
+              <a href="mailto:contact@belardi-golfhouse.fr">
+                <span class="icone-coord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+                contact@belardi-golfhouse.fr
+              </a>
+              <a href="https://www.instagram.com/belardi.golf/?hl=fr" target="_blank" rel="noopener">
+                <span class="icone-coord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+                @belardi.golf
+              </a>
+            </div>
+          </div>
           <p class="champ-erreur champ-erreur-captcha"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v3.5M8 11h.01"/></svg><span data-i18n="cp.erreur.captcha">Merci de confirmer que vous n'êtes pas un robot</span></p>
         </div>
 
@@ -541,17 +570,6 @@
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
           </button>
           <p class="message-validation" id="messageValidation" role="status" data-i18n="cp.validation.defaut">Merci de renseigner au moins votre adresse email.</p>
-        </div>
-
-        <div class="contact-coords">
-          <a href="mailto:contact@belardi-golfhouse.fr">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-            contact@belardi-golfhouse.fr
-          </a>
-          <a href="https://www.instagram.com/belardi.golf/?hl=fr" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            @belardi.golf
-          </a>
         </div>
       </form>
     </div>
