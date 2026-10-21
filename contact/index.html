@@ -334,6 +334,21 @@
   .contact-cta:hover svg{transform:translateX(3px)}
   .form-pied{display:flex;align-items:center;flex-wrap:wrap;gap:6px 16px}
 
+  /* Coordonnées directes sous le bouton d'envoi : reprend le style des
+     liens du bandeau bas de page (même icônes), en version compacte et
+     empilée, pour occuper l'espace resté libre sous le formulaire. */
+  .contact-coords{
+    margin-top:28px;padding-top:20px;border-top:1px solid var(--bord);
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .contact-coords a{
+    display:inline-flex;align-items:center;gap:10px;width:fit-content;
+    font-family:var(--f-sans);font-weight:500;font-size:14px;letter-spacing:.02em;
+    color:var(--fg);transition:color .25s ease;
+  }
+  .contact-coords a:hover{color:var(--terre)}
+  .contact-coords svg{width:16px;height:16px;flex:none;color:var(--terre)}
+
   /* Bandeau bas de page : email à gauche, Instagram à droite */
   .contact-bandeau{border-top:1px solid var(--bord);background:var(--surface)}
   .contact-bandeau .inner{
@@ -526,6 +541,17 @@
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
           </button>
           <p class="message-validation" id="messageValidation" role="status" data-i18n="cp.validation.defaut">Merci de renseigner au moins votre adresse email.</p>
+        </div>
+
+        <div class="contact-coords">
+          <a href="mailto:contact@belardi-golfhouse.fr">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            contact@belardi-golfhouse.fr
+          </a>
+          <a href="https://www.instagram.com/belardi.golf/?hl=fr" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            @belardi.golf
+          </a>
         </div>
       </form>
     </div>
