@@ -70,13 +70,15 @@
   .contact-capsule .carte-arriere{
     width:92%;height:76%;top:0;right:0;transform:rotate(2.5deg);z-index:1;
   }
-  /* Carte avant : plus proche d'un carré, décalée nettement vers la gauche
-     et remontée pour chevaucher légèrement le bas de la carte arrière
-     (verticale), plutôt que de pendre détachée en dessous : les deux
-     cartes se lisent comme un vrai duo superposé, pas comme deux blocs
-     côte à côte. */
+  /* Carte avant : plus proche d'un carré, alignée au bord gauche de la
+     capsule (left:0, jamais négatif) et remontée pour chevaucher
+     légèrement le bas de la carte arrière (verticale, elle-même ancrée
+     à droite avec right:0) : les deux cartes se lisent comme un vrai duo
+     superposé. Un left négatif ferait déborder la carte hors de la
+     capsule — et donc potentiellement hors de l'écran — dès que le
+     viewport logique rétrécit (zoom navigateur élevé, petits écrans). */
   .contact-capsule .carte-avant{
-    width:62%;height:34%;bottom:10%;left:-22%;transform:rotate(-2.5deg);z-index:2;
+    width:62%;height:34%;bottom:10%;left:0;transform:rotate(-2.5deg);z-index:2;
   }
   .contact-capsule .carte svg{width:26px;height:26px;color:rgba(250,248,242,.5)}
   .contact-capsule .carte span{
