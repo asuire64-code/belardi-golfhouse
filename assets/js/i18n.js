@@ -190,22 +190,7 @@
       "cp.submit": "Envoyer ma demande",
       "cp.indicatif.recherche.ph": "Rechercher un pays…",
       "cp.indicatif.aria": "Indicatif téléphonique",
-      "cp.indicatif.vide": "Aucun pays trouvé",
-
-      "cookies.titre": "Les cookies",
-      "cookies.texte": "Nous utilisons des cookies pour assurer le bon fonctionnement du site (comme le reCAPTCHA de notre formulaire de contact) et, avec votre accord, pour mesurer notre audience. Vous pouvez accepter, refuser ou personnaliser votre choix à tout moment.",
-      "cookies.lien.politique": "Politique de confidentialité",
-      "cookies.btn.refuser": "Tout refuser",
-      "cookies.btn.parametres": "Paramètres",
-      "cookies.btn.accepter": "Tout accepter",
-      "cookies.param.titre": "Paramètres des cookies",
-      "cookies.param.necessaires.titre": "Cookies nécessaires",
-      "cookies.param.necessaires.texte": "Indispensables au fonctionnement du site (formulaire de contact, sécurité). Toujours actifs.",
-      "cookies.param.mesure.titre": "Mesure d'audience",
-      "cookies.param.mesure.texte": "Nous aide à comprendre comment le site est utilisé, de façon anonyme, pour l'améliorer.",
-      "cookies.param.retour": "Retour",
-      "cookies.param.enregistrer": "Enregistrer mes choix",
-      "cookies.gerer.aria": "Gérer mes cookies"
+      "cp.indicatif.vide": "Aucun pays trouvé"
     },
 
     en: {
@@ -392,22 +377,7 @@
       "cp.submit": "Send my request",
       "cp.indicatif.recherche.ph": "Search for a country…",
       "cp.indicatif.aria": "Phone dialling code",
-      "cp.indicatif.vide": "No country found",
-
-      "cookies.titre": "Cookies",
-      "cookies.texte": "We use cookies to ensure the site works properly (such as the reCAPTCHA on our contact form) and, with your consent, to measure our audience. You can accept, decline or customise your choice at any time.",
-      "cookies.lien.politique": "Privacy policy",
-      "cookies.btn.refuser": "Reject all",
-      "cookies.btn.parametres": "Settings",
-      "cookies.btn.accepter": "Accept all",
-      "cookies.param.titre": "Cookie settings",
-      "cookies.param.necessaires.titre": "Necessary cookies",
-      "cookies.param.necessaires.texte": "Required for the site to work (contact form, security). Always active.",
-      "cookies.param.mesure.titre": "Audience measurement",
-      "cookies.param.mesure.texte": "Helps us understand, anonymously, how the site is used so we can improve it.",
-      "cookies.param.retour": "Back",
-      "cookies.param.enregistrer": "Save my choices",
-      "cookies.gerer.aria": "Manage my cookies"
+      "cp.indicatif.vide": "No country found"
     },
 
     es: {
@@ -594,22 +564,7 @@
       "cp.submit": "Enviar mi solicitud",
       "cp.indicatif.recherche.ph": "Buscar un país…",
       "cp.indicatif.aria": "Prefijo telefónico",
-      "cp.indicatif.vide": "Ningún país encontrado",
-
-      "cookies.titre": "Cookies",
-      "cookies.texte": "Utilizamos cookies para garantizar el buen funcionamiento del sitio (como el reCAPTCHA de nuestro formulario de contacto) y, con su consentimiento, para medir nuestra audiencia. Puede aceptar, rechazar o personalizar su elección en cualquier momento.",
-      "cookies.lien.politique": "Política de privacidad",
-      "cookies.btn.refuser": "Rechazar todo",
-      "cookies.btn.parametres": "Configuración",
-      "cookies.btn.accepter": "Aceptar todo",
-      "cookies.param.titre": "Configuración de cookies",
-      "cookies.param.necessaires.titre": "Cookies necesarias",
-      "cookies.param.necessaires.texte": "Imprescindibles para el funcionamiento del sitio (formulario de contacto, seguridad). Siempre activas.",
-      "cookies.param.mesure.titre": "Medición de audiencia",
-      "cookies.param.mesure.texte": "Nos ayuda a entender, de forma anónima, cómo se usa el sitio para poder mejorarlo.",
-      "cookies.param.retour": "Volver",
-      "cookies.param.enregistrer": "Guardar mis preferencias",
-      "cookies.gerer.aria": "Gestionar mis cookies"
+      "cp.indicatif.vide": "Ningún país encontrado"
     }
   };
 
