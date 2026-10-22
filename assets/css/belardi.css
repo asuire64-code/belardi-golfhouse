@@ -369,15 +369,16 @@ footer .legal{margin-top:var(--e2);font-size:11px;opacity:.6}
 
 .cookies-gerer{
   position:fixed;left:24px;bottom:24px;z-index:1900;
-  width:42px;height:42px;border-radius:50%;background:var(--surface);color:var(--terre);
+  width:48px;height:48px;padding:0;border-radius:50%;background:var(--sauge);overflow:hidden;
   border:0;box-shadow:0 8px 24px rgba(0,0,0,.18),0 0 0 1px rgba(0,0,0,.06);
   display:flex;align-items:center;justify-content:center;cursor:pointer;
   opacity:0;pointer-events:none;transform:scale(.9);
-  transition:opacity .25s ease,transform .25s ease,background .2s ease;
+  transition:opacity .25s ease,transform .25s ease,box-shadow .2s ease;
 }
-.cookies-gerer svg{width:20px;height:20px}
+.cookies-gerer svg{width:100%;height:100%;display:block}
 body.cookies-choisi .cookies-gerer{opacity:1;pointer-events:auto;transform:scale(1)}
-.cookies-gerer:hover{background:var(--terre);color:#fff}
+body.cookies-choisi .cookies-gerer:hover{transform:scale(1.08);box-shadow:0 10px 28px rgba(0,0,0,.24),0 0 0 1px rgba(0,0,0,.06)}
+.cookies-gerer:focus-visible{outline:2px solid var(--terre);outline-offset:3px}
 body.cookies-ouvert .cookies-gerer{opacity:0;pointer-events:none}
 
 @media(max-width:480px){

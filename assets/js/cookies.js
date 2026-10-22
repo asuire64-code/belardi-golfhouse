@@ -103,7 +103,8 @@
     b.className = 'cookies-gerer';
     b.setAttribute('aria-label', texte('cookies.gerer.aria') || 'Gérer mes cookies');
     b.setAttribute('data-i18n-aria', 'cookies.gerer.aria');
-    b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9" r="1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="7.5" r="1" fill="currentColor" stroke="none"/><circle cx="16" cy="13" r="1" fill="currentColor" stroke="none"/><circle cx="9.5" cy="15" r="1" fill="currentColor" stroke="none"/></svg>';
+    // Symbole BELARDI sur pastille sauge (géométrie du favicon, centré sur sa masse visuelle)
+    b.innerHTML = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#8A9A7B"/><g transform="translate(51.9 50) scale(.92) translate(-45.5 -50)"><rect x="30" y="20" width="12" height="60" fill="#E6DCC8" stroke="#8A9A7B" stroke-width="3"/><path d="M42 20 A15 15 0 0 1 42 50 Z" fill="#A0573A" stroke="#8A9A7B" stroke-width="3"/><circle cx="46" cy="65" r="15" fill="#FAF8F2" stroke="#8A9A7B" stroke-width="3"/></g></svg>';
     return b;
   }
 
