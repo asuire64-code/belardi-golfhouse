@@ -36,23 +36,65 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["Organization", "TravelAgency"],
       "@id": "https://belardi-golfhouse.fr/#organization",
       "name": "BELARDI Golf House",
+      "alternateName": ["Belardi", "Belardi Golf House", "Belardi Golfhouse", "Golf House Belardi"],
       "url": "https://belardi-golfhouse.fr/",
       "logo": "https://belardi-golfhouse.fr/android-chrome-512.png",
       "image": "https://belardi-golfhouse.fr/og-image.png",
       "email": "contact@belardi-golfhouse.fr",
       "description": "Séjours golf tout compris d'une semaine au Pays Basque : coaching, parcours, hébergement et repas, en petits groupes.",
-      "areaServed": { "@type": "Place", "name": "Pays Basque, France" }
+      "slogan": "Vous jouez, on s'occupe du reste.",
+      "knowsLanguage": ["fr", "en", "es"],
+      "sameAs": ["https://www.instagram.com/belardi.golf/"],
+      "areaServed": { "@type": "Place", "name": "Pays Basque, France" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Pays Basque",
+        "addressCountry": "FR"
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://belardi-golfhouse.fr/#website",
       "url": "https://belardi-golfhouse.fr/",
       "name": "BELARDI Golf House",
+      "alternateName": "Belardi",
       "inLanguage": "fr-FR",
       "publisher": { "@id": "https://belardi-golfhouse.fr/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://belardi-golfhouse.fr/#faq",
+      "isPartOf": { "@id": "https://belardi-golfhouse.fr/#website" },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quel niveau faut-il avoir ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Le séjour s'adresse aux golfeurs déjà autonomes sur un parcours, idéalement avec un index entre 10 et 36. Les groupes sont constitués par niveau pour que chacun progresse à son rythme." }
+        },
+        {
+          "@type": "Question",
+          "name": "Puis-je venir seul ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oui, la majorité de nos participants viennent seuls ou à deux. Les groupes de six maximum et les repas partagés rendent l'intégration naturelle." }
+        },
+        {
+          "@type": "Question",
+          "name": "Faut-il apporter son matériel ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nous recommandons vos propres clubs. Une location est possible sur demande si vous voyagez léger." }
+        },
+        {
+          "@type": "Question",
+          "name": "Qu'est-ce qui n'est pas inclus ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Le transport jusqu'au Pays Basque, les boissons hors repas, les activités optionnelles payantes de la journée découverte et l'assurance annulation." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelles sont les conditions d'annulation ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Remboursement intégral jusqu'à 60 jours avant le départ. Entre 60 et 30 jours, avoir valable 12 mois. Moins de 30 jours, la place peut être cédée à une autre personne." }
+        }
+      ]
     }
   ]
 }
@@ -574,8 +616,8 @@
     </div>
     <div class="liens">
       <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>
-      <a href="#" data-i18n="footer.mentions">Mentions légales</a>
-      <a href="#" data-i18n="footer.confidentialite">Confidentialité</a>
+      <a href="/mentions-legales/" data-i18n="footer.mentions">Mentions légales</a>
+      <a href="/confidentialite/" data-i18n="footer.confidentialite">Confidentialité</a>
       <p class="legal">© 2026 BELARDI Golf House</p>
     </div>
   </div>
