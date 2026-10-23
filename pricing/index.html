@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tarifs — BELARDI Golf House</title>
+<meta name="description" content="Trois formules tout compris pour une semaine de golf au Pays Basque : Essentiel, Signature et Prestige. Prix par personne, affichés sans surprise.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://belardi-golfhouse.fr/pricing/">
+
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3E4A33">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#E6DCC8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1F251B" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="BELARDI Golf House">
+<meta property="og:url" content="https://belardi-golfhouse.fr/pricing/">
+<meta property="og:title" content="Tarifs — BELARDI Golf House">
+<meta property="og:description" content="Trois formules tout compris pour une semaine de golf au Pays Basque : Essentiel, Signature et Prestige. Prix par personne, affichés sans surprise.">
+<meta property="og:image" content="https://belardi-golfhouse.fr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Josefin+Sans:wght@300&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/belardi.css">
+<style>
+  /* =========================== Page Tarifs ===========================
+     Styles propres à /pricing/. Socle commun : /assets/css/belardi.css */
+  body{background:var(--bg)}
+  .px{position:relative;padding:clamp(48px,7vw,96px) 0 var(--e6);overflow:hidden}
+  /* Halo très doux derrière le titre (sauge + terre), à la manière d'un ciel d'aube */
+  .px::before{
+    content:"";position:absolute;inset:-20% -10% auto;height:620px;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(42% 60% at 28% 30%, rgba(138,154,123,.30), transparent 70%),
+      radial-gradient(38% 55% at 74% 24%, rgba(217,164,135,.28), transparent 70%);
+    filter:blur(10px);
+  }
+  .px .wrap{position:relative;z-index:1;max-width:1180px}
+
+  /* ---- En-tête de page ---- */
+  .px-tete{text-align:center;max-width:760px;margin:0 auto clamp(48px,6vw,72px)}
+  .px-tete .eyebrow{color:var(--terre)}
+  .px-titre{
+    margin-top:22px;font-family:var(--f-sans);font-weight:600;
+    font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.02;letter-spacing:-.015em;color:var(--fg);
+  }
+  .px-titre span{display:block}
+  .px-titre .l2{
+    font-family:var(--f-accent);font-style:italic;font-weight:500;letter-spacing:0;
+    font-size:1.08em;line-height:1.05;color:var(--terre);margin-top:.06em;text-wrap:balance;
+  }
+  .px-lead{margin:26px auto 0;max-width:52ch;color:var(--texte-doux-auto);font-size:1.02rem}
+
+  /* ---- Grille des cartes ---- */
+  .px-grille{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+  .px-carte{
+    position:relative;display:flex;flex-direction:column;
+    background:var(--surface);border:1px solid var(--bord);border-radius:24px;
+    padding:38px 30px 30px;text-align:center;
+    box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 18px 40px -28px rgba(31,37,27,.28);
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease;
+  }
+  .px-carte:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 26px 50px -28px rgba(31,37,27,.36)}
+  .px-carte--pop{
+    border:1.5px solid var(--terre);
+    background:linear-gradient(180deg,rgba(217,164,135,.20) 0%,rgba(217,164,135,.06) 34%,var(--surface) 62%),var(--surface);
+    box-shadow:0 24px 54px -30px rgba(160,87,58,.55);
+  }
+  .px-badge{
+    position:absolute;top:0;left:50%;transform:translate(-50%,-50%);white-space:nowrap;
+    background:var(--terre);color:#fff;border-radius:999px;padding:6px 14px;
+    font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    box-shadow:0 6px 16px -6px rgba(160,87,58,.6);
+  }
+  .px-nom{
+    font-family:var(--f-sans);font-weight:600;font-size:13px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--terre);line-height:1;padding-left:.32em;
+  }
+  .px-prix{display:flex;align-items:baseline;justify-content:center;gap:8px;margin-top:22px}
+  .px-montant{
+    font-family:var(--f-sans);font-weight:500;font-size:clamp(2.5rem,3.6vw,3.1rem);line-height:1;
+    letter-spacing:-.02em;color:var(--fg);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap;
+  }
+  .px-unite{font-size:.95rem;color:var(--texte-doux-auto)}
+  .px-saison{margin-top:10px;font-size:.82rem;letter-spacing:.04em;color:var(--gris)}
+  .px-haute{margin-top:2px;font-size:.88rem;color:var(--texte-doux-auto)}
+  .px-haute b{font-weight:600;color:var(--fg)}
+  .px-desc{margin:18px auto 0;max-width:30ch;font-size:.95rem;line-height:1.55;color:var(--texte-doux-auto);min-height:4.65em}
+
+  /* ---- Bouton : pilule, effet verre poli ---- */
+  .px-btn{
+    position:relative;overflow:hidden;isolation:isolate;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    margin-top:26px;padding:15px 24px;border-radius:999px;
+    font-family:var(--f-sans);font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--olive);
+    background:linear-gradient(180deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.55) 55%,rgba(255,255,255,.70) 100%);
+    border:1px solid rgba(62,74,51,.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,1),
+      inset 0 -8px 16px -10px rgba(62,74,51,.16),
+      0 10px 22px -14px rgba(31,37,27,.45);
+    -webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);
+    transition:transform .25s ease,box-shadow .3s ease,background .3s ease,color .3s ease;
+  }
+  /* Reflet : une lame de lumière traverse le bouton au survol */
+  .px-btn::after{
+    content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;z-index:-1;
+    background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.75) 50%,transparent 100%);
+    transform:skewX(-18deg);transition:left .7s cubic-bezier(.4,0,.2,1);
+  }
+  .px-btn:hover::after{left:125%}
+  .px-btn:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 #fff,inset 0 -8px 16px -10px rgba(62,74,51,.2),0 16px 28px -14px rgba(31,37,27,.5)}
+  .px-btn:active{transform:translateY(0) scale(.985)}
+  .px-btn:focus-visible{outline:2px solid var(--terre);outline-offset:3px}
+  .px-btn svg{width:16px;height:16px;flex:none;transition:transform .3s ease}
+  .px-btn:hover svg{transform:translateX(3px)}
+  .px-btn--plein{
+    color:#fff;border-color:rgba(255,255,255,.28);
+    background:linear-gradient(180deg,rgba(190,112,80,.96) 0%,rgba(160,87,58,.94) 55%,rgba(142,76,50,.96) 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.45),
+      inset 0 -10px 18px -10px rgba(60,25,10,.35),
+      0 14px 26px -14px rgba(160,87,58,.75);
+  }
+  .px-btn--plein::after{background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.38) 50%,transparent 100%)}
+  .px-btn--plein:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -10px 18px -10px rgba(60,25,10,.4),0 18px 32px -14px rgba(160,87,58,.85)}
+  .px-sous{margin-top:12px;font-size:.78rem;letter-spacing:.06em;color:var(--gris)}
+
+  /* ---- Détail inclus / non inclus ---- */
+  .px-liste{list-style:none;margin-top:26px;padding-top:6px;border-top:1px solid var(--bord);text-align:left}
+  .px-liste li{
+    display:flex;align-items:flex-start;gap:12px;padding:13px 2px;font-size:.93rem;line-height:1.45;
+    border-bottom:1px solid color-mix(in srgb,var(--bord) 55%,transparent);
+  }
+  .px-liste li:last-child{border-bottom:0}
+  .px-ico{width:18px;height:18px;flex:none;margin-top:1px}
+  .px-liste .oui{color:var(--fg)}
+  .px-liste .oui .px-ico{color:var(--sauge-ombre)}
+  .px-carte--pop .px-liste .oui .px-ico{color:var(--terre)}
+  .px-liste .non{color:var(--fg);opacity:.32}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  /* ---- Bas de page : rappels ---- */
+  .px-pied{margin:clamp(48px,6vw,72px) auto 0;max-width:1120px;text-align:center}
+  .px-pied h3{font-size:11.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--terre)}
+  .px-inclus{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;margin-top:18px}
+  .px-inclus li{
+    display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-size:.88rem;
+    background:color-mix(in srgb,var(--surface) 70%,transparent);border:1px solid var(--bord);
+  }
+  .px-inclus .px-ico{width:16px;height:16px;color:var(--sauge-ombre)}
+  .px-noninclus{margin-top:22px;font-size:.85rem;color:var(--gris)}
+  .px-groupes{margin-top:8px;font-size:.92rem;color:var(--texte-doux-auto)}
+  .px-groupes a{color:var(--terre);font-weight:500;border-bottom:1px solid currentColor;padding-bottom:1px;margin-left:4px;transition:opacity .2s ease}
+  .px-groupes a:hover{opacity:.75}
+
+  /* ---- Responsive ---- */
+  @media(max-width:1020px){
+    .px-grille{grid-template-columns:1fr;max-width:460px;margin:0 auto;gap:34px}
+    .px-desc{min-height:0}
+  }
+  @media(max-width:520px){
+    .px-carte{padding:34px 22px 24px}
+    .px-titre{font-size:clamp(2.1rem,10vw,2.6rem)}
+    .px-titre .l2{font-size:1em}
+  }
+
+  /* ---- Mode sombre ---- */
+  @media (prefers-color-scheme: dark){
+    .px::before{opacity:.45}
+    .px-carte{box-shadow:0 18px 40px -28px rgba(0,0,0,.6)}
+    .px-carte--pop{background:linear-gradient(180deg,rgba(217,164,135,.16) 0%,rgba(217,164,135,.05) 34%,var(--surface) 62%),var(--surface);border-color:var(--terre-claire)}
+    .px-badge{background:var(--terre-claire);color:var(--sombre)}
+    .px-nom,.px-titre .l2,.px-pied h3,.px-groupes a{color:var(--terre-claire)}
+    .px-btn{
+      color:var(--lin);border-color:rgba(230,220,200,.18);
+      background:linear-gradient(180deg,rgba(250,248,242,.16) 0%,rgba(250,248,242,.06) 60%,rgba(250,248,242,.10) 100%);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 10px 22px -14px rgba(0,0,0,.7);
+    }
+    .px-btn::after{background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.18) 50%,transparent 100%)}
+    .px-btn--plein{color:#fff;background:linear-gradient(180deg,rgba(190,112,80,.95),rgba(150,80,52,.95))}
+    .px-carte--pop .px-liste .oui .px-ico{color:var(--terre-claire)}
+  }
+  @media(prefers-reduced-motion: reduce){.px-carte:hover,.px-btn:hover{transform:none}.px-btn::after{display:none}}
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="menu" class="burger-ctrl" aria-label="Afficher le menu">
+
+<header class="entete">
+  <div class="wrap">
+    <a class="logo notranslate" href="/" translate="no" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
+      <svg class="symbole" viewBox="28 18 35 64" role="img" aria-hidden="true">
+        <rect class="b-fut" x="30" y="20" width="12" height="60" stroke-width="3"/>
+        <path class="b-boucle" d="M42 20 A15 15 0 0 1 42 50 Z" stroke-width="3"/>
+        <circle class="b-anneau" cx="46" cy="65" r="15.8"/>
+        <circle class="b-balle" cx="46" cy="65" r="14.6"/>
+        <g class="b-alveoles">
+          <circle cx="35.8" cy="65.0" r="1.28"/><circle cx="40.9" cy="57.3" r="1.28"/>
+          <circle cx="40.9" cy="62.4" r="1.28"/><circle cx="40.9" cy="67.5" r="1.28"/>
+          <circle cx="40.9" cy="72.6" r="1.28"/><circle cx="46.0" cy="54.8" r="1.28"/>
+          <circle cx="46.0" cy="59.9" r="1.28"/><circle cx="46.0" cy="65.0" r="1.28"/>
+          <circle cx="46.0" cy="70.1" r="1.28"/><circle cx="46.0" cy="75.2" r="1.28"/>
+          <circle cx="51.1" cy="57.3" r="1.28"/><circle cx="51.1" cy="62.4" r="1.28"/>
+          <circle cx="51.1" cy="67.5" r="1.28"/><circle cx="51.1" cy="72.6" r="1.28"/>
+          <circle cx="56.2" cy="65.0" r="1.28"/>
+        </g>
+      </svg>
+      <span class="nom"><b>BELARDI</b><span>GOLF HOUSE</span></span>
+    </a>
+
+    <nav class="nav">
+      <div class="nav-liens">
+        <span class="nav-pilule" aria-hidden="true"></span>
+        <a href="/" data-i18n="nav.accueil">Accueil</a>
+        <a href="/#programme" data-i18n="nav.programme">Programme</a>
+        <a href="/parcours/" data-i18n="nav.parcours">Parcours</a>
+        <a href="/#origines" data-i18n="nav.apropos">À propos</a>
+        <a href="/pricing/" aria-current="page" data-i18n="nav.tarifs">Tarifs</a>
+        <a href="/contact/" data-i18n="nav.contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button type="button" class="lang-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <svg class="lang-flag" data-flag-fr aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect width="8" height="16" fill="#002654"/><rect x="16" width="8" height="16" fill="#CE1126"/></svg>
+          <span class="lang-current">FR</span>
+          <svg class="lang-chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+        <ul class="lang-menu" role="listbox" aria-label="Choix de la langue">
+          <li><button type="button" data-lang="fr" role="option">
+            <svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect width="8" height="16" fill="#002654"/><rect x="16" width="8" height="16" fill="#CE1126"/></svg>
+            Français</button></li>
+          <li><button type="button" data-lang="en" role="option">
+            <svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.4"/><path d="M12 0V16M0 8H24" stroke="#fff" stroke-width="5"/><path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="2.6"/></svg>
+            English</button></li>
+          <li><button type="button" data-lang="es" role="option">
+            <svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg>
+            Español</button></li>
+        </ul>
+      </div>
+      <a href="/#contact" class="cta" data-i18n="nav.reserver">Réserver</a>
+    </div>
+
+    <label class="burger" for="menu" data-i18n-aria="burger.aria" aria-label="Ouvrir le menu"><i></i><i></i></label>
+  </div>
+</header>
+
+<nav class="menu-mobile" aria-label="Menu principal">
+  <a href="/" data-i18n="nav.accueil" onclick="document.getElementById('menu').checked=false">Accueil</a>
+  <a href="/#programme" data-i18n="nav.programme" onclick="document.getElementById('menu').checked=false">Programme</a>
+  <a href="/parcours/" data-i18n="nav.parcours" onclick="document.getElementById('menu').checked=false">Parcours</a>
+  <a href="/#origines" data-i18n="nav.apropos" onclick="document.getElementById('menu').checked=false">À propos</a>
+  <a href="/pricing/" data-i18n="nav.tarifs" onclick="document.getElementById('menu').checked=false">Tarifs</a>
+  <a href="/contact/" data-i18n="nav.contact" onclick="document.getElementById('menu').checked=false">Contact</a>
+  <a href="/#contact" class="menu-mobile-cta" data-i18n="nav.reserver" onclick="document.getElementById('menu').checked=false">Réserver</a>
+  <div class="langues" role="group" aria-label="Choix de la langue">
+    <button type="button" data-lang="fr"><svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect width="8" height="16" fill="#002654"/><rect x="16" width="8" height="16" fill="#CE1126"/></svg>FR</button><span class="sep">·</span>
+    <button type="button" data-lang="en"><svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.4"/><path d="M12 0V16M0 8H24" stroke="#fff" stroke-width="5"/><path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="2.6"/></svg>EN</button><span class="sep">·</span>
+    <button type="button" data-lang="es"><svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg>ES</button>
+  </div>
+</nav>
+
+<main class="px">
+  <div class="wrap">
+    <header class="px-tete">
+      <p class="eyebrow" data-i18n="px.eyebrow">Tarifs 2027 · Prix par personne</p>
+      <h1 class="px-titre"><span class="l1" data-i18n="px.h1.l1">Une semaine,</span><span class="l2" data-i18n="px.h1.l2">trois façons de la vivre.</span></h1>
+      <p class="px-lead" data-i18n="px.lead">7 jours, 6 nuits, groupes de 6 golfeurs maximum. Choisissez votre formule, nous nous occupons du reste.</p>
+    </header>
+
+    <div class="px-grille">
+      <article class="px-carte" aria-labelledby="px-essentiel">
+        <h2 class="px-nom" id="px-essentiel" translate="no">Essentiel</h2>
+        <p class="px-prix"><span class="px-montant">2 490 €</span><span class="px-unite" data-i18n="px.unite">/ personne</span></p>
+        <p class="px-saison"><span data-i18n="px.saison.basse">Basse saison · oct. – mars</span></p>
+        <p class="px-haute"><b>2 890 €</b> <span data-i18n="px.saison.haute">en haute saison</span></p>
+        <p class="px-desc" data-i18n="px.essentiel.desc">Pour découvrir la Côte Basque et travailler les bases de son jeu en groupe.</p>
+        <a class="px-btn" href="/contact/"><span data-i18n="px.cta">Je suis intéressé</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <p class="px-sous" data-i18n="px.sous">7 jours · 6 nuits</p>
+        <ul class="px-liste">
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.essentiel.heberg">6 nuits en chambre partagée</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.essentiel.repas">Petits-déjeuners et 4 dîners</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.essentiel.green">4 green fees</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.essentiel.coach">16 h de coaching en groupe</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.transf">Transferts aéroport et golfs</span></li>
+          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.video">Analyse vidéo et plan de progression écrit</span></li>
+          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.decouv">Journée découverte encadrée</span></li>
+          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.fitting">Séance de fitting de vos clubs</span></li>
+          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.suivi">Suivi à distance pendant 3 mois</span></li>
+        </ul>
+      </article>
+      <article class="px-carte px-carte--pop" aria-labelledby="px-signature">
+        <p class="px-badge" data-i18n="px.badge">Le plus populaire</p>
+        <h2 class="px-nom" id="px-signature" translate="no">Signature</h2>
+        <p class="px-prix"><span class="px-montant">3 290 €</span><span class="px-unite" data-i18n="px.unite">/ personne</span></p>
+        <p class="px-saison"><span data-i18n="px.saison.basse">Basse saison · oct. – mars</span></p>
+        <p class="px-haute"><b>3 790 €</b> <span data-i18n="px.saison.haute">en haute saison</span></p>
+        <p class="px-desc" data-i18n="px.signature.desc">Le séjour complet : coaching individuel, pension complète et journée découverte.</p>
+        <a class="px-btn px-btn--plein" href="/contact/"><span data-i18n="px.cta">Je suis intéressé</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <p class="px-sous" data-i18n="px.sous">7 jours · 6 nuits</p>
+        <ul class="px-liste">
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.signature.heberg">6 nuits en chambre individuelle</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.signature.repas">Pension complète, vins inclus</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.signature.green">5 green fees</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.signature.coach">20 h de coaching, dont 2 h en individuel</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.transf">Transferts aéroport et golfs</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.video">Analyse vidéo et plan de progression écrit</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.decouv">Journée découverte encadrée</span></li>
+          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.fitting">Séance de fitting de vos clubs</span></li>
+          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.suivi">Suivi à distance pendant 3 mois</span></li>
+        </ul>
+      </article>
+      <article class="px-carte" aria-labelledby="px-prestige">
+        <h2 class="px-nom" id="px-prestige" translate="no">Prestige</h2>
+        <p class="px-prix"><span class="px-montant">4 290 €</span><span class="px-unite" data-i18n="px.unite">/ personne</span></p>
+        <p class="px-saison"><span data-i18n="px.saison.basse">Basse saison · oct. – mars</span></p>
+        <p class="px-haute"><b>4 890 €</b> <span data-i18n="px.saison.haute">en haute saison</span></p>
+        <p class="px-desc" data-i18n="px.prestige.desc">L'expérience sans compromis : suite, coaching sur mesure et suivi après le séjour.</p>
+        <a class="px-btn" href="/contact/"><span data-i18n="px.cta">Je suis intéressé</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <p class="px-sous" data-i18n="px.sous">7 jours · 6 nuits</p>
+        <ul class="px-liste">
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.prestige.heberg">6 nuits en suite avec vue</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.prestige.repas">Pension complète, vins inclus</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.prestige.green">6 green fees</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.prestige.coach">24 h de coaching, dont 6 h en individuel</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.transf">Transferts aéroport et golfs</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.video">Analyse vidéo et plan de progression écrit</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.decouv">Journée découverte encadrée</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.fitting">Séance de fitting de vos clubs</span></li>
+          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.suivi">Suivi à distance pendant 3 mois</span></li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="px-pied">
+      <h3 data-i18n="px.inclus.titre">Dans toutes les formules</h3>
+      <ul class="px-inclus">
+        <li><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="px.inclus.1">Groupes de 6 golfeurs maximum</span></li>
+        <li><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="px.inclus.2">Remboursement intégral jusqu'à 60 jours avant le départ</span></li>
+        <li><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="px.inclus.3">Accompagnant non golfeur possible sur demande</span></li>
+      </ul>
+      <p class="px-noninclus" data-i18n="px.noninclus">Non inclus : transport jusqu'au Pays Basque, boissons hors repas et assurance annulation.</p>
+      <p class="px-groupes"><span data-i18n="px.groupes">Groupe constitué ou séminaire ?</span><a href="/contact/" data-i18n="px.groupes.lien">Demandez un devis sur mesure</a></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="inner">
+    <div>
+      <a href="/" class="nom-empile" aria-label="BELARDI Golf House">
+        <b>Belardi</b>
+        <span class="gh">Golf House</span>
+      </a>
+      <p class="baseline" data-i18n="footer.baseline">Séjours golf tout compris au Pays Basque</p>
+    </div>
+    <div class="liens">
+      <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>
+      <a href="/#faq" data-i18n="pc.footer.faq">Questions fréquentes</a>
+      <a href="/" data-i18n="pc.menu.origines">Retour à l'accueil</a>
+      <p class="legal">© 2026 BELARDI Golf House</p>
+    </div>
+  </div>
+</footer>
+
+<script>window.BELARDI_PAGE = "pricing";</script>
+<script src="/assets/js/i18n.js" defer></script>
+</body>
+</html>
