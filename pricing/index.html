@@ -36,20 +36,29 @@
 <style>
   /* =========================== Page Tarifs ===========================
      Styles propres à /pricing/. Socle commun : /assets/css/belardi.css */
-  body{background:var(--bg)}
-  .px{position:relative;padding:clamp(48px,7vw,96px) 0 var(--e6);overflow:hidden}
-  /* Halo très doux derrière le titre (sauge + terre), à la manière d'un ciel d'aube */
+  .px{
+    --vert:#5F7350;          /* vert Belardi lisible (sauge assombrie) : coches */
+    --vert-doux:rgba(138,154,123,.16);
+    --orange:#B8653F;        /* orange Belardi (terre) : croix */
+    --orange-doux:rgba(184,101,63,.14);
+    --txt-oui:#2F3827;       /* texte inclus : contraste ≈ 11:1 sur la carte */
+    --txt-non:#7A7D71;       /* texte non inclus : grisé mais lisible (≈ 4:1) */
+    --trait:#E4DBC8;
+    --vedette:#4F6142;       /* mise en avant « Le plus populaire » : vert profond */
+    position:relative;padding:clamp(48px,7vw,96px) 0 var(--e6);overflow:hidden;
+  }
+  /* Halo très doux derrière le titre */
   .px::before{
     content:"";position:absolute;inset:-20% -10% auto;height:620px;z-index:0;pointer-events:none;
     background:
       radial-gradient(42% 60% at 28% 30%, rgba(138,154,123,.30), transparent 70%),
-      radial-gradient(38% 55% at 74% 24%, rgba(217,164,135,.28), transparent 70%);
+      radial-gradient(38% 55% at 74% 24%, rgba(217,164,135,.24), transparent 70%);
     filter:blur(10px);
   }
-  .px .wrap{position:relative;z-index:1;max-width:1180px}
+  .px .wrap{position:relative;z-index:1;max-width:1340px;padding:0 clamp(16px,3vw,32px)}
 
   /* ---- En-tête de page ---- */
-  .px-tete{text-align:center;max-width:760px;margin:0 auto clamp(48px,6vw,72px)}
+  .px-tete{text-align:center;max-width:760px;margin:0 auto clamp(56px,6vw,80px)}
   .px-tete .eyebrow{color:var(--terre)}
   .px-titre{
     margin-top:22px;font-family:var(--f-sans);font-weight:600;
@@ -60,139 +69,157 @@
     font-family:var(--f-accent);font-style:italic;font-weight:500;letter-spacing:0;
     font-size:1.08em;line-height:1.05;color:var(--terre);margin-top:.06em;text-wrap:balance;
   }
-  .px-lead{margin:26px auto 0;max-width:52ch;color:var(--texte-doux-auto);font-size:1.02rem}
+  .px-lead{margin:26px auto 0;max-width:52ch;color:var(--texte-doux-auto);font-size:1.02rem;text-wrap:balance}
 
-  /* ---- Grille des cartes ---- */
-  .px-grille{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+  /* ---- Grille des cartes ----
+     Sous-grille : chaque bloc (nom, prix, saisons, texte, bouton, chaque ligne
+     du détail) occupe la même rangée dans les trois cartes, donc tout reste
+     aligné au pixel près quelle que soit la longueur des textes. */
+  .px-grille{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    column-gap:clamp(24px,2.8vw,44px);row-gap:0;align-items:stretch;
+  }
   .px-carte{
-    position:relative;display:flex;flex-direction:column;
+    position:relative;display:grid;grid-row:span 16;grid-template-rows:subgrid;row-gap:0;
     background:var(--surface);border:1px solid var(--bord);border-radius:24px;
-    padding:38px 30px 30px;text-align:center;
-    box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 18px 40px -28px rgba(31,37,27,.28);
+    padding:40px clamp(18px,1.8vw,28px) 22px;text-align:center;
+    box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 18px 40px -28px rgba(31,37,27,.30);
     transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease;
   }
-  .px-carte:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 26px 50px -28px rgba(31,37,27,.36)}
+  .px-carte:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 28px 54px -30px rgba(31,37,27,.40)}
   .px-carte--pop{
-    border:1.5px solid var(--terre);
-    background:linear-gradient(180deg,rgba(217,164,135,.20) 0%,rgba(217,164,135,.06) 34%,var(--surface) 62%),var(--surface);
-    box-shadow:0 24px 54px -30px rgba(160,87,58,.55);
+    border:1.5px solid var(--vedette);
+    background:linear-gradient(180deg,rgba(138,154,123,.16) 0%,rgba(138,154,123,.05) 30%,var(--surface) 55%),var(--surface);
+    box-shadow:0 26px 56px -32px rgba(62,74,51,.55);
   }
   .px-badge{
     position:absolute;top:0;left:50%;transform:translate(-50%,-50%);white-space:nowrap;
-    background:var(--terre);color:#fff;border-radius:999px;padding:6px 14px;
+    display:flex;align-items:center;gap:7px;
+    background:var(--vedette);color:var(--blanc);border-radius:999px;padding:7px 15px 7px 13px;
     font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-    box-shadow:0 6px 16px -6px rgba(160,87,58,.6);
+    box-shadow:0 8px 18px -8px rgba(62,74,51,.65);
   }
+  .px-badge svg{width:12px;height:12px;flex:none;color:#E9C98A}
   .px-nom{
     font-family:var(--f-sans);font-weight:600;font-size:13px;letter-spacing:.32em;text-transform:uppercase;
     color:var(--terre);line-height:1;padding-left:.32em;
   }
-  .px-prix{display:flex;align-items:baseline;justify-content:center;gap:8px;margin-top:22px}
+  .px-carte--pop .px-nom{color:var(--vedette)}
+  .px-prix{display:flex;align-items:baseline;justify-content:center;gap:8px;margin-top:22px;flex-wrap:wrap}
   .px-montant{
-    font-family:var(--f-sans);font-weight:500;font-size:clamp(2.5rem,3.6vw,3.1rem);line-height:1;
+    font-family:var(--f-sans);font-weight:500;font-size:clamp(2.4rem,3.4vw,3.1rem);line-height:1;
     letter-spacing:-.02em;color:var(--fg);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap;
   }
   .px-unite{font-size:.95rem;color:var(--texte-doux-auto)}
-  .px-saison{margin-top:10px;font-size:.82rem;letter-spacing:.04em;color:var(--gris)}
+  .px-saison{margin-top:12px;font-size:.82rem;letter-spacing:.04em;color:var(--gris)}
   .px-haute{margin-top:2px;font-size:.88rem;color:var(--texte-doux-auto)}
   .px-haute b{font-weight:600;color:var(--fg)}
-  .px-desc{margin:18px auto 0;max-width:30ch;font-size:.95rem;line-height:1.55;color:var(--texte-doux-auto);min-height:4.65em}
+  .px-desc{margin:18px auto 0;max-width:30ch;font-size:.95rem;line-height:1.55;color:var(--texte-doux-auto);align-self:start}
 
-  /* ---- Bouton : pilule, effet verre poli ---- */
+  /* ---- Bouton : pilule verre poli ; au survol, remplissage terre qui balaie
+          de gauche à droite (même geste que « Réserver » dans l'en-tête) ---- */
   .px-btn{
-    position:relative;overflow:hidden;isolation:isolate;
+    position:relative;overflow:hidden;isolation:isolate;align-self:end;
     display:flex;align-items:center;justify-content:center;gap:10px;
     margin-top:26px;padding:15px 24px;border-radius:999px;
     font-family:var(--f-sans);font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--olive);
-    background:linear-gradient(180deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.55) 55%,rgba(255,255,255,.70) 100%);
-    border:1px solid rgba(62,74,51,.14);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,1),
-      inset 0 -8px 16px -10px rgba(62,74,51,.16),
-      0 10px 22px -14px rgba(31,37,27,.45);
+    background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.6) 55%,rgba(255,255,255,.75) 100%);
+    border:1px solid rgba(62,74,51,.16);
+    box-shadow:inset 0 1px 0 #fff,inset 0 -8px 16px -10px rgba(62,74,51,.16),0 10px 22px -14px rgba(31,37,27,.45);
     -webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);
-    transition:transform .25s ease,box-shadow .3s ease,background .3s ease,color .3s ease;
+    transition:color .4s ease .05s,border-color .35s ease,box-shadow .35s ease;
   }
-  /* Reflet : une lame de lumière traverse le bouton au survol */
-  .px-btn::after{
-    content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;z-index:-1;
-    background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.75) 50%,transparent 100%);
-    transform:skewX(-18deg);transition:left .7s cubic-bezier(.4,0,.2,1);
+  .px-btn::before{
+    content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;
+    background:linear-gradient(180deg,#B26A49 0%,var(--terre) 60%,#8F4D33 100%);
+    transform:scale(0,1);transform-origin:left center;
+    transition:transform .45s cubic-bezier(.65,0,.35,1);
   }
-  .px-btn:hover::after{left:125%}
-  .px-btn:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 #fff,inset 0 -8px 16px -10px rgba(62,74,51,.2),0 16px 28px -14px rgba(31,37,27,.5)}
-  .px-btn:active{transform:translateY(0) scale(.985)}
+  .px-btn:hover,.px-btn:focus-visible{color:#fff;border-color:var(--terre);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 14px 26px -14px rgba(160,87,58,.7)}
+  .px-btn:hover::before,.px-btn:focus-visible::before{transform:scale(1,1)}
+  .px-btn:active{transform:scale(.985)}
   .px-btn:focus-visible{outline:2px solid var(--terre);outline-offset:3px}
-  .px-btn svg{width:16px;height:16px;flex:none;transition:transform .3s ease}
+  .px-btn svg{width:16px;height:16px;flex:none;transition:transform .35s ease}
   .px-btn:hover svg{transform:translateX(3px)}
-  .px-btn--plein{
-    color:#fff;border-color:rgba(255,255,255,.28);
-    background:linear-gradient(180deg,rgba(190,112,80,.96) 0%,rgba(160,87,58,.94) 55%,rgba(142,76,50,.96) 100%);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.45),
-      inset 0 -10px 18px -10px rgba(60,25,10,.35),
-      0 14px 26px -14px rgba(160,87,58,.75);
-  }
-  .px-btn--plein::after{background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.38) 50%,transparent 100%)}
-  .px-btn--plein:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -10px 18px -10px rgba(60,25,10,.4),0 18px 32px -14px rgba(160,87,58,.85)}
   .px-sous{margin-top:12px;font-size:.78rem;letter-spacing:.06em;color:var(--gris)}
 
   /* ---- Détail inclus / non inclus ---- */
-  .px-liste{list-style:none;margin-top:26px;padding-top:6px;border-top:1px solid var(--bord);text-align:left}
+  .px-liste{
+    list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--trait);text-align:left;
+    display:grid;grid-row:span 9;grid-template-rows:subgrid;row-gap:0;
+  }
+  /* carte = 7 rangées (nom → mention durée) + 9 lignes de détail = 16 */
   .px-liste li{
-    display:flex;align-items:flex-start;gap:12px;padding:13px 2px;font-size:.93rem;line-height:1.45;
-    border-bottom:1px solid color-mix(in srgb,var(--bord) 55%,transparent);
+    display:flex;align-items:center;gap:12px;padding:12px 2px;
+    font-size:.95rem;font-weight:400;line-height:1.4;
+    border-bottom:1px solid var(--trait);
   }
   .px-liste li:last-child{border-bottom:0}
-  .px-ico{width:18px;height:18px;flex:none;margin-top:1px}
-  .px-liste .oui{color:var(--fg)}
-  .px-liste .oui .px-ico{color:var(--sauge-ombre)}
-  .px-carte--pop .px-liste .oui .px-ico{color:var(--terre)}
-  .px-liste .non{color:var(--fg);opacity:.32}
+  .px-ico{width:22px;height:22px;flex:none;border-radius:50%;padding:3px}
+  .px-liste .oui{color:var(--txt-oui)}
+  .px-liste .oui .px-ico{background:var(--vert);color:#fff}
+  .px-liste .non{color:var(--txt-non)}
+  .px-liste .non .px-ico{background:var(--orange-doux);color:var(--orange)}
+  .px-liste .non .px-ico path{stroke-width:2}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
   /* ---- Bas de page : rappels ---- */
-  .px-pied{margin:clamp(48px,6vw,72px) auto 0;max-width:1120px;text-align:center}
+  .px-pied{margin:clamp(56px,6vw,80px) auto 0;max-width:1120px;text-align:center}
   .px-pied h3{font-size:11.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--terre)}
   .px-inclus{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;margin-top:18px}
   .px-inclus li{
-    display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-size:.88rem;
-    background:color-mix(in srgb,var(--surface) 70%,transparent);border:1px solid var(--bord);
+    display:flex;align-items:center;gap:9px;padding:8px 16px 8px 9px;border-radius:999px;
+    font-size:.9rem;font-weight:400;color:var(--txt-oui);
+    background:var(--surface);border:1px solid var(--bord);
   }
-  .px-inclus .px-ico{width:16px;height:16px;color:var(--sauge-ombre)}
-  .px-noninclus{margin-top:22px;font-size:.85rem;color:var(--gris)}
+  .px-inclus .px-ico{width:20px;height:20px;background:var(--vert);color:#fff}
+  .px-noninclus{margin-top:22px;font-size:.86rem;color:var(--texte-doux-auto)}
   .px-groupes{margin-top:8px;font-size:.92rem;color:var(--texte-doux-auto)}
   .px-groupes a{color:var(--terre);font-weight:500;border-bottom:1px solid currentColor;padding-bottom:1px;margin-left:4px;transition:opacity .2s ease}
   .px-groupes a:hover{opacity:.75}
 
   /* ---- Responsive ---- */
-  @media(max-width:1020px){
-    .px-grille{grid-template-columns:1fr;max-width:460px;margin:0 auto;gap:34px}
-    .px-desc{min-height:0}
+  @media(max-width:1100px){
+    .px-montant{font-size:2.3rem}
+    .px-liste li{font-size:.9rem}
+  }
+  @media(max-width:960px){
+    /* une colonne : plus de sous-grille, chaque carte vit seule */
+    .px-grille{grid-template-columns:minmax(0,480px);justify-content:center;row-gap:44px}
+    .px-carte{grid-row:auto;grid-template-rows:none;display:flex;flex-direction:column}
+    .px-liste{grid-row:auto;grid-template-rows:none;display:block}
+    .px-btn,.px-desc{align-self:stretch}
+    .px-liste li{font-size:.95rem}
+    .px-montant{font-size:2.6rem}
   }
   @media(max-width:520px){
-    .px-carte{padding:34px 22px 24px}
+    .px-carte{padding:36px 20px 18px;border-radius:20px}
     .px-titre{font-size:clamp(2.1rem,10vw,2.6rem)}
     .px-titre .l2{font-size:1em}
+    .px-inclus li{font-size:.86rem}
   }
 
   /* ---- Mode sombre ---- */
   @media (prefers-color-scheme: dark){
+    .px{--vert:#8A9A7B;--orange:#D9A487;--orange-doux:rgba(217,164,135,.14);--txt-oui:#EDE6D6;--txt-non:#9C9B8C;--trait:#3A4232;--vedette:#8A9A7B}
     .px::before{opacity:.45}
     .px-carte{box-shadow:0 18px 40px -28px rgba(0,0,0,.6)}
-    .px-carte--pop{background:linear-gradient(180deg,rgba(217,164,135,.16) 0%,rgba(217,164,135,.05) 34%,var(--surface) 62%),var(--surface);border-color:var(--terre-claire)}
-    .px-badge{background:var(--terre-claire);color:var(--sombre)}
+    .px-carte--pop{background:linear-gradient(180deg,rgba(138,154,123,.16) 0%,rgba(138,154,123,.05) 30%,var(--surface) 55%),var(--surface)}
+    .px-badge{color:var(--sombre)}
+    .px-badge svg{color:var(--sombre)}
     .px-nom,.px-titre .l2,.px-pied h3,.px-groupes a{color:var(--terre-claire)}
+    .px-carte--pop .px-nom{color:var(--vedette)}
+    .px-liste .oui .px-ico,.px-inclus .px-ico{color:var(--sombre)}
     .px-btn{
-      color:var(--lin);border-color:rgba(230,220,200,.18);
-      background:linear-gradient(180deg,rgba(250,248,242,.16) 0%,rgba(250,248,242,.06) 60%,rgba(250,248,242,.10) 100%);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 10px 22px -14px rgba(0,0,0,.7);
+      color:var(--lin);border-color:rgba(230,220,200,.2);
+      background:linear-gradient(180deg,rgba(250,248,242,.14) 0%,rgba(250,248,242,.05) 60%,rgba(250,248,242,.09) 100%);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 10px 22px -14px rgba(0,0,0,.7);
     }
-    .px-btn::after{background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.18) 50%,transparent 100%)}
-    .px-btn--plein{color:#fff;background:linear-gradient(180deg,rgba(190,112,80,.95),rgba(150,80,52,.95))}
-    .px-carte--pop .px-liste .oui .px-ico{color:var(--terre-claire)}
   }
-  @media(prefers-reduced-motion: reduce){.px-carte:hover,.px-btn:hover{transform:none}.px-btn::after{display:none}}
+  @media(prefers-reduced-motion: reduce){
+    .px-carte:hover{transform:none}
+    .px-btn::before{transition:none}
+  }
 </style>
 </head>
 <body>
@@ -304,13 +331,13 @@
         </ul>
       </article>
       <article class="px-carte px-carte--pop" aria-labelledby="px-signature">
-        <p class="px-badge" data-i18n="px.badge">Le plus populaire</p>
+        <p class="px-badge"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.5 3.3 3.6.4-2.7 2.4.8 3.5L6 8.6 2.8 10.4l.8-3.5L.9 4.5l3.6-.4z" fill="currentColor"/></svg><span data-i18n="px.badge">Le plus populaire</span></p>
         <h2 class="px-nom" id="px-signature" translate="no">Signature</h2>
         <p class="px-prix"><span class="px-montant">3 290 €</span><span class="px-unite" data-i18n="px.unite">/ personne</span></p>
         <p class="px-saison"><span data-i18n="px.saison.basse">Basse saison · oct. – mars</span></p>
         <p class="px-haute"><b>3 790 €</b> <span data-i18n="px.saison.haute">en haute saison</span></p>
         <p class="px-desc" data-i18n="px.signature.desc">Le séjour complet : coaching individuel, pension complète et journée découverte.</p>
-        <a class="px-btn px-btn--plein" href="/contact/"><span data-i18n="px.cta">Je suis intéressé</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="px-btn" href="/contact/"><span data-i18n="px.cta">Je suis intéressé</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <p class="px-sous" data-i18n="px.sous">7 jours · 6 nuits</p>
         <ul class="px-liste">
           <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.signature.heberg">6 nuits en chambre individuelle</span></li>
