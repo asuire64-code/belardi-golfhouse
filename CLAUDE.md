@@ -7,10 +7,11 @@ Propriétaire : Antoine, débutant en technique → expliquer simplement, ne jam
 
 | Chemin | Rôle |
 |---|---|
-| `index.html`, `<page>/index.html` | Les 6 pages : accueil, parcours, pricing (tarifs), contact, mentions-legales, confidentialite. Chaque page a son `<style>` propre. |
+| `index.html`, `<page>/index.html` | Les 12 pages : accueil, parcours, pricing (tarifs), contact, mentions-legales, confidentialite, cgv, cgu, cookies, securite, accessibilite, plan-du-site. Chaque page a son `<style>` propre. |
 | `assets/css/belardi.css` | Socle commun (en-tête, menu, pied de page). Couleurs : `assets/brand/tokens.css`, charte : `assets/brand/CHARTE.md`. |
 | `assets/js/i18n.js` | Traductions FR/EN/ES (`DICT.fr`, `DICT.en`, `DICT.es`) + sélecteur de langue. ~840 lignes : chercher une clé avec Grep, ne pas lire en entier. |
 | `assets/logo/`, `assets/illustrations/`, icônes à la racine | Images (ne pas renommer : URLs publiques). |
+| `assets/vendor/` | Bibliothèques tierces copiées telles quelles (Leaflet). Ne jamais modifier à la main ; exclues des contrôles CSS. |
 | `sitemap.xml`, `robots.txt`, `CNAME`, `site.webmanifest` | SEO et domaine. |
 | `tests/` | Garde-fous qualité (jamais publiés, voir `_config.yml`). |
 | `.github/workflows/` | Contrôles automatiques sur chaque pull request. |
@@ -49,8 +50,9 @@ Propriétaire : Antoine, débutant en technique → expliquer simplement, ne jam
 
 ## Dette connue à résorber (par priorité)
 
-1. `mentions-legales` et `confidentialite` : `<header>` jamais fermé → contenu et pied de page imbriqués dans l'en-tête, débordement horizontal sur mobile.
-2. Contraste de couleurs insuffisant (46 éléments, WCAG AA).
-3. Leaflet chargé depuis unpkg sans `integrity` (parcours).
-4. Description SEO de `parcours` trop longue (210 caractères, max 170) ; balises `og:` absentes des pages légales.
-5. `onclick` inline dans les menus (bloque une future politique CSP stricte).
+Le détail exact est dans `tests/dette-connue.json`.
+
+1. Contraste de couleurs insuffisant (WCAG AA) : l'essentiel de la dette, surtout dans l'en-tête/pied de page communs → corriger une couleur dans `assets/brand/tokens.css` ou `assets/css/belardi.css` fait baisser toutes les pages d'un coup.
+2. `onclick` inline dans les menus et pieds de page (bloque une future politique CSP stricte).
+3. Liens dans le texte distingués uniquement par la couleur (`link-in-text-block`) et menu de langue sans `<select>` natif.
+4. Repères (`<nav>`, `<header>`) sans nom accessible unique sur les pages secondaires.
