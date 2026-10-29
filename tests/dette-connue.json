@@ -1,0 +1,66 @@
+{
+  "_explication": "Défauts qui existaient avant la mise en place des garde-fous. Ils sont tolérés, mais leur nombre ne peut que baisser. Corriger un défaut puis lancer `npm run dette:maj` pour l'enlever d'ici.",
+  "accessibilite": {
+    "accueil · color-contrast": 16,
+    "accueil · label-content-name-mismatch": 1,
+    "confidentialite · color-contrast": 6,
+    "confidentialite · label-content-name-mismatch": 1,
+    "confidentialite · link-in-text-block": 3,
+    "contact · color-contrast": 4,
+    "contact · label-content-name-mismatch": 1,
+    "mentions-legales · color-contrast": 7,
+    "mentions-legales · label-content-name-mismatch": 1,
+    "mentions-legales · link-in-text-block": 3,
+    "parcours · color-contrast": 8,
+    "parcours · label-content-name-mismatch": 1,
+    "tarifs · color-contrast": 4,
+    "tarifs · label-content-name-mismatch": 1
+  },
+  "affichage": {
+    "confidentialite · debordement-320px": 1,
+    "confidentialite · debordement-375px": 1,
+    "confidentialite · debordement-768px": 1,
+    "mentions-legales · debordement-320px": 1,
+    "mentions-legales · debordement-375px": 1,
+    "tarifs · texte-trop-petit": 1
+  },
+  "css": {
+    "contact/index.html · no-duplicate-selectors": 1
+  },
+  "html": {
+    "confidentialite/index.html · close-order": 4,
+    "confidentialite/index.html · element-permitted-content": 2,
+    "confidentialite/index.html · no-implicit-close": 2,
+    "contact/index.html · no-inline-style": 1,
+    "contact/index.html · prefer-native-element": 2,
+    "contact/index.html · text-content": 1,
+    "contact/index.html · unique-landmark": 1,
+    "index.html · no-inline-style": 1,
+    "index.html · prefer-native-element": 1,
+    "index.html · unique-landmark": 1,
+    "mentions-legales/index.html · close-order": 4,
+    "mentions-legales/index.html · element-permitted-content": 2,
+    "mentions-legales/index.html · no-implicit-close": 2,
+    "parcours/index.html · prefer-native-element": 1,
+    "parcours/index.html · unique-landmark": 1,
+    "pricing/index.html · prefer-native-element": 1,
+    "pricing/index.html · unique-landmark": 1
+  },
+  "js": {
+    "assets/js/i18n.js · no-unused-vars": 1
+  },
+  "securite": {
+    "contact/index.html · gestionnaire-inline": 7,
+    "index.html · gestionnaire-inline": 7,
+    "parcours/index.html · gestionnaire-inline": 7,
+    "parcours/index.html · ressource-tierce-sans-integrity": 2,
+    "pricing/index.html · gestionnaire-inline": 7
+  },
+  "seo": {
+    "confidentialite · og-image": 1,
+    "confidentialite · og-title": 1,
+    "mentions-legales · og-image": 1,
+    "mentions-legales · og-title": 1,
+    "parcours · longueur-description": 1
+  }
+}

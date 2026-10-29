@@ -1,0 +1,78 @@
+# À lancer à la main (onglet Actions → « Mettre à jour les captures » → Run workflow, sur la branche
+# de la PR) quand un changement d'apparence est VOULU : les nouvelles captures deviennent la référence.
+# Ne jamais l'utiliser pour faire taire un test sans avoir regardé les captures avant/après.
+name: Mettre à jour les captures
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  version-playwright:
+    name: Version de Playwright
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: tests/package.json
+      - id: v
+        run: echo "version=$(node -p 'require("./tests/package.json").devDependencies["@playwright/test"]')" >> "$GITHUB_OUTPUT"
+
+  generer:
+    name: Générer les captures
+    needs: version-playwright
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    container:
+      image: mcr.microsoft.com/playwright:v${{ needs.version-playwright.outputs.version }}-noble
+    env:
+      HOME: /root
+    defaults:
+      run:
+        working-directory: tests
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tests/package-lock.json
+      - run: npm ci
+      - run: npm run captures:maj
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: captures-de-reference
+          path: tests/navigateur/captures-de-reference/
+          retention-days: 14
+
+  enregistrer:
+    name: Enregistrer et relancer les contrôles
+    needs: generer
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: captures-de-reference
+          path: tests/navigateur/captures-de-reference/
+      - name: Commit des nouvelles captures
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tests/navigateur/captures-de-reference
+          if git diff --cached --quiet; then echo "Captures déjà à jour."; else
+            git commit -m "test: mise à jour des captures de référence"
+            git push
+          fi
+      - name: Relancer le contrôle qualité sur la branche
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run controle-qualite.yml --ref "${{ github.ref_name }}"
