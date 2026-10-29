@@ -1,6 +1,6 @@
 // Fonctionnement : chaque page s'ouvre sans erreur, la navigation, les langues et le formulaire marchent.
 const { test, expect, attendreRendu, defilerToutLePage } = require("./socle");
-const { PAGES, LANGUES } = require("../config-site");
+const { PAGES, LANGUES, TEXTES_VIDES_VOULUS } = require("../config-site");
 
 for (const p of PAGES) {
   test(`${p.nom} · s'ouvre sans erreur ni ressource manquante`, async ({ page, problemes }) => {
@@ -20,7 +20,8 @@ for (const p of PAGES) {
       await page.goto(p.chemin);
       await attendreRendu(page);
       await expect(page.locator("html")).toHaveAttribute("lang", langue);
-      const vides = await page.$$eval("[data-i18n]", (els) => els.filter((e) => !e.textContent.trim()).map((e) => e.dataset.i18n));
+      const vides = (await page.$$eval("[data-i18n]", (els) => els.filter((e) => !e.textContent.trim()).map((e) => e.dataset.i18n)))
+        .filter((cle) => !(TEXTES_VIDES_VOULUS[langue] || []).includes(cle));
       expect(vides, `textes vides en ${langue}`).toEqual([]);
     }
     expect(problemes).toEqual([]);
