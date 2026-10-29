@@ -4,9 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Politique de confidentialité — BELARDI Golf House</title>
-<meta name="description" content="Politique de confidentialité de BELARDI Golf House : données collectées, finalités, durée de conservation et exercice de vos droits.">
+<meta name="description" content="Comment BELARDI Golf House collecte, utilise et protège vos données personnelles, et comment exercer vos droits.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://belardi-golfhouse.fr/confidentialite/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BELARDI Golf House">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Politique de confidentialité — BELARDI Golf House">
+<meta property="og:description" content="Comment BELARDI Golf House collecte, utilise et protège vos données personnelles, et comment exercer vos droits.">
+<meta property="og:url" content="https://belardi-golfhouse.fr/confidentialite/">
+<meta property="og:image" content="https://belardi-golfhouse.fr/og-image.png">
 
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
@@ -20,28 +27,76 @@
 <meta name="theme-color" content="#E6DCC8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1F251B" media="(prefers-color-scheme: dark)">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Josefin+Sans:wght@300&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
-
+<link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/css/belardi.css">
 <style>
-  .doc-legal{padding:calc(var(--h-entete) + var(--e5)) 0 var(--e6);background:var(--bg)}
-  .doc-legal .wrap{max-width:820px}
-  .doc-legal h1{margin:0 0 var(--e2)}
-  .doc-legal .maj{color:var(--texte-doux-auto);font-size:.9rem;margin:0 0 var(--e4)}
-  .doc-legal h2{font-size:1.25rem;margin:var(--e4) 0 var(--e2);padding-top:var(--e3);border-top:1px solid var(--bord)}
-  .doc-legal h2:first-of-type{border-top:0;padding-top:0}
-  .doc-legal p,.doc-legal li{color:var(--texte-doux-auto);max-width:68ch;line-height:1.7}
-  .doc-legal ul{padding-left:1.1rem;margin:var(--e2) 0}
-  .doc-legal li{margin:.35rem 0}
-  .doc-legal a{color:var(--accent)}
-  .doc-legal dl{margin:var(--e2) 0}
-  .doc-legal dt{font-weight:600;margin-top:.85rem}
-  .doc-legal dd{margin:.15rem 0 0;color:var(--texte-doux-auto)}
-  .doc-legal .todo{
-    display:inline-block;background:rgba(190,120,60,.14);border:1px dashed rgba(190,120,60,.55);
-    color:inherit;border-radius:4px;padding:.05rem .4rem;font-size:.92em
+  .doc-legal{padding:var(--e5) 0 var(--e6);background:var(--bg)}
+  .doc-grille{display:grid;grid-template-columns:220px minmax(0,1fr);gap:var(--e6);align-items:start}
+  .doc-aside{position:sticky;top:calc(var(--h-entete) + var(--e3))}
+  .doc-aside-titre,.doc .surtitre{margin:0 0 var(--e2);font-size:11px;font-weight:400;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--accent)}
+  .doc-aside ul{list-style:none;margin:0;padding:0;border-left:1px solid var(--bord)}
+  .doc-aside a{display:block;padding:7px 0 7px var(--e2);margin-left:-1px;border-left:1px solid transparent;font-size:14px;color:var(--texte-doux-auto);text-decoration:none;transition:color .2s ease,border-color .2s ease}
+  .doc-aside a:hover{color:var(--fg)}
+  .doc-aside a[aria-current="page"]{color:var(--fg);font-weight:400;border-left-color:var(--accent)}
+  .doc{max-width:740px;min-width:0}
+  .doc h1{margin:0;font-weight:500;font-size:clamp(32px,4.4vw,var(--fs-h1));line-height:var(--lh-h1);color:var(--fg)}
+  .doc .maj{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin:var(--e2) 0 var(--e4);font-size:13px;color:var(--texte-doux-auto)}
+  .doc .imprimer{background:none;border:0;padding:0;font:inherit;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .legal-avis{margin:0 0 var(--e4);padding:var(--e2) var(--e3);border-left:2px solid var(--accent);background:var(--surface);font-size:14px;color:var(--texte-doux-auto)}
+  .legal-avis:empty{display:none}
+  .doc .chapo{font-size:17px;line-height:1.7;color:var(--fg);margin:0 0 var(--e4)}
+  .sommaire{margin:0 0 var(--e5);border-top:1px solid var(--bord);border-bottom:1px solid var(--bord)}
+  .sommaire summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:var(--e2) 0;font-size:11px;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--fg)}
+  .sommaire summary::-webkit-details-marker{display:none}
+  .sommaire summary::after{content:"";width:8px;height:8px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-3px);transition:transform .2s ease}
+  .sommaire[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
+  .doc .sommaire ol{list-style:none;margin:0;padding:0 0 var(--e2);columns:2;column-gap:var(--e4)}
+  .doc .sommaire li{break-inside:avoid;padding:4px 0;margin:0}
+  .sommaire a{font-size:14px;color:var(--texte-doux-auto);text-decoration:none}
+  .sommaire a:hover{color:var(--accent)}
+  .doc h2{scroll-margin-top:calc(var(--h-entete) + var(--e2));font-size:20px;font-weight:500;line-height:1.3;margin:var(--e5) 0 var(--e2);color:var(--fg)}
+  .doc p,.doc li,.doc dd{color:var(--texte-doux-auto);line-height:1.75;font-size:16px}
+  .doc p{margin:0 0 var(--e2)}
+  .doc strong{font-weight:500;color:var(--fg)}
+  .doc ul,.doc ol{padding-left:1.2rem;margin:0 0 var(--e2)}
+  .doc li{margin:.4rem 0}
+  .doc li::marker{color:var(--accent)}
+  .doc a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}
+  .doc dl{margin:var(--e2) 0 var(--e3);border-top:1px solid var(--bord)}
+  .doc dt{font-weight:400;color:var(--fg);padding-top:var(--e2);font-size:14px;letter-spacing:.02em}
+  .doc dd{margin:2px 0 0;padding-bottom:var(--e2);border-bottom:1px solid var(--bord)}
+  .doc code{font-size:.92em;background:var(--surface);padding:1px 6px}
+  .essentiel{margin:0 0 var(--e4);padding:var(--e3) var(--e4);background:var(--surface);border-top:2px solid var(--accent)}
+  .essentiel-titre{margin:0 0 var(--e1)!important;font-size:11px!important;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--accent)!important}
+  .essentiel ul{margin:0}
+  .tableau{overflow-x:auto;margin:var(--e2) 0 var(--e3);border:1px solid var(--bord)}
+  .tableau table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+  .tableau th{text-align:left;font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);background:var(--surface);padding:12px 14px;border-bottom:1px solid var(--bord)}
+  .tableau td{vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--bord);color:var(--texte-doux-auto);line-height:1.55}
+  .tableau tr:last-child td{border-bottom:0}
+  .annexe-ref{font-size:13px!important;font-style:italic}
+  .formulaire{padding:var(--e3) var(--e4);border:1px solid var(--bord)}
+  .formulaire p,.formulaire li{font-size:14.5px}
+  .todo{background:rgba(160,87,58,.12);border:1px dashed rgba(160,87,58,.6);color:var(--fg);padding:0 .35rem;font-size:.92em;border-radius:0}
+  .plan{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--e4) var(--e5)}
+  .plan h2{margin-top:0!important}
+  .plan ul{list-style:none;padding:0}
+  @media(max-width:900px){
+    .doc-grille{grid-template-columns:1fr;gap:0}
+    .doc-aside{display:none}
+    .doc .sommaire ol{columns:1}
+    .doc-legal{padding-top:var(--e4)}
+  }
+  @media(max-width:600px){
+    .essentiel,.formulaire{padding:var(--e2) var(--e3)}
+    .plan{grid-template-columns:1fr}
+  }
+  @media print{
+    .entete,.menu-mobile,.burger-ctrl,.pied,.doc-aside,.sommaire,.imprimer,.legal-avis{display:none!important}
+    .doc-legal{padding:0}
+    .doc-grille{display:block}
+    .doc p,.doc li,.doc dd,.tableau td{color:#000}
   }
 </style>
 </head>
@@ -80,104 +135,287 @@
         <a href="/parcours/" data-i18n="nav.parcours">Parcours</a>
         <a href="/#origines" data-i18n="nav.apropos">À propos</a>
         <a href="/pricing/" data-i18n="nav.tarifs">Tarifs</a>
-        <a href="/contact/" aria-current="page" data-i18n="nav.contact">Contact</a>
+        <a href="/contact/" data-i18n="nav.contact">Contact</a>
       </div>
     </nav>
 
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button type="button" class="lang-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <svg class="lang-flag" data-flag-fr aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect width="8" height="16" fill="#002654"/><rect x="16" width="8" height="16" fill="#CE1126"/></svg>
+          <span class="lang-current">FR</span>
+          <svg class="lang-chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+        <ul class="lang-menu" role="listbox" aria-label="Choix de la langue">
+          <li><button type="button" data-lang="fr" role="option">
+            <svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect width="8" height="16" fill="#002654"/><rect x="16" width="8" height="16" fill="#CE1126"/></svg>
+            Français</button></li>
+          <li><button type="button" data-lang="en" role="option">
+            <svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.4"/><path d="M12 0V16M0 8H24" stroke="#fff" stroke-width="5"/><path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="2.6"/></svg>
+            English</button></li>
+          <li><button type="button" data-lang="es" role="option">
+            <svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg>
+            Español</button></li>
+        </ul>
+      </div>
+      <a href="/#contact" class="cta" data-i18n="nav.reserver">Réserver</a>
+    </div>
+
+    <label class="burger" for="menu" data-i18n-aria="burger.aria" aria-label="Ouvrir le menu"><i></i><i></i></label>
+  </div>
+</header>
+
+<nav class="menu-mobile" aria-label="Menu principal">
+  <a href="/" data-i18n="nav.accueil" onclick="document.getElementById('menu').checked=false">Accueil</a>
+  <a href="/#programme" data-i18n="nav.programme" onclick="document.getElementById('menu').checked=false">Programme</a>
+  <a href="/parcours/" data-i18n="nav.parcours" onclick="document.getElementById('menu').checked=false">Parcours</a>
+  <a href="/#origines" data-i18n="nav.apropos" onclick="document.getElementById('menu').checked=false">À propos</a>
+  <a href="/pricing/" data-i18n="nav.tarifs" onclick="document.getElementById('menu').checked=false">Tarifs</a>
+  <a href="/contact/" data-i18n="nav.contact" onclick="document.getElementById('menu').checked=false">Contact</a>
+  <a href="/#contact" class="menu-mobile-cta" data-i18n="nav.reserver" onclick="document.getElementById('menu').checked=false">Réserver</a>
+  <div class="langues" role="group" aria-label="Choix de la langue">
+    <button type="button" data-lang="fr"><svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect width="8" height="16" fill="#002654"/><rect x="16" width="8" height="16" fill="#CE1126"/></svg>FR</button><span class="sep">·</span>
+    <button type="button" data-lang="en"><svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.4"/><path d="M12 0V16M0 8H24" stroke="#fff" stroke-width="5"/><path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="2.6"/></svg>EN</button><span class="sep">·</span>
+    <button type="button" data-lang="es"><svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg>ES</button>
+  </div>
+</nav>
+
 <main class="doc-legal">
-  <div class="wrap">
-    <h1>Politique de confidentialité</h1>
-    <p class="maj">Dernière mise à jour : 23 octobre 2026</p>
+  <div class="wrap doc-grille">
+    <aside class="doc-aside" aria-labelledby="aside-titre">
+      <p class="doc-aside-titre" id="aside-titre" data-i18n="legal.docs">Informations légales</p>
+      <ul>
+        <li><a href="/mentions-legales/" data-i18n="footer.mentions">Mentions légales</a></li>
+        <li><a href="/cgv/" data-i18n="footer.cgv">Conditions de vente</a></li>
+        <li><a href="/cgu/" data-i18n="footer.cgu.long">Conditions d'utilisation</a></li>
+        <li><a href="/confidentialite/" aria-current="page" data-i18n="footer.confidentialite">Confidentialité</a></li>
+        <li><a href="/cookies/" data-i18n="footer.cookies">Cookies</a></li>
+        <li><a href="/securite/" data-i18n="footer.securite">Sécurité</a></li>
+        <li><a href="/accessibilite/" data-i18n="footer.accessibilite">Accessibilité</a></li>
+        <li><a href="/plan-du-site/" data-i18n="footer.plan">Plan du site</a></li>
+      </ul>
+    </aside>
 
-    <h2>Responsable du traitement</h2>
-    <p>
-      Le responsable du traitement des données collectées via ce site est
-      <span class="todo">À COMPLÉTER — nom de l'entreprise ou de l'éditeur</span>,
-      joignable à l'adresse <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>.
-    </p>
+    <article class="doc">
+      <p class="surtitre">Vos données</p>
+      <h1>Politique de confidentialité</h1>
+      <p class="maj"><span>Dernière mise à jour : 29 octobre 2026</span><button type="button" class="imprimer" onclick="window.print()" data-i18n="legal.imprimer">Imprimer</button></p>
+      <p class="legal-avis" data-i18n="legal.avis"></p>
+      <details class="sommaire" open>
+    <summary data-i18n="legal.sommaire">Sommaire</summary>
+    <ol>
+      <li><a href="#responsable">1. Responsable du traitement</a></li>
+      <li><a href="#donnees">2. Données que nous traitons</a></li>
+      <li><a href="#finalites">3. Pourquoi nous les utilisons</a></li>
+      <li><a href="#sante">4. Informations de santé</a></li>
+      <li><a href="#destinataires">5. Qui reçoit vos données</a></li>
+      <li><a href="#transferts">6. Transferts hors de l'Union européenne</a></li>
+      <li><a href="#securite">7. Sécurité</a></li>
+      <li><a href="#droits">8. Vos droits</a></li>
+      <li><a href="#mineurs">9. Mineurs</a></li>
+      <li><a href="#modifications">10. Évolution de cette politique</a></li>
+    </ol>
+  </details>
 
-    <h2>Données collectées</h2>
-    <p>
-      Les seules données collectées sont celles que vous nous transmettez volontairement via le
-      formulaire d'inscription à la liste d'attente ou par e-mail :
-    </p>
-    <ul>
-      <li>vos prénom et nom ;</li>
-      <li>votre adresse e-mail ;</li>
-      <li>les informations facultatives que vous renseignez : index de jeu approximatif, formule envisagée, période souhaitée, message libre.</li>
-    </ul>
-    <p>
-      Le site ne dépose aucun cookie publicitaire ni traceur de mesure d'audience. Aucun profilage
-      ni décision automatisée n'est réalisé à partir de vos données.
-    </p>
+<p class="chapo">BELARDI Golf House organise des séjours de golf en petit groupe. Pour cela, nous avons besoin de quelques informations sur vous : qui vous êtes, comment vous joindre, votre niveau de jeu et ce qui est utile à votre confort pendant le séjour. Cette politique explique, conformément au Règlement général sur la protection des données (RGPD) et à la loi « Informatique et Libertés », quelles données nous traitons, pourquoi, combien de temps et quels sont vos droits.</p>
 
-    <h2>Finalités et base légale</h2>
-    <p>
-      Ces données sont utilisées exclusivement pour vous recontacter au sujet des séjours BELARDI
-      Golf House : ouverture des sessions, réponse à votre demande, information sur les tarifs de
-      lancement. La base légale est votre consentement, recueilli au moment où vous soumettez le
-      formulaire (article 6.1.a du RGPD).
-    </p>
+<div class="essentiel">
+  <p class="essentiel-titre">L'essentiel</p>
+  <ul>
+    <li>Nous ne collectons que ce qui est nécessaire pour répondre à votre demande et organiser votre séjour.</li>
+    <li>Nous ne vendons ni ne louons jamais vos données.</li>
+    <li>Le Site ne dépose aucun cookie publicitaire ni de mesure d'audience.</li>
+    <li>Les informations de santé (allergies, contre-indications) ne sont recueillies qu'avec votre accord explicite et supprimées après le séjour.</li>
+    <li>Vous pouvez à tout moment accéder à vos données, les corriger ou les faire supprimer : <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>.</li>
+  </ul>
+</div>
 
-    <h2>Destinataires</h2>
-    <p>
-      Vos données sont destinées au seul éditeur du site. Elles ne sont ni vendues, ni louées, ni
-      transmises à des tiers à des fins commerciales. Les prestataires techniques intervenant dans
-      l'acheminement des messages (hébergeur du site, fournisseur de messagerie) n'y accèdent que
-      pour les besoins du service.
-    </p>
+<h2 id="responsable">1. Responsable du traitement</h2>
+<p>Le responsable du traitement est <span class="todo">À COMPLÉTER — dénomination sociale</span>, exploitant la marque BELARDI Golf House, dont le siège est situé <span class="todo">À COMPLÉTER — adresse</span> (« Belardi », « nous »).</p>
+<p>Pour toute question relative à vos données : <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>, en précisant en objet « Données personnelles ». Compte tenu de sa taille et de la nature de ses traitements, Belardi n'est pas tenue de désigner un délégué à la protection des données ; un référent interne traite vos demandes.</p>
 
-    <h2>Durée de conservation</h2>
-    <p>
-      Vos données sont conservées trois ans à compter de votre dernier contact avec nous, puis
-      supprimées. Vous pouvez demander leur suppression à tout moment avant ce terme.
-    </p>
+<h2 id="donnees">2. Données que nous traitons</h2>
+<p>Selon votre relation avec nous, nous traitons les catégories suivantes :</p>
+<dl>
+  <dt>Identité et coordonnées</dt>
+  <dd>Nom, prénom, adresse e-mail, téléphone, adresse postale de facturation.</dd>
+  <dt>Votre demande</dt>
+  <dd>Contenu de vos messages, dates et formule souhaitées, nombre de participants, échanges avec nous.</dd>
+  <dt>Profil golfeur</dt>
+  <dd>Index ou niveau de jeu, numéro de licence (exigé par certains golfs pour réserver les départs), main de jeu, objectifs de progression, besoin de location de matériel.</dd>
+  <dt>Organisation du séjour</dt>
+  <dd>Date de naissance, nationalité (déclaration d'hébergement des voyageurs étrangers lorsque la réglementation l'impose), horaires d'arrivée, préférences de chambre et de table, régime alimentaire choisi (par exemple végétarien), personne à contacter en cas d'urgence.</dd>
+  <dt>Données de santé</dt>
+  <dd>Allergies et intolérances alimentaires, contre-indications physiques utiles au coach. Elles ne sont jamais obligatoires et ne sont recueillies qu'avec votre consentement explicite (voir section 4).</dd>
+  <dt>Images de coaching</dt>
+  <dd>Vidéos et photos de votre swing réalisées pendant les séances, pour l'analyse technique.</dd>
+  <dt>Données de facturation</dt>
+  <dd>Devis, contrat, factures, montants et dates de paiement. Nous ne collectons ni ne conservons vos numéros de carte bancaire : les paiements passent par votre banque ou un prestataire de paiement agréé.</dd>
+  <dt>Données techniques</dt>
+  <dd>Lors de votre visite, notre hébergeur reçoit techniquement votre adresse IP et les informations de votre navigateur pour vous afficher les pages. Votre choix de langue est conservé dans votre navigateur (voir la <a href="/cookies/">politique cookies</a>).</dd>
+</dl>
+<p>Le formulaire de contact du Site ouvre votre propre messagerie : votre message nous parvient par e-mail et n'est pas stocké sur le Site. Les champs marqués comme obligatoires sont nécessaires pour vous répondre ; sans eux, nous ne pourrions pas traiter votre demande.</p>
 
-    <h2>Vos droits</h2>
-    <p>
-      Conformément au RGPD et à la loi Informatique et Libertés, vous disposez d'un droit d'accès,
-      de rectification, d'effacement, de limitation et d'opposition au traitement, ainsi que d'un
-      droit à la portabilité de vos données. Vous pouvez retirer votre consentement à tout moment.
-    </p>
-    <p>
-      Pour exercer ces droits, écrivez à
-      <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>.
-      Une réponse vous sera apportée dans un délai d'un mois.
-    </p>
-    <p>
-      Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez
-      adresser une réclamation à la CNIL — 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07 —
-      <a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>.
-    </p>
+<h2 id="finalites">3. Pourquoi nous les utilisons</h2>
+<div class="tableau">
+<table>
+  <thead><tr><th scope="col">Finalité</th><th scope="col">Base légale</th><th scope="col">Durée de conservation</th></tr></thead>
+  <tbody>
+    <tr><td>Répondre à vos questions et demandes de devis</td><td>Mesures précontractuelles prises à votre demande</td><td>3 ans après le dernier contact, puis suppression</td></tr>
+    <tr><td>Conclure et exécuter le contrat de séjour : réservation des départs, hébergement, repas, coaching, transferts</td><td>Exécution du contrat</td><td>Durée du contrat, puis 5 ans (prescription civile)</td></tr>
+    <tr><td>Facturation et comptabilité</td><td>Obligation légale</td><td>10 ans à compter de la clôture de l'exercice (article L.123-22 du Code de commerce)</td></tr>
+    <tr><td>Adapter les repas et les séances à vos allergies ou contre-indications</td><td>Consentement explicite (article 9.2.a du RGPD)</td><td>Supprimées au plus tard 1 mois après la fin du séjour</td></tr>
+    <tr><td>Contacter un proche en cas d'urgence pendant le séjour</td><td>Intérêt vital et exécution du contrat</td><td>Supprimées au plus tard 1 mois après la fin du séjour</td></tr>
+    <tr><td>Analyse vidéo du swing pendant le coaching</td><td>Exécution du contrat</td><td>Remises au golfeur, puis supprimées de nos supports 3 mois après le séjour</td></tr>
+    <tr><td>Utiliser des photos ou vidéos où vous êtes reconnaissable sur le Site ou nos réseaux</td><td>Consentement écrit, retirable à tout moment</td><td>Jusqu'au retrait du consentement, et au plus 5 ans</td></tr>
+    <tr><td>Protéger le formulaire de contact contre les robots (Google reCAPTCHA)</td><td>Consentement, recueilli par le clic d'activation</td><td>Cookies Google : jusqu'à 6 mois</td></tr>
+    <tr><td>Vous informer de nos prochaines dates, si vous l'avez demandé</td><td>Consentement (clients : intérêt légitime pour des séjours analogues, avec opposition possible à chaque envoi)</td><td>3 ans après le dernier contact</td></tr>
+    <tr><td>Gérer vos demandes d'exercice de droits</td><td>Obligation légale</td><td>Durée de traitement, puis 5 ans (preuve)</td></tr>
+    <tr><td>Constater, exercer ou défendre nos droits (réclamation, litige)</td><td>Intérêt légitime</td><td>Durée de la prescription applicable</td></tr>
+  </tbody>
+</table>
+</div>
+<p>À l'expiration de ces durées, les données sont supprimées ou rendues anonymes. Nous ne prenons aucune décision fondée exclusivement sur un traitement automatisé et ne réalisons aucun profilage.</p>
 
-    <h2>Sécurité</h2>
-    <p>
-      Le site est servi intégralement en HTTPS. Les données transmises via le formulaire sont
-      acheminées par e-mail et conservées sur des services protégés par authentification.
-    </p>
+<h2 id="sante">4. Informations de santé</h2>
+<p>Un séjour sportif et gastronomique suppose parfois de connaître une allergie alimentaire ou une contre-indication physique. Ces informations relèvent des données de santé, protégées par l'article 9 du RGPD. Nous les recueillons uniquement si vous choisissez de nous les transmettre, avec votre accord explicite, et nous ne les communiquons qu'aux seules personnes qui en ont besoin : le cuisinier ou le restaurateur pour une allergie, le coach pour une contre-indication. Vous pouvez retirer votre accord à tout moment ; nous ne pourrons alors plus adapter les prestations concernées.</p>
+<p>Nous ne demandons aucun certificat médical ni aucun dossier médical.</p>
 
+<h2 id="destinataires">5. Qui reçoit vos données</h2>
+<p>Vos données sont traitées par l'équipe de Belardi et, pour la seule part nécessaire à leur mission, par :</p>
+<ul>
+  <li><strong>les prestataires du séjour</strong> : golfs (nom, index, numéro de licence pour la réservation des départs), hébergement, restaurateurs, enseignants de golf, transporteurs pour les transferts ;</li>
+  <li><strong>nos prestataires techniques</strong>, agissant comme sous-traitants : GitHub, Inc. (hébergement du Site), OVH SAS (nom de domaine), <span class="todo">À COMPLÉTER — fournisseur de messagerie (ex. OVH, Google Workspace, Microsoft 365)</span>, <span class="todo">À COMPLÉTER — banque ou prestataire de paiement</span> ;</li>
+  <li><strong>Google Ireland Ltd</strong>, pour la vérification anti-robot reCAPTCHA de la page Contact, uniquement si vous l'activez (voir la <a href="/cookies/">politique cookies</a>) ;</li>
+  <li><strong>nos conseils</strong> : expert-comptable, avocat, soumis au secret professionnel ;</li>
+  <li><strong>l'assureur ou le garant financier</strong>, en cas de sinistre ou de mise en jeu de la garantie ;</li>
+  <li><strong>les autorités</strong>, lorsque la loi l'exige.</li>
+</ul>
+<p>Lorsque vous interagissez avec notre compte Instagram, Meta Platforms Ireland Ltd traite vos données selon sa propre politique ; Belardi et Meta sont responsables conjoints des statistiques de fréquentation de la page.</p>
+<p>La carte interactive de la page « Les parcours » affiche des fonds de carte OpenStreetMap : leur chargement transmet votre adresse IP aux serveurs de la fondation OpenStreetMap (Royaume-Uni, pays reconnu comme offrant un niveau de protection adéquat par la Commission européenne).</p>
+
+<h2 id="transferts">6. Transferts hors de l'Union européenne</h2>
+<p>Notre hébergeur GitHub, Inc. est établi aux États-Unis ; les données recueillies par Google reCAPTCHA peuvent également y être traitées par Google LLC. Ces transferts sont encadrés par la décision d'adéquation de la Commission européenne relative au cadre de protection des données UE–États-Unis (Data Privacy Framework) et, à défaut, par les clauses contractuelles types de la Commission. Aucune autre donnée n'est transférée hors de l'Espace économique européen sans garanties équivalentes ; vous pouvez en obtenir copie sur demande.</p>
+
+<h2 id="securite">7. Sécurité</h2>
+<p>Le Site est servi exclusivement en HTTPS. L'accès aux données est limité aux personnes qui en ont besoin, nos outils sont protégés par une authentification forte et les données de santé sont conservées séparément du reste du dossier. Les mesures prises sont détaillées sur la page <a href="/securite/">Sécurité</a>. En cas de violation de données présentant un risque pour vous, nous notifierons la CNIL dans les 72 heures et vous informerons si la loi l'exige.</p>
+
+<h2 id="droits">8. Vos droits</h2>
+<p>Vous disposez des droits suivants sur vos données :</p>
+<ul>
+  <li><strong>accès</strong> : savoir quelles données nous détenons et en obtenir copie ;</li>
+  <li><strong>rectification</strong> des données inexactes ou incomplètes ;</li>
+  <li><strong>effacement</strong>, sauf obligation légale de conservation ;</li>
+  <li><strong>limitation</strong> du traitement pendant l'examen d'une contestation ;</li>
+  <li><strong>opposition</strong> au traitement fondé sur notre intérêt légitime, et à tout moment à la prospection ;</li>
+  <li><strong>portabilité</strong> des données que vous nous avez fournies, dans un format structuré ;</li>
+  <li><strong>retrait de votre consentement</strong>, sans remettre en cause les traitements déjà réalisés ;</li>
+  <li><strong>directives post-mortem</strong> sur le sort de vos données après votre décès.</li>
+</ul>
+<p>Pour les exercer, écrivez à <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>. Nous répondons dans un délai d'un mois, prolongeable de deux mois pour une demande complexe ; nous vous en informerons alors. En cas de doute raisonnable sur votre identité, nous pourrons vous demander un justificatif.</p>
+<p>Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la CNIL — 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07 — <a href="https://www.cnil.fr/fr/plaintes" rel="noopener">cnil.fr</a>.</p>
+<p>Vous pouvez également vous inscrire gratuitement sur la liste d'opposition au démarchage téléphonique Bloctel (<a href="https://www.bloctel.gouv.fr" rel="noopener">bloctel.gouv.fr</a>).</p>
+
+<h2 id="mineurs">9. Mineurs</h2>
+<p>Nos séjours s'adressent aux adultes. Un mineur ne peut participer qu'accompagné d'un parent ou tuteur, qui transmet lui-même ses informations et consent pour lui.</p>
+
+<h2 id="modifications">10. Évolution de cette politique</h2>
+<p>Cette politique peut évoluer, notamment si nous ajoutons de nouveaux services au Site. La date de mise à jour figure en haut de page. En cas de changement important, nous vous en informerons par e-mail si vous êtes client.</p>
+    </article>
   </div>
 </main>
 
-<footer>
-  <div class="inner">
-    <div>
-      <a href="/" class="nom-empile" aria-label="BELARDI Golf House">
-        <b>Belardi</b>
-        <span class="gh">Golf House</span>
-      </a>
-      <p class="baseline" data-i18n="footer.baseline">Séjours golf tout compris au Pays Basque</p>
+<footer class="pied">
+  <div class="pied-inner">
+
+    <div class="pied-haut">
+      <div class="pied-marque">
+        <a href="/" class="nom-empile notranslate" translate="no" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
+          <b>Belardi</b>
+          <span class="gh">Golf House</span>
+        </a>
+        <p class="pied-baseline" data-i18n="footer.accroche">Une semaine de golf tout compris sur la Côte basque, en petit groupe de six golfeurs.</p>
+        <a class="pied-cta" href="/contact/" data-i18n="footer.cta">Demander les prochaines dates</a>
+      </div>
+
+      <nav class="pied-nav" data-i18n-aria="footer.nav.aria" aria-label="Plan du pied de page">
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.sejour">Le séjour</p>
+          <ul>
+            <li><a href="/#programme" data-i18n="footer.programme">Le programme</a></li>
+            <li><a href="/parcours/" data-i18n="footer.parcours">Les parcours</a></li>
+            <li><a href="/pricing/" data-i18n="footer.tarifs">Tarifs</a></li>
+            <li><a href="/#faq" data-i18n="footer.faq">Questions fréquentes</a></li>
+          </ul>
+        </div>
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.belardi">Belardi</p>
+          <ul>
+            <li><a href="/#concept" data-i18n="footer.concept">Le concept</a></li>
+            <li><a href="/#origines" data-i18n="footer.origines">Nos origines</a></li>
+            <li><a href="/contact/" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="/plan-du-site/" data-i18n="footer.plan">Plan du site</a></li>
+          </ul>
+        </div>
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.reserver">Réservation</p>
+          <ul>
+            <li><a href="/cgv/" data-i18n="footer.cgv">Conditions de vente</a></li>
+            <li><a href="/cgv/#annulation" data-i18n="footer.annulation">Annulation &amp; report</a></li>
+            <li><a href="/cgv/#assurances" data-i18n="footer.assurances">Assurances</a></li>
+            <li><a href="/cgv/#formulaire" data-i18n="footer.droits-voyageur">Vos droits de voyageur</a></li>
+          </ul>
+        </div>
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.contact">Nous écrire</p>
+          <ul>
+            <li><a href="mailto:contact@belardi-golfhouse.fr" class="notranslate" translate="no">contact@belardi-golfhouse.fr</a></li>
+            <li><a href="https://www.instagram.com/belardi.golf/" rel="noopener" target="_blank" class="notranslate" translate="no">@belardi.golf</a></li>
+            <li><span class="pied-lieu" data-i18n="footer.lieu">Côte basque, France</span></li>
+          </ul>
+        </div>
+      </nav>
     </div>
-    <div class="liens">
-      <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>
-      <a href="/mentions-legales/" data-i18n="footer.mentions">Mentions légales</a>
-      <a href="/confidentialite/" data-i18n="footer.confidentialite">Confidentialité</a>
-      <p class="legal">© 2026 BELARDI Golf House</p>
+
+    <div class="pied-milieu">
+      <div class="langues pied-langues" role="group" data-i18n-aria="footer.langue.aria" aria-label="Langue du site">
+        <button type="button" data-lang="fr" lang="fr">Français</button>
+        <button type="button" data-lang="en" lang="en">English</button>
+        <button type="button" data-lang="es" lang="es">Español</button>
+      </div>
+      <div class="pied-reseaux">
+        <a href="https://www.instagram.com/belardi.golf/" rel="noopener" target="_blank" aria-label="Instagram BELARDI Golf House">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg>
+        </a>
+        <a href="mailto:contact@belardi-golfhouse.fr" data-i18n-aria="footer.email.aria" aria-label="Écrire à BELARDI Golf House">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+        <a href="#" class="pied-remonter" data-i18n-aria="footer.haut.aria" aria-label="Revenir en haut de la page">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+      </div>
     </div>
+
+    <div class="pied-bas">
+      <p class="pied-copy">© 2026 <span class="notranslate" translate="no">BELARDI Golf House</span> · <span data-i18n="footer.droits">Tous droits réservés</span></p>
+      <ul class="pied-legal" data-i18n-aria="footer.legal.aria" aria-label="Informations légales">
+        <li><a href="/mentions-legales/" data-i18n="footer.mentions">Mentions légales</a></li>
+        <li><a href="/cgv/" data-i18n="footer.cgv.court">CGV</a></li>
+        <li><a href="/cgu/" data-i18n="footer.cgu">CGU</a></li>
+        <li><a href="/confidentialite/" aria-current="page" data-i18n="footer.confidentialite">Confidentialité</a></li>
+        <li><a href="/cookies/" data-i18n="footer.cookies">Cookies</a></li>
+        <li><a href="/securite/" data-i18n="footer.securite">Sécurité</a></li>
+        <li><a href="/accessibilite/" data-i18n="footer.accessibilite">Accessibilité</a></li>
+      </ul>
+    </div>
+
   </div>
 </footer>
 
-<script>window.BELARDI_PAGE = "confidentialite";</script>
+<script>
+  window.BELARDI_PAGE = "confidentialite";
+  if (window.matchMedia("(max-width: 900px)").matches) document.querySelectorAll(".sommaire").forEach(function(d){ d.open = false; });
+</script>
 <script src="/assets/js/i18n.js" defer></script>
 </body>
 </html>

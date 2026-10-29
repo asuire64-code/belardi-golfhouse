@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sécurité — BELARDI Golf House</title>
+<meta name="description" content="Comment BELARDI Golf House protège vos données et vos paiements, et comment reconnaître une tentative de fraude.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://belardi-golfhouse.fr/securite/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BELARDI Golf House">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Sécurité — BELARDI Golf House">
+<meta property="og:description" content="Comment BELARDI Golf House protège vos données et vos paiements, et comment reconnaître une tentative de fraude.">
+<meta property="og:url" content="https://belardi-golfhouse.fr/securite/">
+<meta property="og:image" content="https://belardi-golfhouse.fr/og-image.png">
+
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3E4A33">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#E6DCC8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1F251B" media="(prefers-color-scheme: dark)">
+
+<link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/css/belardi.css">
+<style>
+  .doc-legal{padding:var(--e5) 0 var(--e6);background:var(--bg)}
+  .doc-grille{display:grid;grid-template-columns:220px minmax(0,1fr);gap:var(--e6);align-items:start}
+  .doc-aside{position:sticky;top:calc(var(--h-entete) + var(--e3))}
+  .doc-aside-titre,.doc .surtitre{margin:0 0 var(--e2);font-size:11px;font-weight:400;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--accent)}
+  .doc-aside ul{list-style:none;margin:0;padding:0;border-left:1px solid var(--bord)}
+  .doc-aside a{display:block;padding:7px 0 7px var(--e2);margin-left:-1px;border-left:1px solid transparent;font-size:14px;color:var(--texte-doux-auto);text-decoration:none;transition:color .2s ease,border-color .2s ease}
+  .doc-aside a:hover{color:var(--fg)}
+  .doc-aside a[aria-current="page"]{color:var(--fg);font-weight:400;border-left-color:var(--accent)}
+  .doc{max-width:740px;min-width:0}
+  .doc h1{margin:0;font-weight:500;font-size:clamp(32px,4.4vw,var(--fs-h1));line-height:var(--lh-h1);color:var(--fg)}
+  .doc .maj{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin:var(--e2) 0 var(--e4);font-size:13px;color:var(--texte-doux-auto)}
+  .doc .imprimer{background:none;border:0;padding:0;font:inherit;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .legal-avis{margin:0 0 var(--e4);padding:var(--e2) var(--e3);border-left:2px solid var(--accent);background:var(--surface);font-size:14px;color:var(--texte-doux-auto)}
+  .legal-avis:empty{display:none}
+  .doc .chapo{font-size:17px;line-height:1.7;color:var(--fg);margin:0 0 var(--e4)}
+  .sommaire{margin:0 0 var(--e5);border-top:1px solid var(--bord);border-bottom:1px solid var(--bord)}
+  .sommaire summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:var(--e2) 0;font-size:11px;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--fg)}
+  .sommaire summary::-webkit-details-marker{display:none}
+  .sommaire summary::after{content:"";width:8px;height:8px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-3px);transition:transform .2s ease}
+  .sommaire[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
+  .doc .sommaire ol{list-style:none;margin:0;padding:0 0 var(--e2);columns:2;column-gap:var(--e4)}
+  .doc .sommaire li{break-inside:avoid;padding:4px 0;margin:0}
+  .sommaire a{font-size:14px;color:var(--texte-doux-auto);text-decoration:none}
+  .sommaire a:hover{color:var(--accent)}
+  .doc h2{scroll-margin-top:calc(var(--h-entete) + var(--e2));font-size:20px;font-weight:500;line-height:1.3;margin:var(--e5) 0 var(--e2);color:var(--fg)}
+  .doc p,.doc li,.doc dd{color:var(--texte-doux-auto);line-height:1.75;font-size:16px}
+  .doc p{margin:0 0 var(--e2)}
+  .doc strong{font-weight:500;color:var(--fg)}
+  .doc ul,.doc ol{padding-left:1.2rem;margin:0 0 var(--e2)}
+  .doc li{margin:.4rem 0}
+  .doc li::marker{color:var(--accent)}
+  .doc a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}
+  .doc dl{margin:var(--e2) 0 var(--e3);border-top:1px solid var(--bord)}
+  .doc dt{font-weight:400;color:var(--fg);padding-top:var(--e2);font-size:14px;letter-spacing:.02em}
+  .doc dd{margin:2px 0 0;padding-bottom:var(--e2);border-bottom:1px solid var(--bord)}
+  .doc code{font-size:.92em;background:var(--surface);padding:1px 6px}
+  .essentiel{margin:0 0 var(--e4);padding:var(--e3) var(--e4);background:var(--surface);border-top:2px solid var(--accent)}
+  .essentiel-titre{margin:0 0 var(--e1)!important;font-size:11px!important;letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--accent)!important}
+  .essentiel ul{margin:0}
+  .tableau{overflow-x:auto;margin:var(--e2) 0 var(--e3);border:1px solid var(--bord)}
+  .tableau table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+  .tableau th{text-align:left;font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);background:var(--surface);padding:12px 14px;border-bottom:1px solid var(--bord)}
+  .tableau td{vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--bord);color:var(--texte-doux-auto);line-height:1.55}
+  .tableau tr:last-child td{border-bottom:0}
+  .annexe-ref{font-size:13px!important;font-style:italic}
+  .formulaire{padding:var(--e3) var(--e4);border:1px solid var(--bord)}
+  .formulaire p,.formulaire li{font-size:14.5px}
+  .todo{background:rgba(160,87,58,.12);border:1px dashed rgba(160,87,58,.6);color:var(--fg);padding:0 .35rem;font-size:.92em;border-radius:0}
+  .plan{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--e4) var(--e5)}
+  .plan h2{margin-top:0!important}
+  .plan ul{list-style:none;padding:0}
+  @media(max-width:900px){
+    .doc-grille{grid-template-columns:1fr;gap:0}
+    .doc-aside{display:none}
+    .doc .sommaire ol{columns:1}
+    .doc-legal{padding-top:var(--e4)}
+  }
+  @media(max-width:600px){
+    .essentiel,.formulaire{padding:var(--e2) var(--e3)}
+    .plan{grid-template-columns:1fr}
+  }
+  @media print{
+    .entete,.menu-mobile,.burger-ctrl,.pied,.doc-aside,.sommaire,.imprimer,.legal-avis{display:none!important}
+    .doc-legal{padding:0}
+    .doc-grille{display:block}
+    .doc p,.doc li,.doc dd,.tableau td{color:#000}
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="menu" class="burger-ctrl" aria-label="Afficher le menu">
+
+<header class="entete">
+  <div class="wrap">
+    <a class="logo notranslate" href="/" translate="no" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
+      <!-- Symbole : le B en trois pièces. Joint de 3 unités à la couleur du fond. -->
+      <svg class="symbole" viewBox="28 18 35 64" role="img" aria-hidden="true">
+        <rect class="b-fut" x="30" y="20" width="12" height="60" stroke-width="3"/>
+        <path class="b-boucle" d="M42 20 A15 15 0 0 1 42 50 Z" stroke-width="3"/>
+        <circle class="b-anneau" cx="46" cy="65" r="15.8"/>
+        <circle class="b-balle" cx="46" cy="65" r="14.6"/>
+        <g class="b-alveoles">
+          <circle cx="35.8" cy="65.0" r="1.28"/><circle cx="40.9" cy="57.3" r="1.28"/>
+          <circle cx="40.9" cy="62.4" r="1.28"/><circle cx="40.9" cy="67.5" r="1.28"/>
+          <circle cx="40.9" cy="72.6" r="1.28"/><circle cx="46.0" cy="54.8" r="1.28"/>
+          <circle cx="46.0" cy="59.9" r="1.28"/><circle cx="46.0" cy="65.0" r="1.28"/>
+          <circle cx="46.0" cy="70.1" r="1.28"/><circle cx="46.0" cy="75.2" r="1.28"/>
+          <circle cx="51.1" cy="57.3" r="1.28"/><circle cx="51.1" cy="62.4" r="1.28"/>
+          <circle cx="51.1" cy="67.5" r="1.28"/><circle cx="51.1" cy="72.6" r="1.28"/>
+          <circle cx="56.2" cy="65.0" r="1.28"/>
+        </g>
+      </svg>
+      <span class="nom"><b>BELARDI</b><span>GOLF HOUSE</span></span>
+    </a>
+
+    <nav class="nav">
+      <div class="nav-liens">
+        <span class="nav-pilule" aria-hidden="true"></span>
+        <a href="/" data-i18n="nav.accueil">Accueil</a>
+        <a href="/#programme" data-i18n="nav.programme">Programme</a>
+        <a href="/parcours/" data-i18n="nav.parcours">Parcours</a>
+        <a href="/#origines" data-i18n="nav.apropos">À propos</a>
+        <a href="/pricing/" data-i18n="nav.tarifs">Tarifs</a>
+        <a href="/contact/" data-i18n="nav.contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button type="button" class="lang-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <svg class="lang-flag" data-flag-fr aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect width="8" height="16" fill="#002654"/><rect x="16" width="8" height="16" fill="#CE1126"/></svg>
+          <span class="lang-current">FR</span>
+          <svg class="lang-chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </button>
+        <ul class="lang-menu" role="listbox" aria-label="Choix de la langue">
+          <li><button type="button" data-lang="fr" role="option">
+            <svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect width="8" height="16" fill="#002654"/><rect x="16" width="8" height="16" fill="#CE1126"/></svg>
+            Français</button></li>
+          <li><button type="button" data-lang="en" role="option">
+            <svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.4"/><path d="M12 0V16M0 8H24" stroke="#fff" stroke-width="5"/><path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="2.6"/></svg>
+            English</button></li>
+          <li><button type="button" data-lang="es" role="option">
+            <svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg>
+            Español</button></li>
+        </ul>
+      </div>
+      <a href="/#contact" class="cta" data-i18n="nav.reserver">Réserver</a>
+    </div>
+
+    <label class="burger" for="menu" data-i18n-aria="burger.aria" aria-label="Ouvrir le menu"><i></i><i></i></label>
+  </div>
+</header>
+
+<nav class="menu-mobile" aria-label="Menu principal">
+  <a href="/" data-i18n="nav.accueil" onclick="document.getElementById('menu').checked=false">Accueil</a>
+  <a href="/#programme" data-i18n="nav.programme" onclick="document.getElementById('menu').checked=false">Programme</a>
+  <a href="/parcours/" data-i18n="nav.parcours" onclick="document.getElementById('menu').checked=false">Parcours</a>
+  <a href="/#origines" data-i18n="nav.apropos" onclick="document.getElementById('menu').checked=false">À propos</a>
+  <a href="/pricing/" data-i18n="nav.tarifs" onclick="document.getElementById('menu').checked=false">Tarifs</a>
+  <a href="/contact/" data-i18n="nav.contact" onclick="document.getElementById('menu').checked=false">Contact</a>
+  <a href="/#contact" class="menu-mobile-cta" data-i18n="nav.reserver" onclick="document.getElementById('menu').checked=false">Réserver</a>
+  <div class="langues" role="group" aria-label="Choix de la langue">
+    <button type="button" data-lang="fr"><svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect width="8" height="16" fill="#002654"/><rect x="16" width="8" height="16" fill="#CE1126"/></svg>FR</button><span class="sep">·</span>
+    <button type="button" data-lang="en"><svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.4"/><path d="M12 0V16M0 8H24" stroke="#fff" stroke-width="5"/><path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="2.6"/></svg>EN</button><span class="sep">·</span>
+    <button type="button" data-lang="es"><svg class="flag" aria-hidden="true" viewBox="0 0 24 16"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg>ES</button>
+  </div>
+</nav>
+
+<main class="doc-legal">
+  <div class="wrap doc-grille">
+    <aside class="doc-aside" aria-labelledby="aside-titre">
+      <p class="doc-aside-titre" id="aside-titre" data-i18n="legal.docs">Informations légales</p>
+      <ul>
+        <li><a href="/mentions-legales/" data-i18n="footer.mentions">Mentions légales</a></li>
+        <li><a href="/cgv/" data-i18n="footer.cgv">Conditions de vente</a></li>
+        <li><a href="/cgu/" data-i18n="footer.cgu.long">Conditions d'utilisation</a></li>
+        <li><a href="/confidentialite/" data-i18n="footer.confidentialite">Confidentialité</a></li>
+        <li><a href="/cookies/" data-i18n="footer.cookies">Cookies</a></li>
+        <li><a href="/securite/" aria-current="page" data-i18n="footer.securite">Sécurité</a></li>
+        <li><a href="/accessibilite/" data-i18n="footer.accessibilite">Accessibilité</a></li>
+        <li><a href="/plan-du-site/" data-i18n="footer.plan">Plan du site</a></li>
+      </ul>
+    </aside>
+
+    <article class="doc">
+      <p class="surtitre">Vos données</p>
+      <h1>Sécurité</h1>
+      <p class="maj"><span>Dernière mise à jour : 29 octobre 2026</span><button type="button" class="imprimer" onclick="window.print()" data-i18n="legal.imprimer">Imprimer</button></p>
+      <p class="legal-avis" data-i18n="legal.avis"></p>
+      <details class="sommaire" open>
+    <summary data-i18n="legal.sommaire">Sommaire</summary>
+    <ol>
+      <li><a href="#site">1. Sécurité du Site</a></li>
+      <li><a href="#donnees">2. Protection de vos données</a></li>
+      <li><a href="#paiement">3. Paiements</a></li>
+      <li><a href="#fraude">4. En cas de doute</a></li>
+      <li><a href="#vulnerabilite">5. Signaler une vulnérabilité</a></li>
+    </ol>
+  </details>
+
+<p class="chapo">Réserver un séjour, c'est nous confier des informations personnelles et un paiement. Voici comment nous les protégeons, et les réflexes qui vous protègent contre les tentatives de fraude se faisant passer pour nous.</p>
+
+<div class="essentiel">
+  <p class="essentiel-titre">Trois règles à retenir</p>
+  <ul>
+    <li>Nous écrivons uniquement depuis une adresse se terminant par <strong>@belardi-golfhouse.fr</strong>.</li>
+    <li>Nous ne vous demanderons jamais votre numéro de carte, votre code ou un mot de passe par e-mail, SMS, téléphone ou message privé.</li>
+    <li>Nos coordonnées bancaires figurent dans le contrat de voyage et ne changent pas en cours de réservation : en cas de message annonçant un nouveau RIB, appelez-nous avant tout virement.</li>
+  </ul>
+</div>
+
+<h2 id="site">1. Sécurité du Site</h2>
+<ul>
+  <li>Le Site est servi exclusivement en <strong>HTTPS</strong> : les échanges entre votre navigateur et nos serveurs sont chiffrés.</li>
+  <li>Le Site est statique : il n'a ni base de données, ni espace client, ni mot de passe, ce qui réduit fortement la surface d'attaque.</li>
+  <li>Polices de caractères et bibliothèques sont hébergées sur nos propres serveurs. Aucun script publicitaire ni outil de mesure d'audience n'est chargé ; la vérification anti-robot Google reCAPTCHA de la page Contact ne se charge qu'à votre demande.</li>
+  <li>Le code du Site est versionné : toute modification est tracée et réversible.</li>
+</ul>
+
+<h2 id="donnees">2. Protection de vos données</h2>
+<ul>
+  <li>Accès aux données réservé aux seules personnes qui en ont besoin pour organiser votre séjour.</li>
+  <li>Comptes de messagerie et outils protégés par authentification à deux facteurs.</li>
+  <li>Informations de santé conservées à part et supprimées après le séjour.</li>
+  <li>Prestataires sélectionnés pour leurs garanties de sécurité et liés par des engagements de confidentialité.</li>
+</ul>
+<p>Le détail des traitements figure dans la <a href="/confidentialite/">politique de confidentialité</a>.</p>
+
+<h2 id="paiement">3. Paiements</h2>
+<p>Aucun paiement n'est effectué sur le Site. Les règlements se font par virement vers le compte indiqué dans votre contrat ou par un lien de paiement d'un prestataire agréé, dont l'adresse doit commencer par <code>https://</code> et correspondre au prestataire annoncé. Belardi n'a jamais accès à vos données de carte bancaire. <span class="todo">À COMPLÉTER — nom du prestataire de paiement, le cas échéant</span></p>
+
+<h2 id="fraude">4. En cas de doute</h2>
+<p>Si vous recevez un message suspect au nom de BELARDI Golf House :</p>
+<ol>
+  <li>ne cliquez sur aucun lien et ne communiquez aucune information ;</li>
+  <li>vérifiez l'adresse exacte de l'expéditeur ;</li>
+  <li>transférez-le à <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a> ;</li>
+  <li>signalez-le sur <a href="https://www.signal-spam.fr" rel="noopener">signal-spam.fr</a> ou, pour un SMS, au 33700.</li>
+</ol>
+<p>Si vous avez été victime d'une fraude, prévenez immédiatement votre banque et consultez <a href="https://www.cybermalveillance.gouv.fr" rel="noopener">cybermalveillance.gouv.fr</a>.</p>
+
+<h2 id="vulnerabilite">5. Signaler une vulnérabilité</h2>
+<p>Vous avez identifié une faille de sécurité sur le Site ? Écrivez à <a href="mailto:contact@belardi-golfhouse.fr?subject=S%C3%A9curit%C3%A9%20%E2%80%94%20signalement">contact@belardi-golfhouse.fr</a> avec l'objet « Sécurité — signalement » et une description permettant de reproduire le problème. Nous accusons réception sous 72 heures ouvrées. Merci de ne pas exploiter la faille au-delà de ce qui est nécessaire pour la démontrer, de ne pas accéder aux données de tiers et de nous laisser un délai raisonnable de correction avant toute divulgation. Ces informations sont aussi publiées au format standard dans le fichier <a href="/.well-known/security.txt">security.txt</a>.</p>
+    </article>
+  </div>
+</main>
+
+<footer class="pied">
+  <div class="pied-inner">
+
+    <div class="pied-haut">
+      <div class="pied-marque">
+        <a href="/" class="nom-empile notranslate" translate="no" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
+          <b>Belardi</b>
+          <span class="gh">Golf House</span>
+        </a>
+        <p class="pied-baseline" data-i18n="footer.accroche">Une semaine de golf tout compris sur la Côte basque, en petit groupe de six golfeurs.</p>
+        <a class="pied-cta" href="/contact/" data-i18n="footer.cta">Demander les prochaines dates</a>
+      </div>
+
+      <nav class="pied-nav" data-i18n-aria="footer.nav.aria" aria-label="Plan du pied de page">
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.sejour">Le séjour</p>
+          <ul>
+            <li><a href="/#programme" data-i18n="footer.programme">Le programme</a></li>
+            <li><a href="/parcours/" data-i18n="footer.parcours">Les parcours</a></li>
+            <li><a href="/pricing/" data-i18n="footer.tarifs">Tarifs</a></li>
+            <li><a href="/#faq" data-i18n="footer.faq">Questions fréquentes</a></li>
+          </ul>
+        </div>
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.belardi">Belardi</p>
+          <ul>
+            <li><a href="/#concept" data-i18n="footer.concept">Le concept</a></li>
+            <li><a href="/#origines" data-i18n="footer.origines">Nos origines</a></li>
+            <li><a href="/contact/" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="/plan-du-site/" data-i18n="footer.plan">Plan du site</a></li>
+          </ul>
+        </div>
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.reserver">Réservation</p>
+          <ul>
+            <li><a href="/cgv/" data-i18n="footer.cgv">Conditions de vente</a></li>
+            <li><a href="/cgv/#annulation" data-i18n="footer.annulation">Annulation &amp; report</a></li>
+            <li><a href="/cgv/#assurances" data-i18n="footer.assurances">Assurances</a></li>
+            <li><a href="/cgv/#formulaire" data-i18n="footer.droits-voyageur">Vos droits de voyageur</a></li>
+          </ul>
+        </div>
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.contact">Nous écrire</p>
+          <ul>
+            <li><a href="mailto:contact@belardi-golfhouse.fr" class="notranslate" translate="no">contact@belardi-golfhouse.fr</a></li>
+            <li><a href="https://www.instagram.com/belardi.golf/" rel="noopener" target="_blank" class="notranslate" translate="no">@belardi.golf</a></li>
+            <li><span class="pied-lieu" data-i18n="footer.lieu">Côte basque, France</span></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="pied-milieu">
+      <div class="langues pied-langues" role="group" data-i18n-aria="footer.langue.aria" aria-label="Langue du site">
+        <button type="button" data-lang="fr" lang="fr">Français</button>
+        <button type="button" data-lang="en" lang="en">English</button>
+        <button type="button" data-lang="es" lang="es">Español</button>
+      </div>
+      <div class="pied-reseaux">
+        <a href="https://www.instagram.com/belardi.golf/" rel="noopener" target="_blank" aria-label="Instagram BELARDI Golf House">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg>
+        </a>
+        <a href="mailto:contact@belardi-golfhouse.fr" data-i18n-aria="footer.email.aria" aria-label="Écrire à BELARDI Golf House">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+        <a href="#" class="pied-remonter" data-i18n-aria="footer.haut.aria" aria-label="Revenir en haut de la page">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="pied-bas">
+      <p class="pied-copy">© 2026 <span class="notranslate" translate="no">BELARDI Golf House</span> · <span data-i18n="footer.droits">Tous droits réservés</span></p>
+      <ul class="pied-legal" data-i18n-aria="footer.legal.aria" aria-label="Informations légales">
+        <li><a href="/mentions-legales/" data-i18n="footer.mentions">Mentions légales</a></li>
+        <li><a href="/cgv/" data-i18n="footer.cgv.court">CGV</a></li>
+        <li><a href="/cgu/" data-i18n="footer.cgu">CGU</a></li>
+        <li><a href="/confidentialite/" data-i18n="footer.confidentialite">Confidentialité</a></li>
+        <li><a href="/cookies/" data-i18n="footer.cookies">Cookies</a></li>
+        <li><a href="/securite/" aria-current="page" data-i18n="footer.securite">Sécurité</a></li>
+        <li><a href="/accessibilite/" data-i18n="footer.accessibilite">Accessibilité</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  window.BELARDI_PAGE = "securite";
+  if (window.matchMedia("(max-width: 900px)").matches) document.querySelectorAll(".sommaire").forEach(function(d){ d.open = false; });
+</script>
+<script src="/assets/js/i18n.js" defer></script>
+</body>
+</html>

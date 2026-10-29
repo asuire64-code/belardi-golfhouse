@@ -60,9 +60,8 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- Polices de la charte : Jost (texte & titres), Josefin Sans Light (nom BELARDI), Cormorant Garamond italique (accents) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Josefin+Sans:wght@300&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
 
 <link rel="stylesheet" href="/assets/css/belardi.css">
 <style>
@@ -347,6 +346,20 @@
   }
   .g-recaptcha{width:fit-content;max-width:100%;flex:none}
   .champ-erreur-captcha{display:none}
+  .captcha-zone{flex:none;max-width:100%}
+  .captcha-accord{display:grid;gap:8px;max-width:304px}
+  .captcha-accord[hidden]{display:none}
+  .captcha-activer{
+    display:inline-flex;align-items:center;gap:10px;width:fit-content;padding:12px 16px;
+    font-family:var(--f-sans);font-weight:500;font-size:13.5px;color:var(--fg);
+    background:var(--surface);border:1px solid var(--bord);border-radius:0;cursor:pointer;
+    transition:border-color .2s ease,color .2s ease
+  }
+  .captcha-activer:hover{border-color:var(--terre);color:var(--terre)}
+  .captcha-activer:focus-visible{outline:2px solid var(--terre);outline-offset:3px}
+  .captcha-info{margin:0;font-size:11.5px;line-height:1.5;color:var(--texte-doux-auto)}
+  .captcha-info a{color:var(--accent);text-underline-offset:3px}
+  .champ-captcha.en-erreur .captcha-activer{border-color:#B5452E}
   .champ-captcha.en-erreur .g-recaptcha{
     outline:2px solid #B5452E;outline-offset:4px;border-radius:4px;
   }
@@ -427,6 +440,8 @@
     .grille-champs{grid-template-columns:1fr}
     .contact-bandeau .inner{justify-content:center;text-align:center}
   }
+  .mention-rgpd{margin:14px 0 0;font-size:12px;line-height:1.55;color:var(--texte-doux-auto)}
+  .mention-rgpd a{color:var(--accent);text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -583,7 +598,17 @@
 
         <div class="champ-captcha">
           <div class="champ-captcha-ligne">
-            <div class="g-recaptcha" id="recaptchaWidget" data-sitekey="6LcaKvgtAAAAAJvDA5hU1MYhv1VEoY8WTFh1WY3x" data-callback="surRecaptchaValide" data-expired-callback="surRecaptchaExpire"></div>
+            <div class="captcha-zone">
+              <!-- reCAPTCHA chargé uniquement au clic : aucun traceur Google avant l'accord du visiteur -->
+              <div class="captcha-accord" id="captchaAccord">
+                <button type="button" class="captcha-activer" id="captchaActiver">
+                  <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 2.5l6 2.5v4.5c0 3.8-2.6 6.6-6 8-3.4-1.4-6-4.2-6-8V5z"/><path d="M7.2 10l2 2 3.8-3.8"/></svg>
+                  <span data-i18n="cp.captcha.activer">Activer la vérification anti-robot</span>
+                </button>
+                <p class="captcha-info"><span data-i18n="cp.captcha.info">Fournie par Google reCAPTCHA, qui dépose des cookies une fois activée.</span> <a href="/cookies/#traceurs" data-i18n="cp.captcha.lien">En savoir plus</a></p>
+              </div>
+              <div class="g-recaptcha" id="recaptchaWidget" data-sitekey="6LcaKvgtAAAAAJvDA5hU1MYhv1VEoY8WTFh1WY3x" data-callback="surRecaptchaValide" data-expired-callback="surRecaptchaExpire"></div>
+            </div>
             <div class="contact-coords">
               <a href="mailto:contact@belardi-golfhouse.fr">
                 <span class="icone-coord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
@@ -604,6 +629,7 @@
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
           </button>
           <p class="message-validation" id="messageValidation" role="status" data-i18n="cp.validation.defaut">Merci de renseigner au moins votre adresse email.</p>
+          <p class="mention-rgpd"><span data-i18n="cp.rgpd">Vos informations servent uniquement à répondre à votre demande et ne sont jamais cédées.</span> <a href="/confidentialite/" data-i18n="cp.rgpd.lien">Politique de confidentialité</a></p>
         </div>
       </form>
     </div>
@@ -623,27 +649,109 @@
   </div>
 </section>
 
-<footer>
-  <div class="inner">
-    <div>
-      <a href="/" class="nom-empile" aria-label="BELARDI Golf House">
-        <b>Belardi</b>
-        <span class="gh">Golf House</span>
-      </a>
-      <p class="baseline" data-i18n="footer.baseline">Séjours golf tout compris au Pays Basque</p>
+<footer class="pied">
+  <div class="pied-inner">
+
+    <div class="pied-haut">
+      <div class="pied-marque">
+        <a href="/" class="nom-empile notranslate" translate="no" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
+          <b>Belardi</b>
+          <span class="gh">Golf House</span>
+        </a>
+        <p class="pied-baseline" data-i18n="footer.accroche">Une semaine de golf tout compris sur la Côte basque, en petit groupe de six golfeurs.</p>
+        <a class="pied-cta" href="/contact/" aria-current="page" data-i18n="footer.cta">Demander les prochaines dates</a>
+      </div>
+
+      <nav class="pied-nav" data-i18n-aria="footer.nav.aria" aria-label="Plan du pied de page">
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.sejour">Le séjour</p>
+          <ul>
+            <li><a href="/#programme" data-i18n="footer.programme">Le programme</a></li>
+            <li><a href="/parcours/" data-i18n="footer.parcours">Les parcours</a></li>
+            <li><a href="/pricing/" data-i18n="footer.tarifs">Tarifs</a></li>
+            <li><a href="/#faq" data-i18n="footer.faq">Questions fréquentes</a></li>
+          </ul>
+        </div>
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.belardi">Belardi</p>
+          <ul>
+            <li><a href="/#concept" data-i18n="footer.concept">Le concept</a></li>
+            <li><a href="/#origines" data-i18n="footer.origines">Nos origines</a></li>
+            <li><a href="/contact/" aria-current="page" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="/plan-du-site/" data-i18n="footer.plan">Plan du site</a></li>
+          </ul>
+        </div>
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.reserver">Réservation</p>
+          <ul>
+            <li><a href="/cgv/" data-i18n="footer.cgv">Conditions de vente</a></li>
+            <li><a href="/cgv/#annulation" data-i18n="footer.annulation">Annulation &amp; report</a></li>
+            <li><a href="/cgv/#assurances" data-i18n="footer.assurances">Assurances</a></li>
+            <li><a href="/cgv/#formulaire" data-i18n="footer.droits-voyageur">Vos droits de voyageur</a></li>
+          </ul>
+        </div>
+        <div class="pied-col">
+          <p class="pied-titre" data-i18n="footer.col.contact">Nous écrire</p>
+          <ul>
+            <li><a href="mailto:contact@belardi-golfhouse.fr" class="notranslate" translate="no">contact@belardi-golfhouse.fr</a></li>
+            <li><a href="https://www.instagram.com/belardi.golf/" rel="noopener" target="_blank" class="notranslate" translate="no">@belardi.golf</a></li>
+            <li><span class="pied-lieu" data-i18n="footer.lieu">Côte basque, France</span></li>
+          </ul>
+        </div>
+      </nav>
     </div>
-    <div class="liens">
-      <a href="mailto:contact@belardi-golfhouse.fr">contact@belardi-golfhouse.fr</a>
-      <a href="/mentions-legales/" data-i18n="footer.mentions">Mentions légales</a>
-      <a href="/confidentialite/" data-i18n="footer.confidentialite">Confidentialité</a>
-      <p class="legal">© 2026 BELARDI Golf House</p>
+
+    <div class="pied-milieu">
+      <div class="langues pied-langues" role="group" data-i18n-aria="footer.langue.aria" aria-label="Langue du site">
+        <button type="button" data-lang="fr" lang="fr">Français</button>
+        <button type="button" data-lang="en" lang="en">English</button>
+        <button type="button" data-lang="es" lang="es">Español</button>
+      </div>
+      <div class="pied-reseaux">
+        <a href="https://www.instagram.com/belardi.golf/" rel="noopener" target="_blank" aria-label="Instagram BELARDI Golf House">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg>
+        </a>
+        <a href="mailto:contact@belardi-golfhouse.fr" data-i18n-aria="footer.email.aria" aria-label="Écrire à BELARDI Golf House">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+        <a href="#" class="pied-remonter" data-i18n-aria="footer.haut.aria" aria-label="Revenir en haut de la page">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+      </div>
     </div>
+
+    <div class="pied-bas">
+      <p class="pied-copy">© 2026 <span class="notranslate" translate="no">BELARDI Golf House</span> · <span data-i18n="footer.droits">Tous droits réservés</span></p>
+      <ul class="pied-legal" data-i18n-aria="footer.legal.aria" aria-label="Informations légales">
+        <li><a href="/mentions-legales/" data-i18n="footer.mentions">Mentions légales</a></li>
+        <li><a href="/cgv/" data-i18n="footer.cgv.court">CGV</a></li>
+        <li><a href="/cgu/" data-i18n="footer.cgu">CGU</a></li>
+        <li><a href="/confidentialite/" data-i18n="footer.confidentialite">Confidentialité</a></li>
+        <li><a href="/cookies/" data-i18n="footer.cookies">Cookies</a></li>
+        <li><a href="/securite/" data-i18n="footer.securite">Sécurité</a></li>
+        <li><a href="/accessibilite/" data-i18n="footer.accessibilite">Accessibilité</a></li>
+      </ul>
+    </div>
+
   </div>
 </footer>
 
 <script>window.BELARDI_PAGE = "contact";</script>
 <script src="/assets/js/i18n.js" defer></script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+  // Chargement du reCAPTCHA Google à la demande (consentement au point d'usage).
+  (function(){
+    var bouton = document.getElementById("captchaActiver");
+    if (!bouton) return;
+    bouton.addEventListener("click", function(){
+      document.getElementById("captchaAccord").hidden = true;
+      var s = document.createElement("script");
+      s.src = "https://www.google.com/recaptcha/api.js?hl=" + (window.BELARDI_LANG || "fr");
+      s.async = true; s.defer = true;
+      document.head.appendChild(s);
+    });
+  })();
+</script>
 <script>
   (function(){
     var form = document.getElementById("formulaireContact");

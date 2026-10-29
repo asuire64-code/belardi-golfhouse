@@ -293,11 +293,6 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
 }
 
 /* ============================ Pied de page ============================ */
-footer{background:var(--bloc-olive);color:var(--sur-olive);padding:36px var(--e4)}
-footer .inner{
-  max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;
-  gap:var(--e4);flex-wrap:wrap;align-items:flex-start;
-}
 .nom-empile b{
   display:block;font-family:var(--f-logo);font-weight:300;font-size:1.3rem;
   letter-spacing:var(--ls-logo);text-transform:uppercase;line-height:1;
@@ -307,11 +302,76 @@ footer .inner{
   font-family:var(--f-accent);font-style:italic;font-weight:500;font-size:1.05rem;color:var(--lin);
 }
 .nom-empile .gh::before,.nom-empile .gh::after{content:"";width:26px;height:1px;background:var(--terre-claire)}
-footer .baseline{margin-top:var(--e2);font-size:.82rem;opacity:.75;max-width:34ch}
-footer .liens{display:grid;gap:7px;font-weight:300;font-size:12px;letter-spacing:.06em;text-align:right}
-footer .liens a:hover{color:var(--terre-claire)}
-footer .legal{margin-top:var(--e2);font-size:11px;opacity:.6}
-@media(max-width:760px){footer{padding:var(--e4) var(--e3)}footer .liens{text-align:left}}
+
+/* ============================================================
+   Pied de page — structure en trois bandes (marque + plan,
+   langue + réseaux, informations légales). Aplats olive, filets lin.
+   ============================================================ */
+.pied{
+  --pied-texte:rgba(230,220,200,.74);
+  --pied-filet:rgba(230,220,200,.16);
+  background:var(--bloc-olive);color:var(--sur-olive);
+  font-family:var(--f-sans);font-weight:300;
+}
+.pied a{color:inherit;text-decoration:none}
+.pied a:focus-visible,.pied button:focus-visible{outline:1px solid var(--terre-claire);outline-offset:4px}
+.pied-inner{max-width:var(--max);margin:0 auto;padding:var(--e5) var(--e4) var(--e3)}
+
+.pied-haut{display:grid;grid-template-columns:minmax(240px,.9fr) 3fr;gap:var(--e5);padding-bottom:var(--e5)}
+.pied-marque .nom-empile{display:inline-block}
+.pied-baseline{margin:var(--e3) 0 0;max-width:30ch;font-size:14px;line-height:1.6;color:var(--pied-texte)}
+.pied-cta{
+  display:inline-block;margin-top:var(--e3);padding:11px 18px;border:1px solid var(--terre-claire);
+  font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--lin)!important;white-space:nowrap;
+  transition:background .25s ease,color .25s ease
+}
+.pied-cta:hover{background:var(--terre-claire);color:var(--olive)!important}
+
+.pied-nav{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:var(--e4) var(--e3)}
+.pied-titre{
+  margin:0 0 var(--e2);font-size:11px;font-weight:400;letter-spacing:var(--ls-eyebrow);
+  text-transform:uppercase;color:var(--terre-claire)
+}
+.pied-col ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pied-col a,.pied-lieu{font-size:14px;line-height:1.45;color:var(--pied-texte);white-space:nowrap}
+.pied-col a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:color .2s ease,background-size .25s ease}
+.pied-col a:hover{color:var(--lin);background-size:100% 1px}
+
+.pied-milieu{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--e3);flex-wrap:wrap;
+  padding:var(--e3) 0;border-top:1px solid var(--pied-filet);border-bottom:1px solid var(--pied-filet)
+}
+.pied .pied-langues{gap:4px;font-size:12px;font-weight:400;letter-spacing:.08em}
+.pied .pied-langues button{
+  background:none;border:0;padding:6px 10px;font:inherit;letter-spacing:inherit;color:var(--pied-texte);cursor:pointer;border-radius:0
+}
+.pied .pied-langues button:hover{color:var(--lin)}
+.pied .pied-langues button[aria-current="true"]{color:var(--lin);box-shadow:inset 0 -1px 0 var(--terre-claire)}
+.pied-reseaux{display:flex;gap:6px}
+.pied-reseaux a{
+  display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--pied-filet);color:var(--pied-texte);
+  transition:color .2s ease,border-color .2s ease
+}
+.pied-reseaux a:hover{color:var(--lin);border-color:var(--terre-claire)}
+
+.pied-bas{display:flex;align-items:center;justify-content:space-between;gap:var(--e2) var(--e4);flex-wrap:wrap;padding-top:var(--e3)}
+.pied-copy{margin:0;font-size:12px;letter-spacing:.04em;color:rgba(230,220,200,.55)}
+.pied-legal{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 22px}
+.pied-legal a{font-size:12px;letter-spacing:.04em;color:rgba(230,220,200,.62);transition:color .2s ease}
+.pied-legal a:hover,.pied-legal a[aria-current="page"]{color:var(--lin)}
+
+@media(max-width:980px){
+  .pied-haut{grid-template-columns:1fr;gap:var(--e4)}
+  .pied-nav{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch;gap:var(--e4) var(--e3)}
+  .pied-col a,.pied-lieu{white-space:normal;overflow-wrap:anywhere}
+}
+@media(max-width:600px){
+  .pied-inner{padding:var(--e4) var(--e2) var(--e3)}
+  .pied-milieu{flex-direction:column;align-items:flex-start}
+  .pied .pied-langues{margin-left:-10px}
+  .pied-bas{flex-direction:column-reverse;align-items:flex-start}
+  .pied-legal{gap:10px 18px}
+}
 
 @media(prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}

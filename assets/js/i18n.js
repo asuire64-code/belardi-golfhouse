@@ -143,6 +143,41 @@
       "footer.baseline": "Séjours golf tout compris au Pays Basque",
       "footer.mentions": "Mentions légales",
       "footer.confidentialite": "Confidentialité",
+      "footer.accroche": "Une semaine de golf tout compris sur la Côte basque, en petit groupe de six golfeurs.",
+      "footer.cta": "Demander les prochaines dates",
+      "footer.nav.aria": "Plan du pied de page",
+      "footer.col.sejour": "Le séjour",
+      "footer.programme": "Le programme",
+      "footer.parcours": "Les parcours",
+      "footer.tarifs": "Tarifs",
+      "footer.faq": "Questions fréquentes",
+      "footer.col.belardi": "Belardi",
+      "footer.concept": "Le concept",
+      "footer.origines": "Nos origines",
+      "footer.contact": "Contact",
+      "footer.plan": "Plan du site",
+      "footer.col.reserver": "Réservation",
+      "footer.cgv": "Conditions de vente",
+      "footer.annulation": "Annulation & report",
+      "footer.assurances": "Assurances",
+      "footer.droits-voyageur": "Vos droits de voyageur",
+      "footer.col.contact": "Nous écrire",
+      "footer.lieu": "Côte basque, France",
+      "footer.langue.aria": "Langue du site",
+      "footer.email.aria": "Écrire à BELARDI Golf House",
+      "footer.haut.aria": "Revenir en haut de la page",
+      "footer.droits": "Tous droits réservés",
+      "footer.legal.aria": "Informations légales",
+      "footer.cgv.court": "CGV",
+      "footer.cgu": "CGU",
+      "footer.cgu.long": "Conditions d'utilisation",
+      "footer.cookies": "Cookies",
+      "footer.securite": "Sécurité",
+      "footer.accessibilite": "Accessibilité",
+      "legal.avis": "",
+      "legal.docs": "Informations légales",
+      "legal.sommaire": "Sommaire",
+      "legal.imprimer": "Imprimer",
 
       "pc.intro.eyebrow": "Les parcours",
       "pc.intro.h1": "Dix golfs entre les Landes et la frontière.",
@@ -226,10 +261,15 @@
       "cp.erreur.message": "Merci de renseigner votre message",
       "cp.erreur.captcha": "Merci de confirmer que vous n'êtes pas un robot",
       "cp.validation.email": "Merci de renseigner au moins votre adresse email pour envoyer votre requête.",
-      "cp.validation.captcha": "Merci de confirmer que vous n'êtes pas un robot avant l'envoi.",
+      "cp.validation.captcha": "Merci d'activer puis de valider la vérification anti-robot avant l'envoi.",
       "cp.validation.champs": "Pensez à compléter les champs mis en évidence avant l'envoi.",
       "cp.validation.defaut": "Merci de renseigner au moins votre adresse email.",
       "cp.submit": "Envoyer ma demande",
+      "cp.captcha.activer": "Activer la vérification anti-robot",
+      "cp.captcha.info": "Fournie par Google reCAPTCHA, qui dépose des cookies une fois activée.",
+      "cp.captcha.lien": "En savoir plus",
+      "cp.rgpd": "Vos informations servent uniquement à répondre à votre demande et ne sont jamais cédées.",
+      "cp.rgpd.lien": "Politique de confidentialité",
       "cp.indicatif.recherche.ph": "Rechercher un pays…",
       "cp.indicatif.aria": "Indicatif téléphonique",
       "cp.indicatif.vide": "Aucun pays trouvé"
@@ -372,6 +412,41 @@
       "footer.baseline": "All-inclusive golf stays in the Basque Country",
       "footer.mentions": "Legal notice",
       "footer.confidentialite": "Privacy",
+      "footer.accroche": "An all-inclusive golf week on the Basque Coast, in a small group of six golfers.",
+      "footer.cta": "Ask for the next dates",
+      "footer.nav.aria": "Footer navigation",
+      "footer.col.sejour": "The stay",
+      "footer.programme": "The programme",
+      "footer.parcours": "The courses",
+      "footer.tarifs": "Prices",
+      "footer.faq": "FAQ",
+      "footer.col.belardi": "Belardi",
+      "footer.concept": "The concept",
+      "footer.origines": "Our story",
+      "footer.contact": "Contact",
+      "footer.plan": "Site map",
+      "footer.col.reserver": "Booking",
+      "footer.cgv": "Terms of sale",
+      "footer.annulation": "Cancellation & changes",
+      "footer.assurances": "Insurance",
+      "footer.droits-voyageur": "Your traveller rights",
+      "footer.col.contact": "Get in touch",
+      "footer.lieu": "Basque Coast, France",
+      "footer.langue.aria": "Site language",
+      "footer.email.aria": "Email BELARDI Golf House",
+      "footer.haut.aria": "Back to top",
+      "footer.droits": "All rights reserved",
+      "footer.legal.aria": "Legal information",
+      "footer.cgv.court": "Terms of sale",
+      "footer.cgu": "Terms of use",
+      "footer.cgu.long": "Terms of use",
+      "footer.cookies": "Cookies",
+      "footer.securite": "Security",
+      "footer.accessibilite": "Accessibility",
+      "legal.avis": "This document is published in French, the language of the contract. The French version is the only legally binding one; feel free to ask us any question in English.",
+      "legal.docs": "Legal information",
+      "legal.sommaire": "Contents",
+      "legal.imprimer": "Print",
 
       "pc.intro.eyebrow": "The courses",
       "pc.intro.h1": "Ten golf courses between the Landes and the border.",
@@ -455,10 +530,15 @@
       "cp.erreur.message": "Please enter your message",
       "cp.erreur.captcha": "Please confirm you're not a robot",
       "cp.validation.email": "Please enter at least your email address to send your request.",
-      "cp.validation.captcha": "Please confirm you're not a robot before sending.",
+      "cp.validation.captcha": "Please enable and complete the anti-robot check before sending.",
       "cp.validation.champs": "Please complete the highlighted fields before sending.",
       "cp.validation.defaut": "Please enter at least your email address.",
       "cp.submit": "Send my request",
+      "cp.captcha.activer": "Enable the anti-robot check",
+      "cp.captcha.info": "Provided by Google reCAPTCHA, which sets cookies once enabled.",
+      "cp.captcha.lien": "Learn more",
+      "cp.rgpd": "Your details are used only to answer your request and are never shared.",
+      "cp.rgpd.lien": "Privacy policy",
       "cp.indicatif.recherche.ph": "Search for a country…",
       "cp.indicatif.aria": "Phone dialling code",
       "cp.indicatif.vide": "No country found"
@@ -601,6 +681,41 @@
       "footer.baseline": "Estancias de golf todo incluido en el País Vasco",
       "footer.mentions": "Aviso legal",
       "footer.confidentialite": "Privacidad",
+      "footer.accroche": "Una semana de golf todo incluido en la Costa Vasca, en un grupo reducido de seis golfistas.",
+      "footer.cta": "Solicitar las próximas fechas",
+      "footer.nav.aria": "Navegación del pie de página",
+      "footer.col.sejour": "La estancia",
+      "footer.programme": "El programa",
+      "footer.parcours": "Los campos",
+      "footer.tarifs": "Tarifas",
+      "footer.faq": "Preguntas frecuentes",
+      "footer.col.belardi": "Belardi",
+      "footer.concept": "El concepto",
+      "footer.origines": "Nuestros orígenes",
+      "footer.contact": "Contacto",
+      "footer.plan": "Mapa del sitio",
+      "footer.col.reserver": "Reservas",
+      "footer.cgv": "Condiciones de venta",
+      "footer.annulation": "Cancelación y cambios",
+      "footer.assurances": "Seguros",
+      "footer.droits-voyageur": "Sus derechos como viajero",
+      "footer.col.contact": "Escríbanos",
+      "footer.lieu": "Costa Vasca, Francia",
+      "footer.langue.aria": "Idioma del sitio",
+      "footer.email.aria": "Escribir a BELARDI Golf House",
+      "footer.haut.aria": "Volver arriba",
+      "footer.droits": "Todos los derechos reservados",
+      "footer.legal.aria": "Información legal",
+      "footer.cgv.court": "Condiciones de venta",
+      "footer.cgu": "Condiciones de uso",
+      "footer.cgu.long": "Condiciones de uso",
+      "footer.cookies": "Cookies",
+      "footer.securite": "Seguridad",
+      "footer.accessibilite": "Accesibilidad",
+      "legal.avis": "Este documento se publica en francés, idioma del contrato. Solo la versión francesa es jurídicamente vinculante; puede hacernos cualquier pregunta en español.",
+      "legal.docs": "Información legal",
+      "legal.sommaire": "Índice",
+      "legal.imprimer": "Imprimir",
 
       "pc.intro.eyebrow": "Los recorridos",
       "pc.intro.h1": "Diez campos de golf entre las Landas y la frontera.",
@@ -688,6 +803,11 @@
       "cp.validation.champs": "Complete los campos resaltados antes de enviar.",
       "cp.validation.defaut": "Indique al menos su correo electrónico.",
       "cp.submit": "Enviar mi solicitud",
+      "cp.captcha.activer": "Activar la verificación antirrobot",
+      "cp.captcha.info": "Proporcionada por Google reCAPTCHA, que instala cookies una vez activada.",
+      "cp.captcha.lien": "Más información",
+      "cp.rgpd": "Sus datos solo se utilizan para responder a su solicitud y nunca se ceden.",
+      "cp.rgpd.lien": "Política de privacidad",
       "cp.indicatif.recherche.ph": "Buscar un país…",
       "cp.indicatif.aria": "Prefijo telefónico",
       "cp.indicatif.vide": "Ningún país encontrado"
@@ -731,9 +851,12 @@
     var prefixeMeta = {parcours: "pc", contact: "cp", pricing: "px"}[window.BELARDI_PAGE] || "";
     var titleKey = prefixeMeta ? prefixeMeta + ".meta.title" : "meta.title";
     var descKey = prefixeMeta ? prefixeMeta + ".meta.description" : "meta.description";
-    if (dict[titleKey]) document.title = dict[titleKey];
+    // Le titre et la description ne sont traduits que pour l'accueil et les pages qui ont
+    // leurs propres clés : les autres pages (légales notamment) gardent leur titre HTML.
+    var metaTraduite = prefixeMeta || !window.BELARDI_PAGE || window.BELARDI_PAGE === "accueil";
+    if (metaTraduite && dict[titleKey]) document.title = dict[titleKey];
     var metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc && dict[descKey]) metaDesc.setAttribute("content", dict[descKey]);
+    if (metaTraduite && metaDesc && dict[descKey]) metaDesc.setAttribute("content", dict[descKey]);
 
     document.querySelectorAll(".langues button[data-lang]").forEach(function(btn){
       btn.setAttribute("aria-current", String(btn.dataset.lang === lang));
@@ -790,6 +913,14 @@
     });
 
     document.addEventListener("click", function(){ closeAllSwitches(); });
+
+    document.querySelectorAll(".pied-remonter").forEach(function(a){
+      a.addEventListener("click", function(e){
+        e.preventDefault();
+        var reduit = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({top: 0, behavior: reduit ? "auto" : "smooth"});
+      });
+    });
     document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeAllSwitches(); });
 
     // Pilule glissante du menu principal : suit le lien survolé

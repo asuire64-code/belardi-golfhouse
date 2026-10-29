@@ -20,7 +20,7 @@ Référence rapide pour toute évolution du site. Charte graphique édition 1 (2
 Proportions : sauge 40 % · lin 30 % · olive 15 % · terre 10 % · blanc 5 %.
 **Aplats mats uniquement** : aucun dégradé, aucune brillance, aucun angle arrondi (`--rayon: 0`).
 
-## Typographie (Google Fonts)
+## Typographie (hébergées localement, assets/fonts)
 
 - **Jost** 300 / 400 / 500 — site, textes et titres.
 - **Josefin Sans** 300 — réservée au mot BELARDI dans le logo (capitales, interlettrage 0,5 em).
@@ -56,4 +56,4 @@ Les métadonnées C2PA ont été retirées des SVG (≈ 8 Ko par fichier).
 
 - Remplacer les aplats par de vraies photos : le hero (`.hero`, voir le commentaire dans le CSS), le visuel du concept et les cinq vignettes de parcours. En attendant, ces zones sont des aplats neutres (lin / lin ombre) : le sauge ne subsiste que sur le menu mobile, l'olive sur la section « piliers » et le pied de page.
 - Brancher le formulaire (`<form action="#">` → Formspree, Tally ou équivalent).
-- Rédiger les pages Mentions légales et Confidentialité (liens `#` dans le pied de page).
+- Pages légales : modifier `_outils/pages/*.html` ou `_outils/footer.html`, puis lancer `python3 _outils/construire.py`. Compléter les champs « À COMPLÉTER ».
