@@ -1,0 +1,23 @@
+# Mises à jour automatiques de sécurité : Dependabot propose une PR, qui passe par le contrôle qualité.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /tests
+    schedule:
+      interval: monthly
+    groups:
+      outils-de-test:
+        patterns: ["*"]
+    ignore:
+      # Une nouvelle version de Playwright change légèrement le rendu : mise à jour manuelle,
+      # suivie de « Mettre à jour les captures ».
+      - dependency-name: "@playwright/test"
+      # Doit rester identique à la version chargée par le site (parcours/index.html).
+      - dependency-name: leaflet
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]

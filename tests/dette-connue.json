@@ -1,0 +1,93 @@
+{
+  "_explication": "Défauts qui existaient avant la mise en place des garde-fous. Ils sont tolérés, mais leur nombre ne peut que baisser. Corriger un défaut puis lancer `npm run dette:maj` pour l'enlever d'ici.",
+  "accessibilite": {
+    "accessibilite · color-contrast": 24,
+    "accessibilite · label-content-name-mismatch": 1,
+    "accessibilite · link-in-text-block": 2,
+    "accueil · color-contrast": 29,
+    "accueil · label-content-name-mismatch": 1,
+    "cgu · color-contrast": 34,
+    "cgu · label-content-name-mismatch": 1,
+    "cgu · link-in-text-block": 6,
+    "cgv · color-contrast": 50,
+    "cgv · label-content-name-mismatch": 1,
+    "cgv · link-in-text-block": 9,
+    "confidentialite · color-contrast": 35,
+    "confidentialite · label-content-name-mismatch": 1,
+    "confidentialite · link-in-text-block": 8,
+    "contact · color-contrast": 19,
+    "contact · label-content-name-mismatch": 1,
+    "contact · link-in-text-block": 2,
+    "cookies · color-contrast": 27,
+    "cookies · label-content-name-mismatch": 1,
+    "cookies · link-in-text-block": 5,
+    "mentions-legales · color-contrast": 34,
+    "mentions-legales · label-content-name-mismatch": 1,
+    "mentions-legales · link-in-text-block": 8,
+    "parcours · color-contrast": 21,
+    "parcours · label-content-name-mismatch": 1,
+    "plan-du-site · color-contrast": 39,
+    "plan-du-site · label-content-name-mismatch": 1,
+    "securite · color-contrast": 29,
+    "securite · label-content-name-mismatch": 1,
+    "securite · link-in-text-block": 5,
+    "tarifs · color-contrast": 17,
+    "tarifs · label-content-name-mismatch": 1
+  },
+  "affichage": {
+    "tarifs · texte-trop-petit": 1
+  },
+  "css": {
+    "contact/index.html · no-duplicate-selectors": 1
+  },
+  "html": {
+    "accessibilite/index.html · prefer-native-element": 1,
+    "accessibilite/index.html · unique-landmark": 1,
+    "cgu/index.html · prefer-native-element": 1,
+    "cgu/index.html · unique-landmark": 1,
+    "cgv/index.html · prefer-native-element": 1,
+    "cgv/index.html · unique-landmark": 1,
+    "confidentialite/index.html · prefer-native-element": 1,
+    "confidentialite/index.html · unique-landmark": 1,
+    "contact/index.html · no-inline-style": 1,
+    "contact/index.html · prefer-native-element": 2,
+    "contact/index.html · text-content": 1,
+    "contact/index.html · unique-landmark": 1,
+    "cookies/index.html · prefer-native-element": 1,
+    "cookies/index.html · unique-landmark": 1,
+    "index.html · no-inline-style": 1,
+    "index.html · prefer-native-element": 1,
+    "index.html · unique-landmark": 1,
+    "mentions-legales/index.html · prefer-native-element": 1,
+    "mentions-legales/index.html · unique-landmark": 1,
+    "parcours/index.html · prefer-native-element": 1,
+    "parcours/index.html · unique-landmark": 1,
+    "plan-du-site/index.html · no-trailing-whitespace": 1,
+    "plan-du-site/index.html · prefer-native-element": 1,
+    "plan-du-site/index.html · unique-landmark": 1,
+    "pricing/index.html · prefer-native-element": 1,
+    "pricing/index.html · unique-landmark": 1,
+    "securite/index.html · prefer-native-element": 1,
+    "securite/index.html · unique-landmark": 1
+  },
+  "js": {
+    "assets/js/i18n.js · no-unused-vars": 1
+  },
+  "securite": {
+    "accessibilite/index.html · gestionnaire-inline": 8,
+    "cgu/index.html · gestionnaire-inline": 8,
+    "cgv/index.html · gestionnaire-inline": 8,
+    "confidentialite/index.html · gestionnaire-inline": 8,
+    "contact/index.html · gestionnaire-inline": 7,
+    "cookies/index.html · gestionnaire-inline": 8,
+    "index.html · gestionnaire-inline": 7,
+    "mentions-legales/index.html · gestionnaire-inline": 8,
+    "parcours/index.html · gestionnaire-inline": 7,
+    "plan-du-site/index.html · gestionnaire-inline": 8,
+    "pricing/index.html · gestionnaire-inline": 7,
+    "securite/index.html · gestionnaire-inline": 8
+  },
+  "seo": {
+    "parcours · longueur-description": 1
+  }
+}
