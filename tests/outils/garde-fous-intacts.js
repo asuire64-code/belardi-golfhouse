@@ -2,7 +2,7 @@
 // Un changement volontaire des garde-fous exige l'étiquette « modif-garde-fous » sur la pull request.
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
+const { execFileSync } = require("child_process");
 
 const RACINE = path.resolve(__dirname, "../..");
 const ETIQUETTE = "modif-garde-fous";
@@ -18,7 +18,7 @@ function etiquettes() {
 
 function surMain(fichier) {
   try {
-    return execSync(`git show origin/main:${fichier}`, { cwd: RACINE, stdio: ["ignore", "pipe", "ignore"] }).toString();
+    return execFileSync("git", ["show", `origin/main:${fichier}`], { cwd: RACINE, stdio: ["ignore", "pipe", "ignore"] }).toString();
   } catch {
     return null;
   }
@@ -31,7 +31,7 @@ function fichiersDeTest(lire) {
   for (const dossier of ["tests/statique", "tests/navigateur"]) {
     const liste = lire === ici
       ? (fs.existsSync(path.join(RACINE, dossier)) ? fs.readdirSync(path.join(RACINE, dossier)) : [])
-      : (() => { try { return execSync(`git ls-tree --name-only origin/main ${dossier}/`, { cwd: RACINE }).toString().split("\n").map((f) => path.basename(f)); } catch { return []; } })();
+      : (() => { try { return execFileSync("git", ["ls-tree", "--name-only", "origin/main", `${dossier}/`], { cwd: RACINE }).toString().split("\n").map((f) => path.basename(f)); } catch { return []; } })();
     for (const f of liste.filter((f) => /\.(test|spec)\.js$/.test(f))) out[`${dossier}/${f}`] = lire(`${dossier}/${f}`) || "";
   }
   return out;

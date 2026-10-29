@@ -13,7 +13,8 @@ function lire(fichier = FICHIER) {
 }
 
 function ecrireCategorie(categorie, constats) {
-  const tout = fs.existsSync(FICHIER) ? JSON.parse(fs.readFileSync(FICHIER, "utf8")) : {};
+  let tout = {};
+  try { tout = JSON.parse(fs.readFileSync(FICHIER, "utf8")); } catch (e) { if (e.code !== "ENOENT") throw e; }
   tout._explication =
     "Défauts qui existaient avant la mise en place des garde-fous. Ils sont tolérés, mais leur nombre ne peut que baisser. Corriger un défaut puis lancer `npm run dette:maj` pour l'enlever d'ici.";
   tout[categorie] = Object.fromEntries(Object.entries(constats).sort());

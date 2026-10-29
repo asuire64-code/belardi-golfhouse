@@ -64,7 +64,13 @@ async function securite() {
     for (const el of dom.querySelectorAll("script[src], link[href]")) {
       const url = el.getAttribute("src") || el.getAttribute("href");
       const executable = el.rawTagName === "script" || el.getAttribute("rel") === "stylesheet";
-      const tiers = /^https?:/.test(url) && !/fonts\.googleapis\.com|www\.google\.com\/recaptcha/.test(url);
+      // Exceptions exactes (hôte + chemin) : Google Fonts et reCAPTCHA ne publient pas d'empreinte SRI stable.
+      let tiers = false;
+      try {
+        const u = new URL(url);
+        tiers = /^https?:$/.test(u.protocol) &&
+          !(u.host === "fonts.googleapis.com" || (u.host === "www.google.com" && u.pathname.startsWith("/recaptcha/")));
+      } catch {}
       if (executable && tiers && !el.getAttribute("integrity"))
         constats.push({ cle: `${rel(f)} · ressource-tierce-sans-integrity`, detail: `${rel(f)} : ${url} sans attribut integrity` });
     }
