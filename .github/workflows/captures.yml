@@ -1,10 +1,13 @@
-# À lancer à la main (onglet Actions → « Mettre à jour les captures » → Run workflow, sur la branche
-# de la PR) quand un changement d'apparence est VOULU : les nouvelles captures deviennent la référence.
+# Quand un changement d'apparence est VOULU, les nouvelles captures deviennent la référence. Deux façons :
+#  - onglet Actions → « Mettre à jour les captures » → Run workflow, sur la branche de la PR ;
+#  - ou pousser sur la branche un commit dont le message contient [maj-captures].
 # Ne jamais l'utiliser pour faire taire un test sans avoir regardé les captures avant/après.
 name: Mettre à jour les captures
 
 on:
   workflow_dispatch:
+  push:
+    branches-ignore: [main]
 
 permissions:
   contents: read
@@ -13,7 +16,9 @@ jobs:
   version-playwright:
     name: Version de Playwright
     runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/main'
+    if: >-
+      github.ref != 'refs/heads/main' &&
+      (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[maj-captures]'))
     outputs:
       version: ${{ steps.v.outputs.version }}
     steps:
@@ -75,4 +80,6 @@ jobs:
       - name: Relancer le contrôle qualité sur la branche
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run controle-qualite.yml --ref "${{ github.ref_name }}"
+        run: |
+          gh workflow run controle-qualite.yml --ref "${{ github.ref_name }}" ||
+            echo "::warning::Relance automatique impossible : pousser un nouveau commit sur la branche pour relancer les contrôles."
