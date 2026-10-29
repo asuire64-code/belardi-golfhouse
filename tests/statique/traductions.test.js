@@ -2,7 +2,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const { toutesLesPages, lireDictionnaire } = require("./outils-html");
-const { LANGUES } = require("../config-site");
+const { LANGUES, TEXTES_VIDES_VOULUS } = require("../config-site");
 
 const DICT = lireDictionnaire();
 
@@ -23,7 +23,8 @@ test("Traductions · mêmes clés dans les trois langues", () => {
 
 test("Traductions · aucun texte vide", () => {
   for (const langue of LANGUES) {
-    const vides = Object.entries(DICT[langue]).filter(([, v]) => typeof v !== "string" || !v.trim()).map(([c]) => c);
+    const vides = Object.entries(DICT[langue]).filter(([c, v]) => (typeof v !== "string" || !v.trim()) && !(TEXTES_VIDES_VOULUS[langue] || []).includes(c))
+      .map(([c]) => c);
     assert.deepEqual(vides, [], `${langue} : traductions vides`);
   }
 });

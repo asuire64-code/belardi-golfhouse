@@ -37,8 +37,6 @@ async function isoler(page) {
       const f = fichierPolice(path.basename(url.pathname));
       return f ? route.fulfill({ path: f, contentType: "font/woff2" }) : route.abort();
     }
-    const leaflet = url.host === "unpkg.com" && url.pathname.match(/^\/leaflet@1\.9\.4\/dist\/(.+)$/);
-    if (leaflet) return route.fulfill({ path: path.join(MODULES, "leaflet/dist", leaflet[1]) });
     return route.abort("blockedbyclient");
   });
 }

@@ -27,7 +27,8 @@ async function html() {
 async function css() {
   const stylelint = (await import("stylelint")).default;
   const res = await stylelint.lint({
-    files: ["assets/**/*.css", ...fichiersHtml.map(rel)],
+    // assets/vendor/ = bibliothèques tierces copiées telles quelles (Leaflet…) : jamais modifiées à la main.
+    files: ["assets/**/*.css", "!assets/vendor/**", ...fichiersHtml.map(rel)],
     cwd: RACINE,
     configFile: path.join(__dirname, "..", ".stylelintrc.json"),
   });

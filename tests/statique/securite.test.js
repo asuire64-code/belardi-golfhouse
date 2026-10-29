@@ -13,11 +13,27 @@ const sourcesJs = fs.readdirSync(path.join(RACINE, "assets/js")).map((f) => ({
 }));
 const toutesSources = [...pages.map((p) => ({ nom: p.nom, source: p.source })), ...sourcesJs];
 
-test("Sécurité · seuls les domaines externes autorisés sont utilisés", () => {
+// Ce que la page charge ou exécute (scripts, styles, images, iframes, formulaires, URLs dans le JavaScript)
+// ne peut venir que d'un domaine autorisé. Les simples liens <a href> vers d'autres sites restent libres.
+test("Sécurité · seuls les domaines autorisés fournissent des ressources chargées par le site", () => {
+  const SELECTEURS = [["script[src]", "src"], ["link[href]", "href"], ["img[src]", "src"], ["iframe[src]", "src"],
+    ["source[src]", "src"], ["video[src]", "src"], ["audio[src]", "src"], ["embed[src]", "src"], ["object[data]", "data"], ["form[action]", "action"]];
+  const hote = (url) => { try { return new URL(url).host.toLowerCase(); } catch { return null; } };
   const inconnus = new Set();
-  for (const { nom, source } of toutesSources)
-    for (const [, hote] of source.matchAll(/https?:\/\/([a-z0-9.-]+\.[a-z]{2,})/gi))
-      if (!DOMAINES_AUTORISES.includes(hote.toLowerCase())) inconnus.add(`${hote} (dans ${nom})`);
+  for (const p of pages) {
+    for (const [sel, attr] of SELECTEURS)
+      for (const el of p.dom.querySelectorAll(sel)) {
+        if (sel === "link[href]" && /canonical|alternate/.test(el.getAttribute("rel") || "")) continue;
+        const h = hote(el.getAttribute(attr));
+        if (h && !DOMAINES_AUTORISES.includes(h)) inconnus.add(`${h} (${sel} dans ${p.nom})`);
+      }
+    for (const script of p.dom.querySelectorAll("script:not([src]):not([type='application/ld+json'])"))
+      for (const [, h] of script.text.matchAll(/https?:\/\/([a-z0-9.-]+\.[a-z]{2,})/gi))
+        if (!DOMAINES_AUTORISES.includes(h.toLowerCase())) inconnus.add(`${h} (script dans ${p.nom})`);
+  }
+  for (const { nom, source } of sourcesJs)
+    for (const [, h] of source.matchAll(/https?:\/\/([a-z0-9.-]+\.[a-z]{2,})/gi))
+      if (!DOMAINES_AUTORISES.includes(h.toLowerCase())) inconnus.add(`${h} (dans ${nom})`);
   assert.deepEqual([...inconnus], [],
     "Domaine tiers non déclaré. S'il est voulu, l'ajouter à DOMAINES_AUTORISES dans tests/config-site.js");
 });
