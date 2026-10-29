@@ -1,0 +1,8 @@
+# Scan des secrets : configuration par défaut de gitleaks, plus une seule exception.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Clé de site reCAPTCHA : publique par conception (attribut data-sitekey du formulaire de contact)"
+regexTarget = "line"
+regexes = ['''data-sitekey="[A-Za-z0-9_-]{40}"''']
