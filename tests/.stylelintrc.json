@@ -1,0 +1,8 @@
+{
+  "extends": ["stylelint-config-recommended"],
+  "rules": {
+    "no-descending-specificity": null,
+    "property-no-deprecated": [true, { "ignoreProperties": ["clip"] }]
+  },
+  "overrides": [{ "files": ["**/*.html"], "customSyntax": "postcss-html" }]
+}

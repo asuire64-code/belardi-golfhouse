@@ -1,5 +1,14 @@
+# Publication GitHub Pages : seuls les fichiers du site sont mis en ligne.
+# Les outils (génération, tests) et la documentation interne restent dans le dépôt, jamais sur belardi-golfhouse.fr.
 include:
   - .well-known
 exclude:
   - _outils
+  - tests/
+  - CLAUDE.md
   - README.md
+  - _config.yml
+  - node_modules/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
