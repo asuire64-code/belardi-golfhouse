@@ -1,0 +1,17 @@
+{
+  "name": "belardi-golfhouse",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Site statique BELARDI Golf House — outils de vérification (CI).",
+  "scripts": {
+    "valider:html": "html-validate index.html parcours/index.html pricing/index.html contact/index.html accessibilite/index.html cgu/index.html cgv/index.html confidentialite/index.html cookies/index.html mentions-legales/index.html plan-du-site/index.html securite/index.html",
+    "valider:liens": "node .github/scripts/check-links.js",
+    "test:navigateurs": "playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.0",
+    "html-validate": "^11.21.0",
+    "http-server": "^14.1.1"
+  }
+}

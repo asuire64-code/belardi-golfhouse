@@ -92,6 +92,7 @@ h2{font-size:clamp(1.55rem,3.4vw,var(--fs-h2))}
 .btn--ligne{background:transparent;color:currentColor;border:1px solid currentColor;padding:11px 19px}
 .btn--ligne:hover{background:var(--terre);color:#fff;border-color:var(--terre)}
 .btn--bloc{display:block;width:100%;text-align:center}
+.rgpd-case{width:auto;margin-right:8px}
 
 /* ========================= En-tête 20a ========================= */
 .entete{

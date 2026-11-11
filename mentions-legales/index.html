@@ -62,7 +62,7 @@
   .doc ul,.doc ol{padding-left:1.2rem;margin:0 0 var(--e2)}
   .doc li{margin:.4rem 0}
   .doc li::marker{color:var(--accent)}
-  .doc a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}
+  .doc a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
   .doc dl{margin:var(--e2) 0 var(--e3);border-top:1px solid var(--bord)}
   .doc dt{font-weight:400;color:var(--fg);padding-top:var(--e2);font-size:14px;letter-spacing:.02em}
   .doc dd{margin:2px 0 0;padding-bottom:var(--e2);border-bottom:1px solid var(--bord)}
@@ -117,10 +117,10 @@
         <path d="M30 84 C54 84 70 87.5 70 92 C70 96.5 54 100 30 100 Z"/>
         <path d="M30 105 C60 105 84 109.5 84 117.5 C84 125.5 60 130 30 130 Z"/>
       </svg>
-      <span class="nom"><b>BELARDI</b><span>GOLF HOUSE</span></span>
+      <span class="nom"><b>BELARDI</b> <span>GOLF HOUSE</span></span>
     </a>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Navigation principale">
       <div class="nav-liens">
         <span class="nav-pilule" aria-hidden="true"></span>
         <a href="/" data-i18n="nav.accueil">Accueil</a>

@@ -90,7 +90,7 @@ STYLE_LEGAL = """<style>
   .doc ul,.doc ol{padding-left:1.2rem;margin:0 0 var(--e2)}
   .doc li{margin:.4rem 0}
   .doc li::marker{color:var(--accent)}
-  .doc a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}
+  .doc a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
   .doc dl{margin:var(--e2) 0 var(--e3);border-top:1px solid var(--bord)}
   .doc dt{font-weight:400;color:var(--fg);padding-top:var(--e2);font-size:14px;letter-spacing:.02em}
   .doc dd{margin:2px 0 0;padding-bottom:var(--e2);border-bottom:1px solid var(--bord)}

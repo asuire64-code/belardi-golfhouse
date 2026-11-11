@@ -358,6 +358,7 @@
   .captcha-activer:hover{border-color:var(--terre);color:var(--terre)}
   .captcha-activer:focus-visible{outline:2px solid var(--terre);outline-offset:3px}
   .captcha-info{margin:0;font-size:11.5px;line-height:1.5;color:var(--texte-doux-auto)}
+  .captcha-info a{text-decoration:underline;text-underline-offset:2px}
   .captcha-info a{color:var(--accent);text-underline-offset:3px}
   .champ-captcha.en-erreur .captcha-activer{border-color:#B5452E}
   .champ-captcha.en-erreur .g-recaptcha{
@@ -441,6 +442,7 @@
     .contact-bandeau .inner{justify-content:center;text-align:center}
   }
   .mention-rgpd{margin:14px 0 0;font-size:12px;line-height:1.55;color:var(--texte-doux-auto)}
+  .mention-rgpd a{text-decoration:underline;text-underline-offset:2px}
   .mention-rgpd a{color:var(--accent);text-underline-offset:3px}
 </style>
 </head>
@@ -461,10 +463,10 @@
         <path d="M30 84 C54 84 70 87.5 70 92 C70 96.5 54 100 30 100 Z"/>
         <path d="M30 105 C60 105 84 109.5 84 117.5 C84 125.5 60 130 30 130 Z"/>
       </svg>
-      <span class="nom"><b>BELARDI</b><span>GOLF HOUSE</span></span>
+      <span class="nom"><b>BELARDI</b> <span>GOLF HOUSE</span></span>
     </a>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Navigation principale">
       <div class="nav-liens">
         <span class="nav-pilule" aria-hidden="true"></span>
         <a href="/" data-i18n="nav.accueil">Accueil</a>
@@ -527,7 +529,7 @@
       </div>
       <div class="carte carte-avant" aria-hidden="true">
         <!-- Remplacer par : <img src="/assets/photos/contact-golf-2.jpg" alt=""> -->
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="width:20px;height:20px"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
       </div>
     </div>
 
@@ -560,7 +562,7 @@
             <label for="telephone"><span data-i18n="cp.telephone">Numéro de téléphone</span> <span class="optionnel" data-i18n="cp.optionnel">(optionnel)</span></label>
             <div class="champ-tel">
               <div class="indicatif-select" id="indicatifSelect">
-                <button type="button" class="indicatif-trigger" id="indicatifTrigger" aria-haspopup="listbox" aria-expanded="false">
+                <button type="button" class="indicatif-trigger" id="indicatifTrigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Indicatif téléphonique">
                   <span class="indicatif-drapeau" id="indicatifDrapeau" aria-hidden="true"></span>
                   <svg class="indicatif-chevron" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m1.5 1.5 4.5 5 4.5-5"/></svg>
                 </button>
