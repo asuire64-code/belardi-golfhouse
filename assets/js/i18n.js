@@ -1,5 +1,10 @@
 /* BELARDI Golf House — sélecteur de langue FR / EN / ES (traduction côté client) */
 (function(){
+  var FLAGS = {
+    fr: '<rect width="24" height="16" fill="#fff"/><rect width="8" height="16" fill="#002654"/><rect x="16" width="8" height="16" fill="#CE1126"/>',
+    en: '<rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="3"/><path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.4"/><path d="M12 0V16M0 8H24" stroke="#fff" stroke-width="5"/><path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="2.6"/>',
+    es: '<rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/>'
+  };
   var DICT = {
     fr: {
       "meta.title": "BELARDI Golf House — Séjour golf tout compris au Pays Basque",
@@ -7,12 +12,15 @@
       "pc.meta.title": "Les parcours — BELARDI Golf House",
       "pc.meta.description": "Les dix golfs joués depuis la BELARDI Golf House : Chiberta, Le Phare, Chantaco, la Nivelle, Arcangues, Ilbarritz, Makila, Epherra, Hossegor et Seignosse. Carte, caractère et fiche technique de chaque parcours.",
 
+      "nav.accueil": "Accueil",
       "nav.origines": "Les origines",
       "nav.sejour": "Le séjour",
       "nav.programme": "Programme",
-      "nav.parcours": "Les parcours",
+      "nav.parcours": "Parcours",
       "nav.tarifs": "Tarifs",
       "nav.faq": "FAQ",
+      "nav.apropos": "À propos",
+      "nav.contact": "Contact",
       "nav.reserver": "Réserver",
       "logo.aria": "BELARDI Golf House — accueil",
       "burger.aria": "Ouvrir le menu",
@@ -135,6 +143,41 @@
       "footer.baseline": "Séjours golf tout compris au Pays Basque",
       "footer.mentions": "Mentions légales",
       "footer.confidentialite": "Confidentialité",
+      "footer.accroche": "Une semaine de golf tout compris sur la Côte basque, en petit groupe de six golfeurs.",
+      "footer.cta": "Demander les prochaines dates",
+      "footer.nav.aria": "Plan du pied de page",
+      "footer.col.sejour": "Le séjour",
+      "footer.programme": "Le programme",
+      "footer.parcours": "Les parcours",
+      "footer.tarifs": "Tarifs",
+      "footer.faq": "Questions fréquentes",
+      "footer.col.belardi": "Belardi",
+      "footer.concept": "Le concept",
+      "footer.origines": "Nos origines",
+      "footer.contact": "Contact",
+      "footer.plan": "Plan du site",
+      "footer.col.reserver": "Réservation",
+      "footer.cgv": "Conditions de vente",
+      "footer.annulation": "Annulation & report",
+      "footer.assurances": "Assurances",
+      "footer.droits-voyageur": "Vos droits de voyageur",
+      "footer.col.contact": "Nous écrire",
+      "footer.lieu": "Côte basque, France",
+      "footer.langue.aria": "Langue du site",
+      "footer.email.aria": "Écrire à BELARDI Golf House",
+      "footer.haut.aria": "Revenir en haut de la page",
+      "footer.droits": "Tous droits réservés",
+      "footer.legal.aria": "Informations légales",
+      "footer.cgv.court": "CGV",
+      "footer.cgu": "CGU",
+      "footer.cgu.long": "Conditions d'utilisation",
+      "footer.cookies": "Cookies",
+      "footer.securite": "Sécurité",
+      "footer.accessibilite": "Accessibilité",
+      "legal.avis": "",
+      "legal.docs": "Informations légales",
+      "legal.sommaire": "Sommaire",
+      "legal.imprimer": "Imprimer",
 
       "pc.intro.eyebrow": "Les parcours",
       "pc.intro.h1": "Dix golfs entre les Landes et la frontière.",
@@ -151,7 +194,85 @@
       "pc.rappel.cta": "Demander les prochaines dates",
       "pc.sources": "Données des parcours (trous, par, longueur, architecte, année) relevées auprès des fiches publiques des clubs et des annuaires Golfstars, 1golf.eu et Where2Golf. Les longueurs varient selon les départs : elles sont données ici depuis les repères arrière. Fond de carte © contributeurs OpenStreetMap.",
       "pc.menu.origines": "Retour à l'accueil",
-      "pc.footer.faq": "Questions fréquentes"
+      "pc.footer.faq": "Questions fréquentes",
+
+      "px.meta.title": "Tarifs — BELARDI Golf House",
+      "px.meta.description": "Trois formules tout compris pour une semaine de golf au Pays Basque : Essentiel, Signature et Prestige. Prix par personne, affichés sans surprise.",
+      "px.eyebrow": "Tarifs 2027 · Prix par personne",
+      "px.h1.l1": "Vivez l'expérience",
+      "px.h1.l2": "ultime Belardi.",
+      "px.lead": "7 jours, 6 nuits, groupes de 6 golfeurs maximum. Choisissez votre formule, nous nous occupons du reste.",
+      "px.badge": "Le plus populaire",
+      "px.unite": "/ personne",
+      "px.saison.basse": "Basse saison · oct. – mars",
+      "px.saison.haute": "en haute saison",
+      "px.cta": "Je suis intéressé",
+      "px.sous": "7 jours · 6 nuits",
+      "px.essentiel.desc": "Pour découvrir la Côte Basque et travailler les bases de son jeu en groupe.",
+      "px.signature.desc": "Le séjour complet : coaching individuel, pension complète et journée découverte.",
+      "px.prestige.desc": "L'expérience sans compromis : suite, coaching sur mesure et suivi après le séjour.",
+      "px.essentiel.heberg": "6 nuits en chambre partagée",
+      "px.signature.heberg": "6 nuits en chambre individuelle",
+      "px.prestige.heberg": "6 nuits en suite avec vue",
+      "px.essentiel.repas": "Petits-déjeuners et 4 dîners",
+      "px.signature.repas": "Pension complète, vins inclus",
+      "px.prestige.repas": "Pension complète, vins inclus",
+      "px.essentiel.green": "4 green fees",
+      "px.signature.green": "5 green fees",
+      "px.prestige.green": "6 green fees",
+      "px.essentiel.coach": "16 h de coaching en groupe",
+      "px.signature.coach": "20 h de coaching, dont 2 h en individuel",
+      "px.prestige.coach": "24 h de coaching, dont 6 h en individuel",
+      "px.transf": "Transferts aéroport et golfs",
+      "px.video": "Analyse vidéo et plan de progression écrit",
+      "px.decouv": "Journée découverte encadrée",
+      "px.fitting": "Séance de fitting de vos clubs",
+      "px.suivi": "Suivi à distance pendant 3 mois",
+      "px.inclus.titre": "Dans toutes les formules",
+      "px.inclus.1": "Groupes de 6 golfeurs maximum",
+      "px.inclus.2": "Remboursement intégral jusqu'à 60 jours avant le départ",
+      "px.inclus.3": "Accompagnant non golfeur possible sur demande",
+      "px.noninclus": "Non inclus : transport jusqu'au Pays Basque, boissons hors repas et assurance annulation.",
+      "px.groupes": "Groupe constitué ou séminaire ?",
+      "px.groupes.lien": "Demandez un devis sur mesure",
+      "px.oui": "Inclus",
+      "px.non": "Non inclus",
+
+      "cp.meta.title": "Contact — BELARDI Golf House",
+      "cp.meta.description": "Une question sur votre séjour golf au Pays Basque ? Écrivez-nous ou suivez BELARDI Golf House sur Instagram.",
+      "cp.h1": "Contactez-nous",
+      "cp.lead.l1": "Des questions, besoin d'aide pour votre réservation ?",
+      "cp.lead.l2": "Notre équipe est là pour vous aider !",
+      "cp.illustration": "Illustration à venir",
+      "cp.titre.coordonnees": "Vos coordonnées",
+      "cp.titre.message": "Demande de renseignements",
+      "cp.prenom": "Prénom",
+      "cp.nom": "Nom",
+      "cp.email": "Adresse email",
+      "cp.telephone": "Numéro de téléphone",
+      "cp.optionnel": "(optionnel)",
+      "cp.message.sr": "Votre message",
+      "cp.message.ph": "Votre message",
+      "cp.mention.requis": "Champs obligatoires",
+      "cp.erreur.prenom": "Merci de renseigner votre prénom",
+      "cp.erreur.nom": "Merci de renseigner votre nom",
+      "cp.erreur.email": "Merci de renseigner votre adresse email",
+      "cp.erreur.telephone": "Merci de renseigner votre numéro",
+      "cp.erreur.message": "Merci de renseigner votre message",
+      "cp.erreur.captcha": "Merci de confirmer que vous n'êtes pas un robot",
+      "cp.validation.email": "Merci de renseigner au moins votre adresse email pour envoyer votre requête.",
+      "cp.validation.captcha": "Merci d'activer puis de valider la vérification anti-robot avant l'envoi.",
+      "cp.validation.champs": "Pensez à compléter les champs mis en évidence avant l'envoi.",
+      "cp.validation.defaut": "Merci de renseigner au moins votre adresse email.",
+      "cp.submit": "Envoyer ma demande",
+      "cp.captcha.activer": "Activer la vérification anti-robot",
+      "cp.captcha.info": "Fournie par Google reCAPTCHA, qui dépose des cookies une fois activée.",
+      "cp.captcha.lien": "En savoir plus",
+      "cp.rgpd": "Vos informations servent uniquement à répondre à votre demande et ne sont jamais cédées.",
+      "cp.rgpd.lien": "Politique de confidentialité",
+      "cp.indicatif.recherche.ph": "Rechercher un pays…",
+      "cp.indicatif.aria": "Indicatif téléphonique",
+      "cp.indicatif.vide": "Aucun pays trouvé"
     },
 
     en: {
@@ -160,12 +281,15 @@
       "pc.meta.title": "The courses — BELARDI Golf House",
       "pc.meta.description": "The ten golf courses played from BELARDI Golf House: Chiberta, Le Phare, Chantaco, La Nivelle, Arcangues, Ilbarritz, Makila, Epherra, Hossegor and Seignosse. Map, character and fact sheet for each course.",
 
+      "nav.accueil": "Home",
       "nav.origines": "Our story",
       "nav.sejour": "The stay",
       "nav.programme": "Itinerary",
       "nav.parcours": "The courses",
       "nav.tarifs": "Rates",
       "nav.faq": "FAQ",
+      "nav.apropos": "About",
+      "nav.contact": "Contact",
       "nav.reserver": "Book now",
       "logo.aria": "BELARDI Golf House — home",
       "burger.aria": "Open menu",
@@ -288,6 +412,41 @@
       "footer.baseline": "All-inclusive golf stays in the Basque Country",
       "footer.mentions": "Legal notice",
       "footer.confidentialite": "Privacy",
+      "footer.accroche": "An all-inclusive golf week on the Basque Coast, in a small group of six golfers.",
+      "footer.cta": "Ask for the next dates",
+      "footer.nav.aria": "Footer navigation",
+      "footer.col.sejour": "The stay",
+      "footer.programme": "The programme",
+      "footer.parcours": "The courses",
+      "footer.tarifs": "Prices",
+      "footer.faq": "FAQ",
+      "footer.col.belardi": "Belardi",
+      "footer.concept": "The concept",
+      "footer.origines": "Our story",
+      "footer.contact": "Contact",
+      "footer.plan": "Site map",
+      "footer.col.reserver": "Booking",
+      "footer.cgv": "Terms of sale",
+      "footer.annulation": "Cancellation & changes",
+      "footer.assurances": "Insurance",
+      "footer.droits-voyageur": "Your traveller rights",
+      "footer.col.contact": "Get in touch",
+      "footer.lieu": "Basque Coast, France",
+      "footer.langue.aria": "Site language",
+      "footer.email.aria": "Email BELARDI Golf House",
+      "footer.haut.aria": "Back to top",
+      "footer.droits": "All rights reserved",
+      "footer.legal.aria": "Legal information",
+      "footer.cgv.court": "Terms of sale",
+      "footer.cgu": "Terms of use",
+      "footer.cgu.long": "Terms of use",
+      "footer.cookies": "Cookies",
+      "footer.securite": "Security",
+      "footer.accessibilite": "Accessibility",
+      "legal.avis": "This document is published in French, the language of the contract. The French version is the only legally binding one; feel free to ask us any question in English.",
+      "legal.docs": "Legal information",
+      "legal.sommaire": "Contents",
+      "legal.imprimer": "Print",
 
       "pc.intro.eyebrow": "The courses",
       "pc.intro.h1": "Ten golf courses between the Landes and the border.",
@@ -304,7 +463,85 @@
       "pc.rappel.cta": "Ask about upcoming dates",
       "pc.sources": "Course data (holes, par, length, architect, year) sourced from clubs' public fact sheets and the Golfstars, 1golf.eu and Where2Golf directories. Lengths vary by tee: figures here are given from the back tees. Map data © OpenStreetMap contributors.",
       "pc.menu.origines": "Back to home",
-      "pc.footer.faq": "Frequently asked questions"
+      "pc.footer.faq": "Frequently asked questions",
+
+      "px.meta.title": "Rates — BELARDI Golf House",
+      "px.meta.description": "Three all-inclusive packages for a golf week in the Basque Country: Essentiel, Signature and Prestige. Prices per person, no surprises.",
+      "px.eyebrow": "2027 rates · Price per person",
+      "px.h1.l1": "Live the ultimate",
+      "px.h1.l2": "Belardi experience.",
+      "px.lead": "7 days, 6 nights, groups of 6 golfers maximum. Choose your package, we take care of the rest.",
+      "px.badge": "Most popular",
+      "px.unite": "/ person",
+      "px.saison.basse": "Low season · Oct – Mar",
+      "px.saison.haute": "in high season",
+      "px.cta": "I'm interested",
+      "px.sous": "7 days · 6 nights",
+      "px.essentiel.desc": "Discover the Basque coast and work on the fundamentals of your game in a group.",
+      "px.signature.desc": "The complete stay: one-to-one coaching, full board and a discovery day.",
+      "px.prestige.desc": "The no-compromise experience: a suite, tailored coaching and follow-up after your stay.",
+      "px.essentiel.heberg": "6 nights in a shared room",
+      "px.signature.heberg": "6 nights in a single room",
+      "px.prestige.heberg": "6 nights in a suite with a view",
+      "px.essentiel.repas": "Breakfasts and 4 dinners",
+      "px.signature.repas": "Full board, wine included",
+      "px.prestige.repas": "Full board, wine included",
+      "px.essentiel.green": "4 green fees",
+      "px.signature.green": "5 green fees",
+      "px.prestige.green": "6 green fees",
+      "px.essentiel.coach": "16 h of group coaching",
+      "px.signature.coach": "20 h of coaching, incl. 2 h one-to-one",
+      "px.prestige.coach": "24 h of coaching, incl. 6 h one-to-one",
+      "px.transf": "Airport and golf course transfers",
+      "px.video": "Video analysis and written progress plan",
+      "px.decouv": "Guided discovery day",
+      "px.fitting": "Club fitting session",
+      "px.suivi": "Remote follow-up for 3 months",
+      "px.inclus.titre": "In every package",
+      "px.inclus.1": "Groups of 6 golfers maximum",
+      "px.inclus.2": "Full refund up to 60 days before departure",
+      "px.inclus.3": "Non-golfing companion on request",
+      "px.noninclus": "Not included: travel to the Basque Country, drinks outside meals and cancellation insurance.",
+      "px.groupes": "Private group or corporate retreat?",
+      "px.groupes.lien": "Ask for a tailor-made quote",
+      "px.oui": "Included",
+      "px.non": "Not included",
+
+      "cp.meta.title": "Contact — BELARDI Golf House",
+      "cp.meta.description": "A question about your golf stay in the Basque Country? Write to us or follow BELARDI Golf House on Instagram.",
+      "cp.h1": "Contact us",
+      "cp.lead.l1": "Questions, or need help with your booking?",
+      "cp.lead.l2": "Our team is here to help you!",
+      "cp.illustration": "Illustration coming soon",
+      "cp.titre.coordonnees": "Your details",
+      "cp.titre.message": "Your enquiry",
+      "cp.prenom": "First name",
+      "cp.nom": "Last name",
+      "cp.email": "Email address",
+      "cp.telephone": "Phone number",
+      "cp.optionnel": "(optional)",
+      "cp.message.sr": "Your message",
+      "cp.message.ph": "Your message",
+      "cp.mention.requis": "Required fields",
+      "cp.erreur.prenom": "Please enter your first name",
+      "cp.erreur.nom": "Please enter your last name",
+      "cp.erreur.email": "Please enter your email address",
+      "cp.erreur.telephone": "Please enter your phone number",
+      "cp.erreur.message": "Please enter your message",
+      "cp.erreur.captcha": "Please confirm you're not a robot",
+      "cp.validation.email": "Please enter at least your email address to send your request.",
+      "cp.validation.captcha": "Please enable and complete the anti-robot check before sending.",
+      "cp.validation.champs": "Please complete the highlighted fields before sending.",
+      "cp.validation.defaut": "Please enter at least your email address.",
+      "cp.submit": "Send my request",
+      "cp.captcha.activer": "Enable the anti-robot check",
+      "cp.captcha.info": "Provided by Google reCAPTCHA, which sets cookies once enabled.",
+      "cp.captcha.lien": "Learn more",
+      "cp.rgpd": "Your details are used only to answer your request and are never shared.",
+      "cp.rgpd.lien": "Privacy policy",
+      "cp.indicatif.recherche.ph": "Search for a country…",
+      "cp.indicatif.aria": "Phone dialling code",
+      "cp.indicatif.vide": "No country found"
     },
 
     es: {
@@ -313,12 +550,15 @@
       "pc.meta.title": "Los recorridos — BELARDI Golf House",
       "pc.meta.description": "Los diez campos de golf que se juegan desde BELARDI Golf House: Chiberta, Le Phare, Chantaco, La Nivelle, Arcangues, Ilbarritz, Makila, Epherra, Hossegor y Seignosse. Mapa, carácter y ficha técnica de cada recorrido.",
 
+      "nav.accueil": "Inicio",
       "nav.origines": "Los orígenes",
       "nav.sejour": "La estancia",
       "nav.programme": "Programa",
       "nav.parcours": "Los recorridos",
       "nav.tarifs": "Tarifas",
       "nav.faq": "FAQ",
+      "nav.apropos": "Sobre nosotros",
+      "nav.contact": "Contacto",
       "nav.reserver": "Reservar",
       "logo.aria": "BELARDI Golf House — inicio",
       "burger.aria": "Abrir el menú",
@@ -441,6 +681,41 @@
       "footer.baseline": "Estancias de golf todo incluido en el País Vasco",
       "footer.mentions": "Aviso legal",
       "footer.confidentialite": "Privacidad",
+      "footer.accroche": "Una semana de golf todo incluido en la Costa Vasca, en un grupo reducido de seis golfistas.",
+      "footer.cta": "Solicitar las próximas fechas",
+      "footer.nav.aria": "Navegación del pie de página",
+      "footer.col.sejour": "La estancia",
+      "footer.programme": "El programa",
+      "footer.parcours": "Los campos",
+      "footer.tarifs": "Tarifas",
+      "footer.faq": "Preguntas frecuentes",
+      "footer.col.belardi": "Belardi",
+      "footer.concept": "El concepto",
+      "footer.origines": "Nuestros orígenes",
+      "footer.contact": "Contacto",
+      "footer.plan": "Mapa del sitio",
+      "footer.col.reserver": "Reservas",
+      "footer.cgv": "Condiciones de venta",
+      "footer.annulation": "Cancelación y cambios",
+      "footer.assurances": "Seguros",
+      "footer.droits-voyageur": "Sus derechos como viajero",
+      "footer.col.contact": "Escríbanos",
+      "footer.lieu": "Costa Vasca, Francia",
+      "footer.langue.aria": "Idioma del sitio",
+      "footer.email.aria": "Escribir a BELARDI Golf House",
+      "footer.haut.aria": "Volver arriba",
+      "footer.droits": "Todos los derechos reservados",
+      "footer.legal.aria": "Información legal",
+      "footer.cgv.court": "Condiciones de venta",
+      "footer.cgu": "Condiciones de uso",
+      "footer.cgu.long": "Condiciones de uso",
+      "footer.cookies": "Cookies",
+      "footer.securite": "Seguridad",
+      "footer.accessibilite": "Accesibilidad",
+      "legal.avis": "Este documento se publica en francés, idioma del contrato. Solo la versión francesa es jurídicamente vinculante; puede hacernos cualquier pregunta en español.",
+      "legal.docs": "Información legal",
+      "legal.sommaire": "Índice",
+      "legal.imprimer": "Imprimir",
 
       "pc.intro.eyebrow": "Los recorridos",
       "pc.intro.h1": "Diez campos de golf entre las Landas y la frontera.",
@@ -457,7 +732,85 @@
       "pc.rappel.cta": "Consultar las próximas fechas",
       "pc.sources": "Datos de los recorridos (hoyos, par, longitud, arquitecto, año) obtenidos de las fichas públicas de los clubes y de los directorios Golfstars, 1golf.eu y Where2Golf. Las longitudes varían según las salidas: aquí se indican desde las salidas traseras. Mapa © colaboradores de OpenStreetMap.",
       "pc.menu.origines": "Volver al inicio",
-      "pc.footer.faq": "Preguntas frecuentes"
+      "pc.footer.faq": "Preguntas frecuentes",
+
+      "px.meta.title": "Tarifas — BELARDI Golf House",
+      "px.meta.description": "Tres fórmulas todo incluido para una semana de golf en el País Vasco: Essentiel, Signature y Prestige. Precios por persona, sin sorpresas.",
+      "px.eyebrow": "Tarifas 2027 · Precio por persona",
+      "px.h1.l1": "Viva la experiencia",
+      "px.h1.l2": "Belardi por excelencia.",
+      "px.lead": "7 días, 6 noches, grupos de 6 golfistas como máximo. Elija su fórmula, nosotros nos ocupamos del resto.",
+      "px.badge": "La más popular",
+      "px.unite": "/ persona",
+      "px.saison.basse": "Temporada baja · oct. – mar.",
+      "px.saison.haute": "en temporada alta",
+      "px.cta": "Me interesa",
+      "px.sous": "7 días · 6 noches",
+      "px.essentiel.desc": "Para descubrir la costa vasca y trabajar las bases de su juego en grupo.",
+      "px.signature.desc": "La estancia completa: coaching individual, pensión completa y jornada de descubrimiento.",
+      "px.prestige.desc": "La experiencia sin concesiones: suite, coaching a medida y seguimiento tras la estancia.",
+      "px.essentiel.heberg": "6 noches en habitación compartida",
+      "px.signature.heberg": "6 noches en habitación individual",
+      "px.prestige.heberg": "6 noches en suite con vistas",
+      "px.essentiel.repas": "Desayunos y 4 cenas",
+      "px.signature.repas": "Pensión completa, vino incluido",
+      "px.prestige.repas": "Pensión completa, vino incluido",
+      "px.essentiel.green": "4 green fees",
+      "px.signature.green": "5 green fees",
+      "px.prestige.green": "6 green fees",
+      "px.essentiel.coach": "16 h de coaching en grupo",
+      "px.signature.coach": "20 h de coaching, 2 h de ellas individuales",
+      "px.prestige.coach": "24 h de coaching, 6 h de ellas individuales",
+      "px.transf": "Traslados aeropuerto y campos de golf",
+      "px.video": "Análisis en vídeo y plan de progresión escrito",
+      "px.decouv": "Jornada de descubrimiento guiada",
+      "px.fitting": "Sesión de fitting de sus palos",
+      "px.suivi": "Seguimiento a distancia durante 3 meses",
+      "px.inclus.titre": "En todas las fórmulas",
+      "px.inclus.1": "Grupos de 6 golfistas como máximo",
+      "px.inclus.2": "Reembolso íntegro hasta 60 días antes de la salida",
+      "px.inclus.3": "Acompañante no golfista bajo petición",
+      "px.noninclus": "No incluido: transporte hasta el País Vasco, bebidas fuera de las comidas y seguro de cancelación.",
+      "px.groupes": "¿Grupo cerrado o evento de empresa?",
+      "px.groupes.lien": "Pida un presupuesto a medida",
+      "px.oui": "Incluido",
+      "px.non": "No incluido",
+
+      "cp.meta.title": "Contacto — BELARDI Golf House",
+      "cp.meta.description": "¿Alguna pregunta sobre su estancia de golf en el País Vasco? Escríbanos o síganos en Instagram: BELARDI Golf House.",
+      "cp.h1": "Contáctenos",
+      "cp.lead.l1": "¿Preguntas o necesita ayuda con su reserva?",
+      "cp.lead.l2": "Nuestro equipo está aquí para ayudarle.",
+      "cp.illustration": "Ilustración próximamente",
+      "cp.titre.coordonnees": "Sus datos",
+      "cp.titre.message": "Su consulta",
+      "cp.prenom": "Nombre",
+      "cp.nom": "Apellido",
+      "cp.email": "Correo electrónico",
+      "cp.telephone": "Número de teléfono",
+      "cp.optionnel": "(opcional)",
+      "cp.message.sr": "Su mensaje",
+      "cp.message.ph": "Su mensaje",
+      "cp.mention.requis": "Campos obligatorios",
+      "cp.erreur.prenom": "Por favor, indique su nombre",
+      "cp.erreur.nom": "Por favor, indique su apellido",
+      "cp.erreur.email": "Por favor, indique su correo electrónico",
+      "cp.erreur.telephone": "Por favor, indique su número de teléfono",
+      "cp.erreur.message": "Por favor, escriba su mensaje",
+      "cp.erreur.captcha": "Por favor, confirme que no es un robot",
+      "cp.validation.email": "Indique al menos su correo electrónico para enviar su solicitud.",
+      "cp.validation.captcha": "Confirme que no es un robot antes de enviar.",
+      "cp.validation.champs": "Complete los campos resaltados antes de enviar.",
+      "cp.validation.defaut": "Indique al menos su correo electrónico.",
+      "cp.submit": "Enviar mi solicitud",
+      "cp.captcha.activer": "Activar la verificación antirrobot",
+      "cp.captcha.info": "Proporcionada por Google reCAPTCHA, que instala cookies una vez activada.",
+      "cp.captcha.lien": "Más información",
+      "cp.rgpd": "Sus datos solo se utilizan para responder a su solicitud y nunca se ceden.",
+      "cp.rgpd.lien": "Política de privacidad",
+      "cp.indicatif.recherche.ph": "Buscar un país…",
+      "cp.indicatif.aria": "Prefijo telefónico",
+      "cp.indicatif.vide": "Ningún país encontrado"
     }
   };
 
@@ -495,12 +848,15 @@
       if (dict[key] !== undefined) el.setAttribute("alt", dict[key]);
     });
 
-    var isParcours = window.BELARDI_PAGE === "parcours";
-    var titleKey = isParcours ? "pc.meta.title" : "meta.title";
-    var descKey = isParcours ? "pc.meta.description" : "meta.description";
-    if (dict[titleKey]) document.title = dict[titleKey];
+    var prefixeMeta = {parcours: "pc", contact: "cp", pricing: "px"}[window.BELARDI_PAGE] || "";
+    var titleKey = prefixeMeta ? prefixeMeta + ".meta.title" : "meta.title";
+    var descKey = prefixeMeta ? prefixeMeta + ".meta.description" : "meta.description";
+    // Le titre et la description ne sont traduits que pour l'accueil et les pages qui ont
+    // leurs propres clés : les autres pages (légales notamment) gardent leur titre HTML.
+    var metaTraduite = prefixeMeta || !window.BELARDI_PAGE || window.BELARDI_PAGE === "accueil";
+    if (metaTraduite && dict[titleKey]) document.title = dict[titleKey];
     var metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc && dict[descKey]) metaDesc.setAttribute("content", dict[descKey]);
+    if (metaTraduite && metaDesc && dict[descKey]) metaDesc.setAttribute("content", dict[descKey]);
 
     document.querySelectorAll(".langues button[data-lang]").forEach(function(btn){
       btn.setAttribute("aria-current", String(btn.dataset.lang === lang));
@@ -511,8 +867,18 @@
     document.querySelectorAll(".lang-current").forEach(function(el){
       el.textContent = lang.toUpperCase();
     });
+    document.querySelectorAll(".lang-flag").forEach(function(el){
+      el.innerHTML = FLAGS[lang] || FLAGS.fr;
+    });
 
     try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+
+    // Expose la langue et le dictionnaire courants pour les scripts de page qui ont
+    // besoin de traduire du contenu généré dynamiquement (ex : messages de validation
+    // d'un formulaire, écrits en JS plutôt que présents tels quels dans le HTML).
+    window.BELARDI_LANG = lang;
+    window.BELARDI_DICT = dict;
+    document.dispatchEvent(new CustomEvent("belardi:langchange", {detail: {lang: lang, dict: dict}}));
   }
 
   function closeAllSwitches(except){
@@ -547,6 +913,60 @@
     });
 
     document.addEventListener("click", function(){ closeAllSwitches(); });
+
+    document.querySelectorAll(".pied-remonter").forEach(function(a){
+      a.addEventListener("click", function(e){
+        e.preventDefault();
+        var reduit = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({top: 0, behavior: reduit ? "auto" : "smooth"});
+      });
+    });
     document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeAllSwitches(); });
+
+    // Pilule glissante du menu principal : suit le lien survolé
+    document.querySelectorAll(".nav-liens").forEach(function(wrapper){
+      var pilule = wrapper.querySelector(".nav-pilule");
+      if (!pilule) return;
+      var links = Array.prototype.slice.call(wrapper.querySelectorAll("a"));
+
+      function moveTo(link, instantane){
+        if (instantane){
+          pilule.style.transition = "none";
+          // force le navigateur à appliquer le style sans transition avant de la réactiver
+          // eslint-disable-next-line no-unused-expressions
+          pilule.offsetWidth;
+        }
+        pilule.style.width = link.offsetWidth + "px";
+        pilule.style.transform = "translateX(" + link.offsetLeft + "px)";
+        if (instantane){
+          pilule.offsetWidth;
+          pilule.style.transition = "";
+        }
+      }
+
+      // Position de départ silencieuse sur la page active, sans transition ni survol visible
+      var actif = wrapper.querySelector('a[aria-current="page"]');
+      if (actif) moveTo(actif, true);
+
+      links.forEach(function(link){
+        link.addEventListener("mouseenter", function(){
+          var premierSurvol = !wrapper.classList.contains("is-active");
+          wrapper.classList.add("is-active");
+          // Si la pilule n'était pas déjà visible, on la fait apparaître directement
+          // sous le curseur plutôt que de la laisser glisser depuis une ancienne position.
+          moveTo(link, premierSurvol);
+        });
+      });
+
+      wrapper.addEventListener("mouseleave", function(){
+        // La bulle disparaît sur place (fondu), sans glisser vers un autre lien.
+        wrapper.classList.remove("is-active");
+        // Une fois invisible, on la repositionne sans transition sur la page active,
+        // afin que le prochain survol la fasse réapparaître directement sous le curseur
+        // (même principe d'arrivée que de sortie, jamais de glissement visible).
+        var current = wrapper.querySelector('a[aria-current="page"]');
+        if (current) moveTo(current, true);
+      });
+    });
   });
 })();
