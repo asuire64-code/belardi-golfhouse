@@ -22,9 +22,9 @@ Proportions : sauge 40 % · lin 30 % · olive 15 % · terre 10 % · blanc 5 %.
 
 ## Typographie (hébergées localement, assets/fonts)
 
-- **Jost** 300 / 400 / 500 — site, textes et titres.
-- **Josefin Sans** 300 — réservée au mot BELARDI dans le logo (capitales, interlettrage 0,5 em).
-- **Cormorant Garamond** italique 500 — « Golf House » et accents.
+- **Jost** 300 / 400 / 500 / 700 — site, textes, nav et sous-titre « GOLF HOUSE ».
+- **Playfair Display** 600 / 700 — titres (H1, H2) et mot BELARDI dans le logo (capitales, interlettrage 0,06 em).
+- **Cormorant Garamond** italique 500 — accents (citations).
 - Secours : Helvetica, Arial / Georgia.
 
 Échelle : H1 48 / 1,1 · H2 28 / 1,2 · texte 16 / 1,65 (Jost 300) · surtitre 12 capitales 0,3 em · accent 26.
@@ -32,9 +32,7 @@ Espacements : 8 · 16 · 24 · 40 · 64 · 96 px.
 
 ## Logo
 
-- **Symbole** : le B en trois pièces (fût olive, boucle terre, balle blanche), séparées par un joint de 3 unités **à la couleur du fond**. Dans `index.html` le symbole est en SVG inline et le joint suit la variable `--b-joint`, ce qui le rend automatiquement correct en clair, en sombre et sur le menu mobile sauge.
-- **Ombre portée** : seulement au-dessus de 48 px.
-- **Sous 48 px** : symbole sans ombre. **Sous 40 px** : retirer aussi les alvéoles (c'est le cas de l'en-tête mobile, géré en CSS).
+- **Symbole** : un B monotrace (aplat unique, `currentColor`) formé d'un fût, d'une boucle ouverte abritant un petit drapeau de green, et de trois bandes qui s'évasent en pied de lettre façon green vallonné. Dans `index.html` le symbole est en SVG inline ; sans variable de couleur dédiée, il suit simplement la couleur du texte ambiante, ce qui le rend automatiquement correct en clair, en sombre et sur le menu mobile sauge.
 - **Zone de protection** : la largeur du fût tout autour.
 - **Tailles minimales** : symbole 16 px · logo empilé 120 px.
 - **Interdits** : déformer, pivoter, recolorer hors palette, poser sur un fond chargé.
