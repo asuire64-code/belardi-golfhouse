@@ -10,12 +10,12 @@
   --bgh-bg:var(--bgh-lin); --bgh-fg:var(--bgh-olive); --bgh-accent:var(--bgh-terre);
 
   --bgh-font-sans:'Jost',Helvetica,Arial,sans-serif;
-  --bgh-font-logo:'Josefin Sans','Jost',sans-serif;
+  --bgh-font-logo:'Playfair Display',Georgia,serif;
   --bgh-font-accent:'Cormorant Garamond',Georgia,serif;
 
   --bgh-fs-h1:48px; --bgh-fs-h2:28px; --bgh-fs-body:16px; --bgh-fs-eyebrow:12px; --bgh-fs-accent:26px;
   --bgh-lh-h1:1.1; --bgh-lh-h2:1.2; --bgh-lh-body:1.65;
-  --bgh-ls-eyebrow:.3em; --bgh-ls-logo:.5em; --bgh-ls-wordmark:.24em;
+  --bgh-ls-eyebrow:.3em; --bgh-ls-logo:.06em; --bgh-ls-wordmark:.06em;
 
   --bgh-space-1:8px; --bgh-space-2:16px; --bgh-space-3:24px; --bgh-space-4:40px; --bgh-space-5:64px; --bgh-space-6:96px;
   --bgh-radius:0; /* aplats droits ; boutons sans arrondi */
@@ -24,8 +24,8 @@
   :root{ --bgh-bg:var(--bgh-sombre); --bgh-fg:var(--bgh-lin); --bgh-accent:var(--bgh-terre-claire); }
 }
 body{background:var(--bgh-bg);color:var(--bgh-fg);font-family:var(--bgh-font-sans);font-weight:300;font-size:var(--bgh-fs-body);line-height:var(--bgh-lh-body)}
-.bgh-h1{font-weight:500;font-size:var(--bgh-fs-h1);line-height:var(--bgh-lh-h1)}
-.bgh-h2{font-weight:500;font-size:var(--bgh-fs-h2);line-height:var(--bgh-lh-h2)}
+.bgh-h1{font-family:var(--bgh-font-logo);font-weight:600;font-size:var(--bgh-fs-h1);line-height:var(--bgh-lh-h1)}
+.bgh-h2{font-family:var(--bgh-font-logo);font-weight:600;font-size:var(--bgh-fs-h2);line-height:var(--bgh-lh-h2)}
 .bgh-eyebrow{font-weight:400;font-size:var(--bgh-fs-eyebrow);letter-spacing:var(--bgh-ls-eyebrow);text-transform:uppercase}
 .bgh-accent{font-family:var(--bgh-font-accent);font-style:italic;font-weight:500;font-size:var(--bgh-fs-accent)}
 .bgh-btn{display:inline-block;background:var(--bgh-terre);color:#fff;font-family:var(--bgh-font-sans);font-size:13px;letter-spacing:.08em;padding:12px 20px;border:0;border-radius:var(--bgh-radius)}
