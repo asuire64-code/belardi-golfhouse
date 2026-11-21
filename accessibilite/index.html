@@ -62,7 +62,7 @@
   .doc ul,.doc ol{padding-left:1.2rem;margin:0 0 var(--e2)}
   .doc li{margin:.4rem 0}
   .doc li::marker{color:var(--accent)}
-  .doc a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}
+  .doc a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
   .doc dl{margin:var(--e2) 0 var(--e3);border-top:1px solid var(--bord)}
   .doc dt{font-weight:400;color:var(--fg);padding-top:var(--e2);font-size:14px;letter-spacing:.02em}
   .doc dd{margin:2px 0 0;padding-bottom:var(--e2);border-bottom:1px solid var(--bord)}
@@ -107,27 +107,14 @@
 <header class="entete">
   <div class="wrap">
     <a class="logo notranslate" href="/" translate="no" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
-      <!-- Symbole : le B en trois pièces. Joint de 3 unités à la couleur du fond. -->
-      <svg class="symbole" viewBox="28 18 35 64" role="img" aria-hidden="true">
-        <rect class="b-fut" x="30" y="20" width="12" height="60" stroke-width="3"/>
-        <path class="b-boucle" d="M42 20 A15 15 0 0 1 42 50 Z" stroke-width="3"/>
-        <circle class="b-anneau" cx="46" cy="65" r="15.8"/>
-        <circle class="b-balle" cx="46" cy="65" r="14.6"/>
-        <g class="b-alveoles">
-          <circle cx="35.8" cy="65.0" r="1.28"/><circle cx="40.9" cy="57.3" r="1.28"/>
-          <circle cx="40.9" cy="62.4" r="1.28"/><circle cx="40.9" cy="67.5" r="1.28"/>
-          <circle cx="40.9" cy="72.6" r="1.28"/><circle cx="46.0" cy="54.8" r="1.28"/>
-          <circle cx="46.0" cy="59.9" r="1.28"/><circle cx="46.0" cy="65.0" r="1.28"/>
-          <circle cx="46.0" cy="70.1" r="1.28"/><circle cx="46.0" cy="75.2" r="1.28"/>
-          <circle cx="51.1" cy="57.3" r="1.28"/><circle cx="51.1" cy="62.4" r="1.28"/>
-          <circle cx="51.1" cy="67.5" r="1.28"/><circle cx="51.1" cy="72.6" r="1.28"/>
-          <circle cx="56.2" cy="65.0" r="1.28"/>
-        </g>
-      </svg>
-      <span class="nom"><b>BELARDI</b><span>GOLF HOUSE</span></span>
+      <picture>
+        <source srcset="/assets/logo/symbole-b-clair.png" media="(prefers-color-scheme: dark)">
+        <img class="symbole" src="/assets/logo/symbole-b.png" alt="" aria-hidden="true">
+      </picture>
+      <span class="nom"><b>BELARDI</b> <span>GOLF HOUSE</span></span>
     </a>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Navigation principale">
       <div class="nav-liens">
         <span class="nav-pilule" aria-hidden="true"></span>
         <a href="/" data-i18n="nav.accueil">Accueil</a>
@@ -247,7 +234,7 @@
       <div class="pied-marque">
         <a href="/" class="nom-empile notranslate" translate="no" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
           <b>Belardi</b>
-          <span class="gh">Golf House</span>
+          <span class="gh">GOLF HOUSE</span>
         </a>
         <p class="pied-baseline" data-i18n="footer.accroche">Une semaine de golf tout compris sur la Côte basque, en petit groupe de six golfeurs.</p>
         <a class="pied-cta" href="/contact/" data-i18n="footer.cta">Demander les prochaines dates</a>

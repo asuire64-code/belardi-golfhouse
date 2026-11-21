@@ -1,0 +1,32 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": ".",
+      "url": [
+        "http://localhost/index.html",
+        "http://localhost/pricing/index.html",
+        "http://localhost/contact/index.html",
+        "http://localhost/mentions-legales/index.html"
+      ],
+      "numberOfRuns": 2,
+      "settings": {
+        "preset": "desktop"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.8 }],
+        "categories:accessibility": ["error", { "minScore": 0.9 }],
+        "categories:seo": ["error", { "minScore": 0.95 }],
+        "categories:best-practices": ["warn", { "minScore": 0.8 }],
+        "errors-in-console": ["error", { "minScore": 1 }],
+        "deprecations": ["error", { "minScore": 1 }],
+        "is-on-https": "off",
+        "paste-preventing-inputs": "off"
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}

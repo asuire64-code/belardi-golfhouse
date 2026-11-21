@@ -59,7 +59,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
-<!-- Polices de la charte : Jost (texte & titres), Josefin Sans Light (nom BELARDI), Cormorant Garamond italique (accents) -->
+<!-- Polices de la charte (hébergées localement) : Jost (texte), Playfair Display (titres & nom BELARDI), Cormorant Garamond italique (accents) -->
 <link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 
@@ -358,6 +358,7 @@
   .captcha-activer:hover{border-color:var(--terre);color:var(--terre)}
   .captcha-activer:focus-visible{outline:2px solid var(--terre);outline-offset:3px}
   .captcha-info{margin:0;font-size:11.5px;line-height:1.5;color:var(--texte-doux-auto)}
+  .captcha-info a{text-decoration:underline;text-underline-offset:2px}
   .captcha-info a{color:var(--accent);text-underline-offset:3px}
   .champ-captcha.en-erreur .captcha-activer{border-color:#B5452E}
   .champ-captcha.en-erreur .g-recaptcha{
@@ -441,6 +442,7 @@
     .contact-bandeau .inner{justify-content:center;text-align:center}
   }
   .mention-rgpd{margin:14px 0 0;font-size:12px;line-height:1.55;color:var(--texte-doux-auto)}
+  .mention-rgpd a{text-decoration:underline;text-underline-offset:2px}
   .mention-rgpd a{color:var(--accent);text-underline-offset:3px}
 </style>
 </head>
@@ -451,27 +453,14 @@
 <header class="entete">
   <div class="wrap">
     <a class="logo notranslate" href="/" translate="no" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
-      <!-- Symbole : le B en trois pièces. Joint de 3 unités à la couleur du fond. -->
-      <svg class="symbole" viewBox="28 18 35 64" role="img" aria-hidden="true">
-        <rect class="b-fut" x="30" y="20" width="12" height="60" stroke-width="3"/>
-        <path class="b-boucle" d="M42 20 A15 15 0 0 1 42 50 Z" stroke-width="3"/>
-        <circle class="b-anneau" cx="46" cy="65" r="15.8"/>
-        <circle class="b-balle" cx="46" cy="65" r="14.6"/>
-        <g class="b-alveoles">
-          <circle cx="35.8" cy="65.0" r="1.28"/><circle cx="40.9" cy="57.3" r="1.28"/>
-          <circle cx="40.9" cy="62.4" r="1.28"/><circle cx="40.9" cy="67.5" r="1.28"/>
-          <circle cx="40.9" cy="72.6" r="1.28"/><circle cx="46.0" cy="54.8" r="1.28"/>
-          <circle cx="46.0" cy="59.9" r="1.28"/><circle cx="46.0" cy="65.0" r="1.28"/>
-          <circle cx="46.0" cy="70.1" r="1.28"/><circle cx="46.0" cy="75.2" r="1.28"/>
-          <circle cx="51.1" cy="57.3" r="1.28"/><circle cx="51.1" cy="62.4" r="1.28"/>
-          <circle cx="51.1" cy="67.5" r="1.28"/><circle cx="51.1" cy="72.6" r="1.28"/>
-          <circle cx="56.2" cy="65.0" r="1.28"/>
-        </g>
-      </svg>
-      <span class="nom"><b>BELARDI</b><span>GOLF HOUSE</span></span>
+      <picture>
+        <source srcset="/assets/logo/symbole-b-clair.png" media="(prefers-color-scheme: dark)">
+        <img class="symbole" src="/assets/logo/symbole-b.png" alt="" aria-hidden="true">
+      </picture>
+      <span class="nom"><b>BELARDI</b> <span>GOLF HOUSE</span></span>
     </a>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Navigation principale">
       <div class="nav-liens">
         <span class="nav-pilule" aria-hidden="true"></span>
         <a href="/" data-i18n="nav.accueil">Accueil</a>
@@ -534,7 +523,7 @@
       </div>
       <div class="carte carte-avant" aria-hidden="true">
         <!-- Remplacer par : <img src="/assets/photos/contact-golf-2.jpg" alt=""> -->
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="width:20px;height:20px"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
       </div>
     </div>
 
@@ -567,7 +556,7 @@
             <label for="telephone"><span data-i18n="cp.telephone">Numéro de téléphone</span> <span class="optionnel" data-i18n="cp.optionnel">(optionnel)</span></label>
             <div class="champ-tel">
               <div class="indicatif-select" id="indicatifSelect">
-                <button type="button" class="indicatif-trigger" id="indicatifTrigger" aria-haspopup="listbox" aria-expanded="false">
+                <button type="button" class="indicatif-trigger" id="indicatifTrigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Indicatif téléphonique">
                   <span class="indicatif-drapeau" id="indicatifDrapeau" aria-hidden="true"></span>
                   <svg class="indicatif-chevron" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m1.5 1.5 4.5 5 4.5-5"/></svg>
                 </button>
@@ -656,7 +645,7 @@
       <div class="pied-marque">
         <a href="/" class="nom-empile notranslate" translate="no" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
           <b>Belardi</b>
-          <span class="gh">Golf House</span>
+          <span class="gh">GOLF HOUSE</span>
         </a>
         <p class="pied-baseline" data-i18n="footer.accroche">Une semaine de golf tout compris sur la Côte basque, en petit groupe de six golfeurs.</p>
         <a class="pied-cta" href="/contact/" aria-current="page" data-i18n="footer.cta">Demander les prochaines dates</a>
