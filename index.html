@@ -265,16 +265,10 @@
 <header class="entete">
   <div class="wrap">
     <a class="logo notranslate" href="#" translate="no" data-i18n-aria="logo.aria" aria-label="BELARDI Golf House — accueil">
-      <!-- Symbole : le B au drapeau de green, aplat uni (currentColor). -->
-      <svg class="symbole" viewBox="26 6 62 128" role="img" aria-hidden="true">
-        <rect x="30" y="10" width="9" height="122" rx="2"/>
-        <path d="M39 12 C60 12 69 20 69 34 C69 47.5 60 56 43 56 C41.5 56 40 55.3 39 54" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-        <line x1="48" y1="20" x2="48" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <polygon points="48,21 58,25 48,29"/>
-        <path d="M30 64 C48 64 58 66.5 58 71 C58 75.5 48 78 30 78 Z"/>
-        <path d="M30 84 C54 84 70 87.5 70 92 C70 96.5 54 100 30 100 Z"/>
-        <path d="M30 105 C60 105 84 109.5 84 117.5 C84 125.5 60 130 30 130 Z"/>
-      </svg>
+      <picture>
+        <source srcset="/assets/logo/symbole-b-clair.png" media="(prefers-color-scheme: dark)">
+        <img class="symbole" src="/assets/logo/symbole-b.png" alt="" aria-hidden="true">
+      </picture>
       <span class="nom"><b>BELARDI</b> <span>GOLF HOUSE</span></span>
     </a>
 
