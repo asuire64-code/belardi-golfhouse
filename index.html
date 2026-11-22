@@ -146,26 +146,25 @@
   .accueil ::selection{background:var(--vert);color:var(--ivoire)}
   .accueil :focus-visible{outline:1px solid currentColor;outline-offset:4px}
 
-  /* ---- En-tête partagé, restylé sur l'accueil : blanc, liens en petites capitales, bouton à contour ---- */
+  /* ---- En-tête partagé, restylé sur l'accueil : blanc, liens en petites capitales, bulle au survol ---- */
   .accueil .entete{background:var(--blanc);border-bottom-color:var(--filet)}
-  .accueil .nav-pilule{display:none}
+  .accueil .entete>.wrap{padding-left:clamp(28px,3.2vw,56px)}
+  .accueil .nav-pilule{background:var(--encre)}
   .accueil .nav-liens{gap:4px}
   .accueil .nav-liens a{
     font-weight:400;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
-    padding:10px 12px;border-radius:0;color:var(--encre);
-    text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:1px;text-underline-offset:8px;
-    transition:text-decoration-color .35s ease,text-underline-offset .35s var(--sortie);
+    padding:10px 16px;color:var(--encre);
+    transition:color .35s ease;
   }
-  .accueil .nav-liens a:hover,.accueil .nav-liens a.is-hovered{color:var(--encre);text-decoration-color:currentColor;text-underline-offset:6px}
+  .accueil .nav-liens a:hover,.accueil .nav-liens a.is-hovered{color:var(--blanc)}
   .accueil .nav-liens a[aria-current="page"]{color:var(--encre)}
   .accueil .nav-actions .cta{
-    border:1px solid var(--encre);border-radius:0;color:var(--encre);
+    border:1px solid var(--encre);color:var(--encre);
     font-weight:400;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;padding:13px 22px;
   }
-  .accueil .nav-actions .cta::before{border-radius:0;background:var(--encre)}
+  .accueil .nav-actions .cta::before{background:var(--encre)}
   .accueil .nav-actions .cta:hover{color:var(--blanc);border-color:var(--encre)}
   .accueil .lang-trigger:hover,.accueil .lang-switch[data-open="true"] .lang-trigger{color:var(--encre)}
-  .accueil .lang-menu{border-radius:0}
   .accueil .lang-menu button:hover,.accueil .lang-menu button[aria-selected="true"]{color:var(--encre)}
   .accueil .pied-cta:hover{color:var(--vert)!important}
 
