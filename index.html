@@ -107,104 +107,11 @@
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 
 <link rel="stylesheet" href="/assets/css/belardi.css">
+<link rel="stylesheet" href="/assets/css/style-maison.css">
 <style>
-  /* Styles propres à la page d'accueil. Socle commun : /assets/css/belardi.css
-     Esprit « maison d'hôtes de la côte basque » : grandes photos, serif fin
-     d'esprit calligraphique (Italiana), Jost léger, fond grège, boutons à contour. */
-
-  body.accueil{
-    --greige:#ECE7DF; --blanc:#FFFFFF; --encre:#1F2A23; --encre-douce:#4B544D;
-    --vert:#233A2E; --ivoire:#FBF8EE;
-    --filet:rgba(31,42,35,.16); --filet-clair:rgba(251,248,238,.26);
-    --f-titre:'Italiana','Cormorant Garamond',Georgia,serif;
-
-    /* Rôles du socle commun, repris par l'en-tête, le menu et le pied de page */
-    --bg:var(--greige); --fg:var(--encre); --bord:var(--filet); --surface:var(--blanc);
-    --accent:var(--encre); --texte-doux-auto:var(--encre-douce);
-    --bloc-sauge:var(--vert); --sur-sauge:var(--ivoire);
-    --bloc-olive:var(--vert); --sur-olive:#EDE6D6;
-
-    --marge:clamp(20px,5vw,80px);
-    --large:1240px;
-    --ecart:clamp(96px,12vw,176px);
-    --h-entete-reelle:97px;
-    --sortie:cubic-bezier(.22,1,.36,1);
-
-    background:var(--greige);color:var(--encre);
-    caret-color:var(--encre);accent-color:var(--vert);
-  }
-  @media (prefers-color-scheme: dark){
-    body.accueil{
-      --greige:#141A16; --blanc:#0F1411; --encre:#EEE8DA; --encre-douce:#B9BCAF;
-      --filet:rgba(238,232,218,.16); --surface:#1A211C; --bloc-olive:#0B120E;
-    }
-  }
-  @media (max-width:768px){ body.accueil{--h-entete-reelle:81px} }
-
-  html:has(body.accueil){scrollbar-color:#646B5F #ECE7DF;background:#ECE7DF}
-  @media (prefers-color-scheme: dark){ html:has(body.accueil){scrollbar-color:#646B5F #141A16;background:#141A16} }
-  .accueil ::selection{background:var(--vert);color:var(--ivoire)}
-  .accueil :focus-visible{outline:1px solid currentColor;outline-offset:4px}
-
-  /* ---- En-tête partagé, restylé sur l'accueil : blanc, liens en petites capitales, bulle au survol ---- */
-  .accueil .entete{background:var(--blanc);border-bottom-color:var(--filet)}
-  .accueil .entete>.wrap{padding-left:clamp(52px,6.5vw,108px)}
-  .accueil .nav-pilule{background:var(--encre)}
-  .accueil .nav-liens{gap:10px}
-  .accueil .nav-liens a{
-    font-weight:400;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
-    padding:10px 16px;color:var(--encre);
-    transition:color .35s ease;
-  }
-  .accueil .nav-liens a:hover,.accueil .nav-liens a.is-hovered{color:var(--blanc)}
-  .accueil .nav-liens a[aria-current="page"]{color:var(--encre)}
-  .accueil .nav-actions .cta{
-    border:1px solid var(--encre);color:var(--encre);
-    font-weight:400;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;padding:13px 22px;
-  }
-  .accueil .nav-actions .cta::before{background:var(--encre)}
-  .accueil .nav-actions .cta:hover{color:var(--blanc);border-color:var(--encre)}
-  .accueil .lang-trigger:hover,.accueil .lang-switch[data-open="true"] .lang-trigger{color:var(--encre)}
-  .accueil .lang-menu button:hover,.accueil .lang-menu button[aria-selected="true"]{color:var(--encre)}
-  .accueil .pied-cta:hover{color:var(--vert)!important}
-
-  /* ---- Base ---- */
-  .accueil :where(main section){padding:0;scroll-margin-top:calc(var(--h-entete-reelle) + 12px)}
-  .accueil :where(main h1, main h2, main h3){font-family:var(--f-titre);font-weight:400;line-height:1.06;letter-spacing:.014em}
-  .accueil :where(main p, main li){font-weight:300;letter-spacing:.02em;text-wrap:pretty}
-  .accueil main > section + section{margin-top:var(--ecart)}
-  .conteneur{max-width:var(--large);margin-inline:auto;padding-inline:var(--marge)}
-  .grille{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(20px,3vw,48px)}
-  .titre{font-size:clamp(38px,4.6vw,66px);color:var(--encre);text-wrap:balance}
-  .texte{font-size:16.5px;line-height:1.85;color:var(--encre-douce)}
-  .cadre{position:relative;overflow:hidden;background:#C9C3B8}
-  .cadre img{width:100%;height:100%;object-fit:cover}
-
-  /* ---- Boutons à contour : le remplissage glisse au survol ---- */
-  .bouton{
-    position:relative;isolation:isolate;overflow:hidden;
-    display:inline-flex;align-items:center;justify-content:center;
-    border:1px solid var(--encre);border-radius:0;background:transparent;color:var(--encre);
-    font:400 12.5px/1.2 var(--f-sans);letter-spacing:.16em;text-transform:uppercase;text-align:center;
-    padding:17px 30px;transition:color .5s var(--sortie);
-  }
-  .bouton::before{
-    content:"";position:absolute;inset:0;z-index:-1;background:var(--encre);
-    transform:scaleX(0);transform-origin:right center;transition:transform .6s var(--sortie);
-  }
-  .bouton:hover{color:var(--blanc)}
-  .bouton:hover::before{transform:scaleX(1);transform-origin:left center}
-  .bouton--clair{border-color:var(--ivoire);color:var(--ivoire)}
-  .bouton--clair::before{background:var(--ivoire)}
-  .bouton--clair:hover{color:#1F2A23}
-  .lien{
-    display:inline-block;font:400 12.5px/1.3 var(--f-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--encre);
-    text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:7px;
-    transition:text-underline-offset .4s var(--sortie);
-  }
-  .lien:hover{text-underline-offset:10px}
-  .lien--clair{color:var(--ivoire)}
-  .actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px 32px}
+  /* Styles propres à la page d'accueil. Socle commun : /assets/css/belardi.css,
+     habillage partagé : /assets/css/style-maison.css (tokens, en-tête, boutons,
+     révélation au défilement). Ici : uniquement les sections propres à l'accueil. */
 
   /* ================================ Ouverture ================================ */
   .une{
@@ -353,12 +260,9 @@
     @keyframes pose{from{opacity:.25;transform:translateY(22px)}to{opacity:1;transform:none}}
     @keyframes pose-titre{from{opacity:.35;transform:translateY(26px);letter-spacing:.06em}to{opacity:1;transform:none;letter-spacing:.012em}}
 
-    /* Au défilement : les textes montent en douceur, les images se découvrent en rideau */
-    .js-revele [data-revele]{opacity:0;transform:translateY(34px);transition:opacity 1.2s ease var(--d,0ms),transform 1.4s var(--sortie) var(--d,0ms)}
-    .js-revele [data-revele].est-revele{opacity:1;transform:none}
-    .js-revele [data-revele] .cadre img,
+    /* Au défilement : les textes et les cadres suivent la règle commune (style-maison.css) ;
+       ici, en plus, le carrousel des lieux se découvre en rideau comme un .cadre */
     .js-revele .carrousel[data-revele] .carte img{clip-path:inset(14% 0 0 0);scale:1.1;transition:clip-path 1.5s var(--sortie) calc(var(--d,0ms) + 120ms),scale 1.9s var(--sortie) calc(var(--d,0ms) + 120ms),transform 1.8s var(--sortie)}
-    .js-revele [data-revele].est-revele .cadre img,
     .js-revele .carrousel[data-revele].est-revele .carte img{clip-path:inset(0 0 0 0);scale:1}
     .js-revele .duo-col--decalee{--d:180ms}
     .js-revele .journee-photo{--d:160ms}
