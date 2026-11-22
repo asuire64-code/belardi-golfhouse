@@ -150,7 +150,7 @@
   .accueil .entete{background:var(--blanc);border-bottom-color:var(--filet)}
   .accueil .entete>.wrap{padding-left:clamp(28px,3.2vw,56px)}
   .accueil .nav-pilule{background:var(--encre)}
-  .accueil .nav-liens{gap:4px}
+  .accueil .nav-liens{gap:10px}
   .accueil .nav-liens a{
     font-weight:400;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
     padding:10px 16px;color:var(--encre);
@@ -223,14 +223,13 @@
   }
   .une-contenu{position:relative;z-index:1;width:100%;padding-bottom:clamp(64px,10vh,120px)}
   .une h1{
-    font-size:clamp(46px,6.2vw,100px);line-height:.98;letter-spacing:.012em;max-width:12.5ch;color:var(--ivoire);text-wrap:balance;
+    font-size:clamp(40px,5.6vw,88px);line-height:1.02;letter-spacing:.012em;max-width:15.5ch;color:var(--ivoire);text-wrap:balance;
     text-shadow:0 2px 28px rgba(14,19,13,.35);
   }
   .une-sous{
     margin-top:clamp(18px,2vw,28px);font-size:clamp(12.5px,1vw,14px);font-weight:400;letter-spacing:.18em;text-transform:uppercase;
     color:rgba(251,248,238,.92);
   }
-  .une .bouton{margin-top:clamp(28px,3.2vw,44px)}
   .une-defiler{position:absolute;left:50%;bottom:22px;z-index:1;width:1px;height:58px;background:rgba(251,248,238,.32);overflow:hidden}
   .une-defiler span{position:absolute;left:0;top:-45%;width:1px;height:45%;background:var(--ivoire)}
 
@@ -380,7 +379,6 @@
     .une-contenu > *{animation:pose 1.5s var(--sortie) both}
     .une h1{animation-name:pose-titre}
     .une-sous{animation-delay:.25s}
-    .une .bouton{animation-delay:.4s}
     @keyframes pose{from{opacity:.25;transform:translateY(22px)}to{opacity:1;transform:none}}
     @keyframes pose-titre{from{opacity:.35;transform:translateY(26px);letter-spacing:.06em}to{opacity:1;transform:none;letter-spacing:.012em}}
     .une-defiler span{animation:goutte 2.4s var(--sortie) infinite}
@@ -481,9 +479,8 @@
          data-i18n-alt="acc.une.alt" alt="Un green au coucher du soleil, face à l'océan et aux montagnes">
   </div>
   <div class="une-contenu conteneur">
-    <h1 id="une-titre" data-i18n="acc.une.h1">Une semaine de golf, entre océan et montagnes.</h1>
-    <p class="une-sous" data-i18n="acc.une.sous">Séjours golf coachés au Pays Basque · six golfeurs au plus</p>
-    <a class="bouton bouton--clair" href="/contact/" data-i18n="hero.cta1">Demander les prochaines dates</a>
+    <h1 id="une-titre" data-i18n="acc.une.h1">Un séjour de golf, entre océan et montagnes.</h1>
+    <p class="une-sous" data-i18n="acc.une.sous">Belardi Golf House</p>
   </div>
   <a class="une-defiler" href="#concept" data-i18n-aria="acc.une.defiler" aria-label="Découvrir la suite"><span></span></a>
 </section>
