@@ -1,0 +1,132 @@
+/* Styles propres à la section « Les parcours » (page /parcours/ et ses dix pages
+   de détail). Socle commun : /assets/css/belardi.css. Habillage partagé de cet
+   univers : /assets/css/style-maison.css (tokens, en-tête, boutons, révélation
+   au défilement) — voir DESIGN.md. */
+
+/* ================================ Ouverture courte ================================ */
+.accueil .pc-une{
+  position:relative;display:flex;align-items:flex-end;overflow:hidden;color:var(--ivoire);
+  height:clamp(380px,52vh,560px);margin-bottom:clamp(48px,6vw,84px);
+}
+.accueil .pc-une-photo{position:absolute;inset:0;background:#7C6A55}
+.accueil .pc-une-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.accueil .pc-une-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(14,19,13,.62) 0%,rgba(14,19,13,.28) 42%,rgba(14,19,13,0) 72%);
+}
+.accueil .pc-une-contenu{position:relative;z-index:1;width:100%;padding-bottom:clamp(36px,5vw,56px)}
+.accueil .pc-une-eyebrow{font-size:12.5px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:rgba(251,248,238,.88);margin-bottom:10px}
+.accueil .pc-une h1{font-size:clamp(34px,4.4vw,58px);line-height:1.06;color:var(--ivoire);max-width:16ch;text-wrap:balance;text-shadow:0 2px 24px rgba(14,19,13,.35)}
+
+.accueil .pc-lead{max-width:62ch}
+.accueil .pc-reperes{
+  display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(28px,3.4vw,44px);max-width:760px;
+  border:1px solid var(--filet);
+}
+.accueil .pc-reperes div{padding:16px 20px;border-right:1px solid var(--filet)}
+.accueil .pc-reperes div:last-child{border-right:0}
+.accueil .pc-reperes strong{display:block;font-family:var(--f-titre);font-weight:400;font-size:clamp(24px,2.2vw,30px);line-height:1.1;color:var(--encre)}
+.accueil .pc-reperes span{font-size:12px;letter-spacing:.04em;color:var(--encre-douce)}
+
+/* ================================ Filtres ================================ */
+.accueil .pc-golfs{margin-top:var(--ecart)}
+.accueil .filtres{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:clamp(32px,4vw,48px)}
+.accueil .filtres .lbl{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--encre-douce);margin-right:8px}
+.accueil .filtre{
+  font:400 12.5px/1.2 var(--f-sans);letter-spacing:.1em;text-transform:uppercase;
+  padding:9px 16px;border:1px solid var(--filet);background:transparent;color:var(--encre-douce);
+  cursor:pointer;transition:border-color .25s ease,background .25s ease,color .25s ease;
+}
+.accueil .filtre:hover{border-color:var(--encre);color:var(--encre)}
+.accueil .filtre[aria-pressed="true"]{background:var(--encre);border-color:var(--encre);color:var(--blanc)}
+
+/* ================================ Grille de cartes ================================ */
+.accueil .pc-grille{
+  list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,28px);
+}
+.accueil .pc-carte[hidden]{display:none}
+.accueil .pc-carte a{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:#5F6A5E;cursor:pointer}
+.accueil .pc-carte .cadre{position:absolute;inset:0}
+.accueil .pc-carte img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--sortie)}
+.accueil .pc-carte a::after{content:"";position:absolute;inset:0;background:rgba(14,19,13,.38);transition:background-color .6s ease}
+.accueil .pc-carte a:hover img{transform:scale(1.07)}
+.accueil .pc-carte a:hover::after{background:rgba(14,19,13,.5)}
+.accueil .pc-carte a:focus-visible{outline:2px solid var(--ivoire);outline-offset:-4px}
+.accueil .pc-carte-texte{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:22px;color:var(--ivoire)}
+.accueil .pc-carte-num{font-size:11px;letter-spacing:.18em;color:rgba(251,248,238,.75);margin-bottom:10px}
+.accueil .pc-carte-nom{font-size:clamp(21px,1.9vw,27px);line-height:1.12;color:var(--ivoire);text-wrap:balance}
+.accueil .pc-carte-lieu{margin-top:6px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(251,248,238,.82)}
+.accueil .pc-carte-specs{margin-top:10px;font-size:12.5px;color:rgba(251,248,238,.92)}
+.accueil .pc-vide{padding:var(--ecart) 0;text-align:center;color:var(--encre-douce)}
+.accueil .pc-suite{margin-top:clamp(28px,3vw,40px);max-width:60ch}
+
+/* ================================ Bande de rappel ================================ */
+.accueil .pc-rappel{background:var(--vert);color:var(--ivoire);padding-block:clamp(72px,9vw,120px);text-align:center}
+.accueil .pc-rappel-eyebrow{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(251,248,238,.78);margin-bottom:14px}
+.accueil .pc-rappel .titre{color:var(--ivoire);max-width:20ch;margin-inline:auto}
+.accueil .pc-rappel .texte{color:rgba(251,248,238,.92);max-width:56ch;margin:clamp(18px,2vw,26px) auto clamp(28px,3vw,40px)}
+
+/* ================================ Page de détail ================================ */
+.accueil .pc-hero{
+  position:relative;display:flex;align-items:flex-end;overflow:hidden;color:var(--ivoire);
+  height:clamp(360px,50vh,520px);
+}
+.accueil .pc-hero-photo{position:absolute;inset:0;background:#5F6A5E}
+.accueil .pc-hero-photo img{width:100%;height:100%;object-fit:cover}
+.accueil .pc-hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,19,13,.64) 0%,rgba(14,19,13,.26) 46%,rgba(14,19,13,0) 74%)}
+.accueil .pc-hero-contenu{position:relative;z-index:1;width:100%;padding-bottom:clamp(32px,4.4vw,48px)}
+.accueil .pc-retour{display:inline-block;margin-bottom:clamp(18px,2.4vw,28px);font:400 12px/1.2 var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:rgba(251,248,238,.88);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;transition:text-underline-offset .35s var(--sortie)}
+.accueil .pc-retour:hover{text-underline-offset:9px}
+.accueil .pc-hero h1{font-size:clamp(32px,4.2vw,56px);line-height:1.05;color:var(--ivoire);max-width:18ch;text-wrap:balance;text-shadow:0 2px 22px rgba(14,19,13,.35)}
+.accueil .pc-hero-lieu{margin-top:10px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,248,238,.86)}
+
+.accueil .pc-detail{margin-top:clamp(56px,7vw,96px)}
+.accueil .pc-detail .grille{align-items:start}
+.accueil .pc-detail-texte{grid-column:1 / span 7}
+.accueil .pc-hero-accroche{font-family:var(--f-titre);font-size:clamp(22px,2vw,28px);line-height:1.3;color:var(--encre);margin-bottom:clamp(18px,2vw,26px)}
+.accueil .pc-detail-texte .texte{max-width:58ch}
+.accueil .pc-detail-texte .etiquettes{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(22px,2.4vw,30px) 0 clamp(26px,3vw,36px)}
+.accueil .pc-detail-texte .etiquette{font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--filet);padding:6px 12px;color:var(--encre-douce)}
+
+.accueil .pc-detail-aside{grid-column:9 / span 4}
+.accueil .pc-specs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2vw,24px);border-top:1px solid var(--filet);padding-top:clamp(20px,2.2vw,28px);margin-bottom:clamp(24px,2.6vw,32px)}
+.accueil .pc-specs dt{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--encre-douce);margin-bottom:6px}
+.accueil .pc-specs dd{font-size:17px;color:var(--encre)}
+.accueil .pc-detail-photo{aspect-ratio:3/4;background:#5F6A5E}
+.accueil .pc-illustration{margin-top:10px;font-size:12.5px;color:var(--encre-douce)}
+
+.accueil .pc-retour-bande{border-top:1px solid var(--filet);margin-top:var(--ecart);padding-block:clamp(26px,3vw,34px)}
+.accueil .pc-retour-bande-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.accueil .pc-prev,.accueil .pc-next{font:400 12px/1.2 var(--f-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--encre-douce);transition:color .3s ease}
+.accueil .pc-prev:hover,.accueil .pc-next:hover{color:var(--encre)}
+
+/* ================================ Adaptations ================================ */
+@media (max-width:1100px){
+  .accueil .pc-grille{grid-template-columns:repeat(2,1fr)}
+  .accueil .pc-detail-texte{grid-column:1 / span 12}
+  .accueil .pc-detail-aside{grid-column:1 / span 12;margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  .accueil .pc-specs{grid-column:1}
+  .accueil .pc-detail-photo{grid-column:2}
+}
+@media (max-width:760px){
+  .accueil .pc-reperes{grid-template-columns:repeat(2,1fr)}
+  .accueil .pc-reperes div:nth-child(2n){border-right:0}
+  .accueil .pc-reperes div:nth-child(-n+2){border-bottom:1px solid var(--filet)}
+  .accueil .pc-grille{grid-template-columns:1fr}
+  .accueil .pc-detail-aside{grid-template-columns:1fr}
+  .accueil .pc-specs{grid-column:auto}
+  .accueil .pc-detail-photo{grid-column:auto}
+}
+
+/* ================================ Mouvement ================================ */
+@media (prefers-reduced-motion: no-preference){
+  .accueil .pc-une-photo img{animation:pc-recul 3s var(--sortie) both}
+  @keyframes pc-recul{from{transform:scale(1.08)}to{transform:none}}
+  .accueil .pc-hero-photo img{animation:pc-recul 3s var(--sortie) both}
+  .js-revele .pc-grille[data-revele] .pc-carte .cadre img,
+  .js-revele .pc-grille[data-revele] .pc-carte a::after{opacity:1}
+}
+
+/* ================================ Transition de page en fondu ================================ */
+html.fx-transition body{transition:opacity .4s ease}
+html.fx-transition.fx-leaving body{opacity:0}
