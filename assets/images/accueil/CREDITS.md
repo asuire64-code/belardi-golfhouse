@@ -29,8 +29,8 @@ le geste (« un swing face à la mer », « le petit jeu »…), jamais un lieu.
 |---|---|---|
 | `golf-swing-mer-*.webp` | Golfeur en haut de son élan, parcours et mer en contrebas | https://images.unsplash.com/photo-1730372609335-beccc002cf44 |
 | `golf-bunker-*.webp` | Golfeur sortant d'un bunker | https://images.unsplash.com/photo-1730372610389-addd187a9979 |
-| `golf-drapeau-mer-*.webp` | Approche sur un parcours bordé de pins, mer à l'horizon | https://images.unsplash.com/photo-1730372645289-7f26ac10fcdf |
-| `golf-depart-cote-*.webp` | Golfeuse sur un départ en bord de mer | https://images.unsplash.com/photo-1732654344700-975e39956d9b |
+| `golf-marche-green-*.webp` | Golfeur marchant vers un green, son sac sur l'épaule | https://images.unsplash.com/photo-1693163537665-b7c5a5f01f75 |
+| `golf-swing-couchant-*.webp` | Golfeur à contre-jour terminant son swing au coucher du soleil | https://images.unsplash.com/photo-1593282153762-a41e3cceb06c |
 
 Aucune de ces photos ne montre la maison Belardi ni un séjour réel. À remplacer
 par vos propres photos dès qu'elles existent (mêmes noms de fichiers et mêmes
