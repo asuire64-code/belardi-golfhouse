@@ -9,7 +9,7 @@
     fr: {
       /* Accueil */
       "acc.lieux.parcours": "Parcours",
-      "acc.une.sous": "Séjours golf coachés au Pays Basque · six golfeurs au plus",
+      "acc.une.sous": "Belardi Golf House",
       "acc.une.defiler": "Découvrir la suite",
       "acc.intro.t": "Bienvenue à Belardi",
       "acc.l0.alt": "Le phare de Biarritz sur son cap, au-dessus des vagues de l'Atlantique",
@@ -20,7 +20,7 @@
       "acc.prog.alt1": "Un golfeur sort la balle d'un bunker, le sable en gerbe",
       "acc.prog.alt2": "Un golfeur joue son approche sur un parcours bordé de pins, la mer à l'horizon",
       "acc.inclus.alt": "Un golfeur termine son coup de départ, le parcours et la mer devant lui",
-      "acc.une.h1": "Une semaine de golf, entre océan et montagnes.",
+      "acc.une.h1": "Un séjour de golf, entre océan et montagnes.",
       "acc.une.lien": "Découvrir la semaine",
       "acc.une.alt": "Un green au coucher du soleil, face à l'océan et aux montagnes",
       "acc.concept.h2": "Le golf comme on vit un surf camp.",
@@ -333,7 +333,7 @@
     en: {
       /* Accueil */
       "acc.lieux.parcours": "Course",
-      "acc.une.sous": "Coached golf weeks in the Basque Country · six golfers at most",
+      "acc.une.sous": "Belardi Golf House",
       "acc.une.defiler": "Scroll to discover",
       "acc.intro.t": "Welcome to Belardi",
       "acc.l0.alt": "The Biarritz lighthouse on its headland, above the Atlantic waves",
@@ -344,7 +344,7 @@
       "acc.prog.alt1": "A golfer splashes the ball out of a bunker",
       "acc.prog.alt2": "A golfer plays an approach on a pine-lined course, the sea on the horizon",
       "acc.inclus.alt": "A golfer finishes a tee shot, the course and the sea ahead",
-      "acc.une.h1": "A golf week between ocean and mountains.",
+      "acc.une.h1": "A golf stay between ocean and mountains.",
       "acc.une.lien": "Discover the week",
       "acc.une.alt": "A green at sunset, facing the ocean and the mountains",
       "acc.concept.h2": "Golf, the way you'd live a surf camp.",
@@ -657,7 +657,7 @@
     es: {
       /* Accueil */
       "acc.lieux.parcours": "Campo",
-      "acc.une.sous": "Semanas de golf con coaching en el País Vasco · seis golfistas como máximo",
+      "acc.une.sous": "Belardi Golf House",
       "acc.une.defiler": "Descubrir más",
       "acc.intro.t": "Bienvenido a Belardi",
       "acc.l0.alt": "El faro de Biarritz sobre su cabo, por encima de las olas del Atlántico",
@@ -668,7 +668,7 @@
       "acc.prog.alt1": "Un golfista saca la bola de un búnker entre una lluvia de arena",
       "acc.prog.alt2": "Un golfista juega su aproximación en un campo rodeado de pinos, con el mar en el horizonte",
       "acc.inclus.alt": "Un golfista termina su golpe de salida, con el campo y el mar delante",
-      "acc.une.h1": "Una semana de golf entre el océano y la montaña.",
+      "acc.une.h1": "Una estancia de golf entre el océano y la montaña.",
       "acc.une.lien": "Descubrir la semana",
       "acc.une.alt": "Un green al atardecer, frente al océano y las montañas",
       "acc.concept.h2": "El golf como se vive un surf camp.",
