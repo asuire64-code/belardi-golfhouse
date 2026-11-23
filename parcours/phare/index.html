@@ -50,22 +50,24 @@
 <meta property="og:site_name" content="BELARDI Golf House">
 <meta property="og:url" content="https://belardi-golfhouse.fr/parcours/phare/">
 <meta property="og:title" content="Golf de Biarritz « Le Phare » — BELARDI Golf House">
-<meta property="og:description" content="Ouvert en 1888, l'un des plus anciens parcours d'Europe continentale.">
+<meta property="og:description" content="Ouvert en 1888, l'un des plus anciens parcours d'Europe continentale. Biarritz · Pyrénées-Atlantiques, 18 trous, par 69.">
 <meta property="og:image" content="https://belardi-golfhouse.fr/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="preload" as="image" href="/assets/images/parcours/links-dune-1600.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/images/parcours/vues/phare/z12.webp" fetchpriority="high">
 <link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/italiana-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/css/belardi.css">
 <link rel="stylesheet" href="/assets/css/style-maison.css">
 <link rel="stylesheet" href="/assets/css/style-parcours.css">
-<script>document.documentElement.classList.add('js-revele');window.__secoursRevele=setTimeout(function(){document.documentElement.classList.remove('js-revele')},4000);</script>
+<script>document.documentElement.classList.add('js-revele','pv-js');window.__secoursRevele=setTimeout(function(){document.documentElement.classList.remove('js-revele')},4000);</script>
 </head>
 <body class="accueil parcours parcours-detail">
+
+<!-- Vues aériennes : IGN (Licence Ouverte 2.0). Photos : Wikimedia Commons, crédits en bas de page et dans assets/images/parcours/CREDITS.md -->
 
 <input type="checkbox" id="menu" class="burger-ctrl" aria-label="Afficher le menu">
 
@@ -83,7 +85,7 @@
       <div class="nav-liens">
         <span class="nav-pilule" aria-hidden="true"></span>
         <a href="/" data-i18n="nav.accueil">Accueil</a>
-        <a href="/#programme" data-i18n="nav.programme">Programme</a>
+        <a href="/programme/" data-i18n="nav.programme">Programme</a>
         <a href="/parcours/" aria-current="page" data-i18n="nav.parcours">Parcours</a>
         <a href="/#origines" data-i18n="nav.apropos">À propos</a>
         <a href="/pricing/" data-i18n="nav.tarifs">Tarifs</a>
@@ -119,7 +121,7 @@
 
 <nav class="menu-mobile" aria-label="Menu principal">
   <a href="/" data-i18n="nav.accueil" onclick="document.getElementById('menu').checked=false">Accueil</a>
-  <a href="/#programme" data-i18n="nav.programme" onclick="document.getElementById('menu').checked=false">Programme</a>
+  <a href="/programme/" data-i18n="nav.programme" onclick="document.getElementById('menu').checked=false">Programme</a>
   <a href="/parcours/" data-i18n="nav.parcours" onclick="document.getElementById('menu').checked=false">Parcours</a>
   <a href="/#origines" data-i18n="nav.apropos" onclick="document.getElementById('menu').checked=false">À propos</a>
   <a href="/pricing/" data-i18n="nav.tarifs" onclick="document.getElementById('menu').checked=false">Tarifs</a>
@@ -132,52 +134,144 @@
   </div>
 </nav>
 
-
-
 <main id="contenu">
-<section class="pc-hero" aria-labelledby="pc-hero-titre">
-  <div class="pc-hero-photo">
-    <img src="/assets/images/parcours/links-dune-1600.webp" width="1600" height="900" fetchpriority="high" decoding="async"
-         data-i18n-alt="pc.alt.links-dune" alt="Green de links au coucher du soleil, chemin de sable dans les dunes">
-  </div>
-  <div class="pc-hero-contenu conteneur">
-    <a class="pc-retour fx-link" href="/parcours/" data-i18n="pc.detail.retour">← Tous les parcours</a>
-    <h1 id="pc-hero-titre" class="notranslate" translate="no">Golf de Biarritz « Le Phare »</h1>
-    <p class="pc-hero-lieu notranslate" translate="no">Biarritz · Pyrénées-Atlantiques</p>
-  </div>
-</section>
 
-<section class="pc-detail">
-  <div class="conteneur grille">
-    <div class="pc-detail-texte" data-revele>
-      <p class="pc-hero-accroche" data-i18n="pc.detail.phare.accroche">Ouvert en 1888, l'un des plus anciens parcours d'Europe continentale.</p>
-      <p class="texte" data-i18n="pc.detail.phare.texte">Il se joue en plein cœur de Biarritz, à deux pas du phare. L'apparence est débonnaire, le jeu beaucoup moins : fairways étroits bordés d'arbres centenaires, greens rapides et ondulés, et un vent d'ouest qui change tout d'un trou à l'autre.</p>
-      <div class="etiquettes"><span class="etiquette" data-i18n="pc.detail.phare.tag0">Historique</span><span class="etiquette" data-i18n="pc.detail.phare.tag1">Cœur de ville</span><span class="etiquette" data-i18n="pc.detail.phare.tag2">Greens rapides</span></div>
-      <a class="bouton" href="/contact/" data-i18n="hero.cta1">Demander les prochaines dates</a>
+<section class="pv-vol" data-lat="43.4935" data-lon="-1.5417" data-i18n-aria="pc.vol.aria" aria-label="Vue du ciel : du Pays Basque jusqu'au parcours">
+  <div class="pv-vol-scene">
+    <div class="pv-vol-plan" aria-hidden="true">
+      <img class="pv-vol-couche" data-z="12" src="/assets/images/parcours/vues/phare/z12.webp" width="1100" height="1100" alt="" decoding="async" fetchpriority="high">
+      <img class="pv-vol-couche" data-z="13" src="/assets/images/parcours/vues/phare/z13.webp" width="1100" height="1100" alt="" decoding="async" fetchpriority="high">
+      <img class="pv-vol-couche" data-z="14" src="/assets/images/parcours/vues/phare/z14.webp" width="1100" height="1100" alt="" decoding="async" fetchpriority="high">
+      <img class="pv-vol-couche" data-z="15" src="/assets/images/parcours/vues/phare/z15.webp" width="1100" height="1100" alt="" decoding="async">
+      <img class="pv-vol-couche" data-z="16" src="/assets/images/parcours/vues/phare/z16.webp" width="1100" height="1100" alt="" decoding="async" fetchpriority="high">
+      <img class="pv-vol-couche" data-z="17" src="/assets/images/parcours/vues/phare/z17.webp" width="1100" height="1100" alt="" decoding="async">
+      <img class="pv-vol-couche" data-z="18" src="/assets/images/parcours/vues/phare/z18.webp" width="1100" height="1100" alt="" decoding="async">
     </div>
-    <aside class="pc-detail-aside" data-revele>
-      <dl class="pc-specs">
-        <div><dt data-i18n="pc.specs.trous">Trous</dt><dd>18</dd></div>
-        <div><dt data-i18n="pc.specs.par">Par</dt><dd>69</dd></div>
-        <div><dt data-i18n="pc.specs.longueur">Longueur</dt><dd>5 402 m</dd></div>
-        <div><dt data-i18n="pc.specs.ouverture">Ouverture</dt><dd class="notranslate" translate="no">1888</dd></div>
-      </dl>
-      <div class="cadre pc-detail-photo">
-        <img src="/assets/images/parcours/links-dune-900.webp" width="900" height="1200" loading="lazy" decoding="async"
-             data-i18n-alt="pc.alt.links-dune" alt="Green de links au coucher du soleil, chemin de sable dans les dunes">
+    <div class="pv-vol-voile" aria-hidden="true"></div>
+    <div class="pv-hud">
+      <div class="pv-hud-haut">
+        <a class="pv-retour pv-hud-txt fx-link" href="/parcours/"><span aria-hidden="true">←</span> <span data-i18n="pc.detail.retour">Les parcours</span></a>
+        <p class="pv-hud-source"><span class="pv-hud-txt" data-i18n="pc.hud.vue">Vue du ciel</span><span class="pv-hud-txt">04 / 10 · <span data-i18n="pc.hud.source">Orthophotos IGN</span></span></p>
       </div>
-      <p class="pc-illustration" data-i18n="pc.illustration">Photo d'illustration : ne représente pas ce parcours précis.</p>
-    </aside>
+      <div class="pv-visee" aria-hidden="true">
+        <svg viewBox="0 0 100 100" focusable="false">
+          <g class="pv-visee-anneau"><circle cx="50" cy="50" r="49" fill="none" stroke="rgba(251,248,238,.42)" stroke-width=".35" stroke-dasharray="1 3"/></g>
+          <path d="M0 14V0h14M86 0h14v14M100 86v14H86M14 100H0V86" fill="none" stroke="rgba(251,248,238,.9)" stroke-width=".6"/>
+          <path d="M50 40v6M50 54v6M40 50h6M54 50h6" stroke="rgba(251,248,238,.9)" stroke-width=".5"/>
+        </svg>
+      </div>
+      <div class="pv-echelle-alt" aria-hidden="true"><i></i></div>
+      <div class="pv-hud-bas">
+        <div>
+          <h1 class="notranslate" translate="no">Golf de Biarritz « Le Phare »</h1>
+          <p class="pv-vol-lieu pv-hud-txt" data-i18n="pc.lieu.phare">Biarritz · Pyrénées-Atlantiques</p>
+        </div>
+        <dl class="pv-mesures pv-hud-txt">
+          <dt>Lat · Lon</dt><dd data-i18n="pc.coord.phare">43° 29′ 37″ N · 1° 32′ 30″ O</dd>
+          <dt data-i18n="pc.hud.altitude">Altitude</dt><dd data-hud="alt">—</dd>
+          <dt data-i18n="pc.hud.echelle">Échelle</dt><dd class="pv-regle"><i data-hud="regle"></i><span data-hud="regle-txt">—</span></dd>
+        </dl>
+      </div>
+      <p class="pv-indice pv-hud-txt" aria-hidden="true"><span data-i18n="pc.hud.descendre">Faites défiler pour descendre</span><span class="pv-indice-trait"></span></p>
+    </div>
   </div>
 </section>
 
-<section class="pc-retour-bande">
-  <div class="conteneur pc-retour-bande-inner">
-    <a class="pc-prev fx-link" href="/parcours/chiberta/" data-i18n="pc.detail.precedent">← Parcours précédent</a>
-    <a class="lien fx-link" href="/parcours/" data-i18n="pc.detail.tous">Tous les parcours</a>
-    <a class="pc-next fx-link" href="/parcours/makila/" data-i18n="pc.detail.suivant">Parcours suivant →</a>
+<section class="pv-fiche" aria-labelledby="pv-fiche-titre">
+  <div class="conteneur grille">
+    <div class="pv-fiche-texte" data-revele>
+      <h2 id="pv-fiche-titre" data-i18n="pc.detail.phare.accroche">Ouvert en 1888, l'un des plus anciens parcours d'Europe continentale.</h2>
+      <p class="texte" data-i18n="pc.detail.phare.texte">Il se joue en plein cœur de Biarritz, à deux pas du phare. L'apparence est débonnaire, le jeu beaucoup moins : fairways étroits bordés d'arbres centenaires, greens rapides et ondulés, et un vent d'ouest qui change tout d'un trou à l'autre.</p>
+      <div class="etiquettes"><span class="etiquette" data-i18n="pc.detail.phare.tag0">Historique</span><span class="etiquette" data-i18n="pc.detail.phare.tag1">Cœur de ville</span><span class="etiquette" data-i18n="pc.detail.phare.tag2">Greens rapides</span></div>
+      <div class="actions">
+        <a class="bouton" href="/contact/" data-i18n="hero.cta1">Demander les prochaines dates</a>
+        <a class="lien" href="/programme/" data-i18n="pc.rappel.programme">Voir le programme</a>
+      </div>
+    </div>
+    <div class="pv-specs-bloc" data-revele style="--d:140ms">
+    <dl class="pv-specs">
+      <div><dt data-i18n="pc.specs.trous">Trous</dt><dd>18</dd></div>
+      <div><dt data-i18n="pc.specs.par">Par</dt><dd>69</dd></div>
+      <div><dt data-i18n="pc.specs.longueur">Longueur</dt><dd>5 402 m</dd></div>
+      <div><dt data-i18n="pc.specs.ouverture">Ouverture</dt><dd class="notranslate" translate="no">1888</dd></div>
+    </dl>
+    <p class="pv-specs-coord pv-hud-txt" data-i18n="pc.coord.phare">43° 29′ 37″ N · 1° 32′ 30″ O</p>
+    </div>
   </div>
 </section>
+
+<section class="pv-images" aria-labelledby="pv-images-titre">
+  <div class="conteneur grille pv-images-tete" data-revele>
+    <h2 id="pv-images-titre" class="titre" data-i18n="pc.images.h2">En images.</h2>
+    <p class="texte" data-i18n="pc.images.p">Les photos du parcours, puis trois vues du ciel, de plus en plus près.</p>
+  </div>
+  <ul class="pv-bande" data-revele style="--d:120ms">
+      <li><figure>
+        <div class="cadre"><img src="/assets/images/parcours/photos/phare-1-1600.webp" srcset="/assets/images/parcours/photos/phare-1-900.webp 900w, /assets/images/parcours/photos/phare-1-1600.webp 1600w" sizes="(max-width: 760px) 90vw, 60vw" width="1600" height="1200" loading="lazy" decoding="async" data-i18n-alt="pc.photo.phare-1" alt="Les pins centenaires du Phare"></div>
+        <figcaption><b data-i18n="pc.photo.phare-1">Les pins centenaires du Phare</b>Thomon, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license noopener" target="_blank">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Golf_du_Phare_Biarritz.jpg" rel="noopener" target="_blank">Wikimedia Commons</a></figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="cadre"><img src="/assets/images/parcours/photos/phare-5-1600.webp" srcset="/assets/images/parcours/photos/phare-5-900.webp 900w, /assets/images/parcours/photos/phare-5-1600.webp 1600w" sizes="(max-width: 760px) 90vw, 60vw" width="1600" height="1200" loading="lazy" decoding="async" data-i18n-alt="pc.photo.phare-5" alt="Le bunker du practice"></div>
+        <figcaption><b data-i18n="pc.photo.phare-5">Le bunker du practice</b>Thomon, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license noopener" target="_blank">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Practice_du_golf_du_Phare.jpg" rel="noopener" target="_blank">Wikimedia Commons</a></figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="cadre"><img src="/assets/images/parcours/photos/phare-2-1600.webp" srcset="/assets/images/parcours/photos/phare-2-900.webp 900w, /assets/images/parcours/photos/phare-2-1600.webp 1600w" sizes="(max-width: 760px) 90vw, 60vw" width="1600" height="1200" loading="lazy" decoding="async" data-i18n-alt="pc.photo.phare-2" alt="Un green du Phare, l'hôtel Régina au fond"></div>
+        <figcaption><b data-i18n="pc.photo.phare-2">Un green du Phare, l'hôtel Régina au fond</b>Thomon, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license noopener" target="_blank">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Golf_de_Biarritz.JPG" rel="noopener" target="_blank">Wikimedia Commons</a></figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="cadre"><img src="/assets/images/parcours/photos/phare-4-1600.webp" srcset="/assets/images/parcours/photos/phare-4-900.webp 900w, /assets/images/parcours/photos/phare-4-1600.webp 1600w" sizes="(max-width: 760px) 90vw, 60vw" width="1600" height="1200" loading="lazy" decoding="async" data-i18n-alt="pc.photo.phare-4" alt="Le putting green"></div>
+        <figcaption><b data-i18n="pc.photo.phare-4">Le putting green</b>Thomon, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license noopener" target="_blank">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Golf_du_Phare.jpg" rel="noopener" target="_blank">Wikimedia Commons</a></figcaption>
+      </figure></li>
+      <li class="pv-bande-carre"><figure>
+        <div class="cadre"><img src="/assets/images/parcours/vues/phare/z16.webp" width="1100" height="1100" loading="lazy" decoding="async" data-i18n-alt="pc.ciel.phare.16" alt="Vu du ciel, sur 1,9 km de large"></div>
+        <figcaption><b data-i18n="pc.ciel.phare.16">Vu du ciel, sur 1,9 km de large</b>© IGN – Géoplateforme</figcaption>
+      </figure></li>
+      <li class="pv-bande-carre"><figure>
+        <div class="cadre"><img src="/assets/images/parcours/vues/phare/z17.webp" width="1100" height="1100" loading="lazy" decoding="async" data-i18n-alt="pc.ciel.phare.17" alt="Vu du ciel, sur 950 m de large"></div>
+        <figcaption><b data-i18n="pc.ciel.phare.17">Vu du ciel, sur 950 m de large</b>© IGN – Géoplateforme</figcaption>
+      </figure></li>
+      <li class="pv-bande-carre"><figure>
+        <div class="cadre"><img src="/assets/images/parcours/vues/phare/z18.webp" width="1100" height="1100" loading="lazy" decoding="async" data-i18n-alt="pc.ciel.phare.18" alt="Vu du ciel, sur 480 m de large"></div>
+        <figcaption><b data-i18n="pc.ciel.phare.18">Vu du ciel, sur 480 m de large</b>© IGN – Géoplateforme</figcaption>
+      </figure></li>
+  </ul>
+</section>
+
+<section class="pv-club" aria-labelledby="pv-club-titre">
+  <div class="conteneur grille">
+    <figure class="pv-club-photo" data-revele>
+      <div class="cadre"><img src="/assets/images/parcours/photos/phare-entree-1600.webp" srcset="/assets/images/parcours/photos/phare-entree-900.webp 900w, /assets/images/parcours/photos/phare-entree-1600.webp 1600w" sizes="(max-width: 760px) 80vw, 40vw" width="1600" height="1200" loading="lazy" decoding="async" data-i18n-alt="pc.photo.phare-entree" alt="L'entrée du golf du Phare, fondé en 1888."></div>
+    </figure>
+    <div class="pv-club-texte" data-revele style="--d:140ms">
+      <h2 id="pv-club-titre" class="titre" data-i18n="pc.club.h2">Le club-house.</h2>
+      <p class="texte" data-i18n="pc.photo.phare-entree">L'entrée du golf du Phare, fondé en 1888.</p>
+      <p class="pv-credit">Thomon, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license noopener" target="_blank">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Golf_de_Biarritz_Entr%C3%A9e.jpg" rel="noopener" target="_blank">Wikimedia Commons</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="pv-suite" aria-label="Tous les parcours" data-i18n-aria="pc.detail.tous">
+  <div class="conteneur">
+    <div class="pv-voisins">
+      <p class="pv-voisin pv-voisin--prec"><a class="fx-link" href="/parcours/chiberta/">
+        <img src="/assets/images/parcours/vues/chiberta-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async" alt="">
+        <span><span class="pv-hud-txt" data-i18n="pc.voisin.prec">Parcours précédent</span><b class="notranslate" translate="no">Golf de Chiberta</b></span>
+      </a></p>
+      <p class="pv-voisin pv-voisin--suiv"><a class="fx-link" href="/parcours/makila/">
+        <img src="/assets/images/parcours/vues/makila-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async" alt="">
+        <span><span class="pv-hud-txt" data-i18n="pc.voisin.suiv">Parcours suivant</span><b class="notranslate" translate="no">Makila Golf Club</b></span>
+      </a></p>
+    </div>
+    <a class="lien pv-tous fx-link" href="/parcours/" data-i18n="pc.detail.tous">Tous les parcours</a>
+  </div>
+</section>
+
+<div class="pv-notes">
+  <p data-i18n="pc.sources">Données des parcours (trous, par, longueur, architecte, année) relevées auprès des fiches publiques des clubs et des annuaires Golfstars, 1golf.eu et Where2Golf. Les longueurs varient selon les départs : elles sont données ici depuis les repères arrière.</p>
+  <p data-i18n="pc.credits.ign">Vues aériennes : © IGN – Géoplateforme, orthophotographies (Licence Ouverte 2.0).</p>
+  <p data-i18n="pc.credits.sa">Photos Wikimedia Commons redimensionnées, partagées sous la même licence.</p>
+</div>
+
 </main>
 
 <footer class="pied">
@@ -197,7 +291,7 @@
         <div class="pied-col">
           <p class="pied-titre" data-i18n="footer.col.sejour">Le séjour</p>
           <ul>
-            <li><a href="/#programme" data-i18n="footer.programme">Le programme</a></li>
+            <li><a href="/programme/" data-i18n="footer.programme">Le programme</a></li>
             <li><a href="/parcours/" aria-current="page" data-i18n="footer.parcours">Les parcours</a></li>
             <li><a href="/pricing/" data-i18n="footer.tarifs">Tarifs</a></li>
           </ul>
@@ -266,10 +360,8 @@
   </div>
 </footer>
 
-
-
 <script src="/assets/js/parcours.js" defer></script>
-<script>window.BELARDI_PAGE = "parcours";</script>
+<script>window.BELARDI_PAGE = "parcours-detail";</script>
 <script src="/assets/js/i18n.js" defer></script>
 </body>
 </html>

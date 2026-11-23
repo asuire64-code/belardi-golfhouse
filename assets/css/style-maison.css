@@ -4,7 +4,7 @@
    repris ici pour les pages qui rejoignent le même univers (ex. /parcours/). */
 
 body.accueil{
-  --greige:#ECE7DF; --blanc:#FFFFFF; --encre:#1F2A23; --encre-douce:#4B544D;
+  --greige:#ECE7DF; --blanc:#FFFFFF; --encre:#1F2A23; --encre-douce:#38423B;
   --vert:#233A2E; --ivoire:#FBF8EE;
   --filet:rgba(31,42,35,.16); --filet-clair:rgba(251,248,238,.26);
   --f-titre:'Italiana','Cormorant Garamond',Georgia,serif;
@@ -59,6 +59,17 @@ html:has(body.accueil){scrollbar-color:#646B5F #ECE7DF;background:#ECE7DF}
 .accueil .lang-menu button:hover,.accueil .lang-menu button[aria-selected="true"]{color:var(--encre)}
 .accueil .pied-cta:hover{color:var(--vert)!important}
 .accueil .pied{margin-top:0}
+/* Pied de page aéré dans cet univers : plus de marge, des colonnes qui respirent */
+.accueil .pied-inner{max-width:var(--large);padding:clamp(72px,8vw,120px) var(--marge) clamp(32px,3vw,44px)}
+.accueil .pied-haut{gap:clamp(48px,6vw,104px);padding-bottom:clamp(56px,6vw,88px)}
+.accueil .pied-baseline{margin-top:22px;max-width:34ch;font-size:15px;line-height:1.7}
+.accueil .pied-cta{margin-top:30px;padding:14px 22px}
+.accueil .pied-nav{gap:clamp(40px,4vw,56px) clamp(32px,4vw,64px)}
+.accueil .pied-titre{margin-bottom:22px}
+.accueil .pied-col ul{gap:15px}
+.accueil .pied-col a,.accueil .pied-lieu{font-size:14.5px}
+.accueil .pied-milieu{padding:30px 0}
+.accueil .pied-bas{padding-top:30px}
 
 /* ---- Base ---- */
 .accueil :where(main section){padding:0;scroll-margin-top:calc(var(--h-entete-reelle) + 12px)}
@@ -68,7 +79,7 @@ html:has(body.accueil){scrollbar-color:#646B5F #ECE7DF;background:#ECE7DF}
 .accueil .conteneur{max-width:var(--large);margin-inline:auto;padding-inline:var(--marge)}
 .accueil .grille{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(20px,3vw,48px)}
 .accueil .titre{font-size:clamp(38px,4.6vw,66px);color:var(--encre);text-wrap:balance}
-.accueil .texte{font-size:16.5px;line-height:1.85;color:var(--encre-douce)}
+.accueil .texte{font-size:17.5px;line-height:1.8;color:var(--encre-douce)}
 .accueil .cadre{position:relative;overflow:hidden;background:#C9C3B8}
 .accueil .cadre img{width:100%;height:100%;object-fit:cover}
 

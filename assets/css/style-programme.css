@@ -1,0 +1,158 @@
+/* Page « Le programme » (/programme/) : ouverture plein écran, repères, pile des sept
+   jours qui se superposent au défilement, ce qui est compris, invitation finale.
+   S'appuie sur /assets/css/style-maison.css (tokens, boutons, révélation). */
+
+/* ================================ Ouverture ================================ */
+.pg-une{
+  position:relative;isolation:isolate;display:flex;align-items:flex-end;overflow:hidden;color:var(--ivoire);
+  height:calc(100svh - var(--h-entete-reelle));min-height:560px;background:#1E2A22;
+}
+.pg-une-photo{position:absolute;inset:0;z-index:-1}
+/* La photo garde son cadrage d'origine : l'horizon et les trois golfeurs restent vers le milieu,
+   le titre se pose plus bas, sur la pelouse sombre */
+.pg-une-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 72%}
+.pg-une-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(14,19,13,.55) 0%,rgba(14,19,13,.2) 34%,rgba(14,19,13,0) 55%);
+}
+.pg-une-contenu{width:100%;padding-bottom:clamp(40px,7vh,84px)}
+.pg-une h1{
+  font-size:clamp(40px,5vw,80px);line-height:1.03;max-width:14ch;color:var(--ivoire);text-wrap:balance;
+  text-shadow:0 2px 28px rgba(14,19,13,.35);
+}
+.pg-une-lead{margin-top:clamp(16px,2vw,26px);max-width:38ch;font-size:18px;line-height:1.7;color:rgba(251,248,238,.94)}
+
+/* ================================ Repères ================================ */
+.accueil main > .pg-reperes-section{margin-top:0}
+.pg-reperes{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--filet)}
+.pg-reperes li{padding:clamp(28px,3.4vw,48px) clamp(16px,2vw,32px)}
+.pg-reperes li + li{border-left:1px solid var(--filet)}
+.pg-reperes li:first-child{padding-left:0}
+.pg-reperes strong{
+  display:block;font-family:var(--f-sans);font-weight:300;font-size:clamp(38px,3.6vw,56px);line-height:1;
+  letter-spacing:.01em;font-variant-numeric:lining-nums;color:var(--encre);white-space:nowrap;
+}
+.pg-reperes span{display:block;margin-top:10px;max-width:18ch;font-size:15px;line-height:1.5;color:var(--encre-douce)}
+
+/* ================================ Les sept jours ================================ */
+.pg-jours-tete{align-items:end;margin-bottom:clamp(40px,5vw,72px)}
+.pg-jours-tete .titre{grid-column:1 / span 7;max-width:15ch}
+.pg-jours-tete .texte{grid-column:8 / span 5;max-width:40ch}
+
+.pg-pile{list-style:none;max-width:var(--large);margin-inline:auto;padding-inline:var(--marge)}
+.pg-jour + .pg-jour{margin-top:clamp(28px,4vw,48px)}
+/* Empilement : activé par le script seulement si chaque carte tient dans l'écran */
+.pg-pile.est-empilee{padding-bottom:clamp(48px,10vh,120px)}
+.pg-pile.est-empilee .pg-jour{position:sticky;top:calc(var(--h-entete-reelle) + 20px + var(--i) * 14px)}
+.pg-pile.est-empilee .pg-jour + .pg-jour{margin-top:clamp(80px,16vh,180px)}
+
+.pg-carte{
+  --fond:var(--blanc);--texte:var(--encre);--doux:var(--encre-douce);--trait:var(--filet);
+  position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  min-height:min(calc(100svh - var(--h-entete-reelle) - 150px),620px);
+  background:var(--fond);color:var(--texte);border:1px solid var(--trait);overflow:hidden;transform-origin:50% 0;
+}
+.pg-jour:nth-child(even) .pg-carte{--fond:var(--vert);--texte:var(--ivoire);--doux:rgba(251,248,238,.8);--trait:rgba(251,248,238,.2)}
+.pg-jour:nth-child(even) .pg-carte-photo{order:2}
+.pg-carte-photo{position:relative;overflow:hidden;background:#C9C3B8;min-height:260px}
+.pg-carte-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
+.pg-carte-texte{display:flex;flex-direction:column;padding:clamp(28px,3.6vw,56px)}
+.pg-num{display:flex;align-items:baseline;gap:14px}
+.pg-num-mot{font-size:12.5px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--doux)}
+.pg-num-chiffre{font-family:var(--f-sans);font-weight:300;font-size:clamp(44px,4.4vw,68px);line-height:.9;font-variant-numeric:lining-nums;color:var(--texte)}
+.pg-carte h3{margin-top:clamp(18px,2.2vw,28px);font-size:clamp(30px,2.8vw,44px);line-height:1.06;color:var(--texte);text-wrap:balance}
+.pg-lieu{margin-top:12px;font-size:12.5px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--doux)}
+.pg-chapeau{margin-top:clamp(18px,2vw,26px);max-width:32ch;font-size:18px;line-height:1.6;color:var(--texte)}
+.pg-moments{margin-top:auto;padding-top:clamp(22px,2.6vw,34px)}
+.pg-moments div{display:grid;grid-template-columns:minmax(7rem,9rem) minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid var(--trait)}
+.pg-moments dt{padding-top:4px;font-size:12px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--doux)}
+.pg-moments dd{margin:0;font-size:15.5px;font-weight:300;line-height:1.6;letter-spacing:.02em;color:var(--texte);text-wrap:pretty}
+.pg-jours-note{max-width:var(--large);margin:clamp(24px,3vw,40px) auto 0;padding-inline:var(--marge);font-size:14.5px;color:var(--encre-douce)}
+
+/* ================================ Compris ================================ */
+.pg-inclus .grille{align-items:start}
+.pg-inclus .titre{grid-column:1 / span 5;max-width:11ch}
+.pg-inclus-liste{grid-column:7 / span 6}
+.pg-inclus ul{list-style:none;border-top:1px solid var(--filet)}
+.pg-inclus li{padding:18px 0;border-bottom:1px solid var(--filet);font-size:17px;line-height:1.55;color:var(--encre)}
+.pg-inclus .lien{margin-top:28px}
+
+/* ================================ Invitation finale ================================ */
+.pg-fin{padding-bottom:var(--ecart)}
+.pg-fin .grille{align-items:center}
+.pg-fin-photo{grid-column:2 / span 4}
+.pg-fin-photo .cadre{aspect-ratio:4 / 5;border-radius:50% 50% 0 0 / 31% 31% 0 0}
+.pg-fin-texte{grid-column:7 / span 5}
+.pg-fin-texte .titre{max-width:11ch}
+.pg-fin-texte .texte{margin-top:clamp(20px,2.2vw,30px);max-width:38ch}
+.pg-fin-texte .actions{margin-top:clamp(28px,3vw,40px)}
+
+/* ================================ Adaptations ================================ */
+/* Écrans d'ordinateur peu hauts : cartes plus compactes pour qu'elles restent empilables */
+@media (min-width:761px) and (max-height:820px){
+  .pg-carte-texte{padding:28px 36px}
+  .pg-num-chiffre{font-size:44px}
+  .pg-carte h3{margin-top:14px;font-size:30px}
+  .pg-chapeau{margin-top:14px;font-size:16px;line-height:1.5}
+  .pg-moments{padding-top:16px}
+  .pg-moments div{padding:10px 0}
+  .pg-moments dd{font-size:14.5px;line-height:1.5}
+}
+@media (max-width:1100px){
+  .pg-reperes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pg-reperes li:nth-child(3){padding-left:0;border-left:0}
+  .pg-reperes li:nth-child(n+3){border-top:1px solid var(--filet)}
+  .pg-jours-tete .titre,.pg-jours-tete .texte{grid-column:1 / -1}
+  .pg-jours-tete .texte{margin-top:16px}
+  .pg-carte{grid-template-columns:minmax(0,.9fr) minmax(0,1fr)}
+  .pg-inclus .titre{grid-column:1 / span 5}
+  .pg-inclus-liste{grid-column:6 / span 7}
+  .pg-fin-photo{grid-column:1 / span 5}
+  .pg-fin-texte{grid-column:7 / span 6}
+}
+@media (max-width:760px){
+  .pg-une{min-height:520px}
+  .pg-une-photo img{object-position:42% 64%}
+  .pg-une-lead{font-size:17px}
+  .pg-reperes li{padding:24px 14px}
+  .pg-reperes li:nth-child(odd){padding-left:0}
+  .pg-carte{grid-template-columns:1fr;min-height:0}
+  /* Cartes compactes : elles doivent tenir dans l'écran du téléphone pour s'empiler */
+  .pg-carte-photo{order:0!important;height:clamp(150px,22svh,200px);min-height:0}
+  .pg-carte-texte{padding:18px 18px 12px}
+  .pg-num{gap:10px}
+  .pg-num-chiffre{font-size:34px}
+  .pg-carte h3{margin-top:8px;font-size:26px}
+  .pg-lieu{margin-top:6px;font-size:11px}
+  .pg-chapeau{margin-top:10px;font-size:15px;line-height:1.45}
+  .pg-moments{padding-top:10px}
+  .pg-moments div{grid-template-columns:1fr;gap:2px;padding:8px 0}
+  .pg-moments dt{padding-top:0;font-size:11px}
+  .pg-moments dd{font-size:14px;line-height:1.45}
+  .pg-pile.est-empilee .pg-jour{top:calc(var(--h-entete-reelle) + 10px + var(--i) * 6px)}
+  .pg-pile.est-empilee .pg-jour + .pg-jour{margin-top:56px}
+  .pg-inclus .titre,.pg-inclus-liste,.pg-fin-photo,.pg-fin-texte{grid-column:1 / -1}
+  .pg-inclus-liste{margin-top:28px}
+  .pg-fin-photo{max-width:78%}
+  .pg-fin-texte{margin-top:40px}
+}
+
+/* ================================ Mouvement ================================
+   Tout reste visible sans JavaScript et en mouvement réduit. */
+@media (prefers-reduced-motion: no-preference){
+  .pg-une-photo img{animation:pg-recul 3.4s var(--sortie) both}
+  @keyframes pg-recul{from{transform:scale(1.12)}to{transform:none}}
+  .pg-une-contenu > *{animation:pg-pose 1.5s var(--sortie) both}
+  .pg-une-lead{animation-delay:.2s}
+  @keyframes pg-pose{from{opacity:.25;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+  /* Une carte recouverte par la suivante recule et s'assombrit (valeur donnée par le script) */
+  .pg-pile.est-empilee .pg-carte{transform:scale(calc(1 - var(--recouvre, 0) * .06))}
+  .pg-pile.est-empilee .pg-carte::after{
+    content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:#0E130D;opacity:calc(var(--recouvre, 0) * .42);
+  }
+  /* La photo de chaque carte se découvre en rideau à son arrivée */
+  .js-revele .pg-jour[data-revele] .pg-carte-photo img{clip-path:inset(12% 0 0 0);scale:1.1;transition:clip-path 1.5s var(--sortie) .1s,scale 1.9s var(--sortie) .1s}
+  .js-revele .pg-jour[data-revele].est-revele .pg-carte-photo img{clip-path:inset(0 0 0 0);scale:1}
+}

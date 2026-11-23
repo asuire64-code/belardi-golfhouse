@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tarifs — BELARDI Golf House</title>
-<meta name="description" content="Trois formules tout compris pour une semaine de golf au Pays Basque : Essentiel, Signature et Prestige. Prix par personne, affichés sans surprise.">
+<meta name="description" content="Trois formules tout compris pour une semaine de golf au Pays Basque : Essentiel, Signature et Prestige. Prix indicatifs par personne, saison 2027.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://belardi-golfhouse.fr/pricing/">
 
@@ -33,7 +33,6 @@
 }
 </script>
 
-
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192.png">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
@@ -43,213 +42,32 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3E4A33">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#E6DCC8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1F251B" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1411" media="(prefers-color-scheme: dark)">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="BELARDI Golf House">
 <meta property="og:url" content="https://belardi-golfhouse.fr/pricing/">
 <meta property="og:title" content="Tarifs — BELARDI Golf House">
-<meta property="og:description" content="Trois formules tout compris pour une semaine de golf au Pays Basque : Essentiel, Signature et Prestige. Prix par personne, affichés sans surprise.">
+<meta property="og:description" content="Trois formules tout compris pour une semaine de golf au Pays Basque : Essentiel, Signature et Prestige. Prix indicatifs par personne, saison 2027.">
 <meta property="og:image" content="https://belardi-golfhouse.fr/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
+<link rel="preload" as="image" href="/assets/images/tarifs/green-couchant-1920.webp" fetchpriority="high">
 <link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/italiana-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/css/belardi.css">
-<style>
-  /* =========================== Page Tarifs ===========================
-     Styles propres à /pricing/. Socle commun : /assets/css/belardi.css */
-  .px{
-    --vert:#5F7350;          /* vert Belardi lisible (sauge assombrie) : coches */
-    --vert-doux:rgba(138,154,123,.16);
-    --orange:#B8653F;        /* orange Belardi (terre) : croix */
-    --orange-doux:rgba(184,101,63,.14);
-    --txt-oui:#2F3827;       /* texte inclus : contraste ≈ 11:1 sur la carte */
-    --txt-non:#7A7D71;       /* texte non inclus : grisé mais lisible (≈ 4:1) */
-    --trait:#E4DBC8;
-    --vedette:#4F6142;       /* mise en avant « Le plus populaire » : vert profond */
-    position:relative;padding:clamp(48px,7vw,96px) 0 var(--e6);overflow:hidden;
-  }
-  /* Halo très doux derrière le titre */
-  .px::before{
-    content:"";position:absolute;inset:-20% -10% auto;height:620px;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(42% 60% at 28% 30%, rgba(138,154,123,.30), transparent 70%),
-      radial-gradient(38% 55% at 74% 24%, rgba(217,164,135,.24), transparent 70%);
-    filter:blur(10px);
-  }
-  .px .wrap{position:relative;z-index:1;max-width:1340px;padding:0 clamp(16px,3vw,32px)}
-
-  /* ---- En-tête de page ---- */
-  .px-tete{text-align:center;max-width:760px;margin:0 auto clamp(56px,6vw,80px)}
-  .px-tete .eyebrow{color:var(--terre)}
-  .px-titre{
-    margin-top:22px;font-family:var(--f-sans);font-weight:600;
-    font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.02;letter-spacing:-.015em;color:var(--fg);
-  }
-  .px-titre span{display:block}
-  .px-titre .l2{
-    font-family:var(--f-accent);font-style:italic;font-weight:500;letter-spacing:0;
-    font-size:1.08em;line-height:1.05;color:var(--terre);margin-top:.06em;text-wrap:balance;
-  }
-  .px-lead{margin:26px auto 0;max-width:52ch;color:var(--texte-doux-auto);font-size:1.02rem;text-wrap:balance}
-
-  /* ---- Grille des cartes ----
-     Sous-grille : chaque bloc (nom, prix, saisons, texte, bouton, chaque ligne
-     du détail) occupe la même rangée dans les trois cartes, donc tout reste
-     aligné au pixel près quelle que soit la longueur des textes. */
-  .px-grille{
-    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-    column-gap:clamp(24px,2.8vw,44px);row-gap:0;align-items:stretch;
-  }
-  .px-carte{
-    position:relative;display:grid;grid-row:span 16;grid-template-rows:subgrid;row-gap:0;
-    background:var(--surface);border:1px solid var(--bord);border-radius:24px;
-    padding:40px clamp(18px,1.8vw,28px) 22px;text-align:center;
-    box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 18px 40px -28px rgba(31,37,27,.30);
-    transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease;
-  }
-  .px-carte:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 28px 54px -30px rgba(31,37,27,.40)}
-  .px-carte--pop{
-    border:1.5px solid var(--vedette);
-    background:linear-gradient(180deg,rgba(138,154,123,.16) 0%,rgba(138,154,123,.05) 30%,var(--surface) 55%),var(--surface);
-    box-shadow:0 26px 56px -32px rgba(62,74,51,.55);
-  }
-  .px-badge{
-    position:absolute;top:0;left:50%;transform:translate(-50%,-50%);white-space:nowrap;
-    display:flex;align-items:center;gap:7px;
-    background:var(--vedette);color:var(--blanc);border-radius:999px;padding:7px 15px 7px 13px;
-    font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-    box-shadow:0 8px 18px -8px rgba(62,74,51,.65);
-  }
-  .px-badge svg{width:12px;height:12px;flex:none;color:#E9C98A}
-  .px-nom{
-    font-family:var(--f-sans);font-weight:600;font-size:13px;letter-spacing:.32em;text-transform:uppercase;
-    color:var(--terre);line-height:1;padding-left:.32em;
-  }
-  .px-carte--pop .px-nom{color:var(--vedette)}
-  .px-prix{display:flex;align-items:baseline;justify-content:center;gap:8px;margin-top:22px;flex-wrap:wrap}
-  .px-montant{
-    font-family:var(--f-sans);font-weight:500;font-size:clamp(2.4rem,3.4vw,3.1rem);line-height:1;
-    letter-spacing:-.02em;color:var(--fg);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap;
-  }
-  .px-unite{font-size:.95rem;color:var(--texte-doux-auto)}
-  .px-saison{margin-top:12px;font-size:.82rem;letter-spacing:.04em;color:var(--gris)}
-  .px-haute{margin-top:2px;font-size:.88rem;color:var(--texte-doux-auto)}
-  .px-haute b{font-weight:600;color:var(--fg)}
-  .px-desc{margin:18px auto 0;max-width:30ch;font-size:.95rem;line-height:1.55;color:var(--texte-doux-auto);align-self:start}
-
-  /* ---- Bouton : pilule verre poli ; au survol, remplissage terre qui balaie
-          de gauche à droite (même geste que « Réserver » dans l'en-tête) ---- */
-  .px-btn{
-    position:relative;overflow:hidden;isolation:isolate;align-self:end;
-    display:flex;align-items:center;justify-content:center;gap:10px;
-    margin-top:26px;padding:15px 24px;border-radius:999px;
-    font-family:var(--f-sans);font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--olive);
-    background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.6) 55%,rgba(255,255,255,.75) 100%);
-    border:1px solid rgba(62,74,51,.16);
-    box-shadow:inset 0 1px 0 #fff,inset 0 -8px 16px -10px rgba(62,74,51,.16),0 10px 22px -14px rgba(31,37,27,.45);
-    -webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);
-    transition:color .4s ease .05s,border-color .35s ease,box-shadow .35s ease;
-  }
-  .px-btn::before{
-    content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;
-    background:linear-gradient(180deg,#B26A49 0%,var(--terre) 60%,#8F4D33 100%);
-    transform:scale(0,1);transform-origin:left center;
-    transition:transform .45s cubic-bezier(.65,0,.35,1);
-  }
-  .px-btn:hover,.px-btn:focus-visible{color:#fff;border-color:var(--terre);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 14px 26px -14px rgba(160,87,58,.7)}
-  .px-btn:hover::before,.px-btn:focus-visible::before{transform:scale(1,1)}
-  .px-btn:active{transform:scale(.985)}
-  .px-btn:focus-visible{outline:2px solid var(--terre);outline-offset:3px}
-  .px-btn svg{width:16px;height:16px;flex:none;transition:transform .35s ease}
-  .px-btn:hover svg{transform:translateX(3px)}
-  .px-sous{margin-top:12px;font-size:.78rem;letter-spacing:.06em;color:var(--gris)}
-
-  /* ---- Détail inclus / non inclus ---- */
-  .px-liste{
-    list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--trait);text-align:left;
-    display:grid;grid-row:span 9;grid-template-rows:subgrid;row-gap:0;
-  }
-  /* carte = 7 rangées (nom → mention durée) + 9 lignes de détail = 16 */
-  .px-liste li{
-    display:flex;align-items:center;gap:12px;padding:12px 2px;
-    font-size:.95rem;font-weight:400;line-height:1.4;
-    border-bottom:1px solid var(--trait);
-  }
-  .px-liste li:last-child{border-bottom:0}
-  .px-ico{width:22px;height:22px;flex:none;border-radius:50%;padding:3px}
-  .px-liste .oui{color:var(--txt-oui)}
-  .px-liste .oui .px-ico{background:var(--vert);color:#fff}
-  .px-liste .non{color:var(--txt-non)}
-  .px-liste .non .px-ico{background:var(--orange-doux);color:var(--orange)}
-  .px-liste .non .px-ico path{stroke-width:2}
-  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-  /* ---- Bas de page : rappels ---- */
-  .px-pied{margin:clamp(56px,6vw,80px) auto 0;max-width:1120px;text-align:center}
-  .px-pied h3{font-size:11.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--terre)}
-  .px-inclus{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;margin-top:18px}
-  .px-inclus li{
-    display:flex;align-items:center;gap:9px;padding:8px 16px 8px 9px;border-radius:999px;
-    font-size:.9rem;font-weight:400;color:var(--txt-oui);
-    background:var(--surface);border:1px solid var(--bord);
-  }
-  .px-inclus .px-ico{width:20px;height:20px;background:var(--vert);color:#fff}
-  .px-noninclus{margin-top:22px;font-size:.86rem;color:var(--texte-doux-auto)}
-  .px-groupes{margin-top:8px;font-size:.92rem;color:var(--texte-doux-auto)}
-  .px-groupes a{color:var(--terre);font-weight:500;border-bottom:1px solid currentColor;padding-bottom:1px;margin-left:4px;transition:opacity .2s ease}
-  .px-groupes a:hover{opacity:.75}
-
-  /* ---- Responsive ---- */
-  @media(max-width:1100px){
-    .px-montant{font-size:2.3rem}
-    .px-liste li{font-size:.9rem}
-  }
-  @media(max-width:960px){
-    /* une colonne : plus de sous-grille, chaque carte vit seule */
-    .px-grille{grid-template-columns:minmax(0,480px);justify-content:center;row-gap:44px}
-    .px-carte{grid-row:auto;grid-template-rows:none;display:flex;flex-direction:column}
-    .px-liste{grid-row:auto;grid-template-rows:none;display:block}
-    .px-btn,.px-desc{align-self:stretch}
-    .px-liste li{font-size:.95rem}
-    .px-montant{font-size:2.6rem}
-  }
-  @media(max-width:520px){
-    .px-carte{padding:36px 20px 18px;border-radius:20px}
-    .px-titre{font-size:clamp(2.1rem,10vw,2.6rem)}
-    .px-titre .l2{font-size:1em}
-    .px-inclus li{font-size:.86rem}
-  }
-
-  /* ---- Mode sombre ---- */
-  @media (prefers-color-scheme: dark){
-    .px{--vert:#8A9A7B;--orange:#D9A487;--orange-doux:rgba(217,164,135,.14);--txt-oui:#EDE6D6;--txt-non:#9C9B8C;--trait:#3A4232;--vedette:#8A9A7B}
-    .px::before{opacity:.45}
-    .px-carte{box-shadow:0 18px 40px -28px rgba(0,0,0,.6)}
-    .px-carte--pop{background:linear-gradient(180deg,rgba(138,154,123,.16) 0%,rgba(138,154,123,.05) 30%,var(--surface) 55%),var(--surface)}
-    .px-badge{color:var(--sombre)}
-    .px-badge svg{color:var(--sombre)}
-    .px-nom,.px-titre .l2,.px-pied h3,.px-groupes a{color:var(--terre-claire)}
-    .px-carte--pop .px-nom{color:var(--vedette)}
-    .px-liste .oui .px-ico,.px-inclus .px-ico{color:var(--sombre)}
-    .px-btn{
-      color:var(--lin);border-color:rgba(230,220,200,.2);
-      background:linear-gradient(180deg,rgba(250,248,242,.14) 0%,rgba(250,248,242,.05) 60%,rgba(250,248,242,.09) 100%);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 10px 22px -14px rgba(0,0,0,.7);
-    }
-  }
-  @media(prefers-reduced-motion: reduce){
-    .px-carte:hover{transform:none}
-    .px-btn::before{transition:none}
-  }
-</style>
+<link rel="stylesheet" href="/assets/css/style-maison.css">
+<link rel="stylesheet" href="/assets/css/style-tarifs.css">
+<script>document.documentElement.classList.add('js-revele');window.__secoursRevele=setTimeout(function(){document.documentElement.classList.remove('js-revele')},4000);</script>
 </head>
-<body>
+<body class="accueil tarifs">
+
+<!-- Tarifs : prix indicatifs (saison 2027), à confirmer par écrit avant toute réservation. Photo : assets/images/tarifs/CREDITS.md -->
 
 <input type="checkbox" id="menu" class="burger-ctrl" aria-label="Afficher le menu">
 
@@ -267,7 +85,7 @@
       <div class="nav-liens">
         <span class="nav-pilule" aria-hidden="true"></span>
         <a href="/" data-i18n="nav.accueil">Accueil</a>
-        <a href="/#programme" data-i18n="nav.programme">Programme</a>
+        <a href="/programme/" data-i18n="nav.programme">Programme</a>
         <a href="/parcours/" data-i18n="nav.parcours">Parcours</a>
         <a href="/#origines" data-i18n="nav.apropos">À propos</a>
         <a href="/pricing/" aria-current="page" data-i18n="nav.tarifs">Tarifs</a>
@@ -303,7 +121,7 @@
 
 <nav class="menu-mobile" aria-label="Menu principal">
   <a href="/" data-i18n="nav.accueil" onclick="document.getElementById('menu').checked=false">Accueil</a>
-  <a href="/#programme" data-i18n="nav.programme" onclick="document.getElementById('menu').checked=false">Programme</a>
+  <a href="/programme/" data-i18n="nav.programme" onclick="document.getElementById('menu').checked=false">Programme</a>
   <a href="/parcours/" data-i18n="nav.parcours" onclick="document.getElementById('menu').checked=false">Parcours</a>
   <a href="/#origines" data-i18n="nav.apropos" onclick="document.getElementById('menu').checked=false">À propos</a>
   <a href="/pricing/" data-i18n="nav.tarifs" onclick="document.getElementById('menu').checked=false">Tarifs</a>
@@ -316,89 +134,156 @@
   </div>
 </nav>
 
-<main class="px">
-  <div class="wrap">
-    <header class="px-tete">
-      <p class="eyebrow" data-i18n="px.eyebrow">Tarifs 2027 · Prix par personne</p>
-      <h1 class="px-titre"><span class="l1" data-i18n="px.h1.l1">Vivez l'expérience</span><span class="l2" data-i18n="px.h1.l2">ultime Belardi.</span></h1>
-      <p class="px-lead" data-i18n="px.lead">7 jours, 6 nuits, groupes de 6 golfeurs maximum. Choisissez votre formule, nous nous occupons du reste.</p>
-    </header>
+<main id="contenu">
 
-    <div class="px-grille">
-      <article class="px-carte" aria-labelledby="px-essentiel">
-        <h2 class="px-nom" id="px-essentiel" translate="no">Essentiel</h2>
-        <p class="px-prix"><span class="px-montant">2 490 €</span><span class="px-unite" data-i18n="px.unite">/ personne</span></p>
-        <p class="px-saison"><span data-i18n="px.saison.basse">Basse saison · oct. – mars</span></p>
-        <p class="px-haute"><b>2 890 €</b> <span data-i18n="px.saison.haute">en haute saison</span></p>
-        <p class="px-desc" data-i18n="px.essentiel.desc">Pour découvrir la Côte Basque et travailler les bases de son jeu en groupe.</p>
-        <a class="px-btn" href="/contact/"><span data-i18n="px.cta">Je suis intéressé</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <p class="px-sous" data-i18n="px.sous">7 jours · 6 nuits</p>
-        <ul class="px-liste">
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.essentiel.heberg">6 nuits en chambre partagée</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.essentiel.repas">Petits-déjeuners et 4 dîners</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.essentiel.green">4 green fees</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.essentiel.coach">16 h de coaching en groupe</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.transf">Transferts aéroport et golfs</span></li>
-          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.video">Analyse vidéo et plan de progression écrit</span></li>
-          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.decouv">Journée découverte encadrée</span></li>
-          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.fitting">Séance de fitting de vos clubs</span></li>
-          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.suivi">Suivi à distance pendant 3 mois</span></li>
-        </ul>
-      </article>
-      <article class="px-carte px-carte--pop" aria-labelledby="px-signature">
-        <p class="px-badge"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.5 3.3 3.6.4-2.7 2.4.8 3.5L6 8.6 2.8 10.4l.8-3.5L.9 4.5l3.6-.4z" fill="currentColor"/></svg><span data-i18n="px.badge">Le plus populaire</span></p>
-        <h2 class="px-nom" id="px-signature" translate="no">Signature</h2>
-        <p class="px-prix"><span class="px-montant">3 290 €</span><span class="px-unite" data-i18n="px.unite">/ personne</span></p>
-        <p class="px-saison"><span data-i18n="px.saison.basse">Basse saison · oct. – mars</span></p>
-        <p class="px-haute"><b>3 790 €</b> <span data-i18n="px.saison.haute">en haute saison</span></p>
-        <p class="px-desc" data-i18n="px.signature.desc">Le séjour complet : coaching individuel, pension complète et journée découverte.</p>
-        <a class="px-btn" href="/contact/"><span data-i18n="px.cta">Je suis intéressé</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <p class="px-sous" data-i18n="px.sous">7 jours · 6 nuits</p>
-        <ul class="px-liste">
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.signature.heberg">6 nuits en chambre individuelle</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.signature.repas">Pension complète, vins inclus</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.signature.green">5 green fees</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.signature.coach">20 h de coaching, dont 2 h en individuel</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.transf">Transferts aéroport et golfs</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.video">Analyse vidéo et plan de progression écrit</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.decouv">Journée découverte encadrée</span></li>
-          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.fitting">Séance de fitting de vos clubs</span></li>
-          <li class="non"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 6.5l7 7M13.5 6.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="sr" data-i18n="px.non">Non inclus</span><span data-i18n="px.suivi">Suivi à distance pendant 3 mois</span></li>
-        </ul>
-      </article>
-      <article class="px-carte" aria-labelledby="px-prestige">
-        <h2 class="px-nom" id="px-prestige" translate="no">Prestige</h2>
-        <p class="px-prix"><span class="px-montant">4 290 €</span><span class="px-unite" data-i18n="px.unite">/ personne</span></p>
-        <p class="px-saison"><span data-i18n="px.saison.basse">Basse saison · oct. – mars</span></p>
-        <p class="px-haute"><b>4 890 €</b> <span data-i18n="px.saison.haute">en haute saison</span></p>
-        <p class="px-desc" data-i18n="px.prestige.desc">L'expérience sans compromis : suite, coaching sur mesure et suivi après le séjour.</p>
-        <a class="px-btn" href="/contact/"><span data-i18n="px.cta">Je suis intéressé</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <p class="px-sous" data-i18n="px.sous">7 jours · 6 nuits</p>
-        <ul class="px-liste">
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.prestige.heberg">6 nuits en suite avec vue</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.prestige.repas">Pension complète, vins inclus</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.prestige.green">6 green fees</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.prestige.coach">24 h de coaching, dont 6 h en individuel</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.transf">Transferts aéroport et golfs</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.video">Analyse vidéo et plan de progression écrit</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.decouv">Journée découverte encadrée</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.fitting">Séance de fitting de vos clubs</span></li>
-          <li class="oui"><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr" data-i18n="px.oui">Inclus</span><span data-i18n="px.suivi">Suivi à distance pendant 3 mois</span></li>
-        </ul>
-      </article>
+<section class="tf-une" aria-labelledby="tf-titre">
+  <div class="tf-une-photo">
+    <picture>
+      <source media="(max-width: 760px)" srcset="/assets/images/tarifs/green-couchant-portrait-900.webp">
+      <img src="/assets/images/tarifs/green-couchant-1920.webp"
+           srcset="/assets/images/tarifs/green-couchant-1280.webp 1280w, /assets/images/tarifs/green-couchant-1920.webp 1920w"
+           sizes="100vw" width="1920" height="1080" fetchpriority="high" decoding="async"
+           data-i18n-alt="px.une.alt" alt="Un green éclairé par le soleil couchant, bordé d'arbres et d'un plan d'eau">
+    </picture>
+  </div>
+  <div class="conteneur tf-une-contenu">
+    <h1 id="tf-titre" data-i18n="px.h1">Trois formules, une même semaine.</h1>
+    <p class="tf-une-lead" data-i18n="px.lead">7 jours, 6 nuits, six golfeurs au plus. Tout est compris, de l'aéroport au dernier green.</p>
+  </div>
+</section>
+
+<section class="tf-formules" aria-labelledby="tf-formules-titre">
+  <div class="conteneur">
+    <div class="tf-barre" data-revele>
+      <h2 id="tf-formules-titre" class="titre" data-i18n="px.formules.h2">Choisissez votre formule.</h2>
+      <div class="tf-barre-droite">
+        <div class="tf-saisons" role="group" data-i18n-aria="px.saison.aria" aria-label="Saison" hidden>
+          <button type="button" class="tf-saison" data-saison="basse" aria-pressed="true"><span data-i18n="px.saison.b">Basse saison</span><span data-i18n="px.saison.b.mois">oct. – mars</span></button>
+          <button type="button" class="tf-saison" data-saison="haute" aria-pressed="false"><span data-i18n="px.saison.h">Haute saison</span><span data-i18n="px.saison.h.mois">avr. – sept.</span></button>
+        </div>
+        <p class="tf-indicatif" data-i18n="px.indicatif">Prix indicatifs par personne, saison 2027. Le tarif exact vous est confirmé par écrit avant toute réservation.</p>
+      </div>
     </div>
+    <ol class="tf-grille">
+      <li class="tf-formule" data-revele style="--d:0ms">
+        <div class="tf-tete">
+          <h3 class="tf-nom notranslate" translate="no">Essentiel</h3>
+        </div>
+        <p class="tf-desc" data-i18n="px.essentiel.desc">Pour découvrir la Côte Basque et travailler les bases de son jeu en groupe.</p>
+        <div class="tf-prix">
+          <p class="tf-apartir" data-i18n="px.apartir">À partir de</p>
+          <p class="tf-montant"><strong data-prix="2490" data-basse="2490" data-haute="2890">2 490 €</strong><span data-i18n="px.unite">par personne</span></p>
+          <p class="tf-autre" data-autre="h"><span data-i18n="px.autre.h">En haute saison :</span> <b data-prix="2890">2 890 €</b></p>
+          <p class="tf-autre" data-autre="b" hidden><span data-i18n="px.autre.b">En basse saison :</span> <b data-prix="2490">2 490 €</b></p>
+        </div>
+        <a class="bouton" href="/contact/" data-i18n="px.cta">Demander cette formule</a>
+        <ul class="tf-points">
+          <li data-i18n="px.essentiel.heberg">Chambre partagée</li>
+          <li data-i18n="px.essentiel.repas">Petits-déjeuners et 4 dîners</li>
+          <li data-i18n="px.essentiel.green">4 green fees</li>
+          <li data-i18n="px.essentiel.coach">16 h de coaching en groupe</li>
+        </ul>
+      </li>
+      <li class="tf-formule tf-formule--conseil" data-revele style="--d:120ms">
+        <div class="tf-tete">
+          <h3 class="tf-nom notranslate" translate="no">Signature</h3>
+          <p class="tf-conseil" data-i18n="px.conseil">Notre recommandation</p>
+        </div>
+        <p class="tf-desc" data-i18n="px.signature.desc">Le séjour complet : coaching individuel, pension complète et journée découverte.</p>
+        <div class="tf-prix">
+          <p class="tf-apartir" data-i18n="px.apartir">À partir de</p>
+          <p class="tf-montant"><strong data-prix="3290" data-basse="3290" data-haute="3790">3 290 €</strong><span data-i18n="px.unite">par personne</span></p>
+          <p class="tf-autre" data-autre="h"><span data-i18n="px.autre.h">En haute saison :</span> <b data-prix="3790">3 790 €</b></p>
+          <p class="tf-autre" data-autre="b" hidden><span data-i18n="px.autre.b">En basse saison :</span> <b data-prix="3290">3 290 €</b></p>
+        </div>
+        <a class="bouton bouton--clair" href="/contact/" data-i18n="px.cta">Demander cette formule</a>
+        <ul class="tf-points">
+          <li data-i18n="px.signature.heberg">Chambre individuelle</li>
+          <li data-i18n="px.signature.repas">Pension complète, vins compris</li>
+          <li data-i18n="px.signature.green">5 green fees</li>
+          <li data-i18n="px.signature.coach">20 h de coaching, dont 2 h en individuel</li>
+        </ul>
+      </li>
+      <li class="tf-formule" data-revele style="--d:240ms">
+        <div class="tf-tete">
+          <h3 class="tf-nom notranslate" translate="no">Prestige</h3>
+        </div>
+        <p class="tf-desc" data-i18n="px.prestige.desc">L'expérience sans compromis : suite, coaching sur mesure et suivi après le séjour.</p>
+        <div class="tf-prix">
+          <p class="tf-apartir" data-i18n="px.apartir">À partir de</p>
+          <p class="tf-montant"><strong data-prix="4290" data-basse="4290" data-haute="4890">4 290 €</strong><span data-i18n="px.unite">par personne</span></p>
+          <p class="tf-autre" data-autre="h"><span data-i18n="px.autre.h">En haute saison :</span> <b data-prix="4890">4 890 €</b></p>
+          <p class="tf-autre" data-autre="b" hidden><span data-i18n="px.autre.b">En basse saison :</span> <b data-prix="4290">4 290 €</b></p>
+        </div>
+        <a class="bouton" href="/contact/" data-i18n="px.cta">Demander cette formule</a>
+        <ul class="tf-points">
+          <li data-i18n="px.prestige.heberg">Suite avec vue</li>
+          <li data-i18n="px.prestige.repas">Pension complète, vins compris</li>
+          <li data-i18n="px.prestige.green">6 green fees</li>
+          <li data-i18n="px.prestige.coach">24 h de coaching, dont 6 h en individuel</li>
+        </ul>
+      </li>
+    </ol>
+    <p class="tf-sr" aria-live="polite" data-annonce></p>
+  </div>
+</section>
 
-    <div class="px-pied">
-      <h3 data-i18n="px.inclus.titre">Dans toutes les formules</h3>
-      <ul class="px-inclus">
-        <li><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="px.inclus.1">Groupes de 6 golfeurs maximum</span></li>
-        <li><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="px.inclus.2">Remboursement intégral jusqu'à 60 jours avant le départ</span></li>
-        <li><svg class="px-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="px.inclus.3">Accompagnant non golfeur possible sur demande</span></li>
+<section class="tf-comparer" aria-labelledby="tf-comparer-titre">
+  <div class="conteneur">
+    <div class="grille" data-revele>
+      <h2 id="tf-comparer-titre" class="titre" data-i18n="px.comparer.h2">Comparer en détail.</h2>
+      <p class="texte" data-i18n="px.comparer.p">Les trois formules ligne à ligne, pour 7 jours et 6 nuits.</p>
+    </div>
+    <table class="tf-table" data-revele style="--d:120ms">
+      <caption data-i18n="px.comparer.caption">Ce que comprend chaque formule</caption>
+      <thead>
+        <tr><td></td><th scope="col" class="notranslate" translate="no">Essentiel</th><th scope="col" class="notranslate tf-col-conseil" translate="no">Signature</th><th scope="col" class="notranslate" translate="no">Prestige</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row" data-i18n="px.ligne.heberg">Hébergement, 6 nuits</th><td data-formule="Essentiel" data-i18n="px.essentiel.heberg">Chambre partagée</td><td class="tf-col-conseil" data-formule="Signature" data-i18n="px.signature.heberg">Chambre individuelle</td><td data-formule="Prestige" data-i18n="px.prestige.heberg">Suite avec vue</td></tr>
+        <tr><th scope="row" data-i18n="px.ligne.repas">Repas</th><td data-formule="Essentiel" data-i18n="px.essentiel.repas">Petits-déjeuners et 4 dîners</td><td class="tf-col-conseil" data-formule="Signature" data-i18n="px.signature.repas">Pension complète, vins compris</td><td data-formule="Prestige" data-i18n="px.prestige.repas">Pension complète, vins compris</td></tr>
+        <tr><th scope="row" data-i18n="px.ligne.green">Green fees</th><td data-formule="Essentiel" data-i18n="px.essentiel.green">4 green fees</td><td class="tf-col-conseil" data-formule="Signature" data-i18n="px.signature.green">5 green fees</td><td data-formule="Prestige" data-i18n="px.prestige.green">6 green fees</td></tr>
+        <tr><th scope="row" data-i18n="px.ligne.coach">Coaching</th><td data-formule="Essentiel" data-i18n="px.essentiel.coach">16 h de coaching en groupe</td><td class="tf-col-conseil" data-formule="Signature" data-i18n="px.signature.coach">20 h de coaching, dont 2 h en individuel</td><td data-formule="Prestige" data-i18n="px.prestige.coach">24 h de coaching, dont 6 h en individuel</td></tr>
+        <tr><th scope="row" data-i18n="px.transf">Transferts aéroport et golfs</th><td data-formule="Essentiel"><span class="tf-oui"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.6 3.6L15.5 6.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="tf-sr" data-i18n="px.oui">Compris</span></span></td><td class="tf-col-conseil" data-formule="Signature"><span class="tf-oui"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.6 3.6L15.5 6.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="tf-sr" data-i18n="px.oui">Compris</span></span></td><td data-formule="Prestige"><span class="tf-oui"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.6 3.6L15.5 6.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="tf-sr" data-i18n="px.oui">Compris</span></span></td></tr>
+        <tr><th scope="row" data-i18n="px.video">Analyse vidéo et plan de progression écrit</th><td data-formule="Essentiel"><span class="tf-non"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 10h8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span class="tf-sr" data-i18n="px.non">Non compris</span></span></td><td class="tf-col-conseil" data-formule="Signature"><span class="tf-oui"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.6 3.6L15.5 6.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="tf-sr" data-i18n="px.oui">Compris</span></span></td><td data-formule="Prestige"><span class="tf-oui"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.6 3.6L15.5 6.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="tf-sr" data-i18n="px.oui">Compris</span></span></td></tr>
+        <tr><th scope="row" data-i18n="px.decouv">Journée découverte encadrée</th><td data-formule="Essentiel"><span class="tf-non"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 10h8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span class="tf-sr" data-i18n="px.non">Non compris</span></span></td><td class="tf-col-conseil" data-formule="Signature"><span class="tf-oui"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.6 3.6L15.5 6.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="tf-sr" data-i18n="px.oui">Compris</span></span></td><td data-formule="Prestige"><span class="tf-oui"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.6 3.6L15.5 6.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="tf-sr" data-i18n="px.oui">Compris</span></span></td></tr>
+        <tr><th scope="row" data-i18n="px.fitting">Séance de fitting de vos clubs</th><td data-formule="Essentiel"><span class="tf-non"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 10h8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span class="tf-sr" data-i18n="px.non">Non compris</span></span></td><td class="tf-col-conseil" data-formule="Signature"><span class="tf-non"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 10h8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span class="tf-sr" data-i18n="px.non">Non compris</span></span></td><td data-formule="Prestige"><span class="tf-oui"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.6 3.6L15.5 6.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="tf-sr" data-i18n="px.oui">Compris</span></span></td></tr>
+        <tr><th scope="row" data-i18n="px.suivi">Suivi à distance pendant 3 mois</th><td data-formule="Essentiel"><span class="tf-non"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 10h8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span class="tf-sr" data-i18n="px.non">Non compris</span></span></td><td class="tf-col-conseil" data-formule="Signature"><span class="tf-non"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 10h8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span class="tf-sr" data-i18n="px.non">Non compris</span></span></td><td data-formule="Prestige"><span class="tf-oui"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5l3.6 3.6L15.5 6.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="tf-sr" data-i18n="px.oui">Compris</span></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="tf-partout" aria-labelledby="tf-partout-titre">
+  <div class="conteneur grille">
+    <h2 id="tf-partout-titre" class="titre" data-revele data-i18n="px.inclus.titre">Dans toutes les formules.</h2>
+    <div class="tf-partout-liste" data-revele style="--d:140ms">
+      <ul>
+        <li data-i18n="px.inclus.1">Six golfeurs au plus par semaine</li>
+        <li data-i18n="px.inclus.2">Transferts depuis l'aéroport ou la gare de Biarritz, et vers les golfs</li>
+        <li data-i18n="px.inclus.3">Remboursement intégral jusqu'à 60 jours avant le départ</li>
+        <li data-i18n="px.inclus.4">Accompagnant non golfeur possible sur demande</li>
       </ul>
-      <p class="px-noninclus" data-i18n="px.noninclus">Non inclus : transport jusqu'au Pays Basque, boissons hors repas et assurance annulation.</p>
-      <p class="px-groupes"><span data-i18n="px.groupes">Groupe constitué ou séminaire ?</span><a href="/contact/" data-i18n="px.groupes.lien">Demandez un devis sur mesure</a></p>
+      <p class="tf-partout-note" data-i18n="px.noninclus">Non compris : le voyage jusqu'au Pays Basque, les boissons hors repas et l'assurance annulation.</p>
     </div>
   </div>
+</section>
+
+<section class="tf-groupes" aria-labelledby="tf-groupes-titre">
+  <div class="conteneur grille">
+    <h2 id="tf-groupes-titre" class="titre" data-revele data-i18n="px.groupes.h2">Un groupe, un séminaire ?</h2>
+    <div class="tf-groupes-texte" data-revele style="--d:140ms">
+      <p class="texte" data-i18n="px.groupes.p">Entre amis, en club ou en entreprise, nous composons une semaine sur mesure : dates, parcours et formule.</p>
+      <div class="actions">
+        <a class="bouton bouton--clair" href="/contact/" data-i18n="px.groupes.lien">Demander un devis sur mesure</a>
+        <a class="lien lien--clair" href="/programme/" data-i18n="px.groupes.programme">Voir le programme</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p class="tf-mentions" data-i18n="px.mentions">Prix indicatifs en euros, TTC, par personne, pour la saison 2027. Ils peuvent évoluer ; le tarif exact vous est confirmé par écrit avant toute réservation.</p>
+
 </main>
 
 <footer class="pied">
@@ -418,7 +303,7 @@
         <div class="pied-col">
           <p class="pied-titre" data-i18n="footer.col.sejour">Le séjour</p>
           <ul>
-            <li><a href="/#programme" data-i18n="footer.programme">Le programme</a></li>
+            <li><a href="/programme/" data-i18n="footer.programme">Le programme</a></li>
             <li><a href="/parcours/" data-i18n="footer.parcours">Les parcours</a></li>
             <li><a href="/pricing/" aria-current="page" data-i18n="footer.tarifs">Tarifs</a></li>
           </ul>
@@ -487,6 +372,52 @@
   </div>
 </footer>
 
+<script src="/assets/js/parcours.js" defer></script>
+<script>
+/* Choix de la saison : les prix passent de la basse à la haute saison.
+   Les montants sont écrits dans la langue de la page (2 490 €, €2,490, 2490 €). */
+(function(){
+  var groupe = document.querySelector('.tf-saisons');
+  if (!groupe) return;
+  var boutons = [].slice.call(groupe.querySelectorAll('.tf-saison'));
+  var montants = [].slice.call(document.querySelectorAll('.tf-montant strong'));
+  var annonce = document.querySelector('[data-annonce]');
+  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saison = 'basse';
+  var libelles = {
+    fr: {basse: 'Prix affichés : basse saison', haute: 'Prix affichés : haute saison'},
+    en: {basse: 'Prices shown: low season', haute: 'Prices shown: high season'},
+    es: {basse: 'Precios mostrados: temporada baja', haute: 'Precios mostrados: temporada alta'}
+  };
+  function langue(){ var l = document.documentElement.lang || 'fr'; return libelles[l] ? l : 'fr'; }
+  function euros(n){
+    var locale = {fr: 'fr-FR', en: 'en-GB', es: 'es-ES'}[langue()];
+    try { return new Intl.NumberFormat(locale, {style: 'currency', currency: 'EUR', maximumFractionDigits: 0, useGrouping: 'always'}).format(n); }
+    catch (e){ return n + ' €'; }
+  }
+  function formater(){
+    [].slice.call(document.querySelectorAll('[data-prix]')).forEach(function(el){
+      el.textContent = euros(parseInt(el.getAttribute('data-prix'), 10));
+    });
+  }
+  function choisir(s, annoncer){
+    saison = s;
+    boutons.forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-saison') === s)); });
+    montants.forEach(function(m){
+      function poser(){ m.setAttribute('data-prix', m.getAttribute('data-' + s)); m.textContent = euros(parseInt(m.getAttribute('data-prix'), 10)); m.classList.remove('tf-change'); }
+      if (reduit){ poser(); } else { m.classList.add('tf-change'); setTimeout(poser, 220); }
+    });
+    [].slice.call(document.querySelectorAll('[data-autre]')).forEach(function(p){
+      p.hidden = p.getAttribute('data-autre') === (s === 'basse' ? 'b' : 'h');
+    });
+    if (annoncer && annonce) annonce.textContent = libelles[langue()][s];
+  }
+  boutons.forEach(function(b){ b.addEventListener('click', function(){ choisir(b.getAttribute('data-saison'), true); }); });
+  groupe.hidden = false;
+  formater();
+  new MutationObserver(formater).observe(document.documentElement, {attributes: true, attributeFilter: ['lang']});
+})();
+</script>
 <script>window.BELARDI_PAGE = "pricing";</script>
 <script src="/assets/js/i18n.js" defer></script>
 </body>
