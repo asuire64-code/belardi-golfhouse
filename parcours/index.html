@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Les parcours — BELARDI Golf House</title>
-<meta name="description" content="Les dix golfs joués depuis la BELARDI Golf House : Chiberta, Le Phare, Chantaco, la Nivelle, Arcangues, Ilbarritz, Makila, Epherra, Hossegor et Seignosse. Caractère et fiche technique de chaque parcours.">
+<meta name="description" content="Les dix golfs joués depuis la BELARDI Golf House, vus du ciel : Chiberta, Le Phare, Chantaco, la Nivelle, Arcangues, Ilbarritz, Makila, Epherra, Hossegor et Seignosse. Caractère, fiche technique et images de chaque parcours.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://belardi-golfhouse.fr/parcours/">
 
@@ -18,8 +18,7 @@
       "url": "https://belardi-golfhouse.fr/parcours/",
       "name": "Les parcours — BELARDI Golf House",
       "inLanguage": "fr-FR",
-      "isPartOf": { "@id": "https://belardi-golfhouse.fr/#website" },
-      "about": { "@id": "https://belardi-golfhouse.fr/#organization" }
+      "isPartOf": { "@id": "https://belardi-golfhouse.fr/#website" }
     },
     {
       "@type": "BreadcrumbList",
@@ -50,22 +49,24 @@
 <meta property="og:site_name" content="BELARDI Golf House">
 <meta property="og:url" content="https://belardi-golfhouse.fr/parcours/">
 <meta property="og:title" content="Les parcours — BELARDI Golf House">
-<meta property="og:description" content="Dix golfs entre Seignosse et Ciboure : links de bord de mer, parcours centenaires, tracés vallonnés face aux Pyrénées.">
+<meta property="og:description" content="Les dix golfs joués depuis la BELARDI Golf House, vus du ciel : Chiberta, Le Phare, Chantaco, la Nivelle, Arcangues, Ilbarritz, Makila, Epherra, Hossegor et Seignosse. Caractère, fiche technique et images de chaque parcours.">
 <meta property="og:image" content="https://belardi-golfhouse.fr/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="preload" as="image" href="/assets/images/parcours/links-dune-1600.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/images/parcours/vues/cote-chiberta-2400.webp" fetchpriority="high">
 <link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/italiana-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/css/belardi.css">
 <link rel="stylesheet" href="/assets/css/style-maison.css">
 <link rel="stylesheet" href="/assets/css/style-parcours.css">
-<script>document.documentElement.classList.add('js-revele');window.__secoursRevele=setTimeout(function(){document.documentElement.classList.remove('js-revele')},4000);</script>
+<script>document.documentElement.classList.add('js-revele','pv-js');window.__secoursRevele=setTimeout(function(){document.documentElement.classList.remove('js-revele')},4000);</script>
 </head>
 <body class="accueil parcours">
+
+<!-- Vues aériennes : IGN (Licence Ouverte 2.0). Crédits : assets/images/parcours/CREDITS.md -->
 
 <input type="checkbox" id="menu" class="burger-ctrl" aria-label="Afficher le menu">
 
@@ -83,7 +84,7 @@
       <div class="nav-liens">
         <span class="nav-pilule" aria-hidden="true"></span>
         <a href="/" data-i18n="nav.accueil">Accueil</a>
-        <a href="/#programme" data-i18n="nav.programme">Programme</a>
+        <a href="/programme/" data-i18n="nav.programme">Programme</a>
         <a href="/parcours/" aria-current="page" data-i18n="nav.parcours">Parcours</a>
         <a href="/#origines" data-i18n="nav.apropos">À propos</a>
         <a href="/pricing/" data-i18n="nav.tarifs">Tarifs</a>
@@ -119,7 +120,7 @@
 
 <nav class="menu-mobile" aria-label="Menu principal">
   <a href="/" data-i18n="nav.accueil" onclick="document.getElementById('menu').checked=false">Accueil</a>
-  <a href="/#programme" data-i18n="nav.programme" onclick="document.getElementById('menu').checked=false">Programme</a>
+  <a href="/programme/" data-i18n="nav.programme" onclick="document.getElementById('menu').checked=false">Programme</a>
   <a href="/parcours/" data-i18n="nav.parcours" onclick="document.getElementById('menu').checked=false">Parcours</a>
   <a href="/#origines" data-i18n="nav.apropos" onclick="document.getElementById('menu').checked=false">À propos</a>
   <a href="/pricing/" data-i18n="nav.tarifs" onclick="document.getElementById('menu').checked=false">Tarifs</a>
@@ -132,216 +133,248 @@
   </div>
 </nav>
 
-
-
 <main id="contenu">
-<section class="intro">
-<div class="pc-une" aria-labelledby="pc-une-titre">
-  <div class="pc-une-photo">
-    <img src="/assets/images/parcours/links-dune-1600.webp" width="1600" height="900" fetchpriority="high" decoding="async"
-         data-i18n-alt="pc.alt.links-dune" alt="Green de links au coucher du soleil, chemin de sable dans les dunes">
+
+<section class="pv-une" aria-labelledby="pv-titre">
+  <div class="pv-une-photo">
+    <picture>
+      <source media="(max-width: 760px)" srcset="/assets/images/parcours/vues/cote-chiberta-portrait-1080.webp">
+      <img src="/assets/images/parcours/vues/cote-chiberta-2400.webp" width="2400" height="1350" fetchpriority="high" decoding="async"
+           data-i18n-alt="pc.une.alt" alt="Vue aérienne du golf de Chiberta à Anglet : l'océan, la plage et les trous dessinés dans les dunes">
+    </picture>
   </div>
-  <div class="pc-une-contenu conteneur" data-revele>
-    <h1 id="pc-une-titre" data-i18n="pc.intro.h1">Dix golfs entre les Landes et la frontière.</h1>
+  <div class="pv-une-visee" aria-hidden="true"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+      <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(251,248,238,.5)" stroke-width=".6" stroke-dasharray="1.5 4"/>
+      <path d="M50 0v14M50 86v14M0 50h14M86 50h14" stroke="rgba(251,248,238,.85)" stroke-width=".8"/>
+      <circle cx="50" cy="50" r="1.6" fill="rgba(251,248,238,.9)"/>
+    </svg></div>
+  <div class="conteneur pv-une-contenu">
+    <h1 id="pv-titre" data-i18n="pc.h1">Dix parcours, vus du ciel.</h1>
+    <p class="pv-une-lead" data-i18n="pc.lead">Des links face à l'océan aux collines basques : chaque golf du séjour, d'abord vu d'en haut.</p>
   </div>
-</div>
-<div class="conteneur">
-  <p class="texte pc-lead" data-revele data-i18n="pc.intro.lead">De l'un des plus anciens parcours d'Europe continentale aux links dessinés dans les dunes, en passant par les tracés vallonnés face aux Pyrénées : la Côte Basque concentre en une heure de route une variété de jeu qu'on trouve rarement ailleurs. Cinq de ces parcours sont joués pendant votre semaine, choisis selon le niveau du groupe et la météo.</p>
-  <div class="pc-reperes" data-revele>
-    <div><strong>10</strong><span data-i18n="pc.reperes1.l">Parcours accessibles</span></div>
-    <div><strong>5</strong><span data-i18n="pc.reperes2.l">Joués dans la semaine</span></div>
-    <div><strong>1888</strong><span data-i18n="pc.reperes3.l">Le plus ancien</span></div>
-    <div><strong>&lt; 1&nbsp;h</strong><span data-i18n="pc.reperes4.l">De route au plus loin</span></div>
-  </div>
-</div>
+  <p class="pv-une-legende">
+    <span class="pv-hud-txt" data-i18n="pc.une.source">Vue aérienne IGN</span>
+    <span class="pv-hud-txt notranslate" translate="no">Golf de Chiberta, Anglet</span>
+    <span class="pv-hud-txt" data-i18n="pc.coord.chiberta">43° 30′ 45″ N · 1° 31′ 47″ O</span>
+  </p>
 </section>
 
-<section id="golfs" class="pc-golfs">
-  <div class="conteneur">
-    <div class="filtres" data-revele>
-      <span class="lbl" data-i18n="pc.filtres.lbl">Filtrer</span>
-      <button class="filtre" type="button" data-f="tous" aria-pressed="true" data-i18n="pc.filtre.tous">Tous</button>
-      <button class="filtre" type="button" data-f="ocean" aria-pressed="false" data-i18n="pc.filtre.ocean">Face à l'océan</button>
-      <button class="filtre" type="button" data-f="foret" aria-pressed="false" data-i18n="pc.filtre.foret">Dans les pins</button>
-      <button class="filtre" type="button" data-f="collines" aria-pressed="false" data-i18n="pc.filtre.collines">Collines basques</button>
-      <button class="filtre" type="button" data-f="histoire" aria-pressed="false" data-i18n="pc.filtre.histoire">Parcours historiques</button>
-    </div>
-    <ul class="pc-grille" id="pc-grille" data-revele>
-      <li class="pc-carte" data-f="foret">
-        <a class="fx-link" href="/parcours/seignosse/">
-          <div class="cadre">
-            <img src="/assets/images/parcours/pinede-verte-900.webp"
-                 sizes="(max-width: 760px) 90vw, 29vw" width="900" height="1200" loading="lazy" decoding="async"
-                 data-i18n-alt="pc.alt.pinede-verte" alt="Green entouré de pins, drapeau planté au centre">
-          </div>
-          <div class="pc-carte-texte">
-            <span class="pc-carte-num">01</span>
-            <h2 class="pc-carte-nom notranslate" translate="no">Golf de Seignosse</h2>
-            <p class="pc-carte-lieu notranslate" translate="no">Seignosse · Landes</p>
-            <p class="pc-carte-specs" data-i18n="pc.carte.seignosse.specs">18 trous · par 72</p>
-          </div>
-        </a>
-      </li>
-
-      <li class="pc-carte" data-f="foret histoire">
-        <a class="fx-link" href="/parcours/hossegor/">
-          <div class="cadre">
-            <img src="/assets/images/parcours/pinede-verte-900.webp"
-                 sizes="(max-width: 760px) 90vw, 29vw" width="900" height="1200" loading="lazy" decoding="async"
-                 data-i18n-alt="pc.alt.pinede-verte" alt="Green entouré de pins, drapeau planté au centre">
-          </div>
-          <div class="pc-carte-texte">
-            <span class="pc-carte-num">02</span>
-            <h2 class="pc-carte-nom notranslate" translate="no">Golf d'Hossegor</h2>
-            <p class="pc-carte-lieu notranslate" translate="no">Hossegor · Landes</p>
-            <p class="pc-carte-specs" data-i18n="pc.carte.hossegor.specs">18 trous · par 71</p>
-          </div>
-        </a>
-      </li>
-
-      <li class="pc-carte" data-f="ocean foret histoire">
-        <a class="fx-link" href="/parcours/chiberta/">
-          <div class="cadre">
-            <img src="/assets/images/parcours/links-dune-900.webp"
-                 sizes="(max-width: 760px) 90vw, 29vw" width="900" height="1200" loading="lazy" decoding="async"
-                 data-i18n-alt="pc.alt.links-dune" alt="Green de links au coucher du soleil, chemin de sable dans les dunes">
-          </div>
-          <div class="pc-carte-texte">
-            <span class="pc-carte-num">03</span>
-            <h2 class="pc-carte-nom notranslate" translate="no">Golf de Chiberta</h2>
-            <p class="pc-carte-lieu notranslate" translate="no">Anglet · Pyrénées-Atlantiques</p>
-            <p class="pc-carte-specs" data-i18n="pc.carte.chiberta.specs">18 (+ 9) trous · par 70</p>
-          </div>
-        </a>
-      </li>
-
-      <li class="pc-carte" data-f="ocean histoire">
-        <a class="fx-link" href="/parcours/phare/">
-          <div class="cadre">
-            <img src="/assets/images/parcours/links-dune-900.webp"
-                 sizes="(max-width: 760px) 90vw, 29vw" width="900" height="1200" loading="lazy" decoding="async"
-                 data-i18n-alt="pc.alt.links-dune" alt="Green de links au coucher du soleil, chemin de sable dans les dunes">
-          </div>
-          <div class="pc-carte-texte">
-            <span class="pc-carte-num">04</span>
-            <h2 class="pc-carte-nom notranslate" translate="no">Golf de Biarritz « Le Phare »</h2>
-            <p class="pc-carte-lieu notranslate" translate="no">Biarritz · Pyrénées-Atlantiques</p>
-            <p class="pc-carte-specs" data-i18n="pc.carte.phare.specs">18 trous · par 69</p>
-          </div>
-        </a>
-      </li>
-
-      <li class="pc-carte" data-f="collines foret">
-        <a class="fx-link" href="/parcours/makila/">
-          <div class="cadre">
-            <img src="/assets/images/parcours/collines-basques-900.webp"
-                 sizes="(max-width: 760px) 90vw, 29vw" width="900" height="1200" loading="lazy" decoding="async"
-                 data-i18n-alt="pc.alt.collines-basques" alt="Green vallonné avec bunker, collines et village à l'arrière-plan">
-          </div>
-          <div class="pc-carte-texte">
-            <span class="pc-carte-num">05</span>
-            <h2 class="pc-carte-nom notranslate" translate="no">Makila Golf Club</h2>
-            <p class="pc-carte-lieu notranslate" translate="no">Bassussarry · Pyrénées-Atlantiques</p>
-            <p class="pc-carte-specs" data-i18n="pc.carte.makila.specs">18 trous · par 72</p>
-          </div>
-        </a>
-      </li>
-
-      <li class="pc-carte" data-f="ocean">
-        <a class="fx-link" href="/parcours/ilbarritz/">
-          <div class="cadre">
-            <img src="/assets/images/parcours/links-dune-900.webp"
-                 sizes="(max-width: 760px) 90vw, 29vw" width="900" height="1200" loading="lazy" decoding="async"
-                 data-i18n-alt="pc.alt.links-dune" alt="Green de links au coucher du soleil, chemin de sable dans les dunes">
-          </div>
-          <div class="pc-carte-texte">
-            <span class="pc-carte-num">06</span>
-            <h2 class="pc-carte-nom notranslate" translate="no">Golf d'Ilbarritz</h2>
-            <p class="pc-carte-lieu notranslate" translate="no">Bidart · Pyrénées-Atlantiques</p>
-            <p class="pc-carte-specs" data-i18n="pc.carte.ilbarritz.specs">9 trous · par 32</p>
-          </div>
-        </a>
-      </li>
-
-      <li class="pc-carte" data-f="collines">
-        <a class="fx-link" href="/parcours/arcangues/">
-          <div class="cadre">
-            <img src="/assets/images/parcours/collines-basques-900.webp"
-                 sizes="(max-width: 760px) 90vw, 29vw" width="900" height="1200" loading="lazy" decoding="async"
-                 data-i18n-alt="pc.alt.collines-basques" alt="Green vallonné avec bunker, collines et village à l'arrière-plan">
-          </div>
-          <div class="pc-carte-texte">
-            <span class="pc-carte-num">07</span>
-            <h2 class="pc-carte-nom notranslate" translate="no">Golf d'Arcangues</h2>
-            <p class="pc-carte-lieu notranslate" translate="no">Arcangues · Pyrénées-Atlantiques</p>
-            <p class="pc-carte-specs" data-i18n="pc.carte.arcangues.specs">18 trous · par 72</p>
-          </div>
-        </a>
-      </li>
-
-      <li class="pc-carte" data-f="collines">
-        <a class="fx-link" href="/parcours/epherra/">
-          <div class="cadre">
-            <img src="/assets/images/parcours/collines-basques-900.webp"
-                 sizes="(max-width: 760px) 90vw, 29vw" width="900" height="1200" loading="lazy" decoding="async"
-                 data-i18n-alt="pc.alt.collines-basques" alt="Green vallonné avec bunker, collines et village à l'arrière-plan">
-          </div>
-          <div class="pc-carte-texte">
-            <span class="pc-carte-num">08</span>
-            <h2 class="pc-carte-nom notranslate" translate="no">Golf d'Epherra</h2>
-            <p class="pc-carte-lieu notranslate" translate="no">Souraïde · Pyrénées-Atlantiques</p>
-            <p class="pc-carte-specs" data-i18n="pc.carte.epherra.specs">18 trous · par 67</p>
-          </div>
-        </a>
-      </li>
-
-      <li class="pc-carte" data-f="collines histoire">
-        <a class="fx-link" href="/parcours/chantaco/">
-          <div class="cadre">
-            <img src="/assets/images/parcours/vallee-boisee-900.webp"
-                 sizes="(max-width: 760px) 90vw, 29vw" width="900" height="1200" loading="lazy" decoding="async"
-                 data-i18n-alt="pc.alt.vallee-boisee" alt="Fairway dans une vallée boisée, brume matinale">
-          </div>
-          <div class="pc-carte-texte">
-            <span class="pc-carte-num">09</span>
-            <h2 class="pc-carte-nom notranslate" translate="no">Golf de Chantaco</h2>
-            <p class="pc-carte-lieu notranslate" translate="no">Saint-Jean-de-Luz · Pyrénées-Atlantiques</p>
-            <p class="pc-carte-specs" data-i18n="pc.carte.chantaco.specs">18 trous · par 70</p>
-          </div>
-        </a>
-      </li>
-
-      <li class="pc-carte" data-f="ocean collines histoire">
-        <a class="fx-link" href="/parcours/nivelle/">
-          <div class="cadre">
-            <img src="/assets/images/parcours/links-dune-900.webp"
-                 sizes="(max-width: 760px) 90vw, 29vw" width="900" height="1200" loading="lazy" decoding="async"
-                 data-i18n-alt="pc.alt.links-dune" alt="Green de links au coucher du soleil, chemin de sable dans les dunes">
-          </div>
-          <div class="pc-carte-texte">
-            <span class="pc-carte-num">10</span>
-            <h2 class="pc-carte-nom notranslate" translate="no">Golf de la Nivelle</h2>
-            <p class="pc-carte-lieu notranslate" translate="no">Ciboure · Pyrénées-Atlantiques</p>
-            <p class="pc-carte-specs" data-i18n="pc.carte.nivelle.specs">18 trous · par 70</p>
-          </div>
-        </a>
-      </li>
+<section class="pv-intro" data-i18n-aria="pc.reperes.aria" aria-label="En bref">
+  <div class="conteneur grille">
+    <p class="texte" data-revele data-i18n="pc.intro.lead">De l'un des plus anciens parcours d'Europe continentale aux links dessinés dans les dunes, en passant par les tracés vallonnés face aux Pyrénées : la Côte Basque concentre en une heure de route une variété de jeu qu'on trouve rarement ailleurs. De quatre à six de ces parcours sont joués pendant votre semaine, selon la formule, le niveau du groupe et la météo.</p>
+    <ul class="pv-reperes" data-revele style="--d:140ms">
+      <li><strong>10</strong><span data-i18n="pc.reperes1.l">Parcours accessibles</span></li>
+      <li><strong data-i18n="pc.reperes2.n">4 à 6</strong><span data-i18n="pc.reperes2.l">Joués dans la semaine</span></li>
+      <li><strong>1888</strong><span data-i18n="pc.reperes3.l">Le plus ancien</span></li>
+      <li><strong>&lt; 1 h</strong><span data-i18n="pc.reperes4.l">De route au plus loin</span></li>
     </ul>
-    <p class="pc-vide" id="pc-vide" hidden data-i18n="pc.vide">Aucun parcours ne correspond à ce filtre.</p>
-    <p class="texte pc-suite" data-i18n="pc.golfs.suite">Et aussi Arcangues face aux Pyrénées, Epherra et bien d'autres.</p>
   </div>
 </section>
 
-<section class="pc-rappel">
-  <div class="conteneur" data-revele>
-    <p class="pc-rappel-eyebrow" data-i18n="pc.rappel.eyebrow">Votre semaine</p>
-    <h2 class="titre" data-i18n="pc.rappel.h2">Cinq parcours, choisis pour vous.</h2>
-    <p class="texte" data-i18n="pc.rappel.p">Nous composons le programme de la semaine en fonction du niveau du groupe, de la météo et des disponibilités des clubs. Les green fees de ces cinq parcours sont compris dans le séjour.</p>
-    <a class="bouton bouton--clair" href="/contact/" data-i18n="pc.rappel.cta">Demander les prochaines dates</a>
+<section id="golfs" class="pv-rail" aria-labelledby="pv-rail-titre">
+  <div class="pv-rail-scene">
+    <div class="conteneur grille pv-rail-tete" data-revele>
+      <h2 id="pv-rail-titre" class="titre" data-i18n="pc.rail.h2">Un parcours après l'autre.</h2>
+      <p class="texte" data-i18n="pc.rail.p">Faites défiler : chaque golf arrive tel qu'on le voit du ciel. Choisissez-en un pour descendre dessus.</p>
+    </div>
+    <ol class="pv-piste">
+      <li class="pv-carte" data-revele style="--d:0ms">
+        <a class="fx-link" href="/parcours/seignosse/">
+          <img src="/assets/images/parcours/vues/seignosse-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async"
+               sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 26vw" data-i18n-alt="pc.carte.seignosse.alt" alt="Vue aérienne du golf de Seignosse">
+          <span class="pv-carte-visee" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="pv-carte-haut">
+            <span class="pv-carte-num">01</span>
+            <span class="pv-carte-coord pv-hud-txt" data-i18n="pc.coord.seignosse">43° 41′ 28″ N · 1° 24′ 54″ O</span>
+          </span>
+          <div class="pv-carte-bas">
+            <h3 class="pv-carte-nom notranslate" translate="no">Golf de Seignosse</h3>
+            <span class="pv-carte-lieu" data-i18n="pc.lieu.seignosse">Seignosse · Landes</span>
+            <span class="pv-carte-specs" data-i18n="pc.carte.seignosse.specs">18 trous · par 72 · 6 200 m</span>
+            <span class="pv-carte-voir" data-i18n="pc.carte.voir">Survoler le parcours</span>
+          </div>
+        </a>
+      </li>
+      <li class="pv-carte" data-revele style="--d:90ms">
+        <a class="fx-link" href="/parcours/hossegor/">
+          <img src="/assets/images/parcours/vues/hossegor-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async"
+               sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 26vw" data-i18n-alt="pc.carte.hossegor.alt" alt="Vue aérienne du golf d'Hossegor">
+          <span class="pv-carte-visee" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="pv-carte-haut">
+            <span class="pv-carte-num">02</span>
+            <span class="pv-carte-coord pv-hud-txt" data-i18n="pc.coord.hossegor">43° 39′ 35″ N · 1° 25′ 03″ O</span>
+          </span>
+          <div class="pv-carte-bas">
+            <h3 class="pv-carte-nom notranslate" translate="no">Golf d'Hossegor</h3>
+            <span class="pv-carte-lieu" data-i18n="pc.lieu.hossegor">Hossegor · Landes</span>
+            <span class="pv-carte-specs" data-i18n="pc.carte.hossegor.specs">18 trous · par 71 · 5 957 m</span>
+            <span class="pv-carte-voir" data-i18n="pc.carte.voir">Survoler le parcours</span>
+          </div>
+        </a>
+      </li>
+      <li class="pv-carte" data-revele style="--d:180ms">
+        <a class="fx-link" href="/parcours/chiberta/">
+          <img src="/assets/images/parcours/vues/chiberta-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async"
+               sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 26vw" data-i18n-alt="pc.carte.chiberta.alt" alt="Vue aérienne du golf de Chiberta">
+          <span class="pv-carte-visee" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="pv-carte-haut">
+            <span class="pv-carte-num">03</span>
+            <span class="pv-carte-coord pv-hud-txt" data-i18n="pc.coord.chiberta">43° 30′ 45″ N · 1° 31′ 47″ O</span>
+          </span>
+          <div class="pv-carte-bas">
+            <h3 class="pv-carte-nom notranslate" translate="no">Golf de Chiberta</h3>
+            <span class="pv-carte-lieu" data-i18n="pc.lieu.chiberta">Anglet · Pyrénées-Atlantiques</span>
+            <span class="pv-carte-specs" data-i18n="pc.carte.chiberta.specs">18 (+ 9) trous · par 70 · 5 647 m</span>
+            <span class="pv-carte-voir" data-i18n="pc.carte.voir">Survoler le parcours</span>
+          </div>
+        </a>
+      </li>
+      <li class="pv-carte" data-revele style="--d:0ms">
+        <a class="fx-link" href="/parcours/phare/">
+          <img src="/assets/images/parcours/vues/phare-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async"
+               sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 26vw" data-i18n-alt="pc.carte.phare.alt" alt="Vue aérienne du golf de Biarritz « Le Phare »">
+          <span class="pv-carte-visee" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="pv-carte-haut">
+            <span class="pv-carte-num">04</span>
+            <span class="pv-carte-coord pv-hud-txt" data-i18n="pc.coord.phare">43° 29′ 37″ N · 1° 32′ 30″ O</span>
+          </span>
+          <div class="pv-carte-bas">
+            <h3 class="pv-carte-nom notranslate" translate="no">Golf de Biarritz « Le Phare »</h3>
+            <span class="pv-carte-lieu" data-i18n="pc.lieu.phare">Biarritz · Pyrénées-Atlantiques</span>
+            <span class="pv-carte-specs" data-i18n="pc.carte.phare.specs">18 trous · par 69 · 5 402 m</span>
+            <span class="pv-carte-voir" data-i18n="pc.carte.voir">Survoler le parcours</span>
+          </div>
+        </a>
+      </li>
+      <li class="pv-carte" data-revele style="--d:90ms">
+        <a class="fx-link" href="/parcours/makila/">
+          <img src="/assets/images/parcours/vues/makila-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async"
+               sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 26vw" data-i18n-alt="pc.carte.makila.alt" alt="Vue aérienne du Makila Golf Club">
+          <span class="pv-carte-visee" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="pv-carte-haut">
+            <span class="pv-carte-num">05</span>
+            <span class="pv-carte-coord pv-hud-txt" data-i18n="pc.coord.makila">43° 26′ 21″ N · 1° 29′ 29″ O</span>
+          </span>
+          <div class="pv-carte-bas">
+            <h3 class="pv-carte-nom notranslate" translate="no">Makila Golf Club</h3>
+            <span class="pv-carte-lieu" data-i18n="pc.lieu.makila">Bassussarry · Pyrénées-Atlantiques</span>
+            <span class="pv-carte-specs" data-i18n="pc.carte.makila.specs">18 trous · par 72 · 6 134 m</span>
+            <span class="pv-carte-voir" data-i18n="pc.carte.voir">Survoler le parcours</span>
+          </div>
+        </a>
+      </li>
+      <li class="pv-carte" data-revele style="--d:180ms">
+        <a class="fx-link" href="/parcours/ilbarritz/">
+          <img src="/assets/images/parcours/vues/ilbarritz-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async"
+               sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 26vw" data-i18n-alt="pc.carte.ilbarritz.alt" alt="Vue aérienne du golf d'Ilbarritz">
+          <span class="pv-carte-visee" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="pv-carte-haut">
+            <span class="pv-carte-num">06</span>
+            <span class="pv-carte-coord pv-hud-txt" data-i18n="pc.coord.ilbarritz">43° 27′ 31″ N · 1° 34′ 32″ O</span>
+          </span>
+          <div class="pv-carte-bas">
+            <h3 class="pv-carte-nom notranslate" translate="no">Golf d'Ilbarritz</h3>
+            <span class="pv-carte-lieu" data-i18n="pc.lieu.ilbarritz">Bidart · Pyrénées-Atlantiques</span>
+            <span class="pv-carte-specs" data-i18n="pc.carte.ilbarritz.specs">9 trous · par 32 · 2 057 m</span>
+            <span class="pv-carte-voir" data-i18n="pc.carte.voir">Survoler le parcours</span>
+          </div>
+        </a>
+      </li>
+      <li class="pv-carte" data-revele style="--d:0ms">
+        <a class="fx-link" href="/parcours/arcangues/">
+          <img src="/assets/images/parcours/vues/arcangues-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async"
+               sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 26vw" data-i18n-alt="pc.carte.arcangues.alt" alt="Vue aérienne du golf d'Arcangues">
+          <span class="pv-carte-visee" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="pv-carte-haut">
+            <span class="pv-carte-num">07</span>
+            <span class="pv-carte-coord pv-hud-txt" data-i18n="pc.coord.arcangues">43° 26′ 08″ N · 1° 31′ 32″ O</span>
+          </span>
+          <div class="pv-carte-bas">
+            <h3 class="pv-carte-nom notranslate" translate="no">Golf d'Arcangues</h3>
+            <span class="pv-carte-lieu" data-i18n="pc.lieu.arcangues">Arcangues · Pyrénées-Atlantiques</span>
+            <span class="pv-carte-specs" data-i18n="pc.carte.arcangues.specs">18 trous · par 72 · 5 758 m</span>
+            <span class="pv-carte-voir" data-i18n="pc.carte.voir">Survoler le parcours</span>
+          </div>
+        </a>
+      </li>
+      <li class="pv-carte" data-revele style="--d:90ms">
+        <a class="fx-link" href="/parcours/epherra/">
+          <img src="/assets/images/parcours/vues/epherra-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async"
+               sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 26vw" data-i18n-alt="pc.carte.epherra.alt" alt="Vue aérienne du golf d'Epherra">
+          <span class="pv-carte-visee" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="pv-carte-haut">
+            <span class="pv-carte-num">08</span>
+            <span class="pv-carte-coord pv-hud-txt" data-i18n="pc.coord.epherra">43° 20′ 51″ N · 1° 28′ 34″ O</span>
+          </span>
+          <div class="pv-carte-bas">
+            <h3 class="pv-carte-nom notranslate" translate="no">Golf d'Epherra</h3>
+            <span class="pv-carte-lieu" data-i18n="pc.lieu.epherra">Souraïde · Pyrénées-Atlantiques</span>
+            <span class="pv-carte-specs" data-i18n="pc.carte.epherra.specs">18 trous · par 67 · 4 695 m</span>
+            <span class="pv-carte-voir" data-i18n="pc.carte.voir">Survoler le parcours</span>
+          </div>
+        </a>
+      </li>
+      <li class="pv-carte" data-revele style="--d:180ms">
+        <a class="fx-link" href="/parcours/chantaco/">
+          <img src="/assets/images/parcours/vues/chantaco-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async"
+               sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 26vw" data-i18n-alt="pc.carte.chantaco.alt" alt="Vue aérienne du golf de Chantaco">
+          <span class="pv-carte-visee" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="pv-carte-haut">
+            <span class="pv-carte-num">09</span>
+            <span class="pv-carte-coord pv-hud-txt" data-i18n="pc.coord.chantaco">43° 23′ 10″ N · 1° 38′ 22″ O</span>
+          </span>
+          <div class="pv-carte-bas">
+            <h3 class="pv-carte-nom notranslate" translate="no">Golf de Chantaco</h3>
+            <span class="pv-carte-lieu" data-i18n="pc.lieu.chantaco">Saint-Jean-de-Luz · Pyrénées-Atlantiques</span>
+            <span class="pv-carte-specs" data-i18n="pc.carte.chantaco.specs">18 trous · par 70 · 5 833 m</span>
+            <span class="pv-carte-voir" data-i18n="pc.carte.voir">Survoler le parcours</span>
+          </div>
+        </a>
+      </li>
+      <li class="pv-carte" data-revele style="--d:0ms">
+        <a class="fx-link" href="/parcours/nivelle/">
+          <img src="/assets/images/parcours/vues/nivelle-carte-900.webp" width="900" height="1125" loading="lazy" decoding="async"
+               sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 26vw" data-i18n-alt="pc.carte.nivelle.alt" alt="Vue aérienne du golf de la Nivelle">
+          <span class="pv-carte-visee" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="pv-carte-haut">
+            <span class="pv-carte-num">10</span>
+            <span class="pv-carte-coord pv-hud-txt" data-i18n="pc.coord.nivelle">43° 22′ 38″ N · 1° 39′ 12″ O</span>
+          </span>
+          <div class="pv-carte-bas">
+            <h3 class="pv-carte-nom notranslate" translate="no">Golf de la Nivelle</h3>
+            <span class="pv-carte-lieu" data-i18n="pc.lieu.nivelle">Ciboure · Pyrénées-Atlantiques</span>
+            <span class="pv-carte-specs" data-i18n="pc.carte.nivelle.specs">18 trous · par 70 · 5 685 m</span>
+            <span class="pv-carte-voir" data-i18n="pc.carte.voir">Survoler le parcours</span>
+          </div>
+        </a>
+      </li>
+    </ol>
+    <div class="pv-rail-compteur" aria-hidden="true">
+      <b data-compteur>01</b><span class="pv-hud-txt" data-i18n="pc.rail.sur">sur 10</span>
+      <span class="pv-rail-barre"><i></i></span>
+      <span class="pv-hud-txt notranslate" translate="no" data-compteur-nom>Golf de Seignosse</span>
+    </div>
   </div>
 </section>
 
-<p class="note-sources" data-i18n="pc.sources">Données des parcours (trous, par, longueur, architecte, année) relevées auprès des fiches publiques des clubs et des annuaires Golfstars, 1golf.eu et Where2Golf. Les longueurs varient selon les départs : elles sont données ici depuis les repères arrière.</p>
+<section class="pv-semaine" aria-labelledby="pv-semaine-titre">
+  <div class="conteneur grille">
+    <h2 id="pv-semaine-titre" class="titre" data-revele data-i18n="pc.rappel.h2">De quatre à six parcours, choisis pour vous.</h2>
+    <div class="pv-semaine-texte" data-revele style="--d:140ms">
+      <p class="texte" data-i18n="pc.rappel.p">Nous composons la semaine selon votre formule, le niveau du groupe, la météo et les disponibilités des clubs. Les green fees sont compris dans le séjour.</p>
+      <div class="actions">
+        <a class="bouton bouton--clair" href="/programme/" data-i18n="pc.rappel.programme">Voir le programme</a>
+        <a class="lien lien--clair" href="/contact/" data-i18n="pc.rappel.cta">Demander les prochaines dates</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pv-notes">
+  <p data-i18n="pc.sources">Données des parcours (trous, par, longueur, architecte, année) relevées auprès des fiches publiques des clubs et des annuaires Golfstars, 1golf.eu et Where2Golf. Les longueurs varient selon les départs : elles sont données ici depuis les repères arrière.</p>
+  <p data-i18n="pc.credits.ign">Vues aériennes : © IGN – Géoplateforme, orthophotographies (Licence Ouverte 2.0).</p>
+</div>
+
 </main>
 
 <footer class="pied">
@@ -361,7 +394,7 @@
         <div class="pied-col">
           <p class="pied-titre" data-i18n="footer.col.sejour">Le séjour</p>
           <ul>
-            <li><a href="/#programme" data-i18n="footer.programme">Le programme</a></li>
+            <li><a href="/programme/" data-i18n="footer.programme">Le programme</a></li>
             <li><a href="/parcours/" aria-current="page" data-i18n="footer.parcours">Les parcours</a></li>
             <li><a href="/pricing/" data-i18n="footer.tarifs">Tarifs</a></li>
           </ul>
@@ -429,8 +462,6 @@
 
   </div>
 </footer>
-
-
 
 <script src="/assets/js/parcours.js" defer></script>
 <script>window.BELARDI_PAGE = "parcours";</script>

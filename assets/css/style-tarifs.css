@@ -1,0 +1,154 @@
+/* Page « Tarifs » (/pricing/) : ouverture plein écran, choix de la saison, trois
+   formules côte à côte (la formule conseillée sur bande verte), tableau comparatif,
+   ce qui est compris partout, devis pour les groupes.
+   S'appuie sur /assets/css/style-maison.css (tokens, boutons, révélation) — voir DESIGN.md. */
+
+/* ================================ Ouverture ================================ */
+.tf-une{
+  position:relative;isolation:isolate;display:flex;align-items:flex-end;overflow:hidden;color:var(--ivoire);
+  height:calc(100svh - var(--h-entete-reelle));min-height:560px;background:#1E2A22;
+}
+.tf-une-photo{position:absolute;inset:0;z-index:-1}
+.tf-une-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.tf-une-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(14,19,13,.72) 0%,rgba(14,19,13,.34) 38%,rgba(14,19,13,0) 64%);
+}
+.tf-une-contenu{width:100%;padding-bottom:clamp(44px,8vh,96px)}
+.tf-une h1{font-size:clamp(42px,5.6vw,88px);line-height:1.03;max-width:12ch;color:var(--ivoire);text-wrap:balance;text-shadow:0 2px 28px rgba(14,19,13,.35)}
+.tf-une-lead{margin-top:clamp(16px,2vw,24px);max-width:40ch;font-size:18px;line-height:1.7;color:rgba(251,248,238,.94)}
+
+/* ================================ Barre de la saison ================================ */
+.accueil main > .tf-formules{margin-top:clamp(64px,8vw,120px)}
+.tf-barre{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px 40px;margin-bottom:clamp(44px,5vw,72px)}
+.tf-barre .titre{max-width:14ch}
+.tf-barre-droite{display:grid;gap:12px;justify-items:end}
+.tf-saisons{display:inline-flex;border:1px solid var(--encre)}
+.tf-saison{
+  font:400 12px/1.2 var(--f-sans);letter-spacing:.16em;text-transform:uppercase;
+  padding:14px 20px;border:0;background:transparent;color:var(--encre);cursor:pointer;
+  transition:background-color .4s var(--sortie),color .4s var(--sortie);
+}
+.tf-saison + .tf-saison{border-left:1px solid var(--encre)}
+.tf-saison span{display:block;margin-top:4px;font-size:11px;letter-spacing:.12em;color:inherit;opacity:.72}
+.tf-saison[aria-pressed="true"]{background:var(--encre);color:var(--blanc)}
+.tf-saison:hover:not([aria-pressed="true"]){background:rgba(31,42,35,.06)}
+.tf-saison:focus-visible{outline-offset:-5px}
+.tf-indicatif{font-size:14px;color:var(--encre-douce);text-align:right;max-width:44ch}
+/* Sans script, le choix de la saison est inutile : les deux prix sont affichés */
+.tf-saisons[hidden]{display:none}
+
+/* ================================ Les trois formules ================================ */
+/* Les trois colonnes partagent les mêmes lignes (sous-grille) : noms, textes, prix et boutons s'alignent */
+.tf-grille{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(5,auto);border-top:1px solid var(--filet);border-bottom:1px solid var(--filet)}
+.tf-formule{
+  --texte:var(--encre);--doux:var(--encre-douce);--trait:var(--filet);
+  display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0;align-content:start;
+  padding:clamp(32px,3.4vw,52px) clamp(24px,2.6vw,40px);color:var(--texte)
+}
+.tf-tete{min-height:0}
+.tf-formule + .tf-formule{border-left:1px solid var(--filet)}
+.tf-formule--conseil{
+  --texte:var(--ivoire);--doux:rgba(251,248,238,.8);--trait:rgba(251,248,238,.24);
+  background:var(--vert);margin-block:-28px;padding-block:calc(clamp(32px,3.4vw,52px) + 28px);border-left:0!important
+}
+.tf-formule--conseil + .tf-formule{border-left:0}
+.tf-nom{font-size:clamp(36px,3.4vw,52px);line-height:1;color:var(--texte)}
+.tf-conseil{margin-top:12px;font-size:11.5px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--doux)}
+.tf-desc{margin-top:clamp(16px,1.8vw,22px);font-size:16px;line-height:1.6;color:var(--doux)}
+.tf-prix{margin-top:clamp(24px,2.6vw,34px);padding-top:clamp(20px,2.2vw,28px);border-top:1px solid var(--trait)}
+.tf-apartir{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--doux)}
+.tf-montant{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 10px;margin-top:8px}
+.tf-montant strong{font-family:var(--f-sans);font-weight:300;font-size:clamp(40px,3.6vw,56px);line-height:1;letter-spacing:.005em;font-variant-numeric:lining-nums tabular-nums;color:var(--texte);transition:opacity .25s ease}
+.tf-montant span{font-size:14px;color:var(--doux)}
+.tf-autre{margin-top:10px;font-size:14px;color:var(--doux)}
+.tf-autre b{font-weight:400;color:var(--texte);font-variant-numeric:lining-nums tabular-nums}
+.tf-formule .bouton{margin-top:clamp(24px,2.6vw,32px);align-self:flex-start}
+.tf-points{list-style:none;margin-top:clamp(26px,2.8vw,36px)}
+.tf-points li{padding:13px 0;border-top:1px solid var(--trait);font-size:15.5px;line-height:1.5;color:var(--texte)}
+.tf-points li:last-child{border-bottom:1px solid var(--trait)}
+
+/* ================================ Tableau comparatif ================================ */
+.tf-comparer .grille{align-items:end;margin-bottom:clamp(28px,3vw,44px)}
+.tf-comparer .titre{grid-column:1 / span 7}
+.tf-comparer .texte{grid-column:8 / span 5;max-width:38ch}
+.tf-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.tf-table caption{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.tf-table th,.tf-table td{padding:17px 16px;border-bottom:1px solid var(--filet);text-align:left;vertical-align:top;font-size:15.5px;line-height:1.5}
+.tf-table thead th{padding-top:0;font-family:var(--f-titre);font-weight:400;font-size:clamp(24px,2vw,30px);line-height:1.1;color:var(--encre);border-bottom-color:var(--encre)}
+.tf-table thead th:first-child{width:30%}
+.tf-table tbody th{font-weight:400;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--encre-douce);padding-left:0}
+.tf-table td{font-weight:300;color:var(--encre)}
+.tf-table .tf-col-conseil{background:rgba(35,58,46,.07)}
+.tf-oui svg,.tf-non svg{width:18px;height:18px;vertical-align:-3px}
+.tf-non{color:var(--encre-douce)}
+.tf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* ================================ Compris partout ================================ */
+.tf-partout .grille{align-items:start}
+.tf-partout .titre{grid-column:1 / span 5;max-width:11ch}
+.tf-partout-liste{grid-column:7 / span 6}
+.tf-partout ul{list-style:none;border-top:1px solid var(--filet)}
+.tf-partout li{padding:18px 0;border-bottom:1px solid var(--filet);font-size:17px;line-height:1.55;color:var(--encre)}
+.tf-partout-note{margin-top:22px;font-size:15px;line-height:1.65;color:var(--encre-douce)}
+
+/* ================================ Groupes ================================ */
+.tf-groupes{background:var(--vert);color:var(--ivoire);padding-block:clamp(80px,10vw,140px)}
+.tf-groupes .grille{align-items:end}
+.tf-groupes .titre{grid-column:1 / span 6;color:var(--ivoire);max-width:13ch}
+.tf-groupes-texte{grid-column:8 / span 5}
+.tf-groupes .texte{color:rgba(251,248,238,.9);max-width:40ch}
+.tf-groupes .actions{margin-top:clamp(26px,3vw,38px)}
+.tf-mentions{max-width:var(--large);margin:clamp(40px,5vw,64px) auto var(--ecart);padding-inline:var(--marge);font-size:13.5px;line-height:1.6;color:var(--encre-douce)}
+
+/* ================================ Adaptations ================================ */
+@media (max-width:1100px){
+  .tf-grille{grid-template-columns:1fr}
+  .tf-formule + .tf-formule{border-left:0;border-top:1px solid var(--filet)}
+  .tf-formule--conseil{margin-block:0;padding-block:clamp(32px,3.4vw,52px)}
+  .tf-formule--conseil + .tf-formule{border-top:0}
+  .tf-grille{grid-template-rows:none}
+  .tf-formule{grid-row:auto;grid-template-rows:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-items:start}
+  .tf-formule > *{grid-column:1}
+  .tf-formule .tf-points{grid-column:2;grid-row:1 / span 4;margin-top:0}
+  .tf-comparer .titre,.tf-comparer .texte{grid-column:1 / -1}
+  .tf-comparer .texte{margin-top:14px}
+  .tf-partout .titre,.tf-partout-liste{grid-column:1 / -1}
+  .tf-partout-liste{margin-top:28px}
+  .tf-groupes .titre,.tf-groupes-texte{grid-column:1 / -1}
+  .tf-groupes-texte{margin-top:24px}
+}
+@media (max-width:760px){
+  .tf-une{min-height:520px}
+  .tf-barre-droite{justify-items:start}
+  .tf-indicatif{text-align:left}
+  .tf-saisons{width:100%}
+  .tf-saison{flex:1;padding:12px 10px}
+  .tf-formule{display:flex;flex-direction:column;padding:32px 20px}
+  .tf-formule .tf-points{margin-top:26px}
+  /* Tableau : les noms des formules restent en haut de l'écran pendant la lecture ;
+     chaque ligne place son libellé au-dessus des trois valeurs */
+  .tf-table,.tf-table thead,.tf-table tbody,.tf-table tr{display:block}
+  .tf-table thead{position:sticky;top:var(--h-entete-reelle);z-index:1;background:var(--greige)}
+  .tf-table thead tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--encre)}
+  .tf-table thead td{display:none}
+  .tf-table thead th{width:auto!important;padding:12px 8px 10px 0;font-size:21px;border:0}
+  .tf-table tbody tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--filet);padding:14px 0}
+  .tf-table tbody th{grid-column:1 / -1;padding:0 0 8px;border:0}
+  .tf-table td{padding:0 8px 0 0;border:0;font-size:14px}
+  .tf-table .tf-col-conseil{background:none}
+}
+
+/* ================================ Mouvement ================================ */
+@media (prefers-reduced-motion: no-preference){
+  .tf-une-photo img{animation:tf-recul 3.4s var(--sortie) both}
+  @keyframes tf-recul{from{transform:scale(1.12)}to{transform:none}}
+  .tf-une-contenu > *{animation:tf-pose 1.5s var(--sortie) both}
+  .tf-une-lead{animation-delay:.2s}
+  @keyframes tf-pose{from{opacity:.25;transform:translateY(22px)}to{opacity:1;transform:none}}
+  .tf-montant strong.tf-change{opacity:0}
+}
+
+/* ================================ Transition de page en fondu ================================ */
+html.fx-transition body{transition:opacity .4s ease}
+html.fx-transition.fx-leaving body{opacity:0}

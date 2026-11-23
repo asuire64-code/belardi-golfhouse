@@ -1,130 +1,275 @@
-/* Styles propres à la section « Les parcours » (page /parcours/ et ses dix pages
-   de détail). Socle commun : /assets/css/belardi.css. Habillage partagé de cet
-   univers : /assets/css/style-maison.css (tokens, en-tête, boutons, révélation
-   au défilement) — voir DESIGN.md. */
+/* Section « Les parcours » : page /parcours/ (ouverture plein écran, rail des dix golfs
+   qui défile au fil du défilement vertical) et ses dix pages de détail (descente
+   « vue du ciel » pilotée par le défilement, fiche, images, club-house).
+   S'appuie sur /assets/css/belardi.css et /assets/css/style-maison.css — voir DESIGN.md.
+   Toutes les vues aériennes viennent de l'IGN (orthophotographies, Licence Ouverte 2.0). */
 
-/* ================================ Ouverture courte ================================ */
-.accueil .pc-une{
-  position:relative;display:flex;align-items:flex-end;overflow:hidden;color:var(--ivoire);
-  height:clamp(380px,52vh,560px);margin-bottom:clamp(48px,6vw,84px);
+.accueil.parcours{--hud:rgba(251,248,238,.92);--hud-doux:rgba(251,248,238,.62);--hud-trait:rgba(251,248,238,.34);--nuit:#0C1310}
+
+/* Étiquettes du tableau de bord (coordonnées, altitude…) : petites capitales espacées, chiffres alignés */
+.accueil .pv-hud-txt{font:400 11.5px/1.35 var(--f-sans);letter-spacing:.18em;text-transform:uppercase;font-variant-numeric:lining-nums tabular-nums;color:var(--hud)}
+
+/* ================================ Page /parcours/ : ouverture ================================ */
+.accueil .pv-une{
+  position:relative;isolation:isolate;display:flex;align-items:flex-end;overflow:hidden;color:var(--ivoire);
+  height:calc(100svh - var(--h-entete-reelle));min-height:560px;background:var(--nuit);
 }
-.accueil .pc-une-photo{position:absolute;inset:0;background:#7C6A55}
-.accueil .pc-une-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
-.accueil .pc-une-photo::after{
+.accueil .pv-une-photo{position:absolute;inset:0;z-index:-1}
+.accueil .pv-une-photo img{width:100%;height:100%;object-fit:cover;object-position:40% 50%}
+.accueil .pv-une-photo::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(14,19,13,.62) 0%,rgba(14,19,13,.28) 42%,rgba(14,19,13,0) 72%);
+  background:
+    linear-gradient(to top,rgba(10,14,12,.74) 0%,rgba(10,14,12,.32) 38%,rgba(10,14,12,0) 64%),
+    linear-gradient(to right,rgba(10,14,12,.42) 0%,rgba(10,14,12,0) 52%);
 }
-.accueil .pc-une-contenu{position:relative;z-index:1;width:100%;padding-bottom:clamp(36px,5vw,56px)}
-.accueil .pc-une-eyebrow{font-size:12.5px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:rgba(251,248,238,.88);margin-bottom:10px}
-.accueil .pc-une h1{font-size:clamp(34px,4.4vw,58px);line-height:1.06;color:var(--ivoire);max-width:16ch;text-wrap:balance;text-shadow:0 2px 24px rgba(14,19,13,.35)}
+.accueil .pv-une-contenu{width:100%;padding-bottom:clamp(44px,8vh,96px)}
+.accueil .pv-une h1{font-size:clamp(42px,5.6vw,90px);line-height:1.03;max-width:12ch;color:var(--ivoire);text-wrap:balance;text-shadow:0 2px 28px rgba(10,14,12,.4)}
+.accueil .pv-une-lead{margin-top:clamp(16px,2vw,24px);max-width:40ch;font-size:18px;line-height:1.7;color:rgba(251,248,238,.94)}
+/* Repère de visée et légende de la vue, dans le coin */
+.accueil .pv-une-legende{position:absolute;right:var(--marge);bottom:clamp(44px,8vh,96px);display:grid;gap:6px;justify-items:end;text-align:right}
+.accueil .pv-une-legende .pv-hud-txt:first-child{color:var(--hud-doux)}
+.accueil .pv-une-visee{position:absolute;left:46%;top:46%;width:clamp(90px,10vw,150px);aspect-ratio:1;translate:-50% -50%;pointer-events:none}
+.accueil .pv-une-visee svg{width:100%;height:100%;overflow:visible}
 
-.accueil .pc-lead{max-width:62ch}
-.accueil .pc-reperes{
-  display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(28px,3.4vw,44px);max-width:760px;
-  border:1px solid var(--filet);
+/* ================================ Repères ================================ */
+.accueil main > .pv-intro{margin-top:clamp(64px,8vw,120px)}
+.accueil .pv-intro .grille{align-items:end}
+.accueil .pv-intro .texte{grid-column:1 / span 6;max-width:56ch}
+.accueil .pv-reperes{grid-column:8 / span 5;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--filet)}
+.accueil .pv-reperes li{padding:22px 16px 22px 0;border-bottom:1px solid var(--filet)}
+.accueil .pv-reperes li:nth-child(even){padding-left:20px;border-left:1px solid var(--filet)}
+.accueil .pv-reperes strong{display:block;font-family:var(--f-sans);font-weight:300;font-size:clamp(34px,3vw,46px);line-height:1;font-variant-numeric:lining-nums;color:var(--encre);white-space:nowrap}
+.accueil .pv-reperes span{display:block;margin-top:8px;font-size:14.5px;line-height:1.45;color:var(--encre-douce)}
+
+/* ================================ Le rail des dix parcours ================================ */
+.accueil .pv-rail-tete{align-items:end;margin-bottom:clamp(32px,4vw,56px)}
+.accueil .pv-rail-tete .titre{grid-column:1 / span 7;max-width:13ch}
+.accueil .pv-rail-tete .texte{grid-column:8 / span 5;max-width:38ch}
+.accueil .pv-rail-compteur{display:none}
+
+/* Sans pilotage (mobile, mouvement réduit, sans script) : une grille simple */
+.accueil .pv-piste{list-style:none;max-width:var(--large);margin-inline:auto;padding-inline:var(--marge);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2vw,28px)}
+.accueil .pv-carte a{position:relative;display:block;aspect-ratio:4 / 5;overflow:hidden;background:#3F4A40;color:var(--ivoire);isolation:isolate}
+.accueil .pv-carte img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.6s var(--sortie)}
+.accueil .pv-carte a::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(10,14,12,.8) 0%,rgba(10,14,12,.3) 42%,rgba(10,14,12,.1) 66%,rgba(10,14,12,.58) 100%);transition:background-color .6s ease}
+.accueil .pv-carte a:hover img{transform:scale(1.06)}
+.accueil .pv-carte a:focus-visible{outline:2px solid var(--ivoire);outline-offset:-6px}
+.accueil .pv-carte-haut{position:absolute;left:20px;right:20px;top:18px;display:flex;justify-content:space-between;gap:12px}
+.accueil .pv-carte-num{font-family:var(--f-sans);font-weight:300;font-size:clamp(26px,2.2vw,34px);line-height:1;font-variant-numeric:lining-nums}
+.accueil .pv-carte-coord{padding-top:4px;color:var(--hud-doux)}
+.accueil .pv-carte-bas{position:absolute;left:20px;right:20px;bottom:20px}
+.accueil .pv-carte-nom{font-size:clamp(24px,2.1vw,32px);line-height:1.08;color:var(--ivoire);text-wrap:balance}
+.accueil .pv-carte-lieu,.accueil .pv-carte-specs{display:block}
+.accueil .pv-carte-lieu{margin-top:8px;font-size:11.5px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:rgba(251,248,238,.84)}
+.accueil .pv-carte-specs{margin-top:12px;padding-top:12px;border-top:1px solid var(--hud-trait);font-size:13.5px;letter-spacing:.04em;color:rgba(251,248,238,.92)}
+.accueil .pv-carte-voir{display:inline-block;margin-top:12px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ivoire);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;transition:text-underline-offset .4s var(--sortie)}
+.accueil .pv-carte a:hover .pv-carte-voir{text-underline-offset:9px}
+/* Coins de visée qui se resserrent au survol */
+.accueil .pv-carte-visee{position:absolute;inset:14px;pointer-events:none;opacity:0;transition:opacity .5s ease,inset .7s var(--sortie)}
+.accueil .pv-carte-visee i{position:absolute;width:18px;height:18px;border:0 solid var(--ivoire)}
+.accueil .pv-carte-visee i:nth-child(1){left:0;top:0;border-left-width:1px;border-top-width:1px}
+.accueil .pv-carte-visee i:nth-child(2){right:0;top:0;border-right-width:1px;border-top-width:1px}
+.accueil .pv-carte-visee i:nth-child(3){left:0;bottom:0;border-left-width:1px;border-bottom-width:1px}
+.accueil .pv-carte-visee i:nth-child(4){right:0;bottom:0;border-right-width:1px;border-bottom-width:1px}
+.accueil .pv-carte a:hover .pv-carte-visee,.accueil .pv-carte a:focus-visible .pv-carte-visee{opacity:1;inset:26px}
+
+/* Pilotage par le défilement (ordinateur, mouvement autorisé) : la section se fige,
+   la piste glisse de droite à gauche et chaque carte se pose en arrivant */
+.accueil .pv-rail.est-pilote{position:relative}
+.accueil .pv-rail.est-pilote .pv-rail-scene{position:sticky;top:var(--h-entete-reelle);height:calc(100svh - var(--h-entete-reelle));display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.accueil .pv-rail.est-pilote .pv-rail-tete{width:100%;margin-bottom:clamp(20px,3vh,40px)}
+.accueil .pv-rail.est-pilote .pv-piste{
+  display:flex;gap:clamp(18px,1.8vw,28px);max-width:none;margin:0;width:max-content;
+  padding-inline:max(var(--marge),calc((100vw - var(--large)) / 2 + var(--marge)));will-change:transform;
 }
-.accueil .pc-reperes div{padding:16px 20px;border-right:1px solid var(--filet)}
-.accueil .pc-reperes div:last-child{border-right:0}
-.accueil .pc-reperes strong{display:block;font-family:var(--f-titre);font-weight:400;font-size:clamp(24px,2.2vw,30px);line-height:1.1;color:var(--encre)}
-.accueil .pc-reperes span{font-size:12px;letter-spacing:.04em;color:var(--encre-douce)}
-
-/* ================================ Filtres ================================ */
-.accueil .pc-golfs{margin-top:var(--ecart)}
-.accueil .filtres{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:clamp(32px,4vw,48px)}
-.accueil .filtres .lbl{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--encre-douce);margin-right:8px}
-.accueil .filtre{
-  font:400 12.5px/1.2 var(--f-sans);letter-spacing:.1em;text-transform:uppercase;
-  padding:9px 16px;border:1px solid var(--filet);background:transparent;color:var(--encre-douce);
-  cursor:pointer;transition:border-color .25s ease,background .25s ease,color .25s ease;
+.accueil .pv-rail.est-pilote .pv-carte{flex:0 0 auto;width:min(26vw,calc((100svh - var(--h-entete-reelle) - 250px) * .8),420px);min-width:260px}
+.accueil .pv-rail.est-pilote .pv-rail-compteur{display:flex;align-items:center;gap:18px;max-width:var(--large);width:100%;margin:clamp(18px,3vh,32px) auto 0;padding-inline:var(--marge);color:var(--encre)}
+.accueil .pv-rail-compteur .pv-hud-txt{color:var(--encre-douce)}
+.accueil .pv-rail-compteur b{font-family:var(--f-sans);font-weight:300;font-size:22px;letter-spacing:.02em;font-variant-numeric:lining-nums tabular-nums;color:var(--encre)}
+.accueil .pv-rail-barre{flex:1;height:1px;background:var(--filet);position:relative}
+.accueil .pv-rail-barre i{position:absolute;left:0;top:-1px;height:3px;width:calc(var(--avance,0) * 100%);background:var(--encre)}
+@media (prefers-reduced-motion: no-preference){
+  .accueil .pv-rail.est-pilote .pv-carte{opacity:.18;transform:translateY(46px) scale(.94);transition:opacity 1s ease,transform 1.2s var(--sortie)}
+  .accueil .pv-rail.est-pilote .pv-carte.est-arrivee{opacity:1;transform:none}
+  .accueil .pv-rail.est-pilote .pv-carte img{scale:1.12;transition:scale 1.8s var(--sortie),transform 1.6s var(--sortie)}
+  .accueil .pv-rail.est-pilote .pv-carte.est-arrivee img{scale:1}
 }
-.accueil .filtre:hover{border-color:var(--encre);color:var(--encre)}
-.accueil .filtre[aria-pressed="true"]{background:var(--encre);border-color:var(--encre);color:var(--blanc)}
 
-/* ================================ Grille de cartes ================================ */
-.accueil .pc-grille{
-  list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,28px);
+/* ================================ Bande « votre semaine » ================================ */
+.accueil .pv-semaine{background:var(--vert);color:var(--ivoire);padding-block:clamp(80px,10vw,140px)}
+.accueil .pv-semaine .grille{align-items:end}
+.accueil .pv-semaine .titre{grid-column:1 / span 6;color:var(--ivoire);max-width:13ch}
+.accueil .pv-semaine-texte{grid-column:8 / span 5}
+.accueil .pv-semaine .texte{color:rgba(251,248,238,.9);max-width:42ch}
+.accueil .pv-semaine .actions{margin-top:clamp(26px,3vw,38px)}
+
+.accueil .pv-notes{max-width:var(--large);margin:clamp(40px,5vw,64px) auto var(--ecart);padding-inline:var(--marge);display:grid;gap:10px;font-size:13.5px;line-height:1.6;color:var(--encre-douce)}
+.accueil .pv-notes a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+/* ================================ Page de détail : la descente vue du ciel ================================ */
+/* La scène commence sous l'en-tête : celui-ci s'efface pendant la descente */
+.accueil .pv-vol{position:relative;margin-top:calc(-1 * var(--h-entete-reelle));background:var(--nuit);color:var(--ivoire)}
+.accueil .pv-vol-scene{position:relative;height:100svh;min-height:520px;overflow:hidden;isolation:isolate;perspective:1100px;perspective-origin:50% 40%}
+.accueil .pv-vol-plan{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 55%}
+.accueil .pv-vol-couche{
+  --cote:calc(max(100vw,100svh) * 1.3);
+  position:absolute;left:50%;top:50%;width:var(--cote);height:var(--cote);max-width:none;object-fit:cover;
+  translate:-50% -50%;transform-origin:50% 50%;backface-visibility:hidden;
 }
-.accueil .pc-carte[hidden]{display:none}
-.accueil .pc-carte a{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:#5F6A5E;cursor:pointer}
-.accueil .pc-carte .cadre{position:absolute;inset:0}
-.accueil .pc-carte img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--sortie)}
-.accueil .pc-carte a::after{content:"";position:absolute;inset:0;background:rgba(14,19,13,.38);transition:background-color .6s ease}
-.accueil .pc-carte a:hover img{transform:scale(1.07)}
-.accueil .pc-carte a:hover::after{background:rgba(14,19,13,.5)}
-.accueil .pc-carte a:focus-visible{outline:2px solid var(--ivoire);outline-offset:-4px}
-.accueil .pc-carte-texte{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:22px;color:var(--ivoire)}
-.accueil .pc-carte-num{font-size:11px;letter-spacing:.18em;color:rgba(251,248,238,.75);margin-bottom:10px}
-.accueil .pc-carte-nom{font-size:clamp(21px,1.9vw,27px);line-height:1.12;color:var(--ivoire);text-wrap:balance}
-.accueil .pc-carte-lieu{margin-top:6px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(251,248,238,.82)}
-.accueil .pc-carte-specs{margin-top:10px;font-size:12.5px;color:rgba(251,248,238,.92)}
-.accueil .pc-vide{padding:var(--ecart) 0;text-align:center;color:var(--encre-douce)}
-.accueil .pc-suite{margin-top:clamp(28px,3vw,40px);max-width:60ch}
-
-/* ================================ Bande de rappel ================================ */
-.accueil .pc-rappel{background:var(--vert);color:var(--ivoire);padding-block:clamp(72px,9vw,120px);text-align:center}
-.accueil .pc-rappel-eyebrow{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(251,248,238,.78);margin-bottom:14px}
-.accueil .pc-rappel .titre{color:var(--ivoire);max-width:20ch;margin-inline:auto}
-.accueil .pc-rappel .texte{color:rgba(251,248,238,.92);max-width:56ch;margin:clamp(18px,2vw,26px) auto clamp(28px,3vw,40px)}
-
-/* ================================ Page de détail ================================ */
-.accueil .pc-hero{
-  position:relative;display:flex;align-items:flex-end;overflow:hidden;color:var(--ivoire);
-  height:clamp(360px,50vh,520px);
+/* Sans script : une seule vue, celle du parcours entier */
+.accueil .pv-vol-couche:not([data-z="16"]){display:none}
+.accueil .pv-vol-couche[data-z="16"]{width:max(100vw,100svh);height:max(100vw,100svh)}
+/* Avec script et mouvement : toutes les couches, chacune plus fine que la précédente, au bord adouci */
+.pv-js .accueil .pv-vol.est-anime .pv-vol-couche{display:block;width:var(--cote);height:var(--cote);will-change:transform,opacity}
+.pv-js .accueil .pv-vol.est-anime .pv-vol-couche:not([data-z="12"]){
+  -webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent 100%);mask-image:radial-gradient(closest-side,#000 70%,transparent 100%);
 }
-.accueil .pc-hero-photo{position:absolute;inset:0;background:#5F6A5E}
-.accueil .pc-hero-photo img{width:100%;height:100%;object-fit:cover}
-.accueil .pc-hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,19,13,.64) 0%,rgba(14,19,13,.26) 46%,rgba(14,19,13,0) 74%)}
-.accueil .pc-hero-contenu{position:relative;z-index:1;width:100%;padding-bottom:clamp(32px,4.4vw,48px)}
-.accueil .pc-retour{display:inline-block;margin-bottom:clamp(18px,2.4vw,28px);font:400 12px/1.2 var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:rgba(251,248,238,.88);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;transition:text-underline-offset .35s var(--sortie)}
-.accueil .pc-retour:hover{text-underline-offset:9px}
-.accueil .pc-hero h1{font-size:clamp(32px,4.2vw,56px);line-height:1.05;color:var(--ivoire);max-width:18ch;text-wrap:balance;text-shadow:0 2px 22px rgba(14,19,13,.35)}
-.accueil .pc-hero-lieu{margin-top:10px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,248,238,.86)}
+/* Brume d'altitude, vignette et fine trame : l'impression de regarder par un hublot */
+.accueil .pv-vol-voile{position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(ellipse 75% 70% at 50% 52%,rgba(10,14,12,0) 52%,rgba(10,14,12,.62) 100%),
+    linear-gradient(to bottom,rgba(10,14,12,calc(.15 + var(--brume,0) * .6)) 0%,rgba(10,14,12,0) 38%),
+    linear-gradient(to top,rgba(10,14,12,.6) 0%,rgba(10,14,12,0) 34%);
+}
 
-.accueil .pc-detail{margin-top:clamp(56px,7vw,96px)}
-.accueil .pc-detail .grille{align-items:start}
-.accueil .pc-detail-texte{grid-column:1 / span 7}
-.accueil .pc-hero-accroche{font-family:var(--f-titre);font-size:clamp(22px,2vw,28px);line-height:1.3;color:var(--encre);margin-bottom:clamp(18px,2vw,26px)}
-.accueil .pc-detail-texte .texte{max-width:58ch}
-.accueil .pc-detail-texte .etiquettes{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(22px,2.4vw,30px) 0 clamp(26px,3vw,36px)}
-.accueil .pc-detail-texte .etiquette{font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--filet);padding:6px 12px;color:var(--encre-douce)}
+/* Le tableau de bord */
+.accueil .pv-hud{position:absolute;inset:0;z-index:2;pointer-events:none;padding:calc(var(--h-entete-reelle) + 22px) var(--marge) clamp(26px,4vh,44px);transition:padding-top .6s var(--sortie)}
+html.pv-en-vol .accueil .pv-hud{padding-top:26px}
+.accueil .pv-hud a{pointer-events:auto}
+.accueil .pv-hud-haut{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.accueil .pv-retour{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--hud-trait);color:var(--hud);background:rgba(10,14,12,.25);transition:border-color .3s ease,background-color .3s ease}
+.accueil .pv-retour:hover{border-color:var(--ivoire);background:rgba(10,14,12,.5)}
+.accueil .pv-hud-source{display:grid;gap:6px;justify-items:end;text-align:right}
+.accueil .pv-hud-source .pv-hud-txt:last-child{color:var(--hud-doux)}
 
-.accueil .pc-detail-aside{grid-column:9 / span 4}
-.accueil .pc-specs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2vw,24px);border-top:1px solid var(--filet);padding-top:clamp(20px,2.2vw,28px);margin-bottom:clamp(24px,2.6vw,32px)}
-.accueil .pc-specs dt{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--encre-douce);margin-bottom:6px}
-.accueil .pc-specs dd{font-size:17px;color:var(--encre)}
-.accueil .pc-detail-photo{aspect-ratio:3/4;background:#5F6A5E}
-.accueil .pc-illustration{margin-top:10px;font-size:12.5px;color:var(--encre-douce)}
+.accueil .pv-visee{position:absolute;left:50%;top:52%;width:var(--visee,52vmin);aspect-ratio:1;translate:-50% -50%;pointer-events:none}
+.accueil .pv-visee svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.accueil .pv-visee-anneau{transform-origin:50% 50%}
 
-.accueil .pc-retour-bande{border-top:1px solid var(--filet);margin-top:var(--ecart);padding-block:clamp(26px,3vw,34px)}
-.accueil .pc-retour-bande-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.accueil .pc-prev,.accueil .pc-next{font:400 12px/1.2 var(--f-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--encre-douce);transition:color .3s ease}
-.accueil .pc-prev:hover,.accueil .pc-next:hover{color:var(--encre)}
+.accueil .pv-echelle-alt{position:absolute;left:var(--marge);top:50%;translate:0 -50%;height:34vh;width:44px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 78%,transparent)}
+.accueil .pv-echelle-alt i{position:absolute;left:0;right:0;top:0;height:400%;transform:translateY(calc(var(--descente,0) * -75%));
+  background:repeating-linear-gradient(to bottom,var(--hud-trait) 0 1px,transparent 1px 12px),repeating-linear-gradient(to bottom,var(--hud) 0 1px,transparent 1px 60px);
+  background-size:14px 100%,28px 100%;background-repeat:repeat-y}
+
+.accueil .pv-hud-bas{position:absolute;left:var(--marge);right:var(--marge);bottom:clamp(26px,4vh,44px);display:flex;justify-content:space-between;align-items:flex-end;gap:32px}
+.accueil .pv-vol h1{font-size:clamp(38px,5vw,80px);line-height:1.03;max-width:12ch;color:var(--ivoire);text-wrap:balance;text-shadow:0 2px 26px rgba(10,14,12,.5)}
+.accueil .pv-vol-lieu{margin-top:12px}
+.accueil .pv-mesures{display:grid;grid-template-columns:auto auto;gap:8px 18px;align-items:baseline;min-width:250px}
+.accueil .pv-mesures dt{color:var(--hud-doux)}
+.accueil .pv-mesures dd{margin:0;text-align:right}
+.accueil .pv-mesures .pv-regle{grid-column:1 / -1;display:flex;align-items:center;gap:12px;justify-content:flex-end;margin-top:6px}
+.accueil .pv-regle i{display:block;width:120px;height:8px;border:1px solid var(--hud);border-top:0}
+.accueil .pv-vol:not(.est-anime) .pv-indice,.accueil .pv-vol:not(.est-anime) .pv-echelle-alt{display:none}
+.accueil .pv-indice{position:absolute;left:50%;bottom:clamp(26px,4vh,44px);translate:-50% 0;display:grid;justify-items:center;gap:12px;opacity:calc(1 - var(--descente,0) * 12);transition:opacity .3s ease}
+.accueil .pv-indice .pv-indice-trait{display:block;width:1px;height:42px;background:linear-gradient(to bottom,var(--hud),transparent)}
+
+/* La scène se fige pendant la descente (avec script et mouvement autorisé) */
+.pv-js .accueil .pv-vol.est-anime{height:340svh}
+.pv-js .accueil .pv-vol.est-anime .pv-vol-scene{position:sticky;top:0}
+.accueil .entete{transition:transform .6s var(--sortie)}
+html.pv-en-vol .accueil .entete{transform:translateY(-100%)}
+html.pv-en-vol .accueil .entete:focus-within{transform:none}
+
+/* ================================ Page de détail : la fiche ================================ */
+.accueil .pv-fiche .grille{align-items:start}
+.accueil .pv-fiche-texte{grid-column:1 / span 7}
+.accueil .pv-fiche-texte h2{font-size:clamp(32px,3.4vw,52px);line-height:1.08;max-width:18ch;color:var(--encre);text-wrap:balance}
+.accueil .pv-fiche-texte .texte{margin-top:clamp(22px,2.4vw,32px);max-width:58ch}
+.accueil .etiquettes{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(24px,2.6vw,34px)}
+.accueil .etiquette{font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--filet);padding:7px 12px;color:var(--encre-douce)}
+.accueil .pv-fiche-texte .actions{margin-top:clamp(30px,3.4vw,44px)}
+.accueil .pv-specs-bloc{grid-column:9 / span 4}
+.accueil .pv-specs{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--filet)}
+.accueil .pv-specs div{padding:20px 0;border-bottom:1px solid var(--filet)}
+.accueil .pv-specs div:nth-child(even){padding-left:20px;border-left:1px solid var(--filet)}
+.accueil .pv-specs dt{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--encre-douce)}
+.accueil .pv-specs dd{margin:8px 0 0;font-family:var(--f-sans);font-weight:300;font-size:clamp(24px,2vw,30px);line-height:1.15;font-variant-numeric:lining-nums;color:var(--encre)}
+.accueil .pv-specs div.pv-specs-large{grid-column:1 / -1;padding-left:0;border-left:0}
+.accueil .pv-specs .pv-specs-large dd{font-size:clamp(20px,1.6vw,24px)}
+.accueil .pv-specs-coord{margin-top:14px;color:var(--encre-douce)}
+
+/* ================================ Page de détail : les images ================================ */
+.accueil .pv-images-tete{align-items:end;margin-bottom:clamp(28px,3.4vw,44px)}
+.accueil .pv-images-tete .titre{grid-column:1 / span 7}
+.accueil .pv-images-tete .texte{grid-column:8 / span 5;max-width:38ch}
+.accueil .pv-bande{
+  --bord-gauche:max(var(--marge),calc((100vw - var(--large)) / 2 + var(--marge)));
+  list-style:none;display:flex;gap:clamp(12px,1.4vw,20px);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+  padding:0 var(--bord-gauche) 18px;scroll-padding-inline:var(--bord-gauche);scrollbar-width:thin;scrollbar-color:var(--filet) transparent;
+}
+.accueil .pv-bande li{flex:0 0 auto;scroll-snap-align:start}
+.accueil .pv-bande figure{margin:0}
+.accueil .pv-bande .cadre{height:clamp(300px,52vh,520px);background:#C9C3B8}
+.accueil .pv-bande img{width:auto;height:100%;object-fit:cover}
+.accueil .pv-bande .pv-bande-carre img{aspect-ratio:1}
+.accueil .pv-bande figcaption{margin-top:12px;max-width:44ch;font-size:14px;line-height:1.5;color:var(--encre-douce)}
+.accueil .pv-bande figcaption b{display:block;font-weight:400;color:var(--encre)}
+.accueil .pv-bande figcaption a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+/* Club-house : la seule arche de la page */
+.accueil .pv-club .grille{align-items:center}
+.accueil .pv-club-photo{grid-column:2 / span 5}
+.accueil .pv-club-photo .cadre{aspect-ratio:4 / 5;border-radius:50% 50% 0 0 / 31% 31% 0 0}
+.accueil .pv-club-texte{grid-column:8 / span 4}
+.accueil .pv-club-texte .texte{margin-top:clamp(18px,2vw,26px)}
+.accueil .pv-club-texte .pv-credit{margin-top:14px;font-size:13px;color:var(--encre-douce)}
+.accueil .pv-club-texte .pv-credit a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+/* Parcours voisins */
+.accueil .pv-voisins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.accueil .pv-voisin a{position:relative;display:flex;align-items:flex-end;min-height:clamp(220px,30vw,340px);padding:24px;overflow:hidden;isolation:isolate;color:var(--ivoire);background:#3F4A40}
+.accueil .pv-voisin img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.6s var(--sortie)}
+.accueil .pv-voisin a::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(10,14,12,.78),rgba(10,14,12,.15) 70%)}
+.accueil .pv-voisin a:hover img{transform:scale(1.05)}
+.accueil .pv-voisin .pv-hud-txt{display:block;color:var(--hud-doux)}
+.accueil .pv-voisin b{display:block;margin-top:8px;font-family:var(--f-titre);font-weight:400;font-size:clamp(26px,2.4vw,36px);line-height:1.08}
+.accueil .pv-voisin--suiv a{justify-content:flex-end;text-align:right}
+.accueil .pv-tous{margin-top:clamp(24px,3vw,36px)}
 
 /* ================================ Adaptations ================================ */
 @media (max-width:1100px){
-  .accueil .pc-grille{grid-template-columns:repeat(2,1fr)}
-  .accueil .pc-detail-texte{grid-column:1 / span 12}
-  .accueil .pc-detail-aside{grid-column:1 / span 12;margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-  .accueil .pc-specs{grid-column:1}
-  .accueil .pc-detail-photo{grid-column:2}
+  .accueil .pv-intro .texte,.accueil .pv-reperes{grid-column:1 / -1}
+  .accueil .pv-reperes{margin-top:32px}
+  .accueil .pv-rail-tete .titre,.accueil .pv-rail-tete .texte,.accueil .pv-images-tete .titre,.accueil .pv-images-tete .texte{grid-column:1 / -1}
+  .accueil .pv-rail-tete .texte,.accueil .pv-images-tete .texte{margin-top:14px}
+  .accueil .pv-piste{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .accueil .pv-semaine .titre,.accueil .pv-semaine-texte{grid-column:1 / -1}
+  .accueil .pv-semaine-texte{margin-top:24px}
+  .accueil .pv-fiche-texte,.accueil .pv-specs-bloc{grid-column:1 / -1}
+  .accueil .pv-specs-bloc{margin-top:44px}
+  .accueil .pv-club-photo{grid-column:1 / span 6}
+  .accueil .pv-club-texte{grid-column:7 / span 6}
 }
 @media (max-width:760px){
-  .accueil .pc-reperes{grid-template-columns:repeat(2,1fr)}
-  .accueil .pc-reperes div:nth-child(2n){border-right:0}
-  .accueil .pc-reperes div:nth-child(-n+2){border-bottom:1px solid var(--filet)}
-  .accueil .pc-grille{grid-template-columns:1fr}
-  .accueil .pc-detail-aside{grid-template-columns:1fr}
-  .accueil .pc-specs{grid-column:auto}
-  .accueil .pc-detail-photo{grid-column:auto}
+  .accueil .pv-une{min-height:520px}
+  .accueil .pv-une-legende{left:var(--marge);right:auto;top:20px;bottom:auto;justify-items:start;text-align:left}
+  .accueil .pv-une-visee{display:none}
+  .accueil .pv-piste{grid-template-columns:1fr}
+  .accueil .pv-carte a{aspect-ratio:4 / 4.6}
+  .accueil .pv-hud-haut .pv-hud-source{display:none}
+  .accueil .pv-echelle-alt{display:none}
+  .accueil .pv-hud-bas{flex-direction:column;align-items:flex-start;gap:20px}
+  .accueil .pv-mesures{min-width:0;width:100%;grid-template-columns:auto 1fr}
+  .accueil .pv-indice{display:none}
+  .accueil .pv-club-photo,.accueil .pv-club-texte{grid-column:1 / -1}
+  .accueil .pv-club-photo{max-width:80%}
+  .accueil .pv-club-texte{margin-top:36px}
+  .accueil .pv-voisins{grid-template-columns:1fr}
+  .accueil .pv-bande .cadre{height:clamp(240px,44vh,360px)}
 }
 
 /* ================================ Mouvement ================================ */
 @media (prefers-reduced-motion: no-preference){
-  .accueil .pc-une-photo img{animation:pc-recul 3s var(--sortie) both}
-  @keyframes pc-recul{from{transform:scale(1.08)}to{transform:none}}
-  .accueil .pc-hero-photo img{animation:pc-recul 3s var(--sortie) both}
-  .js-revele .pc-grille[data-revele] .pc-carte .cadre img,
-  .js-revele .pc-grille[data-revele] .pc-carte a::after{opacity:1}
+  .accueil .pv-une-photo img{animation:pv-derive 22s ease-in-out infinite alternate}
+  @keyframes pv-derive{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.12) translate(-2%,1.5%)}}
+  .accueil .pv-une-contenu > *{animation:pv-pose 1.5s var(--sortie) both}
+  .accueil .pv-une-lead{animation-delay:.2s}
+  @keyframes pv-pose{from{opacity:.25;transform:translateY(22px)}to{opacity:1;transform:none}}
+  .accueil .pv-une-visee svg,.accueil .pv-visee-anneau{animation:pv-tourne 26s linear infinite}
+  @keyframes pv-tourne{to{rotate:360deg}}
+  .accueil .pv-indice .pv-indice-trait{animation:pv-indice 2.4s ease-in-out infinite}
+  @keyframes pv-indice{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 }
 
 /* ================================ Transition de page en fondu ================================ */
